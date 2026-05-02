@@ -110,31 +110,67 @@ export default function Footer() {
               </span>
             </div>
 
-            {/* ANPC SAL official badge */}
+            {/* Dispute resolution badges */}
             <div>
-              <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold mb-3">Protecția consumatorilor</p>
-              <a
-                href="https://reclamatiisal.anpc.ro/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block hover:opacity-85 transition-opacity"
-                title="ANPC — Soluționarea Alternativă a Litigiilor"
-              >
-                <img
-                  src="/logos/anpc-sal.png"
-                  alt="ANPC SAL — Soluționarea Alternativă a Litigiilor"
-                  className="h-14 w-auto object-contain"
-                  onError={(e) => {
-                    const img = e.target as HTMLImageElement;
-                    img.style.display = "none";
-                    const sib = img.nextElementSibling as HTMLElement;
-                    if (sib) sib.classList.remove("hidden");
-                  }}
-                />
-                <div className="hidden flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-xl">
-                  <span className="text-[11px] font-semibold text-white">ANPC SAL</span>
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold mb-3">Soluționarea litigiilor</p>
+              <div className="flex flex-wrap gap-3">
+
+                {/* ANPC SAL */}
+                <div className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 shadow-sm">
+                  <a
+                    href="https://anpc.ro/ce-este-sal/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    title="ANPC — Soluționarea Alternativă a Litigiilor"
+                  >
+                    <img
+                      src="/logos/anpc-sal.png"
+                      alt="ANPC SAL"
+                      className="h-10 w-auto object-contain"
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-[9px] font-bold text-[#0C1A2E] uppercase leading-tight">Soluționarea</span>
+                      <span className="text-[9px] font-bold text-[#0C1A2E] uppercase leading-tight">Alternativă</span>
+                      <span className="text-[9px] font-bold text-[#0C1A2E] uppercase leading-tight">a Litigiilor</span>
+                    </div>
+                  </a>
                 </div>
-              </a>
+
+                {/* CSALB */}
+                <div className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 shadow-sm">
+                  <a
+                    href="https://www.csalb.ro/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center hover:opacity-80 transition-opacity"
+                    title="CSALB — Centrul de Soluționare Alternativă a Litigiilor în domeniul Bancar"
+                  >
+                    <img
+                      src="/logos/csalb.png"
+                      alt="CSALB — 10 ani"
+                      className="h-10 w-auto object-contain"
+                    />
+                  </a>
+                </div>
+
+                {/* SOL */}
+                <div className="flex items-center bg-white rounded-xl px-3 py-2 shadow-sm">
+                  <a
+                    href="https://ec.europa.eu/consumers/odr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col hover:opacity-80 transition-opacity"
+                    title="SOL — Soluționarea Online a Litigiilor"
+                  >
+                    <span className="text-[9px] font-bold text-[#0C1A2E] uppercase leading-tight">Soluționarea</span>
+                    <span className="text-[9px] font-bold text-[#0C1A2E] uppercase leading-tight">Online a</span>
+                    <span className="text-[9px] font-bold text-[#0C1A2E] uppercase leading-tight">Litigiilor</span>
+                    <span className="text-[8px] text-[#003DA5] leading-tight mt-0.5 font-medium">ec.europa.eu/odr</span>
+                  </a>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

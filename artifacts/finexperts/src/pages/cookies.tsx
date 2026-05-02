@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Cookie, CheckCircle, XCircle, BarChart2, Shield } from "lucide-react";
+import DisputeBadges from "@/components/ui/DisputeBadges";
 
 const cookieCategories = [
   {
@@ -135,6 +136,8 @@ export default function CookiesPage() {
             </section>
 
           </div>
+
+          <DisputeBadges />
         </div>
       </div>
     </div>
