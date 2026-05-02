@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
-import { useAuth, getAuditLog, AuditEvent, BROKER_ACCOUNTS } from "@/lib/auth";
+import { useAuth, getAuditLog, AuditEvent, BROKER_ACCOUNTS, getBrokerAccounts, setBrokerAccounts, BrokerAccount } from "@/lib/auth";
 import { useStore, Application, InsuranceRequest, Guide, SiteSettings } from "@/lib/store";
 import { BROKERS } from "@/lib/brokers";
 import { banks as defaultBanks } from "@/lib/data";
@@ -931,13 +931,14 @@ function UsersTab({ applications }: { applications: Application[] }) {
 function BrokeriTab({ applications }: { applications: Application[] }) {
   const [selected, setSelected] = useState<string | "all">("all");
   const [search, setSearch] = useState("");
+  const [brokerAccounts, setBrokerAccountsState] = useState(() => getBrokerAccounts());
   const brokerRows = BROKERS.map(broker => {
     const myApps = applications.filter(a => a.brokerId === broker.id);
     const approved = myApps.filter(a => a.status === "approved");
     const pending = myApps.filter(a => a.status === "pending");
     const inReview = myApps.filter(a => a.status === "in_review" || a.status === "contacted");
     const totalApproved = approved.reduce((s, a) => s + a.amount, 0);
-    const accountEmail = Object.entries(BROKER_ACCOUNTS).find(([, v]) => v.brokerId === broker.id)?.[0];
+    const accountEmail = Object.entries(brokerAccounts).find(([, v]) => v.brokerId === broker.id)?.[0];
     return { broker, myApps, approved, pending, inReview, totalApproved, accountEmail };
   });
   const filteredRows = brokerRows.filter(row =>
@@ -1020,6 +1021,38 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
           );
         })}
         {filteredRows.length === 0 && <div className="py-12 text-center text-sm text-[#64748B]">Niciun broker găsit.</div>}
+      </div>
+      <div className="mt-6 bg-white border border-[#E2E8F0] rounded-xl p-5">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="font-semibold text-[#0B2E2E]">Conturi broker</h3>
+            <p className="text-xs text-[#64748B]">Adaugă sau editează conturile de conectare.</p>
+          </div>
+          <button onClick={() => {
+            const updated = { ...brokerAccounts, [`broker-${Date.now()}@finexperts.ro`]: { name: "Broker nou", brokerId: BROKERS[0].id, password: "Kiwi#2026!" } };
+            setBrokerAccounts(updated);
+            setBrokerAccountsState(updated);
+          }} className="flex items-center gap-2 bg-[#0B2E2E] text-white font-semibold px-4 py-2 rounded-lg text-sm">
+            <Plus className="h-4 w-4" /> Cont nou
+          </button>
+        </div>
+        <div className="space-y-3">
+          {Object.entries(brokerAccounts).map(([email, acc]) => (
+            <div key={email} className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_auto] gap-3 items-center border border-[#E2E8F0] rounded-xl p-3">
+              <input value={email} readOnly className="border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm bg-[#F5F7FA]" />
+              <input value={acc.name} onChange={e => { const updated = { ...brokerAccounts, [email]: { ...acc, name: e.target.value } }; setBrokerAccounts(updated); setBrokerAccountsState(updated); }} className="border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm" />
+              <input value={acc.password} onChange={e => { const updated = { ...brokerAccounts, [email]: { ...acc, password: e.target.value } }; setBrokerAccounts(updated); setBrokerAccountsState(updated); }} className="border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm" />
+              <button onClick={() => {
+                const updated = { ...brokerAccounts };
+                delete updated[email];
+                setBrokerAccounts(updated);
+                setBrokerAccountsState(updated);
+              }} className="p-2 rounded-lg hover:bg-red-50 text-red-600">
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

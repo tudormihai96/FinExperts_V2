@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 export type UserRole = "super_admin" | "broker" | "client" | null;
+export type BrokerAccount = { name: string; brokerId: string; password: string };
 
 export interface AuthUser {
   email: string;
@@ -44,12 +45,31 @@ const SUPER_ADMIN_CREDENTIALS: [string, string][] = [
   ["admin@finexperts.ro", "admin123"],
 ];
 
-export const BROKER_ACCOUNTS: Record<string, { name: string; brokerId: string; password: string }> = {
+export const BROKER_ACCOUNTS: Record<string, BrokerAccount> = {
   "alexandra.achim@kiwifinance.ro": { name: "Alexandra Achim", brokerId: "alexandra-achim", password: "Kiwi#2026!" },
   "cristina.coman@kiwifinance.ro":  { name: "Cristina Coman",  brokerId: "cristina-coman",  password: "Kiwi#2026!" },
   "ana-maria.gheorghe@kiwifinance.ro": { name: "Ana-Maria Erji", brokerId: "ana-maria-erji", password: "Kiwi#2026!" },
   "mihai.tudor@kiwifinance.ro":     { name: "Tudor Mihai",     brokerId: "tudor-mihai",     password: "Kiwi#2026!" },
 };
+
+export function setBrokerAccounts(accounts: Record<string, BrokerAccount>) {
+  try {
+    localStorage.setItem("finexperts_broker_accounts", JSON.stringify(accounts));
+  } catch {}
+}
+
+export function getBrokerAccounts(): Record<string, BrokerAccount> {
+  try {
+    const saved = localStorage.getItem("finexperts_broker_accounts");
+    return saved ? JSON.parse(saved) as typeof BROKER_ACCOUNTS : BROKER_ACCOUNTS;
+  } catch {
+    return BROKER_ACCOUNTS;
+  }
+}
+
+export function getBrokerAccountsList(): Array<{ email: string; account: BrokerAccount }> {
+  return Object.entries(getBrokerAccounts()).map(([email, account]) => ({ email, account }));
+}
 
 const SESSION_MS = 8 * 60 * 60 * 1000;
 const MAX_FAILS = 5;
@@ -130,7 +150,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return { success: true };
     }
 
-    const brokerAcc = BROKER_ACCOUNTS[emailNorm];
+    const brokerAcc = getBrokerAccounts()[emailNorm];
     if (brokerAcc && brokerAcc.password === password) {
       const u: AuthUser = { email: emailNorm, name: brokerAcc.name, role: "broker", brokerId: brokerAcc.brokerId, loginAt: now };
       setUser(u);

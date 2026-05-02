@@ -1,53 +1,19 @@
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Briefcase, ShieldCheck, Award, Users, Phone, Mail, MapPin, Building2, FileText, ExternalLink } from "lucide-react";
+import { BROKERS } from "@/lib/brokers";
 
-const team = [
-  {
-    id: "alexandra",
-    name: "Alexandra Achim",
-    role: "Manager de franciză",
-    bio: "Coordonează FinExperts independent, fără rețeaua KIWI Finance. Background solid în Banca Transilvania și Raiffeisen Bank.",
-    avatar: "AA",
-    color: "#C49A20",
-    email: "alexandra.achim@kiwifinance.ro",
-    phone: "0799 715 101",
-    zone: "București",
-  },
-  {
-    id: "cristina",
-    name: "Cristina Coman",
-    role: "Broker de Credite",
-    bio: "Specializată în credite ipotecare și refinanțări. Background în BRD și Raiffeisen Bank.",
-    avatar: "CC",
-    color: "#0B2E2E",
-    email: "cristina.coman@kiwifinance.ro",
-    phone: "0725 596 672",
-    zone: "București",
-  },
-  {
-    id: "erji",
-    name: "Ana-Maria Erji",
-    role: "Broker de Credite",
-    bio: "Expertă în credite de nevoi personale și soluții pentru PFA. Background în Raiffeisen Bank și Credite Europe Bank (acum Nexent).",
-    avatar: "AE",
-    color: "#2E7D5B",
-    email: "ana-maria.gheorghe@kiwifinance.ro",
-    phone: "0755 251 860",
-    zone: "București",
-  },
-  {
-    id: "tudor",
-    name: "Tudor Mihai",
-    role: "Broker de Credite",
-    bio: "Focus pe credite cu garanții imobiliare și soluții complexe pentru antreprenori. Background în Raiffeisen Bank.",
-    avatar: "TM",
-    color: "#005BAA",
-    email: "mihai.tudor@kiwifinance.ro",
-    phone: "0799 717 737",
-    zone: "București",
-  },
-];
+const team = BROKERS.map(broker => ({
+  ...broker,
+  bio: broker.id === "alexandra"
+    ? "Coordonează FinExperts independent, fără rețeaua KIWI Finance. Background solid în Banca Transilvania și Raiffeisen Bank."
+    : broker.id === "cristina"
+      ? "Specializată în credite ipotecare și refinanțări. Background în BRD și Raiffeisen Bank."
+      : broker.id === "erji"
+        ? "Expertă în credite de nevoi personale și soluții pentru PFA. Background în Raiffeisen Bank și Credite Europe Bank (acum Nexent)."
+        : "Focus pe credite cu garanții imobiliare și soluții complexe pentru antreprenori. Background în Raiffeisen Bank.",
+  zone: "București",
+}));
 
 const faq = [
   { q: "Este sigur să aplic prin FinExperts?", a: "Da. Datele tale sunt transmise criptat, doar către banca aleasă de tine. Nu vindem datele și nu le folosim în scopuri de marketing terț. Suntem broker autorizat, înregistrat la Autoritatea de Supraveghere Financiară (ASF)." },
