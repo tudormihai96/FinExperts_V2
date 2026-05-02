@@ -15,44 +15,42 @@ export default function TermeniPage() {
             <section>
               <h2 className="text-base font-bold text-[#0C1A2E] mb-2">1. Informații despre operator</h2>
               <p>
-                Site-ul <strong>finexperts.ro</strong> este administrat de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroiești, Comuna Dobroiești, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, înregistrată la Registrul Comerțului cu CUI <strong>54405887</strong>.
-              </p>
-              <p className="mt-2">
-                FinExperts acționează în calitate de partener oficial <strong>KIWI Finance SRL</strong>, broker de credite autorizat ASF, membră a Asociației Române a Brokerilor de Credite (ARBC). Orice referire la FinExperts implică și respectarea termenilor și condițiilor KIWI Finance, disponibili la{" "}
-                <a href="https://www.kiwifinance.ro/wp-content/uploads/KIWI_Termeni_si_Conditii.pdf" target="_blank" rel="noopener noreferrer" className="text-[#C49A20] hover:underline">kiwifinance.ro</a>.
+                Site-ul <strong>finexperts.ro</strong> este administrat de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroiești, Comuna Dobroiești, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, înregistrată la Registrul Comerțului cu CUI <strong>54405887</strong>, broker de credite autorizat ASF, membră a Asociației Române a Brokerilor de Credite (ARBC) și partener KIWI Finance.
               </p>
             </section>
 
             <section>
               <h2 className="text-base font-bold text-[#0C1A2E] mb-2">2. Proprietate intelectuală</h2>
               <p>
-                Toate informațiile conținute în acest site sunt proprietatea <strong>KIWI Finance SRL</strong> ("KIWI Finance") și/sau a <strong>Alexandra Achim PFA</strong>, care dețin toate drepturile de proprietate intelectuală (inclusiv drepturile asupra bazei de date) privind mărcile comerciale, mărcile de servicii, logo-urile și toate celelalte materiale prezentate pe acest site.
+                Toate informațiile, textele, imaginile, logo-urile și materialele conținute pe site-ul finexperts.ro sunt proprietatea <strong>Alexandra Achim PFA</strong> sau sunt utilizate cu acordul titularilor de drepturi. Este interzisă reproducerea, distribuirea sau publicarea sub orice formă a conținutului, fără acordul scris prealabil al administratorului.
               </p>
               <p className="mt-2">
-                Este interzisă reproducerea, distribuirea sau publicarea sub orice formă a conținutului materialelor prezentate pe acest site, de către orice persoană, fără acordul scris prealabil al administratorului.
-              </p>
-              <p className="mt-2">
-                Orice încercare de modificare a imaginii și informațiilor din prezentul site, din partea oricărei persoane cu excepția deținătorului legal, dă dreptul unilateral și neechivoc de a se face uz de toate prerogativele legale, inclusiv adresarea instanțelor și/sau autorităților competente pentru sancționarea acestui fapt.
+                Orice tentativă de modificare neautorizată a conținutului site-ului dă dreptul administratorului de a se adresa instanțelor și/sau autorităților competente pentru sancționarea acestui fapt.
               </p>
             </section>
 
             <section>
               <h2 className="text-base font-bold text-[#0C1A2E] mb-2">3. Caracterul informativ al conținutului</h2>
               <p>
-                KIWI Finance și FinExperts depun toate eforturile pentru a prezenta în mod cât mai clar și concis toate informațiile de pe acest site. Cu toate acestea, nu sunt și nu vor fi legal responsabile, sub nicio circumstanță, pentru nicio inadvertență ori descriere eronată a informațiilor prezentate.
+                FinExperts depune toate eforturile pentru a prezenta informații clare și corecte. Cu toate acestea, nu garantează exactitatea în timp real a tuturor datelor publicate și nu răspunde pentru inadvertențe sau descrieri eronate ale informațiilor prezentate.
               </p>
               <p className="mt-2">
-                Informațiile prezentate pe acest site constituie o sursă de informare <strong>fără a reprezenta o ofertă de servicii sau produse</strong>. Calculele și dobânzile afișate au caracter orientativ și nu constituie ofertă fermă din partea niciunei instituții de credit. Condițiile finale ale creditului sunt stabilite exclusiv de bancă, în urma analizei dosarului.
+                Informațiile prezentate pe site constituie o sursă de informare <strong>fără a reprezenta o ofertă fermă de servicii sau produse bancare</strong>. Calculele și dobânzile afișate au caracter orientativ. Condițiile finale ale creditului — inclusiv rata dobânzii, DAE și suma aprobată — sunt stabilite exclusiv de instituția bancară, în urma analizei dosarului conform politicii proprii de risc.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">4. Accesarea serviciilor</h2>
-              <p>
-                Orice persoană care dorește să acceseze unul din serviciile prezentate pe site este rugată să contacteze oricare din sucursalele și partenerii locali KIWI Finance pentru a se informa atât asupra disponibilității serviciului, cât și asupra condițiilor în care acesta este oferit.
-              </p>
+              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">4. Serviciile oferite</h2>
+              <p>FinExperts oferă, în calitate de intermediar de credit autorizat:</p>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>Servicii de consultanță și intermediere în domeniul creditelor bancare (personale, ipotecare, refinanțare)</li>
+                <li>Calculator de rate orientativ, fără caracter de ofertă fermă</li>
+                <li>Comparator de dobânzi și condiții bancare, cu titlu informativ</li>
+                <li>Asistență în pregătirea și depunerea dosarelor de creditare</li>
+                <li>Ghiduri și articole informative despre credite și finanțe personale</li>
+              </ul>
               <p className="mt-2">
-                FinExperts oferă, în calitate de intermediar de credit autorizat, servicii de consultanță și intermediere în domeniul creditelor bancare. Aceste servicii sunt <strong>100% gratuite pentru client</strong>. FinExperts este remunerată exclusiv de instituțiile de credit partenere, numai în cazul în care creditul se aprobă și se semnează.
+                Serviciile de consultanță și intermediere sunt <strong>100% gratuite pentru client</strong>. FinExperts este remunerată exclusiv de instituțiile de credit partenere, numai în cazul în care creditul se aprobă și se semnează. Orice solicitare de plată din partea unui pretins reprezentant FinExperts trebuie raportată imediat la <a href="mailto:kbaa@kiwifinance.ro" className="text-[#C49A20] hover:underline">kbaa@kiwifinance.ro</a>.
               </p>
             </section>
 
@@ -60,61 +58,58 @@ export default function TermeniPage() {
               <h2 className="text-base font-bold text-[#0C1A2E] mb-2">5. Obligațiile utilizatorului</h2>
               <p>Prin utilizarea site-ului, utilizatorul se obligă să:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
-                <li>Furnizeze informații corecte, complete și actuale atunci când completează formularele de contact sau de aplicare</li>
+                <li>Furnizeze informații corecte, complete și actuale în formularele de contact sau de aplicare</li>
                 <li>Nu utilizeze site-ul în scopuri ilegale sau care ar putea prejudicia terțe persoane</li>
-                <li>Nu transmită conținut ofensator, defăimător sau care încalcă drepturile terților</li>
+                <li>Respecte drepturile de proprietate intelectuală ale FinExperts și ale partenerilor săi</li>
                 <li>Nu încerce să acceseze neautorizat sisteme informatice sau date ale altor utilizatori</li>
-                <li>Respecte drepturile de proprietate intelectuală ale FinExperts, KIWI Finance și ale partenerilor</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">6. Protecția datelor personale</h2>
+              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">6. Limitarea răspunderii</h2>
               <p>
-                Prelucrarea datelor personale se realizează în conformitate cu Regulamentul UE 2016/679 (GDPR) și legislația română în vigoare. Detalii complete în{" "}
-                <a href="/confidentialitate" className="text-[#C49A20] hover:underline">Politica de Confidențialitate</a>{" "}
-                și{" "}
-                <a href="/cookies" className="text-[#C49A20] hover:underline">Politica de Cookies</a>.
-              </p>
-              <p className="mt-2">
-                Pentru mai multe informații privind prelucrarea datelor cu caracter personal, descarcă și citește{" "}
-                <a href="https://www.kiwifinance.ro/wp-content/uploads/KIWI_Politica_de_utilizare_a_datelor_personale.pdf" target="_blank" rel="noopener noreferrer" className="text-[#C49A20] hover:underline">Politica de Utilizare a Datelor Personale KIWI Finance</a>.
-              </p>
-              <p className="mt-2">
-                Pentru mai multe informații privind politica de utilizare a cookie-urilor, descarcă și citește{" "}
-                <a href="/cookies" className="text-[#C49A20] hover:underline">Politica de Utilizare Cookies</a>.
+                FinExperts nu garantează aprobarea niciunui dosar de creditare. Decizia finală de creditare aparține exclusiv instituției de credit. FinExperts nu răspunde pentru pierderi financiare rezultate din utilizarea informațiilor orientative publicate pe site, din întreruperi ale serviciilor cauzate de forță majoră sau defecțiuni tehnice.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">7. Legea aplicabilă și soluționarea litigiilor</h2>
+              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">7. Protecția datelor personale</h2>
+              <p>
+                Prelucrarea datelor personale se realizează în conformitate cu Regulamentul UE 2016/679 (GDPR) și legislația română în vigoare. Detalii complete în{" "}
+                <a href="/confidentialitate" className="text-[#C49A20] hover:underline">Politica de date personale</a>{" "}
+                și{" "}
+                <a href="/cookies" className="text-[#C49A20] hover:underline">Politica de Cookies</a>.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">8. Legea aplicabilă și soluționarea litigiilor</h2>
               <p>
                 Prezentele Termeni și Condiții sunt guvernate de legea română. Orice litigiu va fi soluționat pe cale amiabilă. În cazul în care soluționarea amiabilă nu este posibilă, litigiul va fi supus instanțelor judecătorești competente din România.
               </p>
               <p className="mt-2">
-                Potrivit OG 38/2015, consumatorii au dreptul de a recurge la proceduri alternative de soluționare a litigiilor (SAL/ADR). Puteți contacta <strong>ANPC</strong> — Autoritatea Națională pentru Protecția Consumatorilor la{" "}
+                Potrivit OG 38/2015, consumatorii au dreptul de a recurge la proceduri alternative de soluționare a litigiilor (SAL/ADR). Puteți contacta <strong>ANPC</strong> la{" "}
                 <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener noreferrer" className="text-[#C49A20] hover:underline">anpc.ro</a>{" "}
-                sau <strong>CSALB</strong> — Centrul de Soluționare Alternativă a Litigiilor în domeniul Bancar la{" "}
+                sau <strong>CSALB</strong> la{" "}
                 <a href="https://www.csalb.ro" target="_blank" rel="noopener noreferrer" className="text-[#C49A20] hover:underline">csalb.ro</a>.
-                Platforma europeană de soluționare online a litigiilor:{" "}
+                Platforma europeană SOL:{" "}
                 <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#C49A20] hover:underline">ec.europa.eu/consumers/odr</a>.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">8. Modificarea termenilor</h2>
+              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">9. Modificarea termenilor</h2>
               <p>
-                Alexandra Achim PFA și KIWI Finance își rezervă dreptul de a modifica oricând prezentele Termeni și Condiții. Modificările intră în vigoare la data publicării pe site. Prin consultarea frecventă a acestui site, vă puteți asigura că aveți cunoștință permanent despre termenii în vigoare.
+                Alexandra Achim PFA își rezervă dreptul de a modifica oricând prezentele Termeni și Condiții. Modificările intră în vigoare la data publicării pe site. Vă recomandăm să consultați periodic această pagină.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">9. Contact</h2>
-              <p>Pentru orice întrebări legate de acești termeni, ne puteți contacta:</p>
+              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">10. Contact</h2>
               <ul className="list-none mt-2 space-y-1">
                 <li>📧 <a href="mailto:kbaa@kiwifinance.ro" className="text-[#C49A20] hover:underline">kbaa@kiwifinance.ro</a></li>
                 <li>📞 <a href="tel:0799715101" className="text-[#C49A20] hover:underline">0799 715 101</a></li>
-                <li>📍 Bd. Ion Câmpineanu, nr. 26, Sector 1, București (birou consultanță)</li>
+                <li>📍 Bd. Ion Câmpineanu, nr. 26, Sector 1, București</li>
               </ul>
             </section>
 
