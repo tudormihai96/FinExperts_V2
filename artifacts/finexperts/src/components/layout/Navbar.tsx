@@ -68,13 +68,13 @@ export default function Navbar() {
 
       {/* Main navbar */}
       <div className="bg-[#F7F4EC] border-b border-[#E5E3D9]">
-        <div className="max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-[88px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0">
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-16"
+              className="h-[76px] w-auto"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";

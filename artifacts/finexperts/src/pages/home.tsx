@@ -62,22 +62,29 @@ export default function HomePage() {
             <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">11 bănci partenere</span>
           </div>
           <div className="relative">
-            {/* fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0A1A2E] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0A1A2E] to-transparent z-10 pointer-events-none" />
-            <div className="flex gap-3 animate-marquee" style={{ width: "max-content" }}>
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0A1A2E] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0A1A2E] to-transparent z-10 pointer-events-none" />
+            <div className="flex gap-4 animate-marquee" style={{ width: "max-content" }}>
               {marqueeItems.map((bank, i) => (
                 <div
                   key={`${bank.id}-${i}`}
-                  className="flex items-center gap-3 bg-white/8 border border-white/10 rounded-xl px-4 py-2.5 shrink-0 hover:bg-white/14 transition-colors"
+                  className="flex items-center gap-3 bg-white/10 border border-white/15 rounded-2xl px-5 py-3 shrink-0 hover:bg-white/18 transition-colors"
                 >
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center text-white shrink-0 font-bold"
-                    style={{ backgroundColor: bank.color, fontSize: bank.initials.length > 2 ? "9px" : "11px" }}
-                  >
-                    {bank.initials}
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 overflow-hidden p-1">
+                    <img
+                      src={bank.logo}
+                      alt={bank.name}
+                      className="w-10 h-10 object-contain"
+                      onError={e => {
+                        const img = e.target as HTMLImageElement;
+                        const parent = img.parentElement!;
+                        img.style.display = "none";
+                        parent.style.backgroundColor = bank.color;
+                        parent.innerHTML = `<span style="color:white;font-weight:700;font-size:${bank.initials.length > 2 ? "8px" : "11px"}">${bank.initials}</span>`;
+                      }}
+                    />
                   </div>
-                  <span className="text-sm text-white font-medium whitespace-nowrap">{bank.name}</span>
+                  <span className="text-base font-semibold text-white whitespace-nowrap">{bank.name}</span>
                 </div>
               ))}
             </div>

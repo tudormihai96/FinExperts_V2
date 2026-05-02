@@ -4,7 +4,9 @@ import { useAuth } from "@/lib/auth";
 import { useStore } from "@/lib/store";
 import {
   FileText, Shield, Phone, LogOut, ChevronRight,
-  ArrowRight, Home, Activity, Plane, Heart, CheckCircle
+  ArrowRight, Home, Activity, Plane, Heart, CheckCircle,
+  User, Bell, Calculator, BookOpen, Star, Clock, Check,
+  Mail, AlertCircle, Download, TrendingDown
 } from "lucide-react";
 
 const STATUS_COLORS: Record<string, string> = {
@@ -12,13 +14,62 @@ const STATUS_COLORS: Record<string, string> = {
   in_review: "bg-blue-100 text-blue-700",
   approved:  "bg-green-100 text-green-700",
   rejected:  "bg-red-100 text-red-700",
+  contacted: "bg-purple-100 text-purple-700",
+  closed:    "bg-gray-100 text-gray-600",
 };
 const STATUS_LABELS: Record<string, string> = {
   pending:   "În așteptare",
   in_review: "În analiză",
   approved:  "Aprobat",
   rejected:  "Respins",
+  contacted: "Contactat",
+  closed:    "Închis",
 };
+
+const APPLICATION_STEPS = [
+  { key: "pending",   label: "Trimisă" },
+  { key: "in_review", label: "La broker" },
+  { key: "contacted", label: "La bancă" },
+  { key: "approved",  label: "Aprobată" },
+];
+
+function ApplicationStepper({ status }: { status: string }) {
+  const activeIdx = APPLICATION_STEPS.findIndex(s => s.key === status);
+  const effectiveIdx = status === "rejected" ? -1 : activeIdx === -1 ? APPLICATION_STEPS.length : activeIdx;
+
+  if (status === "rejected") {
+    return (
+      <div className="flex items-center gap-2 py-2">
+        <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center"><AlertCircle className="h-3 w-3 text-red-600" /></div>
+        <span className="text-xs text-red-600 font-medium">Aplicare respinsă — contactați brokerul pentru detalii</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-0 mt-3">
+      {APPLICATION_STEPS.map((step, i) => {
+        const done = i < effectiveIdx || status === "approved";
+        const active = i === effectiveIdx && status !== "approved";
+        return (
+          <div key={step.key} className="flex items-center flex-1 last:flex-none">
+            <div className="flex flex-col items-center">
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
+                done ? "bg-green-500 text-white" : active ? "bg-[#0A1A2E] text-white ring-2 ring-[#C6A667] ring-offset-1" : "bg-[#E5E3D9] text-[#5A6478]"
+              }`}>
+                {done ? <Check className="h-3 w-3" /> : i + 1}
+              </div>
+              <span className={`text-[9px] mt-1 font-medium whitespace-nowrap ${done || active ? "text-[#0A1A2E]" : "text-[#5A6478]"}`}>{step.label}</span>
+            </div>
+            {i < APPLICATION_STEPS.length - 1 && (
+              <div className={`flex-1 h-0.5 mx-1 mb-4 ${done ? "bg-green-500" : "bg-[#E5E3D9]"}`} />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 const insuranceProducts = [
   { id: "locuinta", title: "Asigurare locuință", desc: "PAD obligatoriu + facultativă", icon: Home, price: 220 },
@@ -27,7 +78,15 @@ const insuranceProducts = [
   { id: "viata", title: "Asigurare de viață", desc: "Protecție familie + investiții", icon: Heart, price: 480 },
 ];
 
-type Tab = "overview" | "credit" | "asigurari";
+const documentChecklist = [
+  { label: "Carte de identitate", hint: "Copie față-verso, valabilă" },
+  { label: "Adeverință venit", hint: "Emisă cu max. 30 zile înainte" },
+  { label: "Ultimele 3 fluturași de salariu", hint: "Sau extras cont dacă ești PFA" },
+  { label: "Extras de cont 3-6 luni", hint: "Contul principal de venit" },
+  { label: "Contract de muncă", hint: "Prima pagină + ultima pagină semnată" },
+];
+
+type Tab = "overview" | "credit" | "asigurari" | "profil" | "documente";
 
 export default function AccountPage() {
   const { user, isLoggedIn, logout } = useAuth();
@@ -37,6 +96,9 @@ export default function AccountPage() {
   const [applyingIns, setApplyingIns] = useState<string | null>(null);
   const [insForm, setInsForm] = useState({ name: "", phone: "", email: "" });
   const [insSuccess, setInsSuccess] = useState<string | null>(null);
+  const [checkedDocs, setCheckedDocs] = useState<Set<number>>(new Set());
+  const [profileForm, setProfileForm] = useState({ name: user?.name || "", phone: "", email: user?.email || "" });
+  const [profileSaved, setProfileSaved] = useState(false);
 
   if (!isLoggedIn) {
     return (
@@ -57,8 +119,8 @@ export default function AccountPage() {
   }
 
   const handleLogout = () => { logout(); setLocation("/"); };
-
   const myApplications = applications.filter(a => a.email === user?.email);
+  const initials = user?.name?.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() || "U";
 
   const handleInsuranceApply = (insId: string) => {
     setApplyingIns(insId);
@@ -72,104 +134,125 @@ export default function AccountPage() {
     setTimeout(() => setInsSuccess(null), 4000);
   };
 
-  const initials = user?.name?.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() || "U";
+  const toggleDoc = (i: number) => {
+    const next = new Set(checkedDocs);
+    next.has(i) ? next.delete(i) : next.add(i);
+    setCheckedDocs(next);
+  };
+
+  const TABS: { id: Tab; label: string; icon: React.ElementType }[] = [
+    { id: "overview", label: "Prezentare", icon: Home },
+    { id: "credit", label: "Credite", icon: FileText },
+    { id: "asigurari", label: "Asigurări", icon: Shield },
+    { id: "documente", label: "Documente", icon: BookOpen },
+    { id: "profil", label: "Profil", icon: User },
+  ];
 
   return (
     <div className="min-h-screen bg-[#F7F4EC]">
-      {/* Top header */}
-      <div className="bg-[#0A1A2E] py-8">
-        <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
+      {/* Header */}
+      <div className="bg-[#0A1A2E] py-7">
+        <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-[#C6A667] flex items-center justify-center text-[#0A1A2E] font-bold text-base">
-              {initials}
-            </div>
+            <div className="w-12 h-12 rounded-full bg-[#C6A667] flex items-center justify-center text-[#0A1A2E] font-bold text-base">{initials}</div>
             <div>
               <div className="text-white font-bold text-lg leading-tight">{user?.name}</div>
               <div className="text-gray-400 text-sm">{user?.email}</div>
             </div>
           </div>
-          <button onClick={handleLogout} className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors">
-            <LogOut className="h-4 w-4" /> Deconectare
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-1.5 text-xs text-gray-400">
+              <div className="w-2 h-2 rounded-full bg-green-400" />
+              Client activ
+            </div>
+            <button onClick={handleLogout} className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors">
+              <LogOut className="h-4 w-4" /> Ieșire
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-5xl mx-auto px-4 py-6">
         {/* Tabs */}
-        <div className="flex gap-1 bg-white border border-[#E5E3D9] rounded-xl p-1 mb-6">
-          {([
-            { id: "overview" as Tab, label: "Prezentare generală" },
-            { id: "credit" as Tab, label: "Aplicări credit" },
-            { id: "asigurari" as Tab, label: "Asigurări" },
-          ] as { id: Tab; label: string }[]).map(t => (
+        <div className="flex gap-1 bg-white border border-[#E5E3D9] rounded-xl p-1 mb-6 overflow-x-auto">
+          {TABS.map(t => (
             <button key={t.id} onClick={() => setActiveTab(t.id)}
-              className={`flex-1 py-2 text-sm font-medium rounded-lg transition-colors ${activeTab === t.id ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"}`}>
+              className={`flex items-center gap-1.5 flex-shrink-0 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${activeTab === t.id ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"}`}>
+              <t.icon className="h-3.5 w-3.5" />
               {t.label}
             </button>
           ))}
         </div>
 
-        {/* OVERVIEW */}
+        {/* ── OVERVIEW ── */}
         {activeTab === "overview" && (
           <div className="space-y-4">
-            {/* Quick stats */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { label: "Aplicări", value: myApplications.length, color: "text-blue-600" },
-                { label: "Aprobate", value: myApplications.filter(a => a.status === "approved").length, color: "text-green-600" },
-                { label: "Asigurări", value: 0, color: "text-purple-600" },
+                { label: "Aplicări", value: myApplications.length, color: "text-blue-600", tab: "credit" as Tab },
+                { label: "Aprobate", value: myApplications.filter(a => a.status === "approved").length, color: "text-green-600", tab: "credit" as Tab },
+                { label: "În curs", value: myApplications.filter(a => ["pending", "in_review", "contacted"].includes(a.status)).length, color: "text-amber-600", tab: "credit" as Tab },
+                { label: "Documente", value: `${checkedDocs.size}/${documentChecklist.length}`, color: "text-purple-600", tab: "documente" as Tab },
               ].map(s => (
-                <div key={s.label} className="bg-white border border-[#E5E3D9] rounded-xl p-5 text-center">
+                <button key={s.label} onClick={() => setActiveTab(s.tab)} className="bg-white border border-[#E5E3D9] rounded-xl p-5 text-center hover:border-[#0A1A2E] transition-colors">
                   <div className={`text-3xl font-bold mb-1 ${s.color}`}>{s.value}</div>
                   <div className="text-xs text-[#5A6478] font-medium uppercase tracking-wider">{s.label}</div>
-                </div>
+                </button>
               ))}
             </div>
 
-            {/* Quick actions */}
+            {/* Acțiuni rapide */}
             <div className="bg-white border border-[#E5E3D9] rounded-xl p-5">
               <h3 className="font-semibold text-[#0A1A2E] mb-4">Acțiuni rapide</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <Link href="/aplica">
-                  <div className="flex items-center gap-3 p-4 border border-[#E5E3D9] rounded-xl hover:border-[#0A1A2E] cursor-pointer transition-colors group">
-                    <div className="w-10 h-10 rounded-lg bg-[#0A1A2E]/8 flex items-center justify-center shrink-0">
-                      <FileText className="h-5 w-5 text-[#0A1A2E]" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-[#0A1A2E] group-hover:text-[#C6A667] transition-colors">Aplică credit</div>
-                      <div className="text-xs text-[#5A6478]">Credit personal sau ipotecar</div>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-[#5A6478] ml-auto" />
-                  </div>
-                </Link>
-                <button onClick={() => setActiveTab("asigurari")} className="flex items-center gap-3 p-4 border border-[#E5E3D9] rounded-xl hover:border-[#0A1A2E] transition-colors group text-left">
-                  <div className="w-10 h-10 rounded-lg bg-[#C6A667]/15 flex items-center justify-center shrink-0">
-                    <Shield className="h-5 w-5 text-[#C6A667]" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#0A1A2E] group-hover:text-[#C6A667] transition-colors">Asigurări</div>
-                    <div className="text-xs text-[#5A6478]">Locuință, RCA, viață</div>
-                  </div>
-                  <ChevronRight className="h-4 w-4 text-[#5A6478] ml-auto" />
-                </button>
-                <a href="tel:0799715101" className="flex items-center gap-3 p-4 border border-[#E5E3D9] rounded-xl hover:border-[#0A1A2E] transition-colors group">
-                  <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center shrink-0">
-                    <Phone className="h-5 w-5 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#0A1A2E] group-hover:text-[#C6A667] transition-colors">Sună un broker</div>
-                    <div className="text-xs text-[#5A6478]">0799 715 101</div>
-                  </div>
-                  <ChevronRight className="h-4 w-4 text-[#5A6478] ml-auto" />
-                </a>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { label: "Aplică credit", desc: "Personal sau ipotecar", icon: FileText, href: "/aplica", bg: "bg-[#0A1A2E]/8", ic: "text-[#0A1A2E]" },
+                  { label: "Calculează rata", desc: "Compară toate băncile", icon: Calculator, href: "/calculator", bg: "bg-blue-50", ic: "text-blue-600" },
+                  { label: "Asigurări", desc: "Locuință, RCA, viață", icon: Shield, tab: "asigurari" as Tab, bg: "bg-[#C6A667]/15", ic: "text-[#C6A667]" },
+                  { label: "Sună broker", desc: "0799 715 101", icon: Phone, href: "tel:0799715101", bg: "bg-green-50", ic: "text-green-600" },
+                ].map(a => (
+                  a.href ? (
+                    <a key={a.label} href={a.href} className="flex items-center gap-3 p-4 border border-[#E5E3D9] rounded-xl hover:border-[#0A1A2E] transition-colors group">
+                      <div className={`w-9 h-9 rounded-lg ${a.bg} flex items-center justify-center shrink-0`}><a.icon className={`h-4 w-4 ${a.ic}`} /></div>
+                      <div><div className="text-sm font-semibold text-[#0A1A2E]">{a.label}</div><div className="text-xs text-[#5A6478]">{a.desc}</div></div>
+                    </a>
+                  ) : (
+                    <button key={a.label} onClick={() => a.tab && setActiveTab(a.tab)} className="flex items-center gap-3 p-4 border border-[#E5E3D9] rounded-xl hover:border-[#0A1A2E] transition-colors text-left">
+                      <div className={`w-9 h-9 rounded-lg ${a.bg} flex items-center justify-center shrink-0`}><a.icon className={`h-4 w-4 ${a.ic}`} /></div>
+                      <div><div className="text-sm font-semibold text-[#0A1A2E]">{a.label}</div><div className="text-xs text-[#5A6478]">{a.desc}</div></div>
+                    </button>
+                  )
+                ))}
               </div>
             </div>
+
+            {/* Aplicări recente cu progress */}
+            {myApplications.length > 0 && (
+              <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+                <div className="px-5 py-4 border-b border-[#E5E3D9] flex items-center justify-between">
+                  <h3 className="font-semibold text-[#0A1A2E]">Aplicările mele</h3>
+                  <button onClick={() => setActiveTab("credit")} className="text-xs text-[#5A6478] hover:text-[#0A1A2E]">Toate →</button>
+                </div>
+                {myApplications.slice(0, 2).map(app => (
+                  <div key={app.id} className="px-5 py-4 border-b border-[#E5E3D9] last:border-b-0">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <div className="text-sm font-semibold text-[#0A1A2E]">{app.type === "personal" ? "Credit personal" : app.type === "ipotecar" ? "Credit ipotecar" : "Refinanțare"}</div>
+                        <div className="text-xs text-[#5A6478]">{app.amount.toLocaleString("ro-RO")} RON · {app.bank || "—"}</div>
+                      </div>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${STATUS_COLORS[app.status]}`}>{STATUS_LABELS[app.status]}</span>
+                    </div>
+                    <ApplicationStepper status={app.status} />
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Broker CTA */}
             <div className="bg-[#0A1A2E] rounded-xl p-6 flex items-center justify-between gap-4">
               <div>
                 <div className="text-xs font-bold text-[#C6A667] uppercase tracking-wider mb-1">Consultanță gratuită</div>
-                <div className="text-white font-bold text-lg mb-1">Vorbește cu un broker</div>
+                <div className="text-white font-bold text-lg mb-1">Vorbește cu brokerul tău</div>
                 <div className="text-gray-400 text-sm">L-V 09:00 — 18:00 · Fără costuri ascunse</div>
               </div>
               <div className="flex flex-col gap-2 shrink-0">
@@ -179,44 +262,23 @@ export default function AccountPage() {
                   </button>
                 </a>
                 <a href="mailto:kbaa@kiwifinance.ro">
-                  <button className="border border-white/20 text-white hover:bg-white/10 text-sm py-2 px-5 rounded-xl transition-colors w-full">
-                    Trimite email
+                  <button className="border border-white/20 text-white hover:bg-white/10 text-sm py-2 px-5 rounded-xl transition-colors w-full flex items-center justify-center gap-2">
+                    <Mail className="h-4 w-4" /> Email
                   </button>
                 </a>
               </div>
             </div>
-
-            {/* Recent applications */}
-            {myApplications.length > 0 && (
-              <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
-                <div className="px-5 py-4 border-b border-[#E5E3D9] flex items-center justify-between">
-                  <h3 className="font-semibold text-[#0A1A2E]">Aplicările mele</h3>
-                  <button onClick={() => setActiveTab("credit")} className="text-xs text-[#5A6478] hover:text-[#0A1A2E]">Toate →</button>
-                </div>
-                {myApplications.slice(0, 3).map(app => (
-                  <div key={app.id} className="flex items-center gap-3 px-5 py-4 border-b border-[#E5E3D9] last:border-b-0">
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold text-[#0A1A2E]">{app.type === "personal" ? "Credit personal" : app.type === "ipotecar" ? "Credit ipotecar" : "Refinanțare"}</div>
-                      <div className="text-xs text-[#5A6478]">{app.amount.toLocaleString("ro-RO")} RON · {app.bank} · {app.date}</div>
-                    </div>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${STATUS_COLORS[app.status]}`}>
-                      {STATUS_LABELS[app.status]}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         )}
 
-        {/* CREDIT APPLICATIONS */}
+        {/* ── CREDIT ── */}
         {activeTab === "credit" && (
           <div>
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-xl font-bold text-[#0A1A2E]">Aplicările mele</h2>
               <Link href="/aplica">
                 <button className="flex items-center gap-1.5 bg-[#0A1A2E] text-white font-semibold px-4 py-2 rounded-lg text-sm">
-                  <Plus /> Aplicare nouă
+                  <span className="text-base leading-none">+</span> Aplicare nouă
                 </button>
               </Link>
             </div>
@@ -226,16 +288,16 @@ export default function AccountPage() {
                 <h3 className="font-semibold text-[#0A1A2E] mb-2">Nicio aplicare încă</h3>
                 <p className="text-sm text-[#5A6478] mb-5">Aplică pentru primul tău credit prin FinExperts.</p>
                 <Link href="/aplica">
-                  <button className="bg-[#0A1A2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 mx-auto">
+                  <button className="bg-[#0A1A2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm inline-flex items-center gap-2">
                     Aplică acum <ArrowRight className="h-4 w-4" />
                   </button>
                 </Link>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {myApplications.map(app => (
                   <div key={app.id} className="bg-white border border-[#E5E3D9] rounded-xl p-5">
-                    <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-start justify-between mb-4">
                       <div>
                         <div className="font-semibold text-[#0A1A2E] mb-0.5">
                           {app.type === "personal" ? "Credit personal" : app.type === "ipotecar" ? "Credit ipotecar" : "Refinanțare"}
@@ -246,27 +308,20 @@ export default function AccountPage() {
                         {STATUS_LABELS[app.status]}
                       </span>
                     </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <div>
-                        <div className="text-xs text-[#5A6478] mb-0.5">Sumă</div>
-                        <div className="text-sm font-semibold text-[#0A1A2E]">{app.amount.toLocaleString("ro-RO")} RON</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-[#5A6478] mb-0.5">Bancă</div>
-                        <div className="text-sm text-[#0A1A2E]">{app.bank || "—"}</div>
-                      </div>
-                      {app.message && (
-                        <div>
-                          <div className="text-xs text-[#5A6478] mb-0.5">Note</div>
-                          <div className="text-sm text-[#5A6478] truncate">{app.message}</div>
-                        </div>
-                      )}
+                    <div className="grid grid-cols-3 gap-3 mb-4">
+                      <div><div className="text-xs text-[#5A6478] mb-0.5">Sumă</div><div className="text-sm font-semibold text-[#0A1A2E]">{app.amount.toLocaleString("ro-RO")} RON</div></div>
+                      <div><div className="text-xs text-[#5A6478] mb-0.5">Bancă</div><div className="text-sm text-[#0A1A2E]">{app.bank || "—"}</div></div>
+                      {app.message && <div><div className="text-xs text-[#5A6478] mb-0.5">Notă</div><div className="text-sm text-[#5A6478] truncate">{app.message}</div></div>}
+                    </div>
+                    <div className="border-t border-[#E5E3D9] pt-4">
+                      <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider mb-2">Progress aplicare</div>
+                      <ApplicationStepper status={app.status} />
                     </div>
                   </div>
                 ))}
                 <Link href="/aplica">
                   <button className="w-full border-2 border-dashed border-[#E5E3D9] rounded-xl py-4 text-sm text-[#5A6478] hover:border-[#0A1A2E] hover:text-[#0A1A2E] transition-colors flex items-center justify-center gap-2">
-                    <Plus className="h-4 w-4" /> Aplicare nouă
+                    <span className="text-lg leading-none">+</span> Aplicare nouă
                   </button>
                 </Link>
               </div>
@@ -274,14 +329,13 @@ export default function AccountPage() {
           </div>
         )}
 
-        {/* INSURANCE */}
+        {/* ── ASIGURĂRI ── */}
         {activeTab === "asigurari" && (
           <div>
             <div className="mb-5">
               <h2 className="text-xl font-bold text-[#0A1A2E]">Asigurările mele</h2>
-              <p className="text-sm text-[#5A6478]">Solicită o ofertă pentru orice tip de asigurare</p>
+              <p className="text-sm text-[#5A6478]">Solicită o ofertă personalizată pentru orice produs</p>
             </div>
-
             {insSuccess && (
               <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-xl px-5 py-4 mb-5">
                 <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
@@ -291,7 +345,6 @@ export default function AccountPage() {
                 </div>
               </div>
             )}
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {insuranceProducts.map(ins => {
                 const Icon = ins.icon;
@@ -310,7 +363,6 @@ export default function AccountPage() {
                         <div className="font-bold text-[#0A1A2E]">{ins.price} RON/an</div>
                       </div>
                     </div>
-
                     {applyingIns === ins.id ? (
                       <div className="bg-[#F7F4EC] rounded-xl p-4 space-y-3">
                         <div className="text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider">Solicită ofertă</div>
@@ -332,8 +384,6 @@ export default function AccountPage() {
                 );
               })}
             </div>
-
-            {/* Broker call CTA */}
             <div className="mt-5 bg-[#0A1A2E] rounded-xl p-5 flex items-center justify-between gap-4">
               <div>
                 <div className="text-white font-semibold mb-0.5">Preferi să vorbești cu un broker?</div>
@@ -347,15 +397,132 @@ export default function AccountPage() {
             </div>
           </div>
         )}
+
+        {/* ── DOCUMENTE ── */}
+        {activeTab === "documente" && (
+          <div>
+            <div className="mb-5">
+              <h2 className="text-xl font-bold text-[#0A1A2E]">Documente necesare</h2>
+              <p className="text-sm text-[#5A6478]">Lista completă de documente pentru dosarul de credit</p>
+            </div>
+            <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden mb-4">
+              <div className="px-5 py-4 border-b border-[#E5E3D9] flex items-center justify-between">
+                <h3 className="font-semibold text-[#0A1A2E]">Checklist dosar credit</h3>
+                <span className="text-sm font-bold text-[#0A1A2E]">{checkedDocs.size}/{documentChecklist.length} pregătite</span>
+              </div>
+              <div className="p-2">
+                {/* Progress bar */}
+                <div className="px-3 pt-2 pb-3">
+                  <div className="h-2 bg-[#F7F4EC] rounded-full overflow-hidden">
+                    <div className="h-full bg-[#C6A667] rounded-full transition-all" style={{ width: `${(checkedDocs.size / documentChecklist.length) * 100}%` }} />
+                  </div>
+                </div>
+                {documentChecklist.map((doc, i) => (
+                  <button key={i} onClick={() => toggleDoc(i)}
+                    className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#F7F4EC] transition-colors text-left ${checkedDocs.has(i) ? "opacity-70" : ""}`}>
+                    <div className={`w-5 h-5 rounded flex items-center justify-center shrink-0 border-2 transition-all ${checkedDocs.has(i) ? "bg-green-500 border-green-500" : "border-[#E5E3D9]"}`}>
+                      {checkedDocs.has(i) && <Check className="h-3 w-3 text-white" />}
+                    </div>
+                    <div className="flex-1">
+                      <div className={`text-sm font-medium ${checkedDocs.has(i) ? "line-through text-[#5A6478]" : "text-[#0A1A2E]"}`}>{doc.label}</div>
+                      <div className="text-xs text-[#5A6478]">{doc.hint}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              {checkedDocs.size === documentChecklist.length && (
+                <div className="px-5 py-4 border-t border-[#E5E3D9] bg-green-50">
+                  <div className="flex items-center gap-2 text-green-700">
+                    <CheckCircle className="h-4 w-4" />
+                    <span className="text-sm font-semibold">Dosarul este complet! Poți aplica acum.</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-[#0A1A2E] rounded-xl p-5 flex items-center justify-between gap-4">
+              <div>
+                <div className="text-white font-semibold mb-0.5">Trimite dosarul prin email</div>
+                <div className="text-gray-400 text-sm">Un broker verifică documentele și îți confirmă în 24h</div>
+              </div>
+              <a href="mailto:kbaa@kiwifinance.ro?subject=Dosar%20credit%20-%20FinExperts">
+                <button className="bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap">
+                  <Mail className="h-4 w-4" /> Trimite dosar
+                </button>
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* ── PROFIL ── */}
+        {activeTab === "profil" && (
+          <div>
+            <div className="mb-5">
+              <h2 className="text-xl font-bold text-[#0A1A2E]">Profilul meu</h2>
+              <p className="text-sm text-[#5A6478]">Actualizează informațiile de contact</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-5">
+              <div className="bg-white border border-[#E5E3D9] rounded-xl p-6">
+                <h3 className="font-semibold text-[#0A1A2E] mb-5">Informații personale</h3>
+                {profileSaved && (
+                  <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-green-700">
+                    <CheckCircle className="h-4 w-4" /> Profil actualizat cu succes!
+                  </div>
+                )}
+                <div className="space-y-4">
+                  {[
+                    { label: "Nume complet", key: "name" as const, type: "text", placeholder: "Ion Popescu" },
+                    { label: "Email", key: "email" as const, type: "email", placeholder: "ion@email.ro" },
+                    { label: "Telefon", key: "phone" as const, type: "tel", placeholder: "07xx xxx xxx" },
+                  ].map(f => (
+                    <div key={f.key}>
+                      <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">{f.label}</label>
+                      <input type={f.type} value={profileForm[f.key]} placeholder={f.placeholder}
+                        onChange={e => setProfileForm(p => ({ ...p, [f.key]: e.target.value }))}
+                        className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E]" />
+                    </div>
+                  ))}
+                  <button onClick={() => { setProfileSaved(true); setTimeout(() => setProfileSaved(false), 3000); }}
+                    className="bg-[#0A1A2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">
+                    <Check className="h-4 w-4" /> Salvează modificările
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-white border border-[#E5E3D9] rounded-xl p-5">
+                  <div className="w-16 h-16 rounded-full bg-[#C6A667] flex items-center justify-center text-[#0A1A2E] font-bold text-xl mx-auto mb-3">{initials}</div>
+                  <div className="text-center">
+                    <div className="font-semibold text-[#0A1A2E]">{user?.name}</div>
+                    <div className="text-xs text-[#5A6478] mt-0.5">{user?.email}</div>
+                    <div className="mt-3 flex items-center justify-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-green-400" />
+                      <span className="text-xs text-green-600 font-medium">Client activ</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[#F7F4EC] border border-[#E5E3D9] rounded-xl p-4">
+                  <div className="text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-3">Brokerul tău</div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-[#0A1A2E] flex items-center justify-center text-white font-bold text-sm">AA</div>
+                    <div>
+                      <div className="text-sm font-semibold text-[#0A1A2E]">Alexandra Achim</div>
+                      <div className="text-xs text-[#5A6478]">Broker senior</div>
+                    </div>
+                  </div>
+                  <a href="tel:0799715101" className="flex items-center gap-2 text-xs text-[#0A1A2E] hover:text-[#C6A667] transition-colors mb-1">
+                    <Phone className="h-3.5 w-3.5" /> 0799 715 101
+                  </a>
+                  <a href="mailto:alexandra.achim@kiwifinance.ro" className="flex items-center gap-2 text-xs text-[#0A1A2E] hover:text-[#C6A667] transition-colors">
+                    <Mail className="h-3.5 w-3.5" /> alexandra.achim@kiwifinance.ro
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
-  );
-}
-
-function Plus({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
-    </svg>
   );
 }
