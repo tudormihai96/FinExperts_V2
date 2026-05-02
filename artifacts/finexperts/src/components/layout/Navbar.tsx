@@ -68,13 +68,13 @@ export default function Navbar() {
 
       {/* Main navbar */}
       <div className="bg-white border-b border-[#E2DDD6] shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 h-[96px] flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-[108px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0">
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[88px] w-auto"
+              className="h-[100px] w-auto"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";
@@ -93,7 +93,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`px-3.5 py-2 text-[15px] font-medium rounded-md transition-colors ${
                   isActive(link.href)
                     ? "text-[#0D1F3C] font-semibold border-b-2 border-[#B8944F]"
                     : "text-[#64748B] hover:text-[#0D1F3C]"

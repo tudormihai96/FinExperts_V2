@@ -26,7 +26,7 @@ export type Bank = {
   maxMonthsIpotecar: number;
 };
 
-// Dobânzi actualizate la 02.05.2026 de pe site-urile oficiale ale băncilor
+// Dobânzi actualizate mai 2026 de pe site-urile oficiale ale băncilor
 // IRCC T1/2026 = 5.58% | Dobânzi personale = fixe negociate; Ipotecar = IRCC + marjă
 export const banks: Bank[] = [
   {
@@ -35,11 +35,11 @@ export const banks: Bank[] = [
     initials: "ING",
     color: "#FF6200",
     logo: "/logos/ing.svg",
-    // ING Personal: fixă de la 7.99%/an; Ipotecar: IRCC+2.00% = 7.58%
+    // ING Personal: fixă de la 7.99%/an; Ipotecar: IRCC+1.95% = 7.53%
     ratePersonal: 7.99,
-    rateIpotecar: 7.58,
-    daePersonal: 8.85,
-    daeIpotecar: 8.12,
+    rateIpotecar: 7.53,
+    daePersonal: 8.70,
+    daeIpotecar: 8.08,
     rating: 4.8,
     rank: 1,
     badge: "CEL MAI BUN",
@@ -54,6 +54,30 @@ export const banks: Bank[] = [
     minMonthsIpotecar: 60, maxMonthsIpotecar: 360,
   },
   {
+    id: "brd",
+    name: "BRD",
+    initials: "BRD",
+    color: "#0055A4",
+    logo: "/logos/brd.png",
+    // BRD: personal 9.49%/an; Ipotecar variabilă: IRCC+1.70% = 7.28% — cea mai mică marjă din piață
+    ratePersonal: 9.49,
+    rateIpotecar: 7.28,
+    daePersonal: 10.25,
+    daeIpotecar: 7.85,
+    rating: 4.3,
+    rank: 2,
+    badge: "CEL MAI BUN IPOTECAR",
+    badgeColor: "#0055A4",
+    slug: "brd",
+    description: "BRD – Groupe Société Générale, a doua bancă din România. Credit ipotecar variabil de la 7.28% (IRCC+1.70%) — cea mai mică marjă din piață.",
+    advantages: ["Cea mai mică marjă ipotecar (IRCC+1.70%)", "Rambursare anticipată fără penalități", "MyBRD Mobile Banking", "Rețea extinsă de sucursale"],
+    disadvantages: ["DAE personal mai ridicat", "Comision analiză dosar"],
+    minAmountPersonal: 3000, maxAmountPersonal: 100000,
+    minAmountIpotecar: 30000, maxAmountIpotecar: 700000,
+    minMonthsPersonal: 6, maxMonthsPersonal: 72,
+    minMonthsIpotecar: 60, maxMonthsIpotecar: 360,
+  },
+  {
     id: "raiffeisen",
     name: "Raiffeisen Bank",
     initials: "RB",
@@ -65,7 +89,7 @@ export const banks: Bank[] = [
     daePersonal: 9.20,
     daeIpotecar: 8.22,
     rating: 4.4,
-    rank: 2,
+    rank: 3,
     badge: "100% ONLINE",
     badgeColor: "#FFDD00",
     slug: "raiffeisen",
@@ -78,27 +102,27 @@ export const banks: Bank[] = [
     minMonthsIpotecar: 60, maxMonthsIpotecar: 360,
   },
   {
-    id: "brd",
-    name: "BRD",
-    initials: "BRD",
-    color: "#0055A4",
-    logo: "/logos/brd.png",
-    // BRD: personal ~9.50%/an; Ipotecar variabilă: IRCC+1.70% = 7.28%
-    ratePersonal: 9.50,
-    rateIpotecar: 7.28,
-    daePersonal: 10.30,
-    daeIpotecar: 7.85,
-    rating: 4.1,
-    rank: 3,
-    badge: "IPOTECAR DE LA 7.28%",
-    badgeColor: "#0055A4",
-    slug: "brd",
-    description: "BRD – Groupe Société Générale, a doua bancă din România. Credit ipotecar variabil de la 7.28% (IRCC+1.70%).",
-    advantages: ["Cea mai mică marjă ipotecar (IRCC+1.70%)", "Rambursare anticipată fără penalități", "MyBRD Mobile Banking"],
-    disadvantages: ["DAE personal mai ridicat", "Comision analiză 2%"],
-    minAmountPersonal: 3000, maxAmountPersonal: 100000,
-    minAmountIpotecar: 30000, maxAmountIpotecar: 700000,
-    minMonthsPersonal: 6, maxMonthsPersonal: 72,
+    id: "bcr",
+    name: "BCR",
+    initials: "BCR",
+    color: "#E30613",
+    logo: "/logos/bcr.svg",
+    // BCR George Credit: 9.49% fixă; Ipotecar: IRCC+2.25% = 7.83%
+    ratePersonal: 9.49,
+    rateIpotecar: 7.83,
+    daePersonal: 10.35,
+    daeIpotecar: 8.40,
+    rating: 4.3,
+    rank: 4,
+    badge: "REȚEA NAȚIONALĂ",
+    badgeColor: "#E30613",
+    slug: "bcr",
+    description: "BCR — cea mai mare bancă din România, membră Erste Group. George Credit cu dobândă fixă, rețea de 800+ sucursale.",
+    advantages: ["George Credit 100% online", "Cea mai mare rețea națională", "Aprobare în 24h", "Asigurare viață inclusă"],
+    disadvantages: ["DAE mai ridicat față de top", "Comisioane administrare"],
+    minAmountPersonal: 2000, maxAmountPersonal: 150000,
+    minAmountIpotecar: 30000, maxAmountIpotecar: 1000000,
+    minMonthsPersonal: 6, maxMonthsPersonal: 84,
     minMonthsIpotecar: 60, maxMonthsIpotecar: 360,
   },
   {
@@ -107,46 +131,22 @@ export const banks: Bank[] = [
     initials: "GB",
     color: "#00A758",
     logo: "/logos/garanti.png",
-    // Garanti BBVA: personal ~9.25%/an; Ipotecar: IRCC+2.35% = 7.93%
-    ratePersonal: 9.25,
+    // Garanti BBVA: personal 10.99%/an; Ipotecar: IRCC+2.35% = 7.93%
+    ratePersonal: 10.99,
     rateIpotecar: 7.93,
-    daePersonal: 10.10,
+    daePersonal: 12.00,
     daeIpotecar: 8.50,
-    rating: 4.2,
-    rank: 4,
+    rating: 4.0,
+    rank: 5,
     badge: "DIGITAL BANKING",
     badgeColor: "#00A758",
     slug: "garanti-bbva",
-    description: "Garanti BBVA România — dobândă de la 9.25% pentru credite personale fără garanții, sume până la 250.000 RON.",
-    advantages: ["Dobândă competitivă fără garanții", "Sume până la 250.000 RON", "Digital banking avansat"],
-    disadvantages: ["Rețea de sucursale mică", "Necesită scoring bun"],
+    description: "Garanti BBVA România — soluții de creditare fără garanții, cu acces digital complet și procese simplificate.",
+    advantages: ["Dobândă ipotecar competitivă", "Sume până la 250.000 RON", "Digital banking avansat"],
+    disadvantages: ["Dobândă personal mai ridicată", "Rețea de sucursale limitată"],
     minAmountPersonal: 2000, maxAmountPersonal: 250000,
     minAmountIpotecar: 30000, maxAmountIpotecar: 500000,
     minMonthsPersonal: 6, maxMonthsPersonal: 60,
-    minMonthsIpotecar: 60, maxMonthsIpotecar: 360,
-  },
-  {
-    id: "bcr",
-    name: "BCR",
-    initials: "BCR",
-    color: "#E30613",
-    logo: "/logos/bcr.svg",
-    // BCR: personal IRCC+marjă ~10.50%/an; Ipotecar: IRCC+2.25% = 7.83%
-    ratePersonal: 10.50,
-    rateIpotecar: 7.83,
-    daePersonal: 11.40,
-    daeIpotecar: 8.40,
-    rating: 4.3,
-    rank: 5,
-    badge: "REȚEA NAȚIONALĂ",
-    badgeColor: "#E30613",
-    slug: "bcr",
-    description: "BCR — cea mai mare bancă din România, membră Erste Group. Credit ipotecar IRCC + marjă, rețea de 800+ sucursale.",
-    advantages: ["Cea mai mare rețea națională", "App George", "Aprobare în 24h", "Asigurare viață inclusă"],
-    disadvantages: ["DAE mai ridicat față de top", "Marjă variabilă ipotecar"],
-    minAmountPersonal: 2000, maxAmountPersonal: 150000,
-    minAmountIpotecar: 30000, maxAmountIpotecar: 1000000,
-    minMonthsPersonal: 6, maxMonthsPersonal: 84,
     minMonthsIpotecar: 60, maxMonthsIpotecar: 360,
   },
   {
@@ -155,7 +155,7 @@ export const banks: Bank[] = [
     initials: "UC",
     color: "#E11F26",
     logo: "/logos/unicredit.svg",
-    // UniCredit: personal IRCC+marjă ~10.75%/an; Ipotecar: IRCC+2.30% = 7.88%
+    // UniCredit: personal 10.75%/an; Ipotecar: IRCC+2.30% = 7.88%
     ratePersonal: 10.75,
     rateIpotecar: 7.88,
     daePersonal: 11.60,
@@ -177,7 +177,7 @@ export const banks: Bank[] = [
     initials: "EB",
     color: "#00338D",
     logo: "/logos/exim.svg",
-    // Exim: personal ~10.25%/an; Ipotecar: IRCC+2.50% = 8.08%
+    // Exim: personal 10.25%/an; Ipotecar: IRCC+2.50% = 8.08%
     ratePersonal: 10.25,
     rateIpotecar: 8.08,
     daePersonal: 11.10,
@@ -201,8 +201,8 @@ export const banks: Bank[] = [
     initials: "IS",
     color: "#003087",
     logo: "/logos/intesa.png",
-    // Intesa: personal ~11.50%/an; Ipotecar: IRCC+2.20% = 7.78%
-    ratePersonal: 11.50,
+    // Intesa: personal 11.49%/an; Ipotecar: IRCC+2.20% = 7.78%
+    ratePersonal: 11.49,
     rateIpotecar: 7.78,
     daePersonal: 12.35,
     daeIpotecar: 8.35,
@@ -223,11 +223,11 @@ export const banks: Bank[] = [
     initials: "LB",
     color: "#5B21B6",
     logo: "/logos/libra.svg",
-    // Libra: personal ~11.99%/an; Ipotecar: IRCC+2.70% = 8.28%
+    // Libra: personal 11.99%/an; Ipotecar: IRCC+2.80% = 8.38%
     ratePersonal: 11.99,
-    rateIpotecar: 8.28,
+    rateIpotecar: 8.38,
     daePersonal: 12.90,
-    daeIpotecar: 8.85,
+    daeIpotecar: 8.95,
     rating: 3.8,
     rank: 9,
     slug: "libra-bank",
@@ -245,7 +245,7 @@ export const banks: Bank[] = [
     initials: "PB",
     color: "#0B1F5C",
     logo: "/logos/patria.svg",
-    // Patria: personal ~12.99%/an; Ipotecar: IRCC+3.50% = 9.08%
+    // Patria: personal 12.99%/an; Ipotecar: IRCC+3.50% = 9.08%
     ratePersonal: 12.99,
     rateIpotecar: 9.08,
     daePersonal: 14.10,
@@ -267,7 +267,7 @@ export const banks: Bank[] = [
     initials: "NB",
     color: "#1E293B",
     logo: "/logos/nexent.png",
-    // Nexent: personal ~13.99%/an; Ipotecar: IRCC+4.00% = 9.58%
+    // Nexent: personal 13.99%/an; Ipotecar: IRCC+4.00% = 9.58%
     ratePersonal: 13.99,
     rateIpotecar: 9.58,
     daePersonal: 15.20,

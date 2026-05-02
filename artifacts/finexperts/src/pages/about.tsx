@@ -7,7 +7,7 @@ const team = [
     id: "alexandra",
     name: "Alexandra Achim",
     role: "Manager Franciză",
-    bio: "Coordonează rețeaua FinExperts și relațiile cu băncile partenere. 10+ ani experiență bancară.",
+    bio: "Coordonează rețeaua FinExperts și relațiile cu băncile partenere. Background în Banca Transilvania și Raiffeisen Bank.",
     avatar: "AA",
     color: "#C6A667",
     email: "alexandra.achim@kiwifinance.ro",
@@ -18,7 +18,7 @@ const team = [
     id: "cristina",
     name: "Cristina Coman",
     role: "Broker de Credite",
-    bio: "Specializată în credite ipotecare și refinanțări. Experiență anterioară în BCR și Raiffeisen.",
+    bio: "Specializată în credite ipotecare și refinanțări. Background în BRD și Raiffeisen Bank.",
     avatar: "CC",
     color: "#0A1A2E",
     email: "cristina.coman@kiwifinance.ro",
@@ -29,7 +29,7 @@ const team = [
     id: "erji",
     name: "Ana-Maria Erji",
     role: "Broker de Credite",
-    bio: "Expertă în credite de nevoi personale și soluții pentru PFA. Background în ING și BRD.",
+    bio: "Expertă în credite de nevoi personale și soluții pentru PFA. Background în Raiffeisen Bank.",
     avatar: "AE",
     color: "#2E7D5B",
     email: "ana-maria.gheorghe@kiwifinance.ro",
@@ -40,7 +40,7 @@ const team = [
     id: "tudor",
     name: "Tudor Mihai",
     role: "Broker de Credite",
-    bio: "Focus pe credite cu garanții imobiliare și soluții complexe pentru antreprenori.",
+    bio: "Focus pe credite cu garanții imobiliare și soluții complexe pentru antreprenori. Background în Raiffeisen Bank.",
     avatar: "TM",
     color: "#005BAA",
     email: "mihai.tudor@kiwifinance.ro",
@@ -52,19 +52,51 @@ const team = [
 const faq = [
   {
     q: "Este sigur să aplic prin FinExperts?",
-    a: "Da. Datele tale sunt transmise criptat, doar către banca aleasă de tine. Nu vindem datele și nu le folosim în scopuri de marketing terț."
+    a: "Da. Datele tale sunt transmise criptat, doar către banca aleasă de tine. Nu vindem datele și nu le folosim în scopuri de marketing terț. Suntem broker autorizat, înregistrat la Autoritatea de Supraveghere Financiară (ASF)."
   },
   {
     q: "Cât durează aprobarea unui credit?",
-    a: "Creditele de nevoi personale sunt aprobate de majoritatea băncilor în 24-48h. Creditele ipotecare necesită 3-10 zile lucrătoare, în funcție de complexitatea dosarului."
+    a: "Creditele de nevoi personale sunt aprobate de majoritatea băncilor în 24-48h. Creditele ipotecare necesită 3-10 zile lucrătoare, în funcție de complexitatea dosarului și de bancă."
   },
   {
     q: "Ce este DAE și de ce este important?",
-    a: "DAE (Dobânda Anuală Efectivă) include dobânda nominală + toate comisioanele obligatorii. Este singurul indicator corect pentru a compara două oferte de credit."
+    a: "DAE (Dobânda Anuală Efectivă) include dobânda nominală + toate comisioanele obligatorii (administrare, analiză, asigurare). Este singurul indicator corect pentru a compara două oferte de credit. O dobândă mică dar cu comisioane mari poate fi mai scumpă decât o dobândă mai mare fără comisioane."
   },
   {
     q: "Pot aplica dacă sunt PFA sau am venituri variabile?",
-    a: "Da. Salariat, PFA, antreprenor sau pensionar — alegem împreună soluția care îți respectă nevoile, ritmul și realitatea financiară."
+    a: "Da. Salariat, PFA, antreprenor sau pensionar — alegem împreună soluția potrivită. Anumite bănci (Patria Bank, Libra Internet Bank) au produse special concepute pentru PFA și venituri din activități independente."
+  },
+  {
+    q: "Ce documente am nevoie pentru un credit personal?",
+    a: "De regulă: buletin de identitate, adeverință de venit sau fluturași de salariu (ultimele 3 luni), și extras de cont. Unele bănci online (ING, Raiffeisen) pot aproba fără adeverință, doar pe baza extrasului. Îți pregătim noi lista exactă de documente pentru banca aleasă."
+  },
+  {
+    q: "Ce documente am nevoie pentru un credit ipotecar?",
+    a: "Pentru ipotecar sunt necesare: documente de identitate, dovada veniturilor (ultimele 3-6 luni), documentele proprietății (extras CF, plan cadastral, act proprietate), evaluare ANEVAR a imobilului și asigurare obligatorie PAD. Noi coordonăm tot procesul de la zero."
+  },
+  {
+    q: "Ce înseamnă IRCC și cum influențează rata mea ipotecară?",
+    a: "IRCC (Indicele de Referință pentru Creditele Consumatorilor) este rata de referință calculată trimestrial de BNR pe baza tranzacțiilor interbancare. Rata ta ipotecară variabilă = IRCC + marjă fixă a băncii. În T1 2026, IRCC = 5,58%. O marjă mai mică înseamnă rată lunară mai mică."
+  },
+  {
+    q: "Pot refinanța creditul dacă am găsit o ofertă mai bună?",
+    a: "Da, refinanțarea este legală și uneori extrem de avantajoasă. Dacă dobânda actuală e semnificativ mai mare decât ofertele din piață, refinanțarea poate reduce rata lunară cu sute de RON. Calculăm gratuit dacă merită sau nu, ținând cont de costurile de transfer."
+  },
+  {
+    q: "Cât costă serviciile FinExperts?",
+    a: "Serviciile de consultanță și intermediere sunt gratuite pentru client. Suntem remunerați de bancă printr-un comision de intermediere, plătit din bugetul de marketing al băncii. Tu primești aceleași condiții sau mai bune decât dacă ai merge direct la bancă."
+  },
+  {
+    q: "Pot obține un credit dacă am un credit în derulare?",
+    a: "Da, în funcție de gradul de îndatorare. Băncile permit un grad de îndatorare de maximum 40% din venitul net (sau 45% pentru ipotecare în anumite condiții). Calculăm împreună dacă ești eligibil și care bancă are criterii mai flexibile pentru situația ta."
+  },
+  {
+    q: "Ce se întâmplă dacă sunt respins de o bancă?",
+    a: "Un refuz de la o bancă nu înseamnă că ești refuzat de toate. Fiecare bancă are propriile criterii de scoring. Noi cunoaștem profilurile preferate ale fiecărei bănci și te îndrumăm direct către cea cu cea mai mare probabilitate de aprobare, evitând interogările multiple în Biroul de Credit."
+  },
+  {
+    q: "Creditul ipotecar acoperă și cheltuielile notariale?",
+    a: "Nu direct — creditul ipotecar finanțează valoarea imobilului (de obicei 75-85% din valoarea de evaluare). Cheltuielile notariale, taxa de evaluare, asigurările și alte costuri anexe trebuie acoperite din avans propriu sau dintr-un credit personal separat. Îți prezentăm un calcul complet al tuturor costurilor înainte de a semna ceva."
   },
 ];
 
@@ -142,13 +174,13 @@ export default function AboutPage() {
               Oamenii la primul loc.
             </h2>
             <p className="text-[#5A6478] text-base leading-relaxed">
-              FinExperts e fondat de profesioniști care au lucrat ani de zile în băncile mari din România. Cunoaștem procedurile, decidenții și capcanele birocratice. De aceea îți obținem creditul fără stres și la cea mai bună dobândă reală.
+              FinExperts e fondat de profesioniști care au lucrat în băncile mari din România. Cunoaștem procedurile, decidenții și capcanele birocratice. De aceea îți obținem creditul fără stres și la cea mai bună dobândă reală.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-[#0A1A2E] text-white rounded-xl p-6">
-              <div className="text-4xl font-bold mb-1">12+</div>
-              <div className="text-sm text-gray-300">ani experiență cumulată</div>
+              <div className="text-4xl font-bold mb-1">4</div>
+              <div className="text-sm text-gray-300">brokeri dedicați</div>
             </div>
             <div className="bg-[#0A1A2E] text-white rounded-xl p-6">
               <div className="text-4xl font-bold mb-1">11</div>
@@ -173,7 +205,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
-              { icon: Briefcase, title: "Venim din bancă", desc: "Echipa FinExperts cumulează peste 30 de ani de experiență directă în BCR, BRD, ING, Raiffeisen. Cunoaștem procedurile interne, nu doar broșurile." },
+              { icon: Briefcase, title: "Venim din bancă", desc: "Echipa FinExperts a lucrat direct în Raiffeisen Bank, BRD, Banca Transilvania și alte instituții de top. Cunoaștem procedurile interne, nu doar broșurile." },
               { icon: Award, title: "Brokeraj autorizat", desc: "Suntem broker autorizat înregistrat, partener oficial KIWI Finance și membri ai Asociației Române a Brokerilor de Credite (ARBC)." },
               { icon: ShieldCheck, title: "Etica înainte de comision", desc: "Nu îți recomandăm o bancă pentru că ne plătește mai mult. Te ghidăm către oferta cu cea mai mică DAE și cele mai puține comisioane ascunse." },
               { icon: Users, title: "Consiliere umană", desc: "Salariat, PFA, antreprenor sau pensionar — alegem împreună soluția care îți respectă nevoile, ritmul și realitatea financiară." },
@@ -206,12 +238,13 @@ export default function AboutPage() {
 
         {/* FAQ */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0A1A2E] mb-8">Întrebări frecvente</h2>
+          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Întrebări frecvente</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0A1A2E] mb-8">Tot ce vrei să știi despre credite</h2>
           <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
             <Accordion type="single" collapsible>
               {faq.map((item, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-b border-[#E5E3D9] last:border-b-0 px-6">
-                  <AccordionTrigger className="text-[#0A1A2E] font-medium py-5 hover:text-[#C6A667] hover:no-underline">
+                  <AccordionTrigger className="text-[#0A1A2E] font-medium py-5 hover:text-[#C6A667] hover:no-underline text-left">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-[#5A6478] pb-5 leading-relaxed">

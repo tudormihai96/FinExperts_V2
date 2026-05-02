@@ -97,7 +97,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5E3D9]">
             {[
-              { value: "12+", label: "ani experiență" },
+              { value: "4", label: "brokeri specializați" },
               { value: "11", label: "bănci partenere" },
               { value: "1.000+", label: "clienți mulțumiți" },
               { value: ">90%", label: "rată aprobare" },
