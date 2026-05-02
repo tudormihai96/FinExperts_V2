@@ -76,7 +76,7 @@ export const banks: Bank[] = [
   {
     id: "bcr",
     name: "BCR",
-    initials: "B",
+    initials: "BCR",
     color: "#E30613",
     logo: "https://www.google.com/s2/favicons?domain=bcr.ro&sz=64",
     ratePersonal: 6.29,
