@@ -92,7 +92,7 @@ function IRCCSection() {
   );
 }
 
-type SortKey = "monthly" | "rate" | "dae" | "rating";
+type SortKey = "monthly" | "rate" | "dae";
 
 function BankLogo({ logo, name, initials, color }: { logo: string; name: string; initials: string; color: string }) {
   return (
@@ -147,7 +147,6 @@ export default function BanksPage() {
       if (sortBy === "monthly") return a.monthly - b.monthly;
       if (sortBy === "rate") return a.rate - b.rate;
       if (sortBy === "dae") return a.dae - b.dae;
-      if (sortBy === "rating") return b.rating - a.rating;
       return 0;
     });
   }, [activeType, amount, months, sortBy]);
@@ -162,7 +161,7 @@ export default function BanksPage() {
             Compară cele 11 bănci<br />românești.
           </h1>
           <p className="text-[#64748B] text-sm sm:text-base max-w-xl">
-            Setează suma și durata dorită; vei vedea rata lunară exactă pentru fiecare bancă, plus DAE și rating.
+            Setează suma și durata dorită; vei vedea rata lunară exactă pentru fiecare bancă, plus DAE și o scurtă descriere a fiecărei instituții.
           </p>
         </div>
 
@@ -205,7 +204,7 @@ export default function BanksPage() {
               </div>
               <Slider
                 min={activeType === "personal" ? 1000 : 30000}
-                max={activeType === "personal" ? 200000 : 600000}
+                max={activeType === "personal" ? 250000 : 2500000}
                 step={activeType === "personal" ? 1000 : 5000}
                 value={[amount]}
                 onValueChange={([v]) => setAmount(v)}
@@ -234,7 +233,6 @@ export default function BanksPage() {
             { key: "monthly" as SortKey, label: "Rată lunară" },
             { key: "rate" as SortKey, label: "Dobândă" },
             { key: "dae" as SortKey, label: "DAE" },
-            { key: "rating" as SortKey, label: "Rating" },
           ]).map(({ key, label }) => (
             <button
               key={key}
@@ -269,18 +267,8 @@ export default function BanksPage() {
               <div className="flex items-center gap-3 min-w-0">
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="min-w-0">
-                  <div className="font-semibold text-[#0B2E2E] text-sm truncate">{bank.name}</div>
-                  <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                    <div className="flex items-center gap-1">
-                      <StarRating rating={bank.rating} />
-                      <span className="text-[10px] text-[#64748B]">• #{bank.rank}</span>
-                    </div>
-                    {bank.badge && (
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: (bank.badgeColor || "#64748B") + "18", color: bank.badgeColor || "#64748B" }}>
-                        {bank.badge}
-                      </span>
-                    )}
-                  </div>
+                  <div className="font-semibold text-[#0B2E2E] text-sm">{bank.name}</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 leading-tight max-w-[300px] line-clamp-2">{bank.description}</div>
                 </div>
               </div>
               <div className="text-center"><span className="text-sm font-semibold text-[#0B2E2E]">{bank.rate.toFixed(2)}%</span></div>
@@ -318,14 +306,7 @@ export default function BanksPage() {
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="flex-1 min-w-0">
                   <div className="font-semibold text-[#0B2E2E] text-sm">{bank.name}</div>
-                  <div className="flex items-center gap-2 mt-0.5">
-                    <StarRating rating={bank.rating} />
-                    {bank.badge && (
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: (bank.badgeColor || "#64748B") + "18", color: bank.badgeColor || "#64748B" }}>
-                        {bank.badge}
-                      </span>
-                    )}
-                  </div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 leading-tight line-clamp-2">{bank.description}</div>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-2 mb-3 bg-[#F4F6FB] rounded-xl p-3">

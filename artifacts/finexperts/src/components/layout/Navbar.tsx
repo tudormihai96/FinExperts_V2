@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { LogIn, Menu, X, Phone, Mail, Clock, Facebook, Instagram, User, Settings, LogOut, ChevronRight } from "lucide-react";
 import { useAuth } from "@/lib/auth";
-import { FinExpertsLogo } from "../ui/FinExpertsLogo";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -79,7 +78,21 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0">
-            <FinExpertsLogo size="lg" />
+            <img
+              src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
+              alt="FinExperts"
+              className="h-[64px] w-auto"
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                img.style.display = "none";
+                const fb = img.nextElementSibling as HTMLElement;
+                if (fb) fb.style.display = "flex";
+              }}
+            />
+            <div style={{ display: "none" }} className="items-center gap-1">
+              <span className="text-[20px] font-extrabold text-[#0B2E2E]">Fin</span>
+              <span className="text-[20px] font-extrabold text-[#C49A20]">Experts</span>
+            </div>
           </Link>
 
           {/* Desktop nav */}

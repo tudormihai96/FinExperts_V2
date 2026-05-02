@@ -299,6 +299,44 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           format={v => `${v.toFixed(2)}%`} testId="slider-rate"
           sublabel={isIp ? IRCC_LABEL + " + marjă" : undefined} />
 
+        {/* Bank rate presets */}
+        <div className="mb-5 -mt-3">
+          <div className="text-[10px] text-[#94A3B8] uppercase tracking-wider mb-2 font-semibold">Presetare rapidă pe bancă:</div>
+          <div className="flex flex-wrap gap-1.5">
+            {sortedBanks.map(bank => {
+              const bankRate = type === "personal" ? bank.ratePersonal : bank.rateIpotecar;
+              const isActive = Math.abs(rate - bankRate) < 0.005;
+              const shortName = bank.name
+                .replace("Raiffeisen Bank", "Raiffeisen")
+                .replace("Garanti BBVA", "Garanti")
+                .replace("Exim Banca Românească", "Exim")
+                .replace("Intesa Sanpaolo Bank", "Intesa")
+                .replace("Libra Internet Bank", "Libra")
+                .replace("Nexent Bank", "Nexent");
+              return (
+                <button
+                  key={bank.id}
+                  onClick={() => setRate(bankRate)}
+                  title={`${bank.name}: ${bankRate.toFixed(2)}%/an`}
+                  className={`flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
+                    isActive
+                      ? "bg-[#0B2E2E] text-white border-[#0B2E2E]"
+                      : "bg-white text-[#0B2E2E] border-[#E2E8F0] hover:border-[#0B2E2E] hover:bg-[#F4F6FB]"
+                  }`}
+                >
+                  <img
+                    src={bank.logo} alt="" aria-hidden
+                    className="h-3 w-auto shrink-0" style={{ maxWidth: "16px" }}
+                    onError={e => (e.target as HTMLImageElement).style.display = "none"}
+                  />
+                  <span>{shortName}</span>
+                  <span className={isActive ? "text-[#C49A20]" : "text-[#94A3B8]"}>{bankRate.toFixed(2)}%</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* DTI */}
         <div className="border border-[#E2E8F0] rounded-xl overflow-hidden mt-2">
           <button onClick={() => setDtiOpen(!dtiOpen)}

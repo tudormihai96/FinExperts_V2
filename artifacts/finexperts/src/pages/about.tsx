@@ -6,13 +6,13 @@ const team = [
   {
     id: "alexandra",
     name: "Alexandra Achim",
-    role: "Coordonator FinExperts",
+    role: "Manager de franciză",
     bio: "Coordonează FinExperts independent, fără rețeaua KIWI Finance. Background solid în Banca Transilvania și Raiffeisen Bank.",
     avatar: "AA",
     color: "#C49A20",
     email: "alexandra.achim@kiwifinance.ro",
     phone: "0799 715 101",
-    zone: "Cluj-Napoca",
+    zone: "București",
   },
   {
     id: "cristina",
@@ -23,7 +23,7 @@ const team = [
     color: "#0B2E2E",
     email: "cristina.coman@kiwifinance.ro",
     phone: "0725 596 672",
-    zone: "Cluj-Napoca",
+    zone: "București",
   },
   {
     id: "erji",
@@ -34,7 +34,7 @@ const team = [
     color: "#2E7D5B",
     email: "ana-maria.gheorghe@kiwifinance.ro",
     phone: "0755 251 860",
-    zone: "Cluj-Napoca",
+    zone: "București",
   },
   {
     id: "tudor",
@@ -45,7 +45,7 @@ const team = [
     color: "#005BAA",
     email: "mihai.tudor@kiwifinance.ro",
     phone: "0799 717 737",
-    zone: "Cluj-Napoca",
+    zone: "București",
   },
 ];
 

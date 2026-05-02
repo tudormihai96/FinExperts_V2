@@ -250,7 +250,7 @@ export default function HomePage() {
       {/* ── DE CE FINEXPERTS ── */}
       <section className="max-w-7xl mx-auto px-4 py-10 sm:py-14">
         <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">De ce FinExperts</div>
-        <h2 className="text-2xl md:text-3xl font-bold text-[#0B2E2E] mb-8">Nu suntem bancă. Suntem de partea ta.</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0B2E2E] mb-8">Consultanță independentă. Mereu în interesul tău.</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             { icon: ShieldCheck, title: "100% gratuit", desc: "Nu percepem niciun cost față de tine. Suntem remunerați de bancă doar dacă creditul se aprobă." },
