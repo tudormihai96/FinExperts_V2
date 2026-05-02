@@ -1,11 +1,46 @@
 import { Link } from "wouter";
-import { MapPin, Phone, Mail, ExternalLink, AlertTriangle, ShieldCheck } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-[#0C1A2E] text-white">
 
-      {/* Main footer content */}
+      {/* ── KIWI Finance partner bar — WHITE bg so logo is visible ── */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-1.5 border border-[#C49A20]/50 rounded-full px-3 py-1">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#C49A20]" />
+              <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Partener oficial</span>
+            </div>
+            <span className="text-xs text-[#64748B]">
+              Membri ARBC · Broker autorizat ASF
+            </span>
+          </div>
+          <a
+            href="https://kiwifinance.ro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:opacity-75 transition-opacity"
+          >
+            <img
+              src="/logos/kiwi-finance.png"
+              alt="KIWI Finance"
+              className="h-10 w-auto object-contain"
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                img.style.display = "none";
+                const sib = img.nextElementSibling as HTMLElement;
+                if (sib) sib.classList.remove("hidden");
+              }}
+            />
+            <span className="hidden text-sm font-bold text-[#0C1A2E]">KIWI Finance</span>
+            <ExternalLink className="h-3 w-3 text-[#94A3B8]" />
+          </a>
+        </div>
+      </div>
+
+      {/* ── Main footer content ── */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
@@ -65,7 +100,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-5">Date companie</h4>
             <p className="text-xs font-semibold text-gray-300 mb-1">Alexandra Achim PFA · CUI 54405887</p>
-            <div className="flex items-start gap-2 mb-4">
+            <div className="flex items-start gap-2 mb-5">
               <MapPin className="h-3.5 w-3.5 text-[#C49A20] mt-0.5 shrink-0" />
               <span className="text-xs text-gray-400 leading-relaxed">
                 Str. Stejarului, nr. 117A, camera 1,<br />
@@ -75,76 +110,37 @@ export default function Footer() {
               </span>
             </div>
 
-            {/* ANPC buttons */}
-            <div className="mt-5 space-y-2">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold mb-2">Protecția consumatorilor</p>
+            {/* ANPC SAL official badge */}
+            <div>
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold mb-3">Protecția consumatorilor</p>
               <a
-                href="https://anpc.ro/ce-este-sal/"
+                href="https://reclamatiisal.anpc.ro/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 px-3 py-2 rounded-xl transition-all duration-200 group"
+                className="inline-block hover:opacity-85 transition-opacity"
+                title="ANPC — Soluționarea Alternativă a Litigiilor"
               >
-                <AlertTriangle className="h-3.5 w-3.5 text-[#C49A20] shrink-0" />
-                <div>
-                  <div className="text-[11px] font-semibold text-white">ANPC — Reclamații</div>
-                  <div className="text-[9px] text-gray-400">Soluționare alternativă litigii</div>
+                <img
+                  src="/logos/anpc-sal.png"
+                  alt="ANPC SAL — Soluționarea Alternativă a Litigiilor"
+                  className="h-14 w-auto object-contain"
+                  onError={(e) => {
+                    const img = e.target as HTMLImageElement;
+                    img.style.display = "none";
+                    const sib = img.nextElementSibling as HTMLElement;
+                    if (sib) sib.classList.remove("hidden");
+                  }}
+                />
+                <div className="hidden flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-xl">
+                  <span className="text-[11px] font-semibold text-white">ANPC SAL</span>
                 </div>
-                <ExternalLink className="h-3 w-3 text-gray-500 ml-auto" />
-              </a>
-              <a
-                href="https://ec.europa.eu/consumers/odr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 px-3 py-2 rounded-xl transition-all duration-200"
-              >
-                <ShieldCheck className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-                <div>
-                  <div className="text-[11px] font-semibold text-white">SOL — Platforma europeană</div>
-                  <div className="text-[9px] text-gray-400">ec.europa.eu/consumers/odr</div>
-                </div>
-                <ExternalLink className="h-3 w-3 text-gray-500 ml-auto" />
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* PARTENER OFICIAL bar — white background for KIWI logo visibility */}
-      <div className="bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-3 flex-wrap">
-            <div className="flex items-center gap-1.5 border border-[#C49A20]/50 rounded-full px-3 py-1">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#C49A20]" />
-              <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Partener oficial</span>
-            </div>
-            <span className="text-xs text-[#64748B]">
-              Membri ARBC · Broker autorizat ASF
-            </span>
-          </div>
-          <a
-            href="https://kiwifinance.ro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-          >
-            <img
-              src="/logos/kiwi-finance.png"
-              alt="KIWI Finance"
-              className="h-9 w-auto object-contain"
-              onError={(e) => {
-                const img = e.target as HTMLImageElement;
-                img.style.display = "none";
-                const sib = img.nextElementSibling as HTMLElement;
-                if (sib) sib.classList.remove("hidden");
-              }}
-            />
-            <span className="hidden text-sm font-bold text-[#0C1A2E]">KIWI Finance</span>
-            <ExternalLink className="h-3 w-3 text-[#64748B]" />
-          </a>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
+      {/* ── Bottom bar ── */}
       <div className="bg-[#080F1C] px-4 py-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-600">
           <span>&copy; {new Date().getFullYear()} Alexandra Achim PFA · CUI 54405887 · Toate drepturile rezervate.</span>
