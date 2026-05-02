@@ -59,8 +59,6 @@ export default function Footer() {
               {[
                 { href: "/calculator", label: "Calculator credite" },
                 { href: "/banci", label: "Comparator bănci" },
-                { href: "/calculator/suma-maxima", label: "Sumă maximă eligibilă" },
-                { href: "/calculator/refinantare", label: "Calculator refinanțare" },
                 { href: "/asigurari", label: "Asigurări" },
               ].map(({ href, label }) => (
                 <li key={href}>
