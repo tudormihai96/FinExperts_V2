@@ -4,6 +4,79 @@ import { Slider } from "@/components/ui/slider";
 import { banks, calculateMonthlyPayment, formatRON } from "@/lib/data";
 import { FileText, Table, TrendingDown, ChevronDown, ChevronUp, ArrowRight, Info } from "lucide-react";
 
+function SliderInput({
+  label,
+  value,
+  min,
+  max,
+  step,
+  onChange,
+  format,
+  suffix = "",
+  testId,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  format?: (v: number) => string;
+  suffix?: string;
+  testId?: string;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [raw, setRaw] = useState("");
+
+  const displayVal = format ? format(value) : value.toLocaleString("ro-RO") + (suffix ? " " + suffix : "");
+
+  const commit = (s: string) => {
+    const n = parseFloat(s.replace(/[^0-9.]/g, ""));
+    if (!isNaN(n)) onChange(Math.min(max, Math.max(min, n)));
+    setEditing(false);
+  };
+
+  return (
+    <div className="mb-7">
+      <div className="flex justify-between items-center mb-3">
+        <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">{label}</span>
+        {editing ? (
+          <input
+            autoFocus
+            type="number"
+            defaultValue={value}
+            className="w-32 text-right text-base font-semibold text-[#0A1A2E] border-b-2 border-[#C6A667] bg-transparent focus:outline-none"
+            onChange={e => setRaw(e.target.value)}
+            onBlur={e => commit(e.target.value)}
+            onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
+          />
+        ) : (
+          <button
+            onClick={() => { setEditing(true); setRaw(String(value)); }}
+            className="text-base font-semibold text-[#0A1A2E] hover:text-[#C6A667] transition-colors border-b border-dashed border-[#C6A667]/40 hover:border-[#C6A667]"
+            title="Click pentru a edita manual"
+          >
+            {displayVal}
+          </button>
+        )}
+      </div>
+      <Slider
+        data-testid={testId}
+        min={min}
+        max={max}
+        step={step}
+        value={[value]}
+        onValueChange={([v]) => onChange(v)}
+        className="mb-2"
+      />
+      <div className="flex justify-between text-xs text-[#5A6478]">
+        <span>{format ? format(min) : min.toLocaleString("ro-RO") + (suffix ? " " + suffix : "")}</span>
+        <span>{format ? format(max) : max.toLocaleString("ro-RO") + (suffix ? " " + suffix : "")}</span>
+      </div>
+    </div>
+  );
+}
+
 function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
   const isIpotecar = type === "ipotecar";
   const [amount, setAmount] = useState(isIpotecar ? 150000 : 30000);
@@ -48,68 +121,43 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-0">
       {/* Left: sliders */}
       <div className="p-6 lg:p-8 border-r border-[#E5E3D9]">
-        {/* SUMĂ DORITĂ */}
-        <div className="mb-7">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Sumă dorită</span>
-            <span className="text-base font-semibold text-[#0A1A2E]">{formatRON(amount)}</span>
-          </div>
-          <Slider
-            data-testid="slider-amount"
-            min={minAmount}
-            max={maxAmount}
-            step={isIpotecar ? 5000 : 1000}
-            value={[amount]}
-            onValueChange={([v]) => setAmount(v)}
-            className="mb-2"
-          />
-          <div className="flex justify-between text-xs text-[#5A6478]">
-            <span>{formatRON(minAmount)}</span>
-            <span>{formatRON(maxAmount)}</span>
-          </div>
-        </div>
+        <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+          Poți modifica valorile și cu click pe cifre
+        </p>
 
-        {/* PERIOADĂ RAMBURSARE */}
-        <div className="mb-7">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Perioadă rambursare</span>
-            <span className="text-base font-semibold text-[#0A1A2E]">{months} luni ({(months / 12).toFixed(1)} ani)</span>
-          </div>
-          <Slider
-            data-testid="slider-months"
-            min={minMonths}
-            max={maxMonths}
-            step={isIpotecar ? 12 : 6}
-            value={[months]}
-            onValueChange={([v]) => setMonths(v)}
-            className="mb-2"
-          />
-          <div className="flex justify-between text-xs text-[#5A6478]">
-            <span>{minMonths} luni</span>
-            <span>{maxMonths} luni</span>
-          </div>
-        </div>
+        <SliderInput
+          label="Sumă dorită"
+          value={amount}
+          min={minAmount}
+          max={maxAmount}
+          step={isIpotecar ? 5000 : 1000}
+          onChange={setAmount}
+          format={formatRON}
+          testId="slider-amount"
+        />
 
-        {/* DOBÂNDĂ ESTIMATIVĂ */}
-        <div className="mb-7">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Dobândă estimativă</span>
-            <span className="text-base font-semibold text-[#0A1A2E]">{rate.toFixed(2)}%</span>
-          </div>
-          <Slider
-            data-testid="slider-rate"
-            min={minRate}
-            max={maxRate}
-            step={0.01}
-            value={[rate]}
-            onValueChange={([v]) => setRate(Math.round(v * 100) / 100)}
-            className="mb-2"
-          />
-          <div className="flex justify-between text-xs text-[#5A6478]">
-            <span>{minRate}%</span>
-            <span>{maxRate}%</span>
-          </div>
-        </div>
+        <SliderInput
+          label="Perioadă rambursare"
+          value={months}
+          min={minMonths}
+          max={maxMonths}
+          step={isIpotecar ? 12 : 6}
+          onChange={setMonths}
+          format={v => `${v} luni (${(v / 12).toFixed(1)} ani)`}
+          testId="slider-months"
+        />
+
+        <SliderInput
+          label="Dobândă estimativă"
+          value={rate}
+          min={minRate}
+          max={maxRate}
+          step={0.01}
+          onChange={v => setRate(Math.round(v * 100) / 100)}
+          format={v => `${v.toFixed(2)}%`}
+          testId="slider-rate"
+        />
 
         {/* DTI Accordion */}
         <div className="border border-[#E5E3D9] rounded-xl overflow-hidden">
@@ -132,7 +180,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                     type="number"
                     value={venit}
                     onChange={(e) => setVenit(parseFloat(e.target.value) || 0)}
-                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white"
+                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0A1A2E]"
                   />
                 </div>
                 <div>
@@ -141,7 +189,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                     type="number"
                     value={obligatii}
                     onChange={(e) => setObligatii(parseFloat(e.target.value) || 0)}
-                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white"
+                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0A1A2E]"
                   />
                 </div>
               </div>
@@ -211,16 +259,16 @@ export default function CalculatorPage() {
             Rată lunară și cost total,<br />pentru fiecare bancă.
           </h1>
           <p className="text-[#5A6478] text-base max-w-xl">
-            Modifică suma, durata și dobânda pentru a vedea instant rata lunară. Ofertele reale sunt generate în timp real pentru cele 11 bănci partenere.
+            Modifică suma, durata și dobânda cu slider-ul sau tastând direct cifra dorită. Ofertele reale sunt generate în timp real pentru cele 11 bănci partenere.
           </p>
         </div>
 
         {/* 3 calculator type cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <Link href="/calculator">
-            <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 hover:border-[#0A1A2E] hover:shadow-sm transition-all cursor-pointer flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-[#0A1A2E]/8 flex items-center justify-center shrink-0">
-                <FileText className="h-5 w-5 text-[#0A1A2E]" />
+            <div className="bg-white border border-[#0A1A2E] rounded-xl p-5 shadow-sm cursor-pointer flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-[#0A1A2E] flex items-center justify-center shrink-0">
+                <FileText className="h-5 w-5 text-white" />
               </div>
               <div>
                 <div className="font-semibold text-[#0A1A2E] text-sm mb-0.5">Calculator credit standard</div>

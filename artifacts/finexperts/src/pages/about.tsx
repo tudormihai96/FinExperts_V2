@@ -138,7 +138,7 @@ export default function AboutPage() {
         {/* Team */}
         <div className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold text-[#0A1A2E] mb-8">Echipa noastră</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member) => (
               <div
                 key={member.id}

@@ -10,6 +10,65 @@ function calcMonthly(principal: number, annualRate: number, months: number) {
   return principal * r * Math.pow(1 + r, months) / (Math.pow(1 + r, months) - 1);
 }
 
+function SliderInput({
+  label,
+  value,
+  min,
+  max,
+  step,
+  onChange,
+  format,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  format?: (v: number) => string;
+}) {
+  const [editing, setEditing] = useState(false);
+  const displayVal = format ? format(value) : value.toLocaleString("ro-RO");
+
+  const commit = (s: string) => {
+    const n = parseFloat(s.replace(/[^0-9.]/g, ""));
+    if (!isNaN(n)) onChange(Math.min(max, Math.max(min, n)));
+    setEditing(false);
+  };
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-2">
+        <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">{label}</span>
+        {editing ? (
+          <input
+            autoFocus
+            type="number"
+            defaultValue={value}
+            step={step}
+            className="w-32 text-right text-sm font-semibold text-[#0A1A2E] border-b-2 border-[#C6A667] bg-transparent focus:outline-none"
+            onBlur={e => commit(e.target.value)}
+            onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
+          />
+        ) : (
+          <button
+            onClick={() => setEditing(true)}
+            className="text-sm font-semibold text-[#0A1A2E] hover:text-[#C6A667] transition-colors border-b border-dashed border-[#C6A667]/40 hover:border-[#C6A667]"
+            title="Click pentru a edita manual"
+          >
+            {displayVal}
+          </button>
+        )}
+      </div>
+      <Slider min={min} max={max} step={step} value={[value]} onValueChange={([v]) => onChange(Math.round(v / step) * step)} className="mb-1" />
+      <div className="flex justify-between text-[10px] text-[#5A6478]">
+        <span>{format ? format(min) : min.toLocaleString("ro-RO")}</span>
+        <span>{format ? format(max) : max.toLocaleString("ro-RO")}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function RefinancePage() {
   const [sold, setSold] = useState(80000);
   const [dobandaCurenta, setDobandaCurenta] = useState(9.50);
@@ -33,16 +92,9 @@ export default function RefinancePage() {
     const merita = economieTotal > 0 && economiePerLuna > 0;
 
     return {
-      rataActuala,
-      rataNoua,
-      comisionVal,
-      principalNou,
-      totalRamasCurent,
-      totalNou,
-      economiePerLuna,
-      economieTotal,
-      recuperareCosturi,
-      merita,
+      rataActuala, rataNoua, comisionVal, principalNou,
+      totalRamasCurent, totalNou, economiePerLuna,
+      economieTotal, recuperareCosturi, merita,
     };
   }, [sold, dobandaCurenta, luniRamase, comisionRambursare, dobandaNoua, perioadaNoua, taxaAnaliza]);
 
@@ -57,7 +109,7 @@ export default function RefinancePage() {
             <span className="text-[#C6A667]">refinanțare</span>?
           </h1>
           <p className="text-[#5A6478] text-base max-w-xl">
-            Compară creditul actual cu o ofertă nouă, ținând cont de comisionul de rambursare anticipată și taxa de analiză a noii bănci.
+            Compară creditul actual cu o ofertă nouă. Modifică valorile cu slider-ul sau tastând direct pe cifre.
           </p>
         </div>
 
@@ -66,91 +118,90 @@ export default function RefinancePage() {
           <div className="border-r border-[#E5E3D9]">
             {/* CREDITUL ACTUAL */}
             <div className="p-6 lg:p-8 border-b border-[#E5E3D9]">
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-2">
                 <div className="w-1 h-5 bg-[#C6A667] rounded-full" />
                 <span className="text-xs font-bold text-[#0A1A2E] uppercase tracking-wider">Creditul actual</span>
               </div>
+              <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+                Click pe cifre pentru a introduce valorile manual
+              </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* Sold rămas */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Sold rămas (RON)</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{formatRON(sold)}</span>
-                  </div>
-                  <Slider min={5000} max={500000} step={5000} value={[sold]} onValueChange={([v]) => setSold(v)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>5.000 RON</span><span>500.000 RON</span></div>
-                </div>
-
-                {/* Dobândă curentă */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Dobândă curentă (%)</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{dobandaCurenta.toFixed(2)}%</span>
-                  </div>
-                  <Slider min={3} max={20} step={0.01} value={[dobandaCurenta]} onValueChange={([v]) => setDobandaCurenta(Math.round(v * 100) / 100)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>3.00%</span><span>20.00%</span></div>
-                </div>
-
-                {/* Luni rămase */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Luni rămase</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{luniRamase} luni</span>
-                  </div>
-                  <Slider min={3} max={360} step={3} value={[luniRamase]} onValueChange={([v]) => setLuniRamase(v)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>3 luni</span><span>360 luni</span></div>
-                </div>
-
-                {/* Comision rambursare anticipată */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Comision rambursare anticipată (%)</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{comisionRambursare.toFixed(2)}%</span>
-                  </div>
-                  <Slider min={0} max={3} step={0.01} value={[comisionRambursare]} onValueChange={([v]) => setComisionRambursare(Math.round(v * 100) / 100)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>0.00%</span><span>3.00%</span></div>
-                </div>
+                <SliderInput
+                  label="Sold rămas (RON)"
+                  value={sold}
+                  min={5000}
+                  max={500000}
+                  step={5000}
+                  onChange={setSold}
+                  format={v => formatRON(v)}
+                />
+                <SliderInput
+                  label="Dobândă curentă (%)"
+                  value={dobandaCurenta}
+                  min={3}
+                  max={20}
+                  step={0.01}
+                  onChange={v => setDobandaCurenta(Math.round(v * 100) / 100)}
+                  format={v => `${v.toFixed(2)}%`}
+                />
+                <SliderInput
+                  label="Luni rămase"
+                  value={luniRamase}
+                  min={3}
+                  max={360}
+                  step={1}
+                  onChange={setLuniRamase}
+                  format={v => `${v} luni`}
+                />
+                <SliderInput
+                  label="Comision rambursare anticipată (%)"
+                  value={comisionRambursare}
+                  min={0}
+                  max={3}
+                  step={0.01}
+                  onChange={v => setComisionRambursare(Math.round(v * 100) / 100)}
+                  format={v => `${v.toFixed(2)}%`}
+                />
               </div>
             </div>
 
             {/* OFERTA NOUĂ */}
             <div className="p-6 lg:p-8">
               <div className="flex items-center gap-2 mb-6">
-                <div className="w-1 h-5 bg-[#C6A667] rounded-full" />
+                <div className="w-1 h-5 bg-[#2E7D5B] rounded-full" />
                 <span className="text-xs font-bold text-[#0A1A2E] uppercase tracking-wider">Oferta nouă</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* Dobândă nouă */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Dobândă nouă (%)</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{dobandaNoua.toFixed(2)}%</span>
-                  </div>
-                  <Slider min={3} max={18} step={0.01} value={[dobandaNoua]} onValueChange={([v]) => setDobandaNoua(Math.round(v * 100) / 100)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>3.00%</span><span>18.00%</span></div>
-                </div>
-
-                {/* Perioadă nouă */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Perioadă nouă (luni)</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{perioadaNoua} luni</span>
-                  </div>
-                  <Slider min={6} max={360} step={6} value={[perioadaNoua]} onValueChange={([v]) => setPerioadaNoua(v)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>6 luni</span><span>360 luni</span></div>
-                </div>
-
-                {/* Taxă analiză */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Taxă analiză (RON)</span>
-                    <span className="text-sm font-semibold text-[#0A1A2E]">{formatRON(taxaAnaliza)}</span>
-                  </div>
-                  <Slider min={0} max={5000} step={100} value={[taxaAnaliza]} onValueChange={([v]) => setTaxaAnaliza(v)} className="mb-1" />
-                  <div className="flex justify-between text-[10px] text-[#5A6478]"><span>0 RON</span><span>5.000 RON</span></div>
-                </div>
+                <SliderInput
+                  label="Dobândă nouă (%)"
+                  value={dobandaNoua}
+                  min={3}
+                  max={18}
+                  step={0.01}
+                  onChange={v => setDobandaNoua(Math.round(v * 100) / 100)}
+                  format={v => `${v.toFixed(2)}%`}
+                />
+                <SliderInput
+                  label="Perioadă nouă (luni)"
+                  value={perioadaNoua}
+                  min={6}
+                  max={360}
+                  step={6}
+                  onChange={setPerioadaNoua}
+                  format={v => `${v} luni`}
+                />
+                <SliderInput
+                  label="Taxă analiză (RON)"
+                  value={taxaAnaliza}
+                  min={0}
+                  max={5000}
+                  step={100}
+                  onChange={setTaxaAnaliza}
+                  format={v => formatRON(v)}
+                />
               </div>
             </div>
           </div>
@@ -167,6 +218,7 @@ export default function RefinancePage() {
               data-testid="result-economie-totala"
               className={`text-5xl font-bold mb-4 ${r.economieTotal >= 0 ? "text-white" : "text-[#C4432F]"}`}
             >
+              {r.economieTotal < 0 && <span className="text-2xl mr-1">-</span>}
               {formatRON(Math.round(Math.abs(r.economieTotal)))}
             </div>
 
@@ -177,7 +229,7 @@ export default function RefinancePage() {
                   data-testid="result-economie-lunara"
                   className={`text-xl font-bold ${r.economiePerLuna >= 0 ? "text-[#4ade80]" : "text-[#C4432F]"}`}
                 >
-                  {r.economiePerLuna >= 0 ? "" : "-"}{formatRON(Math.round(Math.abs(r.economiePerLuna)))}
+                  {r.economiePerLuna < 0 && "-"}{formatRON(Math.round(Math.abs(r.economiePerLuna)))}
                 </div>
               </div>
               <div className="bg-white/5 rounded-xl p-4">
@@ -208,7 +260,14 @@ export default function RefinancePage() {
               ))}
             </div>
 
-            <div className="mt-6 flex items-start gap-2 text-[11px] text-gray-500">
+            <Link href="/aplica" className="mt-6 block">
+              <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+                Vreau să refinanțez
+                <Sparkles className="h-4 w-4" />
+              </button>
+            </Link>
+
+            <div className="mt-4 flex items-start gap-2 text-[11px] text-gray-500">
               <Info className="h-3 w-3 mt-0.5 shrink-0 text-gray-500" />
               Calcul informativ. Banca poate ajusta oferta în funcție de scoring și venit.
             </div>

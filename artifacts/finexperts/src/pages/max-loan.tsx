@@ -2,8 +2,75 @@ import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { Slider } from "@/components/ui/slider";
 import { calculateMonthlyPayment, formatRON } from "@/lib/data";
-import { Info, ArrowRight } from "lucide-react";
-import { FileText } from "lucide-react";
+import { Info, ArrowRight, FileText } from "lucide-react";
+
+function SliderInput({
+  label,
+  value,
+  min,
+  max,
+  step,
+  onChange,
+  format,
+  testId,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  format?: (v: number) => string;
+  testId?: string;
+}) {
+  const [editing, setEditing] = useState(false);
+  const displayVal = format ? format(value) : value.toLocaleString("ro-RO");
+
+  const commit = (s: string) => {
+    const n = parseFloat(s.replace(/[^0-9.]/g, ""));
+    if (!isNaN(n)) onChange(Math.min(max, Math.max(min, n)));
+    setEditing(false);
+  };
+
+  return (
+    <div className="mb-7">
+      <div className="flex justify-between items-center mb-3">
+        <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">{label}</span>
+        {editing ? (
+          <input
+            autoFocus
+            type="number"
+            defaultValue={value}
+            className="w-36 text-right text-sm font-semibold text-[#0A1A2E] border-b-2 border-[#C6A667] bg-transparent focus:outline-none"
+            onBlur={e => commit(e.target.value)}
+            onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
+          />
+        ) : (
+          <button
+            onClick={() => setEditing(true)}
+            className="text-base font-semibold text-[#0A1A2E] hover:text-[#C6A667] transition-colors border-b border-dashed border-[#C6A667]/40 hover:border-[#C6A667]"
+            title="Click pentru a edita manual"
+          >
+            {displayVal}
+          </button>
+        )}
+      </div>
+      <Slider
+        data-testid={testId}
+        min={min}
+        max={max}
+        step={step}
+        value={[value]}
+        onValueChange={([v]) => onChange(v)}
+        className="mb-2"
+      />
+      <div className="flex justify-between text-xs text-[#5A6478]">
+        <span>{format ? format(min) : min.toLocaleString("ro-RO")}</span>
+        <span>{format ? format(max) : max.toLocaleString("ro-RO")}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function MaxLoanPage() {
   const [activeType, setActiveType] = useState<"personal" | "ipotecar">("personal");
@@ -35,7 +102,7 @@ export default function MaxLoanPage() {
             Cât poți împrumuta?
           </h1>
           <p className="text-[#5A6478] text-base max-w-xl">
-            Calcul automat conform reglementărilor BNR (Regulamentul 17/2012): grad de îndatorare maxim 40% din venitul net, ajustat cu obligațiile financiare existente.
+            Calcul automat conform BNR (grad de îndatorare maxim 40% din venitul net). Modifică valorile cu slider-ul sau tastând direct.
           </p>
         </div>
 
@@ -67,68 +134,43 @@ export default function MaxLoanPage() {
               </button>
             </div>
 
-            {/* VENIT NET */}
-            <div className="mb-7">
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Venit net lunar (RON)</span>
-                <span className="text-base font-semibold text-[#0A1A2E]">{venit.toLocaleString("ro-RO")} RON</span>
-              </div>
-              <Slider
-                data-testid="slider-venit"
-                min={1000}
-                max={30000}
-                step={500}
-                value={[venit]}
-                onValueChange={([v]) => setVenit(v)}
-                className="mb-2"
-              />
-              <div className="flex justify-between text-xs text-[#5A6478]">
-                <span>1.000 RON</span>
-                <span>30.000 RON</span>
-              </div>
-            </div>
+            <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
+              <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+              Poți modifica valorile și cu click pe cifre
+            </p>
 
-            {/* RATE ALTE CREDITE */}
-            <div className="mb-7">
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Rate la alte credite (RON/lună)</span>
-                <span className="text-base font-semibold text-[#0A1A2E]">{rateAlte.toLocaleString("ro-RO")} RON</span>
-              </div>
-              <Slider
-                data-testid="slider-rate-alte"
-                min={0}
-                max={5000}
-                step={100}
-                value={[rateAlte]}
-                onValueChange={([v]) => setRateAlte(v)}
-                className="mb-2"
-              />
-              <div className="flex justify-between text-xs text-[#5A6478]">
-                <span>0 RON</span>
-                <span>5.000 RON</span>
-              </div>
-            </div>
+            <SliderInput
+              label="Venit net lunar (RON)"
+              value={venit}
+              min={1000}
+              max={30000}
+              step={500}
+              onChange={setVenit}
+              format={v => `${v.toLocaleString("ro-RO")} RON`}
+              testId="slider-venit"
+            />
 
-            {/* PERIOADĂ RAMBURSARE */}
-            <div className="mb-4">
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Perioadă rambursare (luni)</span>
-                <span className="text-base font-semibold text-[#0A1A2E]">{perioada} luni ({(perioada / 12).toFixed(1)} ani)</span>
-              </div>
-              <Slider
-                data-testid="slider-perioada"
-                min={activeType === "personal" ? 6 : 12}
-                max={activeType === "personal" ? 60 : 360}
-                step={activeType === "personal" ? 6 : 12}
-                value={[perioada]}
-                onValueChange={([v]) => setPerioada(v)}
-                className="mb-2"
-              />
-              <div className="flex justify-between text-xs text-[#5A6478]">
-                <span>{activeType === "personal" ? "6" : "12"} luni</span>
-                <span>{activeType === "personal" ? "60" : "360"} luni</span>
-              </div>
-            </div>
+            <SliderInput
+              label="Rate la alte credite (RON/lună)"
+              value={rateAlte}
+              min={0}
+              max={5000}
+              step={100}
+              onChange={setRateAlte}
+              format={v => `${v.toLocaleString("ro-RO")} RON`}
+              testId="slider-rate-alte"
+            />
+
+            <SliderInput
+              label="Perioadă rambursare (luni)"
+              value={perioada}
+              min={activeType === "personal" ? 6 : 12}
+              max={activeType === "personal" ? 60 : 360}
+              step={activeType === "personal" ? 6 : 12}
+              onChange={setPerioada}
+              format={v => `${v} luni (${(v / 12).toFixed(1)} ani)`}
+              testId="slider-perioada"
+            />
           </div>
 
           {/* Right: dark result */}
@@ -152,6 +194,28 @@ export default function MaxLoanPage() {
               </>
             )}
 
+            <div className="bg-white/8 rounded-xl p-4 mb-5">
+              <div className="text-xs text-gray-400 mb-2 uppercase tracking-wider font-semibold">Detalii calcul DTI</div>
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Venit net lunar</span>
+                  <span className="text-white font-medium">{formatRON(venit)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Plafon 40% DTI</span>
+                  <span className="text-white font-medium">{formatRON(venit * 0.4)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Rate existente</span>
+                  <span className="text-white font-medium">- {formatRON(rateAlte)}</span>
+                </div>
+                <div className="border-t border-white/10 pt-1.5 flex justify-between text-sm">
+                  <span className="text-[#C6A667] font-semibold">Rată maximă nouă</span>
+                  <span className="text-[#C6A667] font-bold">{formatRON(Math.round(result.rataMaxima))}</span>
+                </div>
+              </div>
+            </div>
+
             <Link href="/aplica">
               <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                 Aplică pentru această sumă
@@ -161,7 +225,7 @@ export default function MaxLoanPage() {
 
             <div className="mt-5 flex items-start gap-2 text-xs text-gray-400">
               <Info className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C6A667]" />
-              Calcul informativ. Banca poate aplica un coeficient mai strict pentru veniturile variabile (PFA, dividende) sau pentru clienți cu istoric.
+              Calcul informativ. Banca poate aplica un coeficient mai strict pentru veniturile variabile (PFA, dividende).
             </div>
           </div>
         </div>
