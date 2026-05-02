@@ -6,13 +6,29 @@ import { Star, ArrowRight } from "lucide-react";
 
 type SortKey = "monthly" | "rate" | "dae" | "rating";
 
-function BankInitialsAvatar({ initials, color }: { initials: string; color: string }) {
+function BankLogo({ logo, name, initials, color }: { logo: string; name: string; initials: string; color: string }) {
   return (
     <div
-      className="w-11 h-11 rounded-xl flex items-center justify-center text-white text-xs font-bold shrink-0"
+      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 overflow-hidden relative"
       style={{ backgroundColor: color }}
     >
-      {initials}
+      <img
+        src={logo}
+        alt={name}
+        className="w-full h-full object-contain p-1"
+        onError={(e) => {
+          const img = e.target as HTMLImageElement;
+          img.style.display = "none";
+          const span = img.nextElementSibling as HTMLElement;
+          if (span) span.style.display = "flex";
+        }}
+      />
+      <span
+        className="absolute inset-0 items-center justify-center text-white text-xs font-bold"
+        style={{ display: "none" }}
+      >
+        {initials}
+      </span>
     </div>
   );
 }
@@ -67,7 +83,7 @@ export default function BanksPage() {
           <div className="flex gap-2 mb-5">
             <button
               data-testid="tab-personal"
-              onClick={() => setActiveType("personal")}
+              onClick={() => { setActiveType("personal"); setAmount(30000); setMonths(36); }}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                 activeType === "personal" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
               }`}
@@ -80,7 +96,7 @@ export default function BanksPage() {
             </button>
             <button
               data-testid="tab-ipotecar"
-              onClick={() => setActiveType("ipotecar")}
+              onClick={() => { setActiveType("ipotecar"); setAmount(150000); setMonths(120); }}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                 activeType === "ipotecar" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
               }`}
@@ -163,9 +179,9 @@ export default function BanksPage() {
               data-testid={`bank-row-${bank.id}`}
               className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-4 border-b border-[#E5E3D9] last:border-b-0 hover:bg-[#F7F4EC]/50 transition-colors"
             >
-              {/* Bank name + info */}
+              {/* Bank logo + info */}
               <div className="flex items-center gap-3 min-w-0">
-                <BankInitialsAvatar initials={bank.initials} color={bank.color} />
+                <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="min-w-0">
                   <div className="font-semibold text-[#0A1A2E] text-sm truncate">{bank.name}</div>
                   <div className="flex items-center gap-2 mt-0.5 flex-wrap">
@@ -201,7 +217,7 @@ export default function BanksPage() {
               {/* Rată */}
               <div className="text-right">
                 <div className="text-sm font-bold text-[#0A1A2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")} RON</div>
-                <div className="text-xs text-[#5A6478]">Total: {formatRON(bank.total)}</div>
+                <div className="text-xs text-[#5A6478]">Total: {formatRON(Math.round(bank.total))}</div>
               </div>
 
               {/* Acțiuni */}
