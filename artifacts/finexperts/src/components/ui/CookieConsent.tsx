@@ -82,13 +82,16 @@ export default function CookieConsent() {
               <div className="flex items-start gap-3 flex-1 min-w-0">
                 <Cookie className="h-5 w-5 text-[#C49A20] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-semibold text-white mb-1">Acest site folosește cookie-uri</p>
-                  <p className="text-xs text-gray-400 leading-relaxed">
-                    Folosim cookie-uri necesare pentru funcționarea site-ului și, cu acordul tău, cookie-uri de analiză
-                    pentru a înțelege cum este utilizat. Nu colectăm date personale fără consimțământ explicit.{" "}
+                  <p className="text-sm font-semibold text-white mb-1">Confidențialitate și prelucrarea datelor</p>
+                  <p className="text-xs text-gray-400 leading-relaxed mb-1">
+                    Folosim cookie-uri necesare pentru funcționarea site-ului și, cu acordul tău, cookie-uri de analiză.{" "}
                     <Link href="/cookies" className="text-[#C49A20] hover:underline">Politica de Cookies</Link>
                     {" · "}
                     <Link href="/confidentialitate" className="text-[#C49A20] hover:underline">Date personale</Link>
+                  </p>
+                  <p className="text-xs text-[#94A3B8] leading-relaxed">
+                    <span className="text-[#C49A20] font-medium">Datele personale:</span>{" "}
+                    Atunci când îți creezi cont sau aplici pentru un credit, colectăm numele, numărul de telefon și adresa de e-mail în scopul analizei dosarului și contactării tale de către un broker FinExperts. Furnizarea acestor date este voluntară și necesară pentru prestarea serviciului. Temeiul legal: art. 6 alin. (1) lit. b) GDPR — executarea unui contract.
                   </p>
                 </div>
               </div>
