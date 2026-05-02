@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
   <rect width="200" height="80" fill="white"/>
-  <!-- BCR red rectangle logo - faithful to real BCR brand -->
-  <rect x="8" y="8" width="184" height="64" rx="6" fill="#E30613"/>
-  <!-- BCR text - large white bold -->
-  <text x="100" y="52" font-family="'Arial Black', Arial, sans-serif" font-size="34" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">BCR</text>
-  <!-- Erste Group small indicator -->
-  <text x="100" y="66" font-family="Arial, sans-serif" font-size="7" font-weight="400" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="1">ERSTE GROUP</text>
+  <!-- BCR red logo faithful to brand -->
+  <rect x="8" y="12" width="184" height="56" rx="4" fill="#E30613"/>
+  <text x="100" y="50" font-family="'Arial Black',Arial,sans-serif" font-size="32" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">BCR</text>
+  <text x="100" y="63" font-family="Arial,sans-serif" font-size="7" font-weight="400" fill="rgba(255,255,255,0.75)" text-anchor="middle" letter-spacing="1.5">ERSTE GROUP</text>
 </svg>

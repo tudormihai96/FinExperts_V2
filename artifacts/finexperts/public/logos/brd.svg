@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80">
   <rect width="220" height="80" fill="white"/>
-  <!-- BRD blue text - faithful to real brand style -->
-  <text x="14" y="56" font-family="'Arial Black', Arial, sans-serif" font-size="40" font-weight="900" fill="#0055A4" letter-spacing="-1">BRD</text>
-  <!-- Société Générale colored squares grid (iconic SG identity) -->
-  <rect x="130" y="12" width="16" height="16" rx="2" fill="#E30613"/>
-  <rect x="150" y="12" width="16" height="16" rx="2" fill="#E30613"/>
-  <rect x="130" y="32" width="16" height="16" rx="2" fill="#E30613"/>
-  <rect x="150" y="32" width="16" height="16" rx="2" fill="#E30613"/>
-  <!-- SG label -->
-  <text x="130" y="64" font-family="Arial, sans-serif" font-size="8" font-weight="500" fill="#666" letter-spacing="0.3">Groupe Société Générale</text>
+  <!-- BRD blue text - faithful brand -->
+  <text x="14" y="58" font-family="'Arial Black',Arial,sans-serif" font-size="42" font-weight="900" fill="#0055A4" letter-spacing="-1">BRD</text>
+  <!-- SG red squares (Société Générale identity) -->
+  <rect x="136" y="12" width="15" height="15" rx="2" fill="#E30613"/>
+  <rect x="155" y="12" width="15" height="15" rx="2" fill="#E30613"/>
+  <rect x="174" y="12" width="15" height="15" rx="2" fill="#E30613"/>
+  <rect x="136" y="31" width="15" height="15" rx="2" fill="#E30613"/>
+  <rect x="155" y="31" width="15" height="15" rx="2" fill="#E30613"/>
+  <rect x="174" y="31" width="15" height="15" rx="2" fill="#E30613"/>
+  <text x="136" y="66" font-family="Arial,sans-serif" font-size="7.5" fill="#666" letter-spacing="0.2">Groupe Société Générale</text>
 </svg>

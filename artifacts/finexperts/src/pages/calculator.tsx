@@ -391,12 +391,11 @@ function RefinanceCalculator() {
 }
 
 // ─── Pagina principală ────────────────────────────────────────────────────────
-type CalcTab = "personal" | "ipotecar" | "maxima" | "refinantare";
+type CalcTab = "personal" | "ipotecar" | "refinantare";
 
 const TABS: { id: CalcTab; label: string; icon: React.ReactNode; desc: string }[] = [
   { id: "ipotecar", label: "Credit ipotecar", icon: <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>, desc: "Calculator credit imobiliar cu cele mai bune oferte ipotecare." },
   { id: "personal", label: "Credit de Nevoi Personale", icon: <FileText className="h-4 w-4" />, desc: "Rată lunară și cost total pentru credit de nevoi personale." },
-  { id: "maxima", label: "Sumă maximă", icon: <Table className="h-4 w-4" />, desc: "Cât poți împrumuta în funcție de venit (DTI 40% BNR)." },
   { id: "refinantare", label: "Refinanțare", icon: <TrendingDown className="h-4 w-4" />, desc: "Cât economisești prin mutarea creditului la o bancă mai ieftină." },
 ];
 
@@ -413,14 +412,13 @@ export default function CalculatorPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
             {tab.id === "personal" && <>Credit de Nevoi Personale,<br />la toate cele 11 bănci.</>}
             {tab.id === "ipotecar" && <>Rată credit ipotecar,<br />la toate cele 11 bănci.</>}
-            {tab.id === "maxima" && <>Cât poți împrumuta<br />cu venitul tău?</>}
             {tab.id === "refinantare" && <>Cât economisești<br />prin <span className="text-[#C6A667]">refinanțare</span>?</>}
           </h1>
           <p className="text-[#5A6478] text-base max-w-xl">{tab.desc}</p>
         </div>
 
         {/* Tab selector — card grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-3 gap-3 mb-8">
           {TABS.map(t => (
             <button key={t.id} onClick={() => setActive(t.id)}
               className={`text-left p-4 rounded-xl border transition-all ${active === t.id
@@ -436,7 +434,6 @@ export default function CalculatorPage() {
         <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
           {active === "personal" && <CreditCalculator key="personal" type="personal" />}
           {active === "ipotecar" && <CreditCalculator key="ipotecar" type="ipotecar" />}
-          {active === "maxima" && <MaxLoanCalculator />}
           {active === "refinantare" && <RefinanceCalculator />}
         </div>
 

@@ -1,11 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80">
-  <rect width="220" height="80" fill="white"/>
-  <!-- Garanti BBVA teal/green brand -->
-  <!-- Green G shape -->
-  <rect x="8" y="8" width="64" height="64" rx="10" fill="#009B77"/>
-  <text x="40" y="54" font-family="'Arial Black', Arial, sans-serif" font-size="36" font-weight="900" fill="white" text-anchor="middle">G</text>
-  <!-- Text part -->
-  <text x="84" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#009B77" letter-spacing="0.3">Garanti</text>
-  <text x="84" y="50" font-family="'Arial Black', Arial, sans-serif" font-size="14" font-weight="900" fill="#004B93" letter-spacing="1">BBVA</text>
-  <text x="84" y="66" font-family="Arial, sans-serif" font-size="8" font-weight="400" fill="#888" letter-spacing="0.3">România</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 80">
+  <rect width="230" height="80" fill="white"/>
+  <!-- Garanti BBVA - turquoise brand -->
+  <rect x="8" y="10" width="60" height="60" rx="8" fill="#00A758"/>
+  <text x="38" y="53" font-family="'Arial Black',Arial,sans-serif" font-size="34" font-weight="900" fill="white" text-anchor="middle">G</text>
+  <!-- Text -->
+  <text x="82" y="33" font-family="Arial,sans-serif" font-size="16" font-weight="800" fill="#00A758" letter-spacing="0.2">Garanti</text>
+  <text x="82" y="52" font-family="'Arial Black',Arial,sans-serif" font-size="14" font-weight="900" fill="#004B93" letter-spacing="1.5">BBVA</text>
+  <text x="82" y="67" font-family="Arial,sans-serif" font-size="8" fill="#888">România</text>
 </svg>

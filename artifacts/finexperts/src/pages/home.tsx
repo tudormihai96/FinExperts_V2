@@ -164,14 +164,14 @@ export default function HomePage() {
                 </div>
                 <Slider
                   min={activeType === "personal" ? 1000 : 6000}
-                  max={activeType === "personal" ? 100000 : 120000}
+                  max={activeType === "personal" ? 250000 : 120000}
                   step={activeType === "personal" ? 1000 : 5000}
                   value={[amount]}
                   onValueChange={([v]) => setAmount(v)}
                 />
                 <div className="flex justify-between text-[10px] text-[#5A6478] mt-1">
                   <span>{activeType === "personal" ? "1.000 RON" : "30.000 RON"}</span>
-                  <span>{activeType === "personal" ? "100.000 RON" : "600.000 RON"}</span>
+                  <span>{activeType === "personal" ? "250.000 RON" : "600.000 RON"}</span>
                 </div>
               </div>
               {/* Months slider */}
