@@ -158,7 +158,7 @@ export default function BanksPage() {
         <div className="mb-6 sm:mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Comparator bănci</div>
           <h1 className="text-2xl sm:text-4xl font-bold text-[#0B2E2E] leading-tight mb-3">
-            Compară cele 13 bănci<br />din România.
+            Compară cele 11 bănci<br />din România.
           </h1>
           <p className="text-[#64748B] text-sm sm:text-base max-w-xl">
             Setează suma și durata dorită; vei vedea rata lunară exactă pentru fiecare bancă, plus DAE. Ipotecar: ofertă cu dobândă fixă. Personal: cea mai mică dobândă disponibilă.
