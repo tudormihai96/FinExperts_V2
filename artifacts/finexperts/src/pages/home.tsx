@@ -37,7 +37,7 @@ export default function HomePage() {
             </p>
             <div className="flex gap-3 flex-wrap mb-10 sm:mb-12">
               <Link href="/calculator">
-                <button className="bg-gradient-to-r from-[#D4AA28] to-[#B08015] hover:from-[#C49A20] hover:to-[#9A7010] text-[#0B2E2E] font-bold px-5 sm:px-6 py-3 rounded-xl transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm sm:text-base">
+                <button className="bg-[#C49A20] hover:bg-[#B08A1A] text-white font-bold px-5 sm:px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-sm hover:shadow-md text-sm sm:text-base">
                   Calculează rata
                   <ArrowRight className="h-4 w-4" />
                 </button>

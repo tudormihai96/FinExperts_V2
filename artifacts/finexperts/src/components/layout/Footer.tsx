@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Users } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,12 +11,18 @@ export default function Footer() {
 
           {/* Col 1: Brand + contact + ANPC */}
           <div>
-            <img
-              src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
-              alt="FinExperts"
-              className="h-16 w-auto object-contain mb-4 brightness-0 invert opacity-90"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-            />
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                <Users className="h-4 w-4 text-[#C49A20]" />
+              </div>
+              <div className="flex flex-col leading-tight">
+                <div>
+                  <span className="text-[18px] font-extrabold tracking-tight text-white">Fin</span>
+                  <span className="text-[18px] font-extrabold tracking-tight text-[#C49A20]">Experts</span>
+                </div>
+                <span className="text-[8px] text-gray-400 uppercase tracking-widest font-semibold">Experți în credite</span>
+              </div>
+            </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
               Broker de credite autorizat, partener oficial KIWI Finance. Comparăm și negociem în locul tău — 100% gratuit.
             </p>

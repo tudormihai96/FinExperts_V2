@@ -6,7 +6,8 @@ import {
   FileText, Shield, Phone, LogOut, ChevronRight,
   ArrowRight, Home, Activity, Plane, Heart, CheckCircle,
   User, Bell, Calculator, BookOpen, Star, Clock, Check,
-  Mail, AlertCircle, Download, TrendingDown
+  Mail, AlertCircle, Download, TrendingDown, TrendingUp,
+  Info, Zap, RefreshCw, CreditCard, PiggyBank
 } from "lucide-react";
 
 const STATUS_COLORS: Record<string, string> = {
@@ -86,7 +87,7 @@ const documentChecklist = [
   { label: "Contract de muncă", hint: "Prima pagină + ultima pagină semnată" },
 ];
 
-type Tab = "overview" | "credit" | "asigurari" | "profil" | "documente";
+type Tab = "overview" | "credit" | "asigurari" | "profil" | "documente" | "notificari";
 
 export default function AccountPage() {
   const { user, isLoggedIn, logout } = useAuth();
@@ -145,6 +146,7 @@ export default function AccountPage() {
     { id: "credit", label: "Credite", icon: FileText },
     { id: "asigurari", label: "Asigurări", icon: Shield },
     { id: "documente", label: "Documente", icon: BookOpen },
+    { id: "notificari", label: "Notificări", icon: Bell },
     { id: "profil", label: "Profil", icon: User },
   ];
 
@@ -199,6 +201,27 @@ export default function AccountPage() {
                   <div className="text-xs text-[#64748B] font-medium uppercase tracking-wider">{s.label}</div>
                 </button>
               ))}
+            </div>
+
+            {/* IRCC tracker */}
+            <div className="bg-[#0B2E2E] rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-1">IRCC T2 2026 — Oficial BNR</div>
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <span className="text-3xl font-extrabold text-white">5.58%</span>
+                  <span className="text-xs text-green-400 flex items-center gap-0.5 font-semibold">
+                    <TrendingDown className="h-3 w-3" /> −0.10 pp față de T1 2026
+                  </span>
+                </div>
+                <p className="text-xs text-gray-400 mt-1.5 max-w-sm">
+                  Rata ipotecară variabilă = IRCC + marjă bancă. Ex: 5.58% + 2% = <strong className="text-gray-300">7.58%</strong> dobândă totală. Estimat T3 2026: 5.56%.
+                </p>
+              </div>
+              <Link href="/banci">
+                <button className="bg-[#C49A20] hover:bg-[#B08A1A] text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors whitespace-nowrap">
+                  Compară bănci →
+                </button>
+              </Link>
             </div>
 
             {/* Acțiuni rapide */}
@@ -450,6 +473,47 @@ export default function AccountPage() {
                   <Mail className="h-4 w-4" /> Trimite dosar
                 </button>
               </a>
+            </div>
+          </div>
+        )}
+
+        {/* ── NOTIFICĂRI ── */}
+        {activeTab === "notificari" && (
+          <div>
+            <div className="mb-5">
+              <h2 className="text-xl font-bold text-[#0B2E2E]">Notificări</h2>
+              <p className="text-sm text-[#64748B]">Actualizări despre dosarele tale și piața creditelor</p>
+            </div>
+            <div className="space-y-3">
+              {[
+                { icon: TrendingDown, color: "bg-green-100 text-green-700", badge: "IRCC", title: "IRCC T2 2026 actualizat la 5.58%", desc: "Noul IRCC pentru trimestrul 2 2026 este 5.58%, cu 0.10 pp mai mic față de T1. Rata ipotecară variabilă scade automat la reînnoire.", date: "1 apr. 2026", unread: true },
+                { icon: Bell, color: "bg-blue-100 text-blue-700", badge: "OFERTĂ", title: "Garanti BBVA — promoție ipotecar", desc: "Garanti BBVA a lansat o promoție pentru credit ipotecar cu marjă de 1.75% (față de 1.85% anterior). Valabilă până pe 30 iunie 2026.", date: "15 apr. 2026", unread: true },
+                { icon: Info, color: "bg-amber-100 text-amber-700", badge: "DOSAR", title: "Acte necesare actualizate", desc: "Brokerul tău a actualizat lista de documente necesare pentru dosarul de credit ipotecar. Verifică secțiunea Documente.", date: "28 apr. 2026", unread: false },
+                { icon: Zap, color: "bg-[#0B2E2E]/10 text-[#0B2E2E]", badge: "SISTEM", title: "Calculator actualizat cu dobânzile mai 2026", desc: "Calculatorul de rate a fost actualizat cu cele mai noi dobânzi de la toate cele 11 bănci partenere, inclusiv modificările BRD și Raiffeisen.", date: "2 mai 2026", unread: false },
+                { icon: TrendingUp, color: "bg-purple-100 text-purple-700", badge: "BNR", title: "Rata cheie BNR menținută la 6.50%", desc: "BNR a decis menținerea ratei dobânzii de politică monetară la 6.50% pe an în ședința din mai 2026. Efect neutru pe dobânzile fixe.", date: "7 mai 2026", unread: false },
+              ].map((n, i) => (
+                <div key={i} className={`bg-white border rounded-xl p-4 flex items-start gap-4 ${n.unread ? "border-[#C49A20]/30 bg-[#C49A20]/3" : "border-[#E2E8F0]"}`}>
+                  <div className={`w-9 h-9 rounded-lg ${n.color} flex items-center justify-center shrink-0 mt-0.5`}>
+                    <n.icon className="h-4 w-4" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <div>
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#64748B] bg-[#F4F6FB] px-1.5 py-0.5 rounded mr-2">{n.badge}</span>
+                        {n.unread && <span className="w-1.5 h-1.5 rounded-full bg-[#C49A20] inline-block mb-0.5" />}
+                      </div>
+                      <span className="text-[10px] text-[#64748B] shrink-0 whitespace-nowrap">{n.date}</span>
+                    </div>
+                    <div className="font-semibold text-[#0B2E2E] text-sm mb-0.5">{n.title}</div>
+                    <p className="text-xs text-[#64748B] leading-relaxed">{n.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 text-center">
+              <button className="text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors flex items-center gap-1 mx-auto">
+                <RefreshCw className="h-3 w-3" /> Verifică notificări noi
+              </button>
             </div>
           </div>
         )}

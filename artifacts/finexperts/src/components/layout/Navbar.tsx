@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { LogIn, Menu, X, Phone, Mail, Clock, Facebook, Instagram, User, Settings, LogOut, ChevronRight } from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { FinExpertsLogo } from "../ui/FinExpertsLogo";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -74,25 +75,11 @@ export default function Navbar() {
 
       {/* Main navbar */}
       <div className={`bg-white border-b border-[#E2E8F0] transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
-        <div className="max-w-7xl mx-auto px-4 h-[120px] flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 h-[80px] flex items-center justify-between gap-4">
 
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0">
-            <img
-              src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
-              alt="FinExperts"
-              className="h-[128px] w-auto"
-              style={{ filter: "hue-rotate(-25deg) saturate(1.3) brightness(0.92)" }}
-              onError={(e) => {
-                const img = e.target as HTMLImageElement;
-                img.style.display = "none";
-                img.nextElementSibling?.classList.remove("hidden");
-              }}
-            />
-            <div className="hidden flex-col">
-              <span className="text-[22px] font-bold text-[#0B2E2E] leading-tight">FinExperts</span>
-              <span className="text-[9px] text-[#64748B] tracking-wider uppercase">partener KIWI Finance</span>
-            </div>
+            <FinExpertsLogo size="lg" />
           </Link>
 
           {/* Desktop nav */}
@@ -162,7 +149,7 @@ export default function Navbar() {
             )}
             <Link
               href="/aplica"
-              className="flex items-center gap-2 text-[15px] font-bold text-[#0B2E2E] bg-gradient-to-r from-[#D4AA28] to-[#B08015] hover:from-[#C49A20] hover:to-[#9A7010] px-7 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+              className="flex items-center gap-2 text-[15px] font-bold text-white bg-[#C49A20] hover:bg-[#B08A1A] px-7 py-3 rounded-xl transition-colors shadow-sm hover:shadow-md"
             >
               Aplică acum
               <ChevronRight className="h-4 w-4" />
@@ -218,7 +205,7 @@ export default function Navbar() {
               )}
               <Link
                 href="/aplica"
-                className="flex items-center justify-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0B2E2E] to-[#1B3356] px-4 py-3.5 rounded-xl shadow-md"
+                className="flex items-center justify-center gap-2 text-[15px] font-bold text-white bg-[#C49A20] hover:bg-[#B08A1A] px-4 py-3.5 rounded-xl transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Aplică acum <ChevronRight className="h-4 w-4" />

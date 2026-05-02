@@ -7,8 +7,9 @@ import {
   LayoutDashboard, FileText, BookOpen, Shield, Building2,
   LogOut, ChevronDown, ChevronUp, Trash2, Plus, Pencil, Check, X, Eye,
   BarChart2, Users, Bell, Phone, Mail, TrendingUp, TrendingDown, Calendar,
-  Download, MessageSquare, Star, ArrowRight, Clock, RefreshCw
+  Download, MessageSquare, Star, ArrowRight, Clock, RefreshCw, Zap, Info
 } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from "recharts";
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   pending:   { label: "În așteptare", color: "bg-amber-100 text-amber-700" },
@@ -154,6 +155,24 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
         <div className="flex items-center gap-2 text-xs text-[#64748B]">
           <RefreshCw className="h-3.5 w-3.5" />
           Actualizat: 02.05.2026
+        </div>
+      </div>
+
+      {/* IRCC Banner */}
+      <div className="flex items-center gap-4 mb-6 bg-gradient-to-r from-[#0B2E2E] to-[#0A2525] rounded-xl px-5 py-4">
+        <div className="flex-1 min-w-0">
+          <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">IRCC T2 2026 — BNR Oficial</div>
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className="text-2xl font-extrabold text-white">5.58%</span>
+            <span className="text-xs text-green-400 font-semibold flex items-center gap-0.5">
+              <TrendingDown className="h-3 w-3" /> −0.10 pp vs T1 2026
+            </span>
+          </div>
+          <div className="text-xs text-gray-400 mt-0.5">Valabil 1 apr – 30 iun 2026 · Estimat T3 2026: 5.56% · Tendință: în scădere</div>
+        </div>
+        <div className="text-right shrink-0 hidden sm:block">
+          <div className="text-3xl font-bold text-green-400">↘</div>
+          <div className="text-[10px] text-green-400 font-semibold">trending down</div>
         </div>
       </div>
 
@@ -330,39 +349,60 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        {/* Status breakdown */}
+        {/* Status breakdown — recharts BarChart */}
         <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
-          <h3 className="font-semibold text-[#0B2E2E] mb-4">Status aplicări</h3>
-          <div className="space-y-3">
-            {statusData.map(s => (
-              <div key={s.label}>
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="text-[#64748B]">{s.label}</span>
-                  <span className="font-semibold text-[#0B2E2E]">{s.count} ({s.pct.toFixed(0)}%)</span>
-                </div>
-                <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                  <div className={`h-full ${s.color} rounded-full transition-all`} style={{ width: `${s.pct}%` }} />
-                </div>
+          <h3 className="font-semibold text-[#0B2E2E] mb-1">Status aplicări</h3>
+          <p className="text-xs text-[#64748B] mb-4">Distribuție după starea dosarului</p>
+          <ResponsiveContainer width="100%" height={180}>
+            <BarChart data={statusData} barCategoryGap="30%" margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
+              <XAxis dataKey="label" tick={{ fontSize: 10, fill: "#64748B" }} tickLine={false} axisLine={false} />
+              <YAxis tick={{ fontSize: 10, fill: "#94A3B8" }} tickLine={false} axisLine={false} allowDecimals={false} />
+              <Tooltip
+                formatter={(v: number) => [v, "Aplicări"]}
+                contentStyle={{ fontSize: 11, border: "1px solid #E2E8F0", borderRadius: 8 }}
+                cursor={{ fill: "#F4F6FB" }}
+              />
+              <Bar dataKey="count" radius={[6, 6, 0, 0]}>
+                {statusData.map((s, i) => (
+                  <Cell key={i} fill={["#F59E0B", "#3B82F6", "#10B981", "#EF4444", "#8B5CF6"][i % 5]} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+          <div className="flex flex-wrap gap-3 mt-2">
+            {statusData.map((s, i) => (
+              <div key={s.label} className="flex items-center gap-1.5 text-xs text-[#64748B]">
+                <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: ["#F59E0B", "#3B82F6", "#10B981", "#EF4444", "#8B5CF6"][i % 5] }} />
+                {s.label}: <strong className="text-[#0B2E2E]">{s.count}</strong>
               </div>
             ))}
           </div>
         </div>
 
-        {/* By type */}
+        {/* By type — recharts BarChart */}
         <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
-          <h3 className="font-semibold text-[#0B2E2E] mb-4">Aplicări pe tip de credit</h3>
-          <div className="space-y-4">
-            {byType.map(t => (
-              <div key={t.type}>
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="text-[#64748B] capitalize">{t.type === "refinantare" ? "Refinanțare" : t.type === "personal" ? "Credit personal" : "Credit ipotecar"}</span>
-                  <span className="font-semibold text-[#0B2E2E]">{t.count} ({t.approved} aprobate)</span>
-                </div>
-                <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#0B2E2E] rounded-full" style={{ width: applications.length ? `${(t.count / applications.length) * 100}%` : "0%" }} />
-                </div>
-              </div>
-            ))}
+          <h3 className="font-semibold text-[#0B2E2E] mb-1">Aplicări pe tip de credit</h3>
+          <p className="text-xs text-[#64748B] mb-4">Total vs. aprobate</p>
+          <ResponsiveContainer width="100%" height={180}>
+            <BarChart
+              data={byType.map(t => ({
+                name: t.type === "refinantare" ? "Refinanțare" : t.type === "personal" ? "Personal" : "Ipotecar",
+                total: t.count,
+                aprobate: t.approved,
+              }))}
+              barCategoryGap="30%"
+              margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
+            >
+              <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#64748B" }} tickLine={false} axisLine={false} />
+              <YAxis tick={{ fontSize: 10, fill: "#94A3B8" }} tickLine={false} axisLine={false} allowDecimals={false} />
+              <Tooltip contentStyle={{ fontSize: 11, border: "1px solid #E2E8F0", borderRadius: 8 }} cursor={{ fill: "#F4F6FB" }} />
+              <Bar dataKey="total" name="Total" fill="#0B2E2E" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="aprobate" name="Aprobate" fill="#C49A20" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+          <div className="flex gap-4 mt-2">
+            <div className="flex items-center gap-1.5 text-xs text-[#64748B]"><span className="w-2.5 h-2.5 rounded-sm bg-[#0B2E2E] inline-block" /> Total</div>
+            <div className="flex items-center gap-1.5 text-xs text-[#64748B]"><span className="w-2.5 h-2.5 rounded-sm bg-[#C49A20] inline-block" /> Aprobate</div>
           </div>
         </div>
       </div>

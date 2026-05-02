@@ -2,7 +2,95 @@ import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { Slider } from "@/components/ui/slider";
 import { banks, calculateMonthlyPayment, formatRON } from "@/lib/data";
-import { Star, ArrowRight } from "lucide-react";
+import { Star, ArrowRight, TrendingDown, Info } from "lucide-react";
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine, CartesianGrid } from "recharts";
+
+const IRCC_HISTORY = [
+  { q: "T2'22", v: 2.65 },
+  { q: "T3'22", v: 5.00 },
+  { q: "T4'22", v: 7.18 },
+  { q: "T1'23", v: 8.00 },
+  { q: "T2'23", v: 7.18 },
+  { q: "T3'23", v: 6.37 },
+  { q: "T4'23", v: 6.17 },
+  { q: "T1'24", v: 6.17 },
+  { q: "T2'24", v: 6.08 },
+  { q: "T3'24", v: 5.89 },
+  { q: "T4'24", v: 6.06 },
+  { q: "T1'25", v: 6.06 },
+  { q: "T2'25", v: 6.06 },
+  { q: "T3'25", v: 5.68 },
+  { q: "T4'25", v: 5.68 },
+  { q: "T1'26", v: 5.68 },
+  { q: "T2'26", v: 5.58 },
+  { q: "T3'26*", v: 5.56 },
+];
+
+function IRCCSection() {
+  const current = 5.58;
+  const prev = 5.68;
+  const est = 5.56;
+  const diff = current - prev;
+  return (
+    <div className="mt-10 bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden">
+      <div className="px-5 sm:px-7 py-5 border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-1">Indicele de referință BNR</div>
+          <h2 className="text-xl font-bold text-[#0B2E2E]">Evoluția IRCC — 2022–2026</h2>
+          <p className="text-sm text-[#64748B] mt-1">
+            IRCC (Indicele de Referință pentru Creditele Consumatorilor) se recalculează trimestrial de BNR.
+            Creditele ipotecare cu dobândă variabilă se calculează ca IRCC + marjă fixă a băncii.
+          </p>
+        </div>
+        <div className="flex gap-3 shrink-0">
+          <div className="bg-[#0B2E2E] rounded-xl px-4 py-3 text-center min-w-[80px]">
+            <div className="text-xs text-gray-400 mb-0.5">T2 2026</div>
+            <div className="text-2xl font-extrabold text-white">{current}%</div>
+            <div className={`text-[10px] font-semibold mt-0.5 flex items-center justify-center gap-0.5 ${diff < 0 ? "text-green-400" : "text-red-400"}`}>
+              <TrendingDown className="h-2.5 w-2.5" />
+              {diff > 0 ? "+" : ""}{diff.toFixed(2)} pp vs T1
+            </div>
+          </div>
+          <div className="bg-[#F4F6FB] border border-[#E2E8F0] rounded-xl px-4 py-3 text-center min-w-[80px]">
+            <div className="text-xs text-[#64748B] mb-0.5">T3 2026 est.</div>
+            <div className="text-2xl font-extrabold text-[#0B2E2E]">{est}%</div>
+            <div className="text-[10px] text-[#64748B] mt-0.5">Estimat BNR</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-2 sm:px-4 pt-4 pb-2">
+        <ResponsiveContainer width="100%" height={220}>
+          <AreaChart data={IRCC_HISTORY} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>
+            <defs>
+              <linearGradient id="irccGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#0B2E2E" stopOpacity={0.18} />
+                <stop offset="95%" stopColor="#0B2E2E" stopOpacity={0.01} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+            <XAxis dataKey="q" tick={{ fontSize: 9, fill: "#94A3B8" }} tickLine={false} axisLine={false} interval={1} />
+            <YAxis domain={[0, 10]} tick={{ fontSize: 9, fill: "#94A3B8" }} tickLine={false} axisLine={false} tickFormatter={v => `${v}%`} width={32} />
+            <Tooltip
+              formatter={(val: number) => [`${val.toFixed(2)}%`, "IRCC"]}
+              contentStyle={{ fontSize: 12, border: "1px solid #E2E8F0", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.08)" }}
+              labelStyle={{ fontWeight: 600, color: "#0B2E2E" }}
+            />
+            <ReferenceLine y={current} stroke="#C49A20" strokeDasharray="5 3" strokeWidth={1.5} label={{ value: `${current}% actual`, fontSize: 9, fill: "#C49A20", position: "insideTopRight" }} />
+            <Area type="monotone" dataKey="v" stroke="#0B2E2E" strokeWidth={2} fill="url(#irccGrad)" dot={{ r: 2.5, fill: "#0B2E2E", strokeWidth: 0 }} activeDot={{ r: 5, fill: "#C49A20", stroke: "#0B2E2E", strokeWidth: 2 }} />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="px-5 sm:px-7 py-4 border-t border-[#E2E8F0] bg-[#F4F6FB] flex items-start gap-2">
+        <Info className="h-3.5 w-3.5 text-[#64748B] shrink-0 mt-0.5" />
+        <p className="text-xs text-[#64748B]">
+          <strong className="text-[#0B2E2E]">Cum îți afectează rata?</strong> Dacă ai un credit ipotecar variabil de 150.000 RON pe 25 ani cu marjă 2%, o scădere de 0,1 pp a IRCC înseamnă ~10 RON/lună mai puțin. De la vârful T1 2023 (8,00%) la valoarea actuală (5,58%) rata a scăzut cu ~250 RON/lună. <span className="text-[#C49A20] font-medium">*estimat</span>
+        </p>
+      </div>
+    </div>
+  );
+}
 
 type SortKey = "monthly" | "rate" | "dae" | "rating";
 
@@ -216,7 +304,7 @@ export default function BanksPage() {
         </div>
 
         {/* Banks cards — mobile */}
-        <div className="sm:hidden space-y-3">
+        <div className="sm:hidden space-y-3" data-section="mobile-banks">
           {sortedBanks.map((bank, idx) => (
             <div
               key={bank.id}
@@ -268,6 +356,8 @@ export default function BanksPage() {
             </div>
           ))}
         </div>
+
+        <IRCCSection />
       </div>
     </div>
   );
