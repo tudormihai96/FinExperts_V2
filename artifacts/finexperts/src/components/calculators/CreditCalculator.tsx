@@ -13,7 +13,7 @@ const BEST_RATE_IPOTECAR = +(IRCC + 1.70).toFixed(2); // BRD — cea mai mică m
 
 // ── Hook: curs EUR/RON live de la BNR (prin /api/bnr-rate) ──────────────────
 function useBnrRate() {
-  const [eurRate, setEurRate] = useState<number>(FALLBACK_EUR_RATE);
+  const [bnrRate, setBnrRate] = useState<number>(FALLBACK_EUR_RATE);
   const [rateDate, setRateDate] = useState<string>("");
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,7 @@ function useBnrRate() {
         if (!res.ok) throw new Error("BNR fetch failed");
         const data = await res.json();
         if (!cancelled && data.eurRate) {
-          setEurRate(data.eurRate);
+          setBnrRate(data.eurRate);
           setRateDate(data.publishingDate ?? "");
         }
       } catch {
@@ -38,7 +38,7 @@ function useBnrRate() {
     return () => { cancelled = true; };
   }, []);
 
-  return { eurRate, rateDate, loading };
+  return { bnrRate, rateDate, loading };
 }
 
 // ── SliderInput ──────────────────────────────────────────────────────────────
@@ -87,7 +87,17 @@ export function SliderInput({
 export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
   const isIp = type === "ipotecar";
 
-  const { eurRate, rateDate, loading: rateLoading } = useBnrRate();
+  const { bnrRate, rateDate, loading: rateLoading } = useBnrRate();
+  const [customEurRate, setCustomEurRate] = useState<number | null>(null);
+  const [eurRateEditing, setEurRateEditing] = useState(false);
+  const eurRate = customEurRate ?? bnrRate;
+  const isCustomRate = customEurRate !== null && customEurRate !== bnrRate;
+
+  function commitEurRate(val: string) {
+    const n = parseFloat(val.replace(",", "."));
+    if (!isNaN(n) && n > 1 && n < 20) setCustomEurRate(Math.round(n * 10000) / 10000);
+    setEurRateEditing(false);
+  }
 
   // Currency
   const [currency, setCurrency] = useState<"RON" | "EUR">("RON");
@@ -181,19 +191,56 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           )}
         </div>
 
-        {/* EUR rate info bar */}
-        <p className="text-[10px] text-[#94A3B8] mb-4 flex items-center gap-1.5 flex-wrap">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C49A20] shrink-0" />
-          Click pe orice cifră pentru a introduce valoarea manual
+        {/* Info bar + EUR rate editable */}
+        <div className="mb-4 flex items-center gap-1.5 flex-wrap">
+          <span className="text-[10px] text-[#94A3B8] flex items-center gap-1.5">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C49A20] shrink-0" />
+            Click pe orice cifră pentru a introduce valoarea manual
+          </span>
           {currency === "EUR" && (
-            <span className="ml-1 text-[#C49A20] font-semibold flex items-center gap-1">
-              {rateLoading
-                ? <><RefreshCw className="h-3 w-3 animate-spin" /> Se încarcă cursul BNR...</>
-                : <>· 1 EUR = {eurRate.toFixed(4)} RON{rateDate ? ` (BNR ${rateDate})` : " (BNR ref.)"}</>
-              }
+            <span className="ml-1 flex items-center gap-1 text-[10px]">
+              {rateLoading ? (
+                <span className="text-[#94A3B8] flex items-center gap-1">
+                  <RefreshCw className="h-3 w-3 animate-spin" /> Se încarcă cursul BNR...
+                </span>
+              ) : (
+                <>
+                  <span className="text-[#94A3B8]">· 1 EUR =</span>
+                  {eurRateEditing ? (
+                    <input
+                      autoFocus
+                      type="number"
+                      defaultValue={eurRate}
+                      step="0.0001"
+                      className="w-20 text-xs font-bold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none text-center"
+                      onBlur={e => commitEurRate(e.target.value)}
+                      onKeyDown={e => { if (e.key === "Enter") commitEurRate((e.target as HTMLInputElement).value); if (e.key === "Escape") setEurRateEditing(false); }}
+                    />
+                  ) : (
+                    <button
+                      onClick={() => setEurRateEditing(true)}
+                      className={`font-bold border-b border-dashed transition-colors ${isCustomRate ? "text-[#C49A20] border-[#C49A20]" : "text-[#C49A20] border-[#C49A20]/50 hover:border-[#C49A20]"}`}
+                      title="Click pentru a modifica cursul manual"
+                    >
+                      {eurRate.toFixed(4)}
+                    </button>
+                  )}
+                  <span className="text-[#94A3B8]">RON</span>
+                  {rateDate && !isCustomRate && <span className="text-[#94A3B8]">(BNR {rateDate})</span>}
+                  {isCustomRate && (
+                    <button
+                      onClick={() => setCustomEurRate(null)}
+                      className="text-[#94A3B8] hover:text-[#C49A20] underline transition-colors ml-0.5"
+                      title="Resetează la cursul BNR"
+                    >
+                      ↺ BNR
+                    </button>
+                  )}
+                </>
+              )}
             </span>
           )}
-        </p>
+        </div>
 
         {/* Property / loan value slider */}
         <SliderInput
@@ -391,10 +438,11 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
         </Link>
 
         {/* BNR rate info */}
-        {!rateLoading && (
+        {!rateLoading && eurRate != null && (
           <p className="text-[10px] text-gray-600 text-center mt-3">
             Curs BNR: 1 EUR = {eurRate.toFixed(4)} RON
-            {rateDate && <> · {rateDate}</>}
+            {rateDate && !isCustomRate && <> · {rateDate}</>}
+            {isCustomRate && <span className="text-[#C49A20]"> · curs personalizat</span>}
           </p>
         )}
       </div>
