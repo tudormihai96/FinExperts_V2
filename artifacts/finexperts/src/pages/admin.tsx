@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth, BROKER_ACCOUNTS, getAuditLog, AuditEvent } from "@/lib/auth";
 import { useStore, Application, InsuranceRequest, Guide, SiteSettings } from "@/lib/store";
@@ -13,6 +13,7 @@ import {
   Activity, Key, UserX, CheckCircle, Megaphone, ToggleLeft, ToggleRight,
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from "recharts";
+import { BROKER_ACCOUNTS } from "@/lib/auth";
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   pending:   { label: "În așteptare", color: "bg-amber-100 text-amber-700" },
@@ -830,6 +831,10 @@ function UsersTab({ applications }: { applications: Application[] }) {
   const uniqueClients = Array.from(
     new Map(applications.filter(a => a.email).map(a => [a.email, a])).values()
   );
+  const [search, setSearch] = useState("");
+  const filteredClients = uniqueClients.filter(client =>
+    [client.name, client.email, client.phone, client.bank, client.brokerId].join(" ").toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
@@ -838,6 +843,12 @@ function UsersTab({ applications }: { applications: Application[] }) {
           <h1 className="text-2xl font-bold text-[#0B2E2E]">Utilizatori</h1>
           <p className="text-sm text-[#64748B]">{uniqueClients.length} clienți unici în sistem</p>
         </div>
+        <input
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="Caută client..."
+          className="border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0B2E2E] w-56"
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -891,7 +902,7 @@ function UsersTab({ applications }: { applications: Application[] }) {
           <div className="px-5 py-4 border-b border-[#E2E8F0]">
             <h3 className="font-semibold text-[#0B2E2E]">Clienți recenți</h3>
           </div>
-          {uniqueClients.slice(0, 8).map(client => {
+          {filteredClients.slice(0, 8).map(client => {
             const clientApps = applications.filter(a => a.email === client.email);
             return (
               <div key={client.email} className="px-5 py-3 border-b border-[#F5F7FA] last:border-0 flex items-center gap-3">
@@ -908,6 +919,9 @@ function UsersTab({ applications }: { applications: Application[] }) {
               </div>
             );
           })}
+          {filteredClients.length === 0 && (
+            <div className="py-12 text-center text-sm text-[#64748B]">Niciun utilizator găsit.</div>
+          )}
         </div>
       </div>
     </div>
@@ -916,6 +930,22 @@ function UsersTab({ applications }: { applications: Application[] }) {
 
 // ─── Brokeri ──────────────────────────────────────────────────────────────────
 function BrokeriTab({ applications }: { applications: Application[] }) {
+  const [selected, setSelected] = useState<string | "all">("all");
+  const [search, setSearch] = useState("");
+  const brokerRows = BROKERS.map(broker => {
+    const myApps = applications.filter(a => a.brokerId === broker.id);
+    const approved = myApps.filter(a => a.status === "approved");
+    const pending = myApps.filter(a => a.status === "pending");
+    const inReview = myApps.filter(a => a.status === "in_review" || a.status === "contacted");
+    const totalApproved = approved.reduce((s, a) => s + a.amount, 0);
+    const accountEmail = Object.entries(BROKER_ACCOUNTS).find(([, v]) => v.brokerId === broker.id)?.[0];
+    return { broker, myApps, approved, pending, inReview, totalApproved, accountEmail };
+  });
+  const filteredRows = brokerRows.filter(row =>
+    (selected === "all" || row.broker.id === selected) &&
+    [row.broker.name, row.accountEmail, row.broker.specialization].join(" ").toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div>
       <div className="mb-6">
@@ -923,16 +953,20 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
         <p className="text-sm text-[#64748B]">Statistici individuale și portofoliu per broker</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
-        {BROKERS.map(broker => {
-          const myApps = applications.filter(a => a.brokerId === broker.id);
-          const approved = myApps.filter(a => a.status === "approved");
-          const pending = myApps.filter(a => a.status === "pending");
-          const inReview = myApps.filter(a => a.status === "in_review" || a.status === "contacted");
-          const approvalRate = myApps.length ? Math.round((approved.length / myApps.length) * 100) : 0;
-          const totalApproved = approved.reduce((s, a) => s + a.amount, 0);
-          const accountEmail = Object.entries(BROKER_ACCOUNTS).find(([, v]) => v.brokerId === broker.id)?.[0];
+      <div className="flex flex-wrap gap-2 mb-4">
+        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Caută broker..."
+          className="border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0B2E2E] w-56" />
+        {(["all", ...BROKERS.map(b => b.id)] as const).map(id => (
+          <button key={id} onClick={() => setSelected(id)}
+            className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${selected === id ? "bg-[#0B2E2E] text-white border-[#0B2E2E]" : "bg-white text-[#64748B] border-[#E2E8F0] hover:border-[#0B2E2E]"}`}>
+            {id === "all" ? "Toți brokerii" : BROKERS.find(b => b.id === id)?.name.split(" ")[0]}
+          </button>
+        ))}
+      </div>
 
+      <div className="grid grid-cols-1 gap-4">
+        {filteredRows.map(({ broker, myApps, approved, pending, inReview, totalApproved, accountEmail }) => {
+          const approvalRate = myApps.length ? Math.round((approved.length / myApps.length) * 100) : 0;
           return (
             <div key={broker.id} className="bg-white border border-[#E2E8F0] rounded-xl p-5">
               <div className="flex items-start gap-4 mb-5">
@@ -986,6 +1020,7 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
             </div>
           );
         })}
+        {filteredRows.length === 0 && <div className="py-12 text-center text-sm text-[#64748B]">Niciun broker găsit.</div>}
       </div>
     </div>
   );
@@ -995,6 +1030,9 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
 function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) {
   const [local, setLocal] = useState<SiteSettings>({ ...settings });
   const [saved, setSaved] = useState(false);
+  const preview = useMemo(() => ({
+    label: local.announcementColor === "gold" ? "Auriu" : local.announcementColor === "teal" ? "Teal" : local.announcementColor === "red" ? "Roșu" : "Verde",
+  }), [local.announcementColor]);
 
   const save = () => {
     setSettings(local);
@@ -1035,6 +1073,21 @@ function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSett
               <input type="text" value={local.footerNote} onChange={e => setLocal(l => ({ ...l, footerNote: e.target.value }))}
                 className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0B2E2E]" />
             </div>
+          </div>
+        </div>
+
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
+              <Globe className="h-4 w-4 text-green-600" />
+            </div>
+            <h3 className="font-semibold text-[#0B2E2E]">Stare site</h3>
+          </div>
+          <div className="space-y-3 text-sm">
+            <div className="flex items-center justify-between"><span>Înregistrări noi</span><strong>{local.allowNewRegistrations ? "Active" : "Oprite"}</strong></div>
+            <div className="flex items-center justify-between"><span>Mentenanță</span><strong>{local.maintenanceMode ? "Pornită" : "Oprită"}</strong></div>
+            <div className="flex items-center justify-between"><span>Banner</span><strong>{local.announcementActive ? "Activ" : "Inactiv"}</strong></div>
+            <div className="flex items-center justify-between"><span>Culoare banner</span><strong>{preview.label}</strong></div>
           </div>
         </div>
 
@@ -1151,6 +1204,8 @@ function SecurityTab() {
     localStorage.removeItem("finexperts_audit");
     window.location.reload();
   };
+  const loginFails = auditLog.filter(e => e.type === "login_fail");
+  const recentUsers = Array.from(new Set(auditLog.filter(e => e.type === "login_success").map(e => e.email))).slice(0, 8);
 
   return (
     <div>
@@ -1182,12 +1237,38 @@ function SecurityTab() {
         ))}
       </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
+          <h3 className="font-semibold text-[#0B2E2E] mb-3">Conturi cu ultimele autentificări</h3>
+          <div className="space-y-2">
+            {recentUsers.length > 0 ? recentUsers.map(email => (
+              <div key={email} className="flex items-center justify-between text-sm">
+                <span className="text-[#0B2E2E] truncate">{email}</span>
+                <span className="text-xs text-[#64748B]">activ</span>
+              </div>
+            )) : <div className="text-sm text-[#64748B]">Fără date.</div>}
+          </div>
+        </div>
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
+          <h3 className="font-semibold text-[#0B2E2E] mb-3">Tentative eșuate recente</h3>
+          <div className="space-y-2">
+            {loginFails.slice(0, 5).map(ev => (
+              <div key={`${ev.ts}-${ev.email}`} className="flex items-center justify-between text-sm">
+                <span className="text-[#0B2E2E] truncate">{ev.email}</span>
+                <span className="text-xs text-red-600">{new Date(ev.ts).toLocaleTimeString("ro-RO", { hour: "2-digit", minute: "2-digit" })}</span>
+              </div>
+            ))}
+            {loginFails.length === 0 && <div className="text-sm text-[#64748B]">Fără tentative eșuate.</div>}
+          </div>
+        </div>
+      </div>
+
       {/* Politici de securitate active */}
       <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 mb-6">
         <h3 className="font-semibold text-[#0B2E2E] mb-4 flex items-center gap-2">
           <ShieldCheck className="h-5 w-5 text-green-600" /> Politici de securitate active
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {[
             { label: "Blocare după 5 tentative eșuate", detail: "Durata blocării: 15 minute", active: true },
             { label: "Sesiune cu expirare automată", detail: "Sesiune expirată după 8 ore de inactivitate", active: true },
