@@ -8,7 +8,8 @@ import {
   ArrowRight, Home, Activity, Plane, Heart, CheckCircle,
   User, Bell, Calculator, BookOpen, Star, Clock, Check,
   Mail, AlertCircle, Download, TrendingDown, TrendingUp,
-  Info, Zap, RefreshCw, CreditCard, PiggyBank
+  Info, Zap, RefreshCw, CreditCard, PiggyBank, Lock, Eye, EyeOff,
+  Building2, Briefcase, Globe, Landmark, BarChart3, ChevronDown, ChevronUp
 } from "lucide-react";
 
 const STATUS_COLORS: Record<string, string> = {
@@ -80,13 +81,292 @@ const insuranceProducts = [
   { id: "viata", title: "Asigurare de viață", desc: "Protecție familie + investiții", icon: Heart, price: 480 },
 ];
 
-const documentChecklist = [
-  { label: "Carte de identitate", hint: "Copie față-verso, valabilă" },
-  { label: "Adeverință venit", hint: "Emisă cu max. 30 zile înainte" },
-  { label: "Ultimele 3 fluturași de salariu", hint: "Sau extras cont dacă ești PFA" },
-  { label: "Extras de cont 3-6 luni", hint: "Contul principal de venit" },
-  { label: "Contract de muncă", hint: "Prima pagină + ultima pagină semnată" },
+type DocAlt = { label: string; hint?: string };
+type DocGroup = { id: string; alternatives: DocAlt[]; required: boolean; note?: string };
+type DocSection = { title: string; groups: DocGroup[] };
+type IncomeCategory = { id: string; label: string; icon: React.ElementType; sections: DocSection[] };
+
+const DOC_CI: DocGroup = {
+  id: "ci", required: true,
+  alternatives: [{ label: "Carte de identitate / Buletin de identitate", hint: "Copie față-verso, în termen de valabilitate" }],
+};
+
+const INCOME_DOCS: IncomeCategory[] = [
+  {
+    id: "salariat-ro", label: "Salariat România", icon: Building2,
+    sections: [
+      { title: "Identitate", groups: [DOC_CI] },
+      {
+        title: "Dovada venitului",
+        groups: [
+          {
+            id: "venit-principal", required: true,
+            note: "Oricare unul este suficient",
+            alternatives: [
+              { label: "Adeverință de salariu", hint: "Original, semnată de angajator, emisă max. 60 zile" },
+              { label: "Acord interogare ANAF", hint: "Formular tipizat semnat — banca consultă venitul automat" },
+              { label: "Viramente salariale (extras cont)", hint: "Dacă salariul vine în cont la aceeași bancă" },
+            ],
+          },
+          {
+            id: "venit-an-anterior", required: false,
+            note: "Opțional — poate fi solicitat suplimentar de bancă",
+            alternatives: [
+              { label: "Fișă fiscală an anterior", hint: "Emisă de angajator — include venit brut și deduceri" },
+              { label: "Declarație informativă venituri D112", hint: "Dacă nu există fișa fiscală" },
+              { label: "Fluturași de salariu (ultimele 12 luni)", hint: "În original sau copie certificată" },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Contract și angajare",
+        groups: [
+          {
+            id: "contract-munca", required: false,
+            alternatives: [{ label: "Contract individual de muncă", hint: "Prima + ultima pagină semnată de angajator" }],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "salariat-strainatate", label: "Salariat Străinătate", icon: Globe,
+    sections: [
+      {
+        title: "Identitate",
+        groups: [
+          {
+            id: "ci-pasaport", required: true,
+            note: "Cel puțin unul",
+            alternatives: [
+              { label: "Carte de identitate / CI-UE valabilă", hint: "Copie față-verso" },
+              { label: "Pașaport emis de statul român", hint: "Valabil pe toată durata creditului" },
+            ],
+          },
+          {
+            id: "permis-rezidenta", required: true,
+            alternatives: [{ label: "Permis de rezidență în țara angajatorului", hint: "Valabil — dovedește rezidența în statul respectiv" }],
+          },
+        ],
+      },
+      {
+        title: "Dovada venitului",
+        groups: [
+          {
+            id: "venit-strainatate", required: true,
+            note: "Oricare unul",
+            alternatives: [
+              { label: "Extras de cont (12 luni)", hint: "Identificabil viramentul salarial de la angajator" },
+              { label: "Fluturași de salariu (12 luni)", hint: "Traducere legalizată dacă nu sunt în română/engleză" },
+              { label: "Adeverință de venit", hint: "Original — emisă de angajatorul din străinătate" },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Contract angajare",
+        groups: [
+          {
+            id: "contract-strainatate", required: true,
+            alternatives: [{ label: "Contract de muncă (+ traducere dacă nu-i în ro/en)", hint: "Original sau copie certificată" }],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "pensionar", label: "Pensionar", icon: Landmark,
+    sections: [
+      { title: "Identitate", groups: [DOC_CI] },
+      {
+        title: "Dovada pensiei",
+        groups: [
+          {
+            id: "talon-pensie", required: true,
+            note: "Oricare unul",
+            alternatives: [
+              { label: "Ultimul talon de pensie", hint: "Luna curentă sau precedentă — original sau electronic" },
+              { label: "Extras de cont (virament pensie)", hint: "Dacă pensia se încasează în cont bancar" },
+            ],
+          },
+          {
+            id: "decizie-pensionare", required: true,
+            alternatives: [{ label: "Decizia de pensionare", hint: "Copie — emisă de Casa Națională de Pensii" }],
+          },
+          {
+            id: "decizie-medicala", required: false,
+            note: "Obligatoriu DOAR pentru pensie de invaliditate",
+            alternatives: [{ label: "Decizia comisiei medicale (pensie de invaliditate)", hint: "Dovedește caracterul permanent/nerevizuibil" }],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "pfa", label: "PFA / Liber profesionist", icon: Briefcase,
+    sections: [
+      { title: "Identitate", groups: [DOC_CI] },
+      {
+        title: "Acte de constituire",
+        groups: [
+          {
+            id: "certificat-onrc", required: true,
+            note: "Oricare — în funcție de forma de organizare",
+            alternatives: [
+              { label: "Certificat de înregistrare ONRC", hint: "PFA, II sau IF — cu cod de înregistrare fiscal" },
+              { label: "Autorizație exercitare profesie (avocați, notari, medici)", hint: "Emisă de baroul/colegiul de profil" },
+              { label: "Decizie de autorizare PFA", hint: "Emisă de primăria de domiciliu" },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Documente fiscale",
+        groups: [
+          {
+            id: "declaratie-unica-pfa", required: true,
+            note: "Oricare una",
+            alternatives: [
+              { label: "Declarație Unică (D212) + recipisă ANAF", hint: "An anterior + estimat an curent — original sau electronic" },
+              { label: "Acord interogare ANAF", hint: "Formular tipizat — banca consultă veniturile automat" },
+            ],
+          },
+          {
+            id: "registru-incasari", required: true,
+            alternatives: [{ label: "Registrul de Încasări și Plăți (ultimele 12 luni)", hint: "Evidențierea veniturilor și cheltuielilor — semnat" }],
+          },
+          {
+            id: "extras-cont-pfa", required: false,
+            note: "Poate fi solicitat suplimentar",
+            alternatives: [
+              { label: "Extras de cont bancar (12 luni)", hint: "Contul principal de activitate PFA" },
+              { label: "Bilanț contabil (dacă PD — partida dublă)", hint: "Semnat de administrator + contabil" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "chirii", label: "Venituri din chirii", icon: Home,
+    sections: [
+      { title: "Identitate", groups: [DOC_CI] },
+      {
+        title: "Proprietate și contract",
+        groups: [
+          {
+            id: "contract-chirie", required: true,
+            note: "Trebuie să specifice valoarea chiriei și perioada contractuală",
+            alternatives: [{ label: "Contract de închiriere înregistrat la ANAF", hint: "Cu ștampilă ANAF sau + cerere înregistrare + mesaj electronic" }],
+          },
+          {
+            id: "docprop-chirie", required: true,
+            note: "Cel puțin unul",
+            alternatives: [
+              { label: "Act de proprietate al imobilului închiriat", hint: "Titlu proprietate, contract vânzare-cumpărare, etc." },
+              { label: "Extras de Carte Funciară", hint: "Max. 30 zile de la data cererii — emis de ANCPI" },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Documente fiscale și venit",
+        groups: [
+          {
+            id: "declaratie-unica-chirii", required: true,
+            note: "Cel puțin una",
+            alternatives: [
+              { label: "Declarație Unică (D212) + recipisă ANAF", hint: "An anterior + estimat an curent — obligatorie dacă ești persoană fizică" },
+              { label: "Declarații lunare chiriaș PJ (dacă chiriașul e firmă)", hint: "Firmele rețin impozit la sursă și declară lunar" },
+            ],
+          },
+          {
+            id: "dovada-incasare-chirie", required: false,
+            note: "Poate fi solicitat suplimentar",
+            alternatives: [
+              { label: "Extras de cont (12 luni) cu viramente chirie", hint: "Identificabile transferurile lunare de la chiriaș" },
+              { label: "Chitanțe de încasare chirie (12 luni)", hint: "Dacă plata se face în numerar" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "dividende", label: "Dividende", icon: BarChart3,
+    sections: [
+      { title: "Identitate", groups: [DOC_CI] },
+      {
+        title: "Documente societate",
+        groups: [
+          {
+            id: "balanta", required: true,
+            alternatives: [{ label: "Ultima balanță de verificare lunară", hint: "Max. 2 luni vechime — semnată de administrator + contabil, în original" }],
+          },
+          {
+            id: "bilant", required: true,
+            alternatives: [{ label: "Bilanțuri contabile (ultimii 2 ani)", hint: "Ambii ani cu rezultat net pozitiv (profit) — depuse la ANAF" }],
+          },
+        ],
+      },
+      {
+        title: "Dovada încasării dividendelor",
+        groups: [
+          {
+            id: "incasare-dividende", required: true,
+            note: "Oricare unul — pentru ambii ani de dividende",
+            alternatives: [
+              { label: "Extras de cont (virament dividende nete)", hint: "Din data distribuirii profitului, pentru ambii ani consecutivi" },
+              { label: "Dispoziții de plată + Registru Casă", hint: "Dacă dividendele s-au încasat în numerar (max. 10.000 RON/zi)" },
+              { label: "Declarația 205 + recipisă ANAF", hint: "Doar dacă în D205 apar exclusiv datele clienților din creditul curent" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
+
+const IPOTECAR_SECTION: DocSection = {
+  title: "Documente imobil (credit ipotecar)",
+  groups: [
+    {
+      id: "extras-cf", required: true,
+      alternatives: [{ label: "Extras de Carte Funciară", hint: "Max. 30 zile de la data cererii — emis de ANCPI/notariat" }],
+    },
+    {
+      id: "plan-cadastral", required: true,
+      alternatives: [{ label: "Plan cadastral și documentație intabulare", hint: "Emise de un topograf autorizat ANCPI" }],
+    },
+    {
+      id: "act-proprietate-imobil", required: true,
+      note: "Oricare document atestând dreptul de proprietate",
+      alternatives: [
+        { label: "Titlu de proprietate", hint: "Emis de primărie — imobile restituite sau retrocedate" },
+        { label: "Contract de vânzare-cumpărare (formă autentică)", hint: "Semnat la notar" },
+        { label: "Autorizație de construire + Proces verbal de recepție", hint: "Pentru construcții noi" },
+        { label: "Certificat de moștenitor", hint: "Pentru imobile dobândite prin succesiune" },
+      ],
+    },
+    {
+      id: "evaluare-anevar", required: true,
+      alternatives: [{ label: "Raport de evaluare ANEVAR", hint: "Emis de evaluator autorizat — banca poate recomanda evaluator propriu" }],
+    },
+    {
+      id: "asigurare-pad", required: true,
+      alternatives: [{ label: "Poliță de asigurare PAD (obligatorie prin lege)", hint: "Cesionată în favoarea băncii creditoare pe durata creditului" }],
+    },
+    {
+      id: "antecontract", required: false,
+      note: "La creditele de achiziție — oricare",
+      alternatives: [
+        { label: "Antecontract de vânzare-cumpărare", hint: "Promisiune bilaterală de vânzare — semnat la notar" },
+        { label: "Contract de vânzare-cumpărare semnat", hint: "Dacă tranzacția este deja finalizată" },
+      ],
+    },
+  ],
+};
 
 type Tab = "overview" | "credit" | "asigurari" | "profil" | "documente" | "notificari";
 
@@ -98,7 +378,10 @@ export default function AccountPage() {
   const [applyingIns, setApplyingIns] = useState<string | null>(null);
   const [insForm, setInsForm] = useState({ name: "", phone: "", email: "" });
   const [insSuccess, setInsSuccess] = useState<string | null>(null);
-  const [checkedDocs, setCheckedDocs] = useState<Set<number>>(new Set());
+  const [checkedDocs, setCheckedDocs] = useState<Set<string>>(new Set());
+  const [docCreditType, setDocCreditType] = useState<"personal" | "ipotecar">("personal");
+  const [docIncomeType, setDocIncomeType] = useState("salariat-ro");
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["Identitate", "Dovada venitului", "Dovada pensiei"]));
   const [profileForm, setProfileForm] = useState({ name: user?.name || "", phone: "", email: user?.email || "" });
   const [profileSaved, setProfileSaved] = useState(false);
   const [selectedBrokerId, setSelectedBrokerId] = useState(() => getStoredBrokerId());
@@ -107,6 +390,14 @@ export default function AccountPage() {
   const handleBrokerChange = (id: string) => {
     setSelectedBrokerId(id);
     setStoredBrokerId(id);
+  };
+
+  const toggleSection = (title: string) => {
+    setExpandedSections(prev => {
+      const next = new Set(prev);
+      next.has(title) ? next.delete(title) : next.add(title);
+      return next;
+    });
   };
 
   if (!isLoggedIn) {
@@ -143,11 +434,18 @@ export default function AccountPage() {
     setTimeout(() => setInsSuccess(null), 4000);
   };
 
-  const toggleDoc = (i: number) => {
-    const next = new Set(checkedDocs);
-    next.has(i) ? next.delete(i) : next.add(i);
-    setCheckedDocs(next);
+  const toggleDoc = (key: string) => {
+    setCheckedDocs(prev => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
   };
+
+  const currentCat = INCOME_DOCS.find(c => c.id === docIncomeType) || INCOME_DOCS[0];
+  const totalDocGroups = currentCat.sections.reduce((s, sec) => s + sec.groups.length, 0)
+    + (docCreditType === "ipotecar" ? IPOTECAR_SECTION.groups.length : 0);
+  const checkedInCurrent = Array.from(checkedDocs).filter(k => k.startsWith(docIncomeType) || k.startsWith("ipotecar-")).length;
 
   const TABS: { id: Tab; label: string; icon: React.ElementType }[] = [
     { id: "overview", label: "Prezentare", icon: Home },
@@ -202,7 +500,7 @@ export default function AccountPage() {
                 { label: "Aplicări", value: myApplications.length, color: "text-blue-600", tab: "credit" as Tab },
                 { label: "Aprobate", value: myApplications.filter(a => a.status === "approved").length, color: "text-green-600", tab: "credit" as Tab },
                 { label: "În curs", value: myApplications.filter(a => ["pending", "in_review", "contacted"].includes(a.status)).length, color: "text-amber-600", tab: "credit" as Tab },
-                { label: "Documente", value: `${checkedDocs.size}/${documentChecklist.length}`, color: "text-purple-600", tab: "documente" as Tab },
+                { label: "Documente", value: `${checkedInCurrent}/${totalDocGroups}`, color: "text-purple-600", tab: "documente" as Tab },
               ].map(s => (
                 <button key={s.label} onClick={() => setActiveTab(s.tab)} className="bg-white border border-[#E2E8F0] rounded-xl p-5 text-center hover:border-[#0B2E2E] transition-colors">
                   <div className={`text-3xl font-bold mb-1 ${s.color}`}>{s.value}</div>
@@ -431,56 +729,287 @@ export default function AccountPage() {
 
         {/* ── DOCUMENTE ── */}
         {activeTab === "documente" && (
-          <div>
-            <div className="mb-5">
+          <div className="space-y-4">
+            <div>
               <h2 className="text-xl font-bold text-[#0B2E2E]">Documente necesare</h2>
-              <p className="text-sm text-[#64748B]">Lista completă de documente pentru dosarul de credit</p>
+              <p className="text-sm text-[#64748B]">Selectează tipul de credit și sursa de venit pentru a vedea exact ce documente pregătești</p>
             </div>
-            <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden mb-4">
-              <div className="px-5 py-4 border-b border-[#E2E8F0] flex items-center justify-between">
-                <h3 className="font-semibold text-[#0B2E2E]">Checklist dosar credit</h3>
-                <span className="text-sm font-bold text-[#0B2E2E]">{checkedDocs.size}/{documentChecklist.length} pregătite</span>
+
+            {/* Step 1 — tip credit */}
+            <div className="bg-white border border-[#E2E8F0] rounded-xl p-4">
+              <div className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <span className="w-5 h-5 rounded-full bg-[#0B2E2E] text-white flex items-center justify-center text-[10px] font-bold">1</span>
+                Tipul creditului
               </div>
-              <div className="p-2">
-                {/* Progress bar */}
-                <div className="px-3 pt-2 pb-3">
-                  <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                    <div className="h-full bg-[#C49A20] rounded-full transition-all" style={{ width: `${(checkedDocs.size / documentChecklist.length) * 100}%` }} />
-                  </div>
-                </div>
-                {documentChecklist.map((doc, i) => (
-                  <button key={i} onClick={() => toggleDoc(i)}
-                    className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#F5F7FA] transition-colors text-left ${checkedDocs.has(i) ? "opacity-70" : ""}`}>
-                    <div className={`w-5 h-5 rounded flex items-center justify-center shrink-0 border-2 transition-all ${checkedDocs.has(i) ? "bg-green-500 border-green-500" : "border-[#E2E8F0]"}`}>
-                      {checkedDocs.has(i) && <Check className="h-3 w-3 text-white" />}
+              <div className="grid grid-cols-2 gap-2">
+                {([
+                  { id: "personal" as const, label: "Credit personal", desc: "Nevoi personale, fără garanție imobiliară", icon: CreditCard },
+                  { id: "ipotecar" as const, label: "Credit ipotecar", desc: "Achiziție sau construire locuință", icon: Home },
+                ] as { id: "personal" | "ipotecar"; label: string; desc: string; icon: React.ElementType }[]).map(ct => (
+                  <button key={ct.id} onClick={() => setDocCreditType(ct.id)}
+                    className={`flex items-start gap-3 p-3.5 rounded-xl border-2 text-left transition-all ${docCreditType === ct.id ? "border-[#0B2E2E] bg-[#0B2E2E]/5" : "border-[#E2E8F0] hover:border-[#0B2E2E]/30"}`}>
+                    <ct.icon className={`h-5 w-5 mt-0.5 shrink-0 ${docCreditType === ct.id ? "text-[#0B2E2E]" : "text-[#64748B]"}`} />
+                    <div>
+                      <div className={`text-sm font-semibold ${docCreditType === ct.id ? "text-[#0B2E2E]" : "text-[#64748B]"}`}>{ct.label}</div>
+                      <div className="text-[11px] text-[#64748B]">{ct.desc}</div>
                     </div>
-                    <div className="flex-1">
-                      <div className={`text-sm font-medium ${checkedDocs.has(i) ? "line-through text-[#64748B]" : "text-[#0B2E2E]"}`}>{doc.label}</div>
-                      <div className="text-xs text-[#64748B]">{doc.hint}</div>
-                    </div>
+                    {docCreditType === ct.id && <div className="ml-auto shrink-0 w-4 h-4 rounded-full bg-[#0B2E2E] flex items-center justify-center"><Check className="h-2.5 w-2.5 text-white" /></div>}
                   </button>
                 ))}
               </div>
-              {checkedDocs.size === documentChecklist.length && (
-                <div className="px-5 py-4 border-t border-[#E2E8F0] bg-green-50">
-                  <div className="flex items-center gap-2 text-green-700">
-                    <CheckCircle className="h-4 w-4" />
-                    <span className="text-sm font-semibold">Dosarul este complet! Poți aplica acum.</span>
-                  </div>
+            </div>
+
+            {/* Step 2 — sursă venit */}
+            <div className="bg-white border border-[#E2E8F0] rounded-xl p-4">
+              <div className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <span className="w-5 h-5 rounded-full bg-[#0B2E2E] text-white flex items-center justify-center text-[10px] font-bold">2</span>
+                Sursa principală de venit
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {INCOME_DOCS.map(cat => (
+                  <button key={cat.id} onClick={() => { setDocIncomeType(cat.id); setExpandedSections(new Set(["Identitate", cat.sections[1]?.title || ""])); }}
+                    className={`flex items-center gap-2 p-2.5 rounded-xl border-2 text-left transition-all ${docIncomeType === cat.id ? "border-[#C49A20] bg-[#C49A20]/8" : "border-[#E2E8F0] hover:border-[#C49A20]/40"}`}>
+                    <cat.icon className={`h-4 w-4 shrink-0 ${docIncomeType === cat.id ? "text-[#C49A20]" : "text-[#64748B]"}`} />
+                    <span className={`text-xs font-semibold leading-tight ${docIncomeType === cat.id ? "text-[#0B2E2E]" : "text-[#64748B]"}`}>{cat.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Progress bar */}
+            <div className="bg-white border border-[#E2E8F0] rounded-xl px-5 py-3.5 flex items-center gap-4">
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-xs font-semibold text-[#0B2E2E]">Progres dosar</span>
+                  <span className="text-xs font-bold text-[#0B2E2E]">{checkedInCurrent}/{totalDocGroups} documente</span>
+                </div>
+                <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-[#C49A20] to-[#0B2E2E] rounded-full transition-all duration-500"
+                    style={{ width: `${totalDocGroups > 0 ? (checkedInCurrent / totalDocGroups) * 100 : 0}%` }} />
+                </div>
+              </div>
+              {checkedInCurrent === totalDocGroups && totalDocGroups > 0 && (
+                <div className="flex items-center gap-1.5 text-green-600 text-xs font-bold shrink-0">
+                  <CheckCircle className="h-4 w-4" /> Complet!
                 </div>
               )}
             </div>
 
-            <div className="bg-[#0B2E2E] rounded-xl p-5 flex items-center justify-between gap-4">
-              <div>
-                <div className="text-white font-semibold mb-0.5">Trimite dosarul prin email</div>
-                <div className="text-gray-400 text-sm">Un broker verifică documentele și îți confirmă în 24h</div>
+            {/* Document sections for selected income type */}
+            <div className="space-y-3">
+              {currentCat.sections.map(section => {
+                const isOpen = expandedSections.has(section.title);
+                const sectionChecked = section.groups.filter(g => checkedDocs.has(`${docIncomeType}-${g.id}`)).length;
+                return (
+                  <div key={section.title} className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
+                    <button onClick={() => toggleSection(section.title)}
+                      className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#F5F7FA] transition-colors">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-[#0B2E2E] text-sm">{section.title}</span>
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${sectionChecked === section.groups.length ? "bg-green-100 text-green-700" : "bg-[#F5F7FA] text-[#64748B]"}`}>
+                          {sectionChecked}/{section.groups.length}
+                        </span>
+                      </div>
+                      {isOpen ? <ChevronUp className="h-4 w-4 text-[#64748B]" /> : <ChevronDown className="h-4 w-4 text-[#64748B]" />}
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-4 pb-4 space-y-2 border-t border-[#F5F7FA]">
+                        {section.groups.map(group => {
+                          const key = `${docIncomeType}-${group.id}`;
+                          const isChecked = checkedDocs.has(key);
+                          const hasAlts = group.alternatives.length > 1;
+                          return (
+                            <div key={group.id} className={`mt-2 rounded-xl border-2 transition-all ${isChecked ? "border-green-200 bg-green-50" : group.required ? "border-[#E2E8F0]" : "border-dashed border-[#E2E8F0] bg-[#FAFAFA]"}`}>
+                              <button onClick={() => toggleDoc(key)}
+                                className="w-full flex items-start gap-3 px-4 py-3 text-left">
+                                <div className={`w-5 h-5 rounded flex items-center justify-center shrink-0 border-2 mt-0.5 transition-all ${isChecked ? "bg-green-500 border-green-500" : "border-[#CBD5E1]"}`}>
+                                  {isChecked && <Check className="h-3 w-3 text-white" />}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  {!hasAlts ? (
+                                    <>
+                                      <div className={`text-sm font-medium leading-tight ${isChecked ? "line-through text-[#94A3B8]" : "text-[#0B2E2E]"}`}>
+                                        {group.alternatives[0].label}
+                                      </div>
+                                      {group.alternatives[0].hint && (
+                                        <div className="text-[11px] text-[#64748B] mt-0.5">{group.alternatives[0].hint}</div>
+                                      )}
+                                    </>
+                                  ) : (
+                                    <>
+                                      <div className="flex flex-wrap items-center gap-1 mb-1">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#C49A20] bg-[#C49A20]/10 px-1.5 py-0.5 rounded">SAU — oricare</span>
+                                      </div>
+                                      <div className="space-y-1.5">
+                                        {group.alternatives.map((alt, ai) => (
+                                          <div key={ai} className="flex items-start gap-2">
+                                            {ai > 0 && <span className="text-[10px] font-bold text-[#C49A20] mt-0.5 shrink-0">SAU</span>}
+                                            {ai === 0 && <span className="w-[22px] shrink-0" />}
+                                            <div>
+                                              <div className={`text-sm font-medium leading-tight ${isChecked ? "line-through text-[#94A3B8]" : "text-[#0B2E2E]"}`}>{alt.label}</div>
+                                              {alt.hint && <div className="text-[11px] text-[#64748B]">{alt.hint}</div>}
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </>
+                                  )}
+                                  {group.note && (
+                                    <div className="mt-1.5 flex items-start gap-1">
+                                      <Info className="h-3 w-3 text-[#94A3B8] mt-0.5 shrink-0" />
+                                      <span className="text-[11px] text-[#94A3B8] italic">{group.note}</span>
+                                    </div>
+                                  )}
+                                </div>
+                                {!group.required && (
+                                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] bg-[#F5F7FA] px-1.5 py-0.5 rounded shrink-0 mt-0.5">opțional</span>
+                                )}
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+
+              {/* Credit ipotecar — extra documents */}
+              {docCreditType === "ipotecar" && (() => {
+                const isOpen = expandedSections.has(IPOTECAR_SECTION.title);
+                const sectionChecked = IPOTECAR_SECTION.groups.filter(g => checkedDocs.has(`ipotecar-${g.id}`)).length;
+                return (
+                  <div className="bg-[#0B2E2E]/4 border-2 border-[#0B2E2E]/20 rounded-xl overflow-hidden">
+                    <button onClick={() => toggleSection(IPOTECAR_SECTION.title)}
+                      className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#0B2E2E]/8 transition-colors">
+                      <div className="flex items-center gap-2">
+                        <Landmark className="h-4 w-4 text-[#0B2E2E]" />
+                        <span className="font-semibold text-[#0B2E2E] text-sm">{IPOTECAR_SECTION.title}</span>
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${sectionChecked === IPOTECAR_SECTION.groups.length ? "bg-green-100 text-green-700" : "bg-white text-[#64748B]"}`}>
+                          {sectionChecked}/{IPOTECAR_SECTION.groups.length}
+                        </span>
+                      </div>
+                      {isOpen ? <ChevronUp className="h-4 w-4 text-[#0B2E2E]" /> : <ChevronDown className="h-4 w-4 text-[#0B2E2E]" />}
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4 space-y-2 border-t border-[#0B2E2E]/10">
+                        {IPOTECAR_SECTION.groups.map(group => {
+                          const key = `ipotecar-${group.id}`;
+                          const isChecked = checkedDocs.has(key);
+                          const hasAlts = group.alternatives.length > 1;
+                          return (
+                            <div key={group.id} className={`mt-2 rounded-xl border-2 bg-white transition-all ${isChecked ? "border-green-200 bg-green-50" : group.required ? "border-[#E2E8F0]" : "border-dashed border-[#E2E8F0] bg-[#FAFAFA]"}`}>
+                              <button onClick={() => toggleDoc(key)} className="w-full flex items-start gap-3 px-4 py-3 text-left">
+                                <div className={`w-5 h-5 rounded flex items-center justify-center shrink-0 border-2 mt-0.5 transition-all ${isChecked ? "bg-green-500 border-green-500" : "border-[#CBD5E1]"}`}>
+                                  {isChecked && <Check className="h-3 w-3 text-white" />}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  {!hasAlts ? (
+                                    <>
+                                      <div className={`text-sm font-medium leading-tight ${isChecked ? "line-through text-[#94A3B8]" : "text-[#0B2E2E]"}`}>
+                                        {group.alternatives[0].label}
+                                      </div>
+                                      {group.alternatives[0].hint && <div className="text-[11px] text-[#64748B] mt-0.5">{group.alternatives[0].hint}</div>}
+                                    </>
+                                  ) : (
+                                    <>
+                                      <div className="flex flex-wrap items-center gap-1 mb-1">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#C49A20] bg-[#C49A20]/10 px-1.5 py-0.5 rounded">SAU — oricare</span>
+                                      </div>
+                                      <div className="space-y-1.5">
+                                        {group.alternatives.map((alt, ai) => (
+                                          <div key={ai} className="flex items-start gap-2">
+                                            {ai > 0 && <span className="text-[10px] font-bold text-[#C49A20] mt-0.5 shrink-0">SAU</span>}
+                                            {ai === 0 && <span className="w-[22px] shrink-0" />}
+                                            <div>
+                                              <div className={`text-sm font-medium leading-tight ${isChecked ? "line-through text-[#94A3B8]" : "text-[#0B2E2E]"}`}>{alt.label}</div>
+                                              {alt.hint && <div className="text-[11px] text-[#64748B]">{alt.hint}</div>}
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </>
+                                  )}
+                                  {group.note && (
+                                    <div className="mt-1.5 flex items-start gap-1">
+                                      <Info className="h-3 w-3 text-[#94A3B8] mt-0.5 shrink-0" />
+                                      <span className="text-[11px] text-[#94A3B8] italic">{group.note}</span>
+                                    </div>
+                                  )}
+                                </div>
+                                {!group.required && (
+                                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] bg-[#F5F7FA] px-1.5 py-0.5 rounded shrink-0 mt-0.5">opțional</span>
+                                )}
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+            </div>
+
+            {/* GDPR / Security notice */}
+            <div className="bg-[#F5F7FA] border border-[#E2E8F0] rounded-xl p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#0B2E2E]/8 flex items-center justify-center shrink-0">
+                  <Lock className="h-4 w-4 text-[#0B2E2E]" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-[#0B2E2E] mb-1 flex items-center gap-2">
+                    Protecția datelor personale — GDPR
+                    <span className="text-[10px] font-bold bg-green-100 text-green-700 px-1.5 py-0.5 rounded uppercase tracking-wider">Conform RGPD</span>
+                  </div>
+                  <p className="text-xs text-[#64748B] leading-relaxed mb-2">
+                    Documentele trimise sunt utilizate exclusiv în scopul analizei dosarului de credit. Datele personale sunt procesate conform <strong>Regulamentului UE 679/2016 (GDPR)</strong> și <strong>Legii 190/2018</strong>. Nu transmitem documentele terților fără consimțământul tău explicit.
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { icon: Eye, label: "Transparență totală", desc: "Știi exact cui trimiți și în ce scop" },
+                      { icon: Lock, label: "Transfer securizat", desc: "Email criptat cu CC la coordonator" },
+                      { icon: Shield, label: "Stocare limitată", desc: "Documentele nu sunt stocate pe servere proprii" },
+                      { icon: CheckCircle, label: "Drept la ștergere", desc: "Poți solicita ștergerea datelor oricând" },
+                    ].map(item => (
+                      <div key={item.label} className="flex items-start gap-2 bg-white rounded-lg p-2.5 border border-[#E2E8F0]">
+                        <item.icon className="h-3.5 w-3.5 text-[#0B2E2E] shrink-0 mt-0.5" />
+                        <div>
+                          <div className="text-[11px] font-semibold text-[#0B2E2E]">{item.label}</div>
+                          <div className="text-[10px] text-[#64748B]">{item.desc}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <a href={buildBrokerMailto(selectedBroker, "Dosar credit - FinExperts", `Bună ziua,\n\nVă trimit dosarul de credit.\n\nClient: ${user?.name}\nEmail: ${user?.email}\n\nDocumente atașate în email.\n\nVă mulțumesc.`)}>
-                <button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap">
-                  <Mail className="h-4 w-4" /> Trimite dosar
-                </button>
-              </a>
+            </div>
+
+            {/* CTA — trimite dosar */}
+            <div className="bg-[#0B2E2E] rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <div className="text-white font-semibold mb-0.5">Trimite dosarul brokerului tău</div>
+                <div className="text-gray-400 text-sm">
+                  {selectedBroker.name} — verifică documentele și îți confirmă în 24h
+                </div>
+                <div className="text-[#C49A20] text-xs mt-1 flex items-center gap-1">
+                  <CheckCircle className="h-3 w-3" />
+                  CC automat la coordonator {CC_EMAIL}
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-2 shrink-0">
+                <a href={buildBrokerMailto(selectedBroker, "Dosar credit - FinExperts", `Bună ziua,\n\nVă trimit dosarul de credit.\n\nClient: ${user?.name}\nEmail: ${user?.email}\nTip credit: ${docCreditType === "ipotecar" ? "Ipotecar" : "Personal"}\nSursă venit: ${currentCat.label}\nDocumente pregătite: ${checkedInCurrent}/${totalDocGroups}\n\nDocumentele sunt atașate în email.\n\nVă mulțumesc.`)}>
+                  <button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap">
+                    <Mail className="h-4 w-4" /> Trimite dosar
+                  </button>
+                </a>
+                <Link href="/aplica">
+                  <button className="border border-white/20 text-white font-semibold text-sm py-2.5 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center gap-2 whitespace-nowrap">
+                    <FileText className="h-4 w-4" /> Aplică online
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
