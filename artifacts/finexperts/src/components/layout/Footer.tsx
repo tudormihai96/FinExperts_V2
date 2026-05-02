@@ -105,7 +105,7 @@ export default function Footer() {
       {/* ── Bottom bar ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-gray-600">
-          <span>&copy; {new Date().getFullYear()} Alexandra Achim PFA · CUI 54405887 · Toate drepturile rezervate.</span>
+          <span>&copy; {new Date().getFullYear()} FinExperts · Toate drepturile rezervate.</span>
           <div className="flex items-center gap-4">
             <Link href="/termeni" className="hover:text-gray-400 transition-colors">Termeni</Link>
             <Link href="/confidentialitate" className="hover:text-gray-400 transition-colors">Confidențialitate</Link>
