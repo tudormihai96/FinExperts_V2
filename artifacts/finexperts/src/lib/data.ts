@@ -82,7 +82,7 @@ export const banks: Bank[] = [
     name: "BRD",
     initials: "BRD",
     color: "#0055A4",
-    logo: "/logos/brd.svg",
+    logo: "/logos/brd.png",
     // BRD: personal ~9.50%/an; Ipotecar variabilă: IRCC+1.70% = 7.28%
     ratePersonal: 9.50,
     rateIpotecar: 7.28,
@@ -106,7 +106,7 @@ export const banks: Bank[] = [
     name: "Garanti BBVA",
     initials: "GB",
     color: "#00A758",
-    logo: "/logos/garanti.svg",
+    logo: "/logos/garanti.png",
     // Garanti BBVA: personal ~9.25%/an; Ipotecar: IRCC+2.35% = 7.93%
     ratePersonal: 9.25,
     rateIpotecar: 7.93,
@@ -200,7 +200,7 @@ export const banks: Bank[] = [
     name: "Intesa Sanpaolo Bank",
     initials: "IS",
     color: "#003087",
-    logo: "/logos/intesa.svg",
+    logo: "/logos/intesa.png",
     // Intesa: personal ~11.50%/an; Ipotecar: IRCC+2.20% = 7.78%
     ratePersonal: 11.50,
     rateIpotecar: 7.78,
@@ -266,7 +266,7 @@ export const banks: Bank[] = [
     name: "Nexent Bank",
     initials: "NB",
     color: "#1E293B",
-    logo: "/logos/nexent.svg",
+    logo: "/logos/nexent.png",
     // Nexent: personal ~13.99%/an; Ipotecar: IRCC+4.00% = 9.58%
     ratePersonal: 13.99,
     rateIpotecar: 9.58,
