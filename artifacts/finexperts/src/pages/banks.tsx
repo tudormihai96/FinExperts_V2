@@ -65,22 +65,22 @@ export default function BanksPage() {
   }, [activeType, amount, months, sortBy]);
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA]">
-      <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="min-h-screen bg-[#F4F6FB]">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:py-10">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Comparator bănci</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-2xl sm:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
             Compară cele 11 bănci<br />românești.
           </h1>
-          <p className="text-[#64748B] text-base max-w-xl">
+          <p className="text-[#64748B] text-sm sm:text-base max-w-xl">
             Setează suma și durata dorită; vei vedea rata lunară exactă pentru fiecare bancă, plus DAE și rating.
           </p>
         </div>
 
         {/* Sliders + tab panel */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 mb-6">
-          <div className="flex gap-2 mb-5">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-4 sm:p-5 mb-5 sm:mb-6">
+          <div className="flex gap-2 mb-5 flex-wrap">
             <button
               data-testid="tab-ipotecar"
               onClick={() => { setActiveType("ipotecar"); setAmount(150000); setMonths(120); }}
@@ -162,10 +162,9 @@ export default function BanksPage() {
           ))}
         </div>
 
-        {/* Banks table */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
-          {/* Table header */}
-          <div className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-3 bg-[#F5F7FA] border-b border-[#E2E8F0]">
+        {/* Banks table — desktop */}
+        <div className="hidden sm:block bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
+          <div className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-3 bg-[#F4F6FB] border-b border-[#E2E8F0]">
             <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Banca</div>
             <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider text-center">Dobândă</div>
             <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider text-center">DAE</div>
@@ -177,9 +176,8 @@ export default function BanksPage() {
             <div
               key={bank.id}
               data-testid={`bank-row-${bank.id}`}
-              className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-4 border-b border-[#E2E8F0] last:border-b-0 hover:bg-[#F5F7FA]/50 transition-colors"
+              className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-4 border-b border-[#E2E8F0] last:border-b-0 hover:bg-[#F4F6FB]/60 transition-colors"
             >
-              {/* Bank logo + info */}
               <div className="flex items-center gap-3 min-w-0">
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="min-w-0">
@@ -190,45 +188,79 @@ export default function BanksPage() {
                       <span className="text-[10px] text-[#64748B]">• #{bank.rank}</span>
                     </div>
                     {bank.badge && (
-                      <span
-                        className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
-                        style={{
-                          backgroundColor: (bank.badgeColor || "#64748B") + "18",
-                          color: bank.badgeColor || "#64748B"
-                        }}
-                      >
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: (bank.badgeColor || "#64748B") + "18", color: bank.badgeColor || "#64748B" }}>
                         {bank.badge}
                       </span>
                     )}
                   </div>
                 </div>
               </div>
-
-              {/* Dobândă */}
-              <div className="text-center">
-                <span className="text-sm font-semibold text-[#0C1A2E]">{bank.rate.toFixed(2)}%</span>
-              </div>
-
-              {/* DAE */}
-              <div className="text-center">
-                <span className="text-sm text-[#64748B]">{bank.dae.toFixed(2)}%</span>
-              </div>
-
-              {/* Rată */}
+              <div className="text-center"><span className="text-sm font-semibold text-[#0C1A2E]">{bank.rate.toFixed(2)}%</span></div>
+              <div className="text-center"><span className="text-sm text-[#64748B]">{bank.dae.toFixed(2)}%</span></div>
               <div className="text-right">
                 <div className="text-sm font-bold text-[#0C1A2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")} RON</div>
                 <div className="text-xs text-[#64748B]">Total: {formatRON(Math.round(bank.total))}</div>
               </div>
-
-              {/* Acțiuni */}
               <div className="flex items-center gap-2 pl-3">
                 <Link href={`/banci/${bank.slug}`}>
-                  <button className="px-3 py-1.5 text-xs font-medium border border-[#E2E8F0] rounded-lg text-[#0C1A2E] hover:border-[#0C1A2E] transition-colors whitespace-nowrap">
-                    Detalii
-                  </button>
+                  <button className="px-3 py-1.5 text-xs font-medium border border-[#E2E8F0] rounded-lg text-[#0C1A2E] hover:border-[#0C1A2E] transition-colors whitespace-nowrap">Detalii</button>
                 </Link>
                 <Link href="/aplica">
                   <button className="px-3 py-1.5 text-xs font-medium bg-[#0C1A2E] text-white rounded-lg hover:bg-[#132846] transition-colors flex items-center gap-1 whitespace-nowrap">
+                    Aplică <ArrowRight className="h-3 w-3" />
+                  </button>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Banks cards — mobile */}
+        <div className="sm:hidden space-y-3">
+          {sortedBanks.map((bank, idx) => (
+            <div
+              key={bank.id}
+              data-testid={`bank-row-${bank.id}`}
+              className={`bg-white border rounded-2xl p-4 ${idx === 0 ? "border-[#C49A20]" : "border-[#E2E8F0]"}`}
+            >
+              {idx === 0 && (
+                <div className="text-[9px] font-bold text-[#C49A20] uppercase tracking-wider mb-2">⭐ Cea mai bună ofertă</div>
+              )}
+              <div className="flex items-center gap-3 mb-3">
+                <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-[#0C1A2E] text-sm">{bank.name}</div>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <StarRating rating={bank.rating} />
+                    {bank.badge && (
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: (bank.badgeColor || "#64748B") + "18", color: bank.badgeColor || "#64748B" }}>
+                        {bank.badge}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2 mb-3 bg-[#F4F6FB] rounded-xl p-3">
+                <div className="text-center">
+                  <div className="text-[10px] text-[#64748B] mb-0.5">Dobândă</div>
+                  <div className="text-sm font-bold text-[#0C1A2E]">{bank.rate.toFixed(2)}%</div>
+                </div>
+                <div className="text-center border-x border-[#E2E8F0]">
+                  <div className="text-[10px] text-[#64748B] mb-0.5">DAE</div>
+                  <div className="text-sm font-semibold text-[#0C1A2E]">{bank.dae.toFixed(2)}%</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-[10px] text-[#64748B] mb-0.5">Rată/lună</div>
+                  <div className="text-sm font-bold text-[#0C1A2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")}</div>
+                  <div className="text-[9px] text-[#94A3B8]">RON</div>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <Link href={`/banci/${bank.slug}`} className="flex-1">
+                  <button className="w-full py-2 text-xs font-medium border border-[#E2E8F0] rounded-xl text-[#0C1A2E] hover:border-[#0C1A2E] transition-colors">Detalii</button>
+                </Link>
+                <Link href="/aplica" className="flex-1">
+                  <button className="w-full py-2 text-xs font-semibold bg-[#0C1A2E] text-white rounded-xl flex items-center justify-center gap-1">
                     Aplică <ArrowRight className="h-3 w-3" />
                   </button>
                 </Link>

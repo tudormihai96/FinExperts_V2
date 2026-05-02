@@ -4,23 +4,30 @@ import { useStore } from "@/lib/store";
 
 export default function GuidesPage() {
   const { guides } = useStore();
+  const safeGuides = guides ?? [];
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA]">
-      <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="min-h-screen bg-[#F4F6FB]">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
         <div className="mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Ghiduri</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-2xl sm:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
             Totul despre credite,<br />
             explicat clar.
           </h1>
-          <p className="text-[#64748B] text-base max-w-xl">
+          <p className="text-[#64748B] text-sm sm:text-base max-w-xl">
             Ghiduri și articole scrise de experți în credite și finanțe personale, pentru a lua cea mai bună decizie financiară.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {guides.map((guide) => (
+        {safeGuides.length === 0 && (
+          <div className="text-center py-20 text-[#64748B]">
+            <p className="text-lg font-medium">Ghidurile se încarcă...</p>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {safeGuides.map((guide) => (
             <Link key={guide.slug} href={`/ghiduri/${guide.slug}`}>
               <div
                 data-testid={`guide-card-${guide.slug}`}

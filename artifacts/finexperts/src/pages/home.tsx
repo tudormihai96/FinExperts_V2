@@ -23,32 +23,32 @@ export default function HomePage() {
   const marqueeItems = [...banks, ...banks];
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA]">
+    <div className="min-h-screen bg-[#F4F6FB]">
 
       {/* ── HERO ── */}
-      <section className="bg-[#0C1A2E] pt-16 pb-0 overflow-hidden">
+      <section className="bg-[#0C1A2E] pt-12 sm:pt-16 pb-0 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 border border-[#C49A20]/40 rounded-full px-3 py-1 mb-6">
+            <div className="inline-flex items-center gap-2 border border-[#C49A20]/40 rounded-full px-3 py-1 mb-5">
               <ShieldCheck className="h-3.5 w-3.5 text-[#C49A20]" />
               <span className="text-xs text-[#C49A20] font-medium">Partener oficial KIWI Finance</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 sm:mb-5">
               Credite mai inteligente.<br />
               <span className="text-[#C49A20]">Negociate de experți.</span>
             </h1>
-            <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+            <p className="text-gray-300 text-base sm:text-lg mb-7 sm:mb-8 leading-relaxed">
               Accesăm toate ofertele de la 11 bănci din România și negociem în locul tău. Rapid, gratuit, profesional.
             </p>
-            <div className="flex gap-3 flex-wrap mb-12">
+            <div className="flex gap-3 flex-wrap mb-10 sm:mb-12">
               <Link href="/calculator">
-                <button className="bg-[#C49A20] hover:bg-[#a07e3e] text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-md">
+                <button className="bg-[#C49A20] hover:bg-[#a07e3e] text-white font-semibold px-5 sm:px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-md text-sm sm:text-base">
                   Calculează rata
                   <ArrowRight className="h-4 w-4" />
                 </button>
               </Link>
               <Link href="/aplica">
-                <button className="border border-white/30 text-white hover:bg-white/10 font-medium px-6 py-3 rounded-xl transition-colors">
+                <button className="border border-white/30 text-white hover:bg-white/10 font-medium px-5 sm:px-6 py-3 rounded-xl transition-colors text-sm sm:text-base">
                   Aplică acum
                 </button>
               </Link>
@@ -98,9 +98,9 @@ export default function HomePage() {
               { value: ">90%", label: "rată aprobare" },
               { value: "100%", label: "gratuit" },
             ].map((stat, i) => (
-              <div key={i} className="py-5 px-6 text-center">
-                <div className="text-2xl font-bold text-[#0C1A2E]">{stat.value}</div>
-                <div className="text-xs text-[#64748B]">{stat.label}</div>
+              <div key={i} className="py-4 sm:py-5 px-3 sm:px-6 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-[#0C1A2E]">{stat.value}</div>
+                <div className="text-[11px] sm:text-xs text-[#64748B]">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -108,7 +108,7 @@ export default function HomePage() {
       </section>
 
       {/* ── MINI CALCULATOR ── */}
-      <section className="max-w-7xl mx-auto px-4 py-14">
+      <section className="max-w-7xl mx-auto px-4 py-10 sm:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left text */}
           <div>
@@ -233,12 +233,12 @@ export default function HomePage() {
       </section>
 
       {/* ── TOP RATES ── */}
-      <section className="bg-white border-y border-[#E2E8F0] py-14">
+      <section className="bg-white border-y border-[#E2E8F0] py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
             <div>
               <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-2">Oferte active</div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E]">Cele mai bune dobânzi acum.</h2>
+              <h2 className="text-xl sm:text-3xl font-bold text-[#0C1A2E]">Cele mai bune dobânzi acum.</h2>
             </div>
             <div className="flex gap-2">
               {(["personal", "ipotecar"] as const).map(t => (
@@ -316,9 +316,9 @@ export default function HomePage() {
       </section>
 
       {/* ── CUM FUNCȚIONEAZĂ (broker) ── */}
-      <section className="bg-[#0C1A2E] py-14">
+      <section className="bg-[#0C1A2E] py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Cum intermediem</div>
             <h2 className="text-2xl md:text-3xl font-bold text-white">
               De la cerere la cea mai bună ofertă — în 3 pași.
@@ -358,7 +358,7 @@ export default function HomePage() {
       </section>
 
       {/* ── DE CE FINEXPERTS ── */}
-      <section className="max-w-7xl mx-auto px-4 py-14">
+      <section className="max-w-7xl mx-auto px-4 py-10 sm:py-14">
         <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">De ce FinExperts</div>
         <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-8">
           Nu suntem bancă. Suntem de partea ta.
@@ -396,23 +396,23 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#C49A20] py-14">
+      <section className="bg-[#C49A20] py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] mb-4">
+          <h2 className="text-2xl sm:text-4xl font-bold text-[#0C1A2E] mb-3 sm:mb-4">
             Gata să obții cel mai bun credit?
           </h2>
-          <p className="text-[#0C1A2E]/70 mb-8 text-lg">
+          <p className="text-[#0C1A2E]/70 mb-6 sm:mb-8 text-base sm:text-lg">
             Trimite cererea gratuit și brokerul tău te contactează în maxim 24h cu oferta personalizată.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Link href="/aplica">
-              <button className="bg-[#0C1A2E] hover:bg-[#132846] text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2">
+              <button className="bg-[#0C1A2E] hover:bg-[#132846] text-white font-semibold px-6 sm:px-8 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm sm:text-base">
                 Aplică acum gratuit
                 <ArrowRight className="h-4 w-4" />
               </button>
             </Link>
             <Link href="/calculator">
-              <button className="bg-white text-[#0C1A2E] hover:bg-white/90 font-medium px-8 py-3 rounded-xl transition-colors">
+              <button className="bg-white text-[#0C1A2E] hover:bg-white/90 font-medium px-6 sm:px-8 py-3 rounded-xl transition-colors text-sm sm:text-base">
                 Calculează mai întâi
               </button>
             </Link>
