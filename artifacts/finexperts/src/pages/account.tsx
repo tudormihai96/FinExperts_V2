@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/lib/auth";
 import { useStore } from "@/lib/store";
+import { BROKERS, getBroker, getStoredBrokerId, setStoredBrokerId, CC_EMAIL, buildBrokerMailto } from "@/lib/brokers";
 import {
   FileText, Shield, Phone, LogOut, ChevronRight,
   ArrowRight, Home, Activity, Plane, Heart, CheckCircle,
@@ -100,6 +101,13 @@ export default function AccountPage() {
   const [checkedDocs, setCheckedDocs] = useState<Set<number>>(new Set());
   const [profileForm, setProfileForm] = useState({ name: user?.name || "", phone: "", email: user?.email || "" });
   const [profileSaved, setProfileSaved] = useState(false);
+  const [selectedBrokerId, setSelectedBrokerId] = useState(() => getStoredBrokerId());
+  const selectedBroker = getBroker(selectedBrokerId);
+
+  const handleBrokerChange = (id: string) => {
+    setSelectedBrokerId(id);
+    setStoredBrokerId(id);
+  };
 
   if (!isLoggedIn) {
     return (
@@ -279,14 +287,14 @@ export default function AccountPage() {
                 <div className="text-gray-400 text-sm">L-V 09:00 — 18:00 · Fără costuri ascunse</div>
               </div>
               <div className="flex flex-col gap-2 shrink-0">
-                <a href="tel:0799715101">
+                <a href={`tel:${selectedBroker.phone.replace(/\s/g, "")}`}>
                   <button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap">
-                    <Phone className="h-4 w-4" /> 0799 715 101
+                    <Phone className="h-4 w-4" /> {selectedBroker.phone}
                   </button>
                 </a>
-                <a href="mailto:kbaa@kiwifinance.ro">
+                <a href={`mailto:${selectedBroker.email}?cc=${encodeURIComponent(CC_EMAIL)}`}>
                   <button className="border border-white/20 text-white hover:bg-white/10 text-sm py-2 px-5 rounded-xl transition-colors w-full flex items-center justify-center gap-2">
-                    <Mail className="h-4 w-4" /> Email
+                    <Mail className="h-4 w-4" /> Email broker
                   </button>
                 </a>
               </div>
@@ -468,7 +476,7 @@ export default function AccountPage() {
                 <div className="text-white font-semibold mb-0.5">Trimite dosarul prin email</div>
                 <div className="text-gray-400 text-sm">Un broker verifică documentele și îți confirmă în 24h</div>
               </div>
-              <a href="mailto:kbaa@kiwifinance.ro?subject=Dosar%20credit%20-%20FinExperts">
+              <a href={buildBrokerMailto(selectedBroker, "Dosar credit - FinExperts", `Bună ziua,\n\nVă trimit dosarul de credit.\n\nClient: ${user?.name}\nEmail: ${user?.email}\n\nDocumente atașate în email.\n\nVă mulțumesc.`)}>
                 <button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap">
                   <Mail className="h-4 w-4" /> Trimite dosar
                 </button>
@@ -568,19 +576,46 @@ export default function AccountPage() {
 
                 <div className="bg-[#F5F7FA] border border-[#E2E8F0] rounded-xl p-4">
                   <div className="text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-3">Brokerul tău</div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0B2E2E] flex items-center justify-center text-white font-bold text-sm">AA</div>
-                    <div>
-                      <div className="text-sm font-semibold text-[#0B2E2E]">Alexandra Achim</div>
-                      <div className="text-xs text-[#64748B]">Broker senior</div>
-                    </div>
+
+                  {/* Broker selector */}
+                  <div className="space-y-2 mb-4">
+                    {BROKERS.map(b => (
+                      <button
+                        key={b.id}
+                        onClick={() => handleBrokerChange(b.id)}
+                        className={`w-full flex items-center gap-3 p-2.5 rounded-xl border-2 transition-all text-left ${
+                          selectedBrokerId === b.id
+                            ? "border-[#C49A20] bg-white"
+                            : "border-transparent hover:border-[#E2E8F0] hover:bg-white"
+                        }`}
+                      >
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                          style={{ backgroundColor: b.color }}>{b.avatar}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-semibold text-[#0B2E2E] leading-tight">{b.name}</div>
+                          <div className="text-[10px] text-[#64748B]">{b.role}</div>
+                        </div>
+                        {selectedBrokerId === b.id && (
+                          <div className="w-4 h-4 rounded-full bg-[#C49A20] flex items-center justify-center shrink-0">
+                            <Check className="h-2.5 w-2.5 text-white" />
+                          </div>
+                        )}
+                      </button>
+                    ))}
                   </div>
-                  <a href="tel:0799715101" className="flex items-center gap-2 text-xs text-[#0B2E2E] hover:text-[#C49A20] transition-colors mb-1">
-                    <Phone className="h-3.5 w-3.5" /> 0799 715 101
-                  </a>
-                  <a href="mailto:alexandra.achim@kiwifinance.ro" className="flex items-center gap-2 text-xs text-[#0B2E2E] hover:text-[#C49A20] transition-colors">
-                    <Mail className="h-3.5 w-3.5" /> alexandra.achim@kiwifinance.ro
-                  </a>
+
+                  {/* Selected broker contact */}
+                  <div className="border-t border-[#E2E8F0] pt-3 space-y-1.5">
+                    <a href={`tel:${selectedBroker.phone.replace(/\s/g, "")}`}
+                      className="flex items-center gap-2 text-xs text-[#0B2E2E] hover:text-[#C49A20] transition-colors">
+                      <Phone className="h-3.5 w-3.5 shrink-0" /> {selectedBroker.phone}
+                    </a>
+                    <a href={`mailto:${selectedBroker.email}?cc=${encodeURIComponent(CC_EMAIL)}`}
+                      className="flex items-center gap-2 text-xs text-[#0B2E2E] hover:text-[#C49A20] transition-colors break-all">
+                      <Mail className="h-3.5 w-3.5 shrink-0" /> {selectedBroker.email}
+                    </a>
+                    <p className="text-[10px] text-[#94A3B8] mt-1">CC automat la {CC_EMAIL}</p>
+                  </div>
                 </div>
               </div>
             </div>

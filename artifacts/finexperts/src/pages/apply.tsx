@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { banks } from "@/lib/data";
+import { BROKERS, CC_EMAIL, getBroker, getStoredBrokerId, buildBrokerMailto } from "@/lib/brokers";
 import { CheckCircle, MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
@@ -17,12 +18,18 @@ export default function ApplyPage() {
     mesaj: "",
   });
 
+  const broker = getBroker(getStoredBrokerId());
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = `Aplicare Credit - ${form.tipCredit} - ${form.nume}`;
+    const body = `Bună ziua,\n\nAm o cerere de credit cu următoarele detalii:\n\nNume: ${form.nume}\nTelefon: ${form.telefon}\nEmail: ${form.email}\nTip credit: ${form.tipCredit}\nSumă: ${form.suma} RON\nPerioadă: ${form.perioada} luni\nVenit lunar: ${form.venit || "nedeclarat"} RON\nBancă preferată: ${form.banca}\nMesaj: ${form.mesaj || "—"}\n\nVă mulțumesc.`;
+    const mailto = buildBrokerMailto(broker, subject, body);
+    window.open(mailto, "_self");
     setSubmitted(true);
   };
 
@@ -34,8 +41,9 @@ export default function ApplyPage() {
             <CheckCircle className="h-9 w-9 text-[#2E7D5B]" />
           </div>
           <h2 className="text-2xl font-bold text-[#0B2E2E] mb-3">Cerere trimisă!</h2>
-          <p className="text-[#64748B] mb-6 leading-relaxed">
-            Un consultant FinExperts te va contacta în maxim 24h pentru a-ți prezenta oferta personalizată.
+          <p className="text-[#64748B] mb-4 leading-relaxed">
+            Aplicarea a fost trimisă brokerului tău,{" "}
+            <strong className="text-[#0B2E2E]">{broker.name}</strong>, cu CC la {CC_EMAIL}.
           </p>
           <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 mb-6 text-left">
             <p className="text-xs text-[#64748B] leading-relaxed">
@@ -71,10 +79,24 @@ export default function ApplyPage() {
       <div className="max-w-7xl mx-auto px-4 -mt-6 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-8 items-start">
 
-          {/* Left: form card — lifted from the dark header */}
+          {/* Left: form card */}
           <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 lg:p-8 shadow-sm">
             <h2 className="text-lg font-bold text-[#0B2E2E] mb-1">Formular de aplicare</h2>
             <p className="text-xs text-[#64748B] mb-6">Câmpurile marcate cu <span className="text-[#C4432F]">*</span> sunt obligatorii.</p>
+
+            {/* Broker assigned */}
+            <div className="flex items-center gap-3 bg-[#F4F6FB] border border-[#E2E8F0] rounded-xl px-4 py-3 mb-6">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                style={{ backgroundColor: broker.color }}>{broker.avatar}</div>
+              <div className="flex-1 min-w-0">
+                <div className="text-xs text-[#64748B]">Brokerul tău</div>
+                <div className="text-sm font-semibold text-[#0B2E2E]">{broker.name}</div>
+              </div>
+              <div className="text-right shrink-0">
+                <div className="text-[10px] text-[#64748B]">Email va merge la</div>
+                <div className="text-[11px] font-medium text-[#0B2E2E] truncate max-w-[160px]">{broker.email}</div>
+              </div>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-2 gap-4">
@@ -158,15 +180,35 @@ export default function ApplyPage() {
               </button>
 
               <p className="text-xs text-[#64748B] text-center leading-relaxed">
-                Prin trimitere, ești de acord cu prelucrarea datelor conform{" "}
-                <Link href="/confidentialitate" className="text-[#C49A20] hover:underline">Politicii de date personale</Link>.
-                Serviciul este gratuit pentru tine.
+                Aplicarea se trimite pe email la brokerul tău cu CC la {CC_EMAIL}.
+                Prin trimitere, ești de acord cu{" "}
+                <Link href="/confidentialitate" className="text-[#C49A20] hover:underline">Politica de date personale</Link>.
               </p>
             </form>
           </div>
 
           {/* Right: benefits + office */}
           <div className="space-y-5 pt-2">
+
+            {/* Brokers list */}
+            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
+              <h3 className="text-sm font-bold text-[#0B2E2E] uppercase tracking-wider mb-4">Echipa FinExperts</h3>
+              <div className="space-y-3">
+                {BROKERS.map(b => (
+                  <div key={b.id} className="flex items-center gap-3 py-2">
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                      style={{ backgroundColor: b.color }}>{b.avatar}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold text-[#0B2E2E]">{b.name}</div>
+                      <div className="text-xs text-[#64748B]">{b.role}</div>
+                    </div>
+                    <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors whitespace-nowrap">
+                      {b.phone}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Benefits */}
             <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
@@ -196,7 +238,7 @@ export default function ApplyPage() {
               <div className="px-5 py-4">
                 <div className="flex items-start gap-3">
                   <div className="w-9 h-9 rounded-xl bg-[#C49A20]/10 flex items-center justify-center shrink-0">
-                    <MapPin className="h-4.5 w-4.5 text-[#C49A20]" style={{ width: "18px", height: "18px" }} />
+                    <MapPin className="text-[#C49A20]" style={{ width: "18px", height: "18px" }} />
                   </div>
                   <div className="flex-1">
                     <p className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">Birou consultanță</p>
@@ -208,17 +250,17 @@ export default function ApplyPage() {
                   <a href="tel:0799715101" className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors">
                     <Phone className="h-3 w-3 text-[#C49A20] shrink-0" /> 0799 715 101
                   </a>
-                  <a href="mailto:kbaa@kiwifinance.ro" className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors col-span-2">
-                    <Mail className="h-3 w-3 text-[#C49A20] shrink-0" /> kbaa@kiwifinance.ro
+                  <a href={`mailto:${CC_EMAIL}`} className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors col-span-2">
+                    <Mail className="h-3 w-3 text-[#C49A20] shrink-0" /> {CC_EMAIL}
                   </a>
                   <span className="flex items-center gap-1.5 text-xs text-[#64748B] col-span-3">
                     <Clock className="h-3 w-3 text-[#C49A20] shrink-0" /> Luni–Vineri, 09:00–18:00
                   </span>
                 </div>
               </div>
-              <div className="h-[200px] w-full">
+              <div className="h-[180px] w-full">
                 <iframe
-                  title="Birou FinExperts — Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1, Sector 1, București"
+                  title="Birou FinExperts"
                   src="https://maps.google.com/maps?q=Bd.+Ion+C%C3%A2mpineanu+26,+Bucure%C8%99ti&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%" height="100%" style={{ border: 0 }}
                   allowFullScreen={false} loading="lazy"
