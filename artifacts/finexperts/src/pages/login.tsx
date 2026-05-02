@@ -26,7 +26,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC] flex items-center justify-center py-16 px-4">
+    <div className="min-h-screen bg-[#F5F7FA] flex items-center justify-center py-16 px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <img
@@ -35,14 +35,14 @@ export default function LoginPage() {
             className="h-10 mx-auto mb-5"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">Intră în contul tău</h1>
-          <p className="text-sm text-[#5A6478] mt-1">Accesează aplicările și ofertele tale</p>
+          <h1 className="text-2xl font-bold text-[#0C1A2E]">Intră în contul tău</h1>
+          <p className="text-sm text-[#64748B] mt-1">Accesează aplicările și ofertele tale</p>
         </div>
 
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-7">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-7">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">Email</label>
+              <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Email</label>
               <input
                 data-testid="input-email"
                 type="email"
@@ -50,13 +50,13 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="ion@exemplu.ro"
                 required
-                className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] transition-colors"
+                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors"
               />
             </div>
             <div>
               <div className="flex justify-between items-center mb-1.5">
-                <label className="text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider">Parolă</label>
-                <a href="#" className="text-xs text-[#5A6478] hover:text-[#0A1A2E] transition-colors">Ai uitat parola?</a>
+                <label className="text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider">Parolă</label>
+                <a href="#" className="text-xs text-[#64748B] hover:text-[#0C1A2E] transition-colors">Ai uitat parola?</a>
               </div>
               <input
                 data-testid="input-password"
@@ -65,7 +65,7 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] transition-colors"
+                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors"
               />
             </div>
 
@@ -79,25 +79,25 @@ export default function LoginPage() {
             <button
               type="submit"
               data-testid="btn-login"
-              className="w-full bg-[#0A1A2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors"
+              className="w-full bg-[#0C1A2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors"
             >
               Intră în cont
             </button>
           </form>
 
-          <div className="mt-5 pt-5 border-t border-[#E5E3D9] text-center text-sm text-[#5A6478]">
+          <div className="mt-5 pt-5 border-t border-[#E2E8F0] text-center text-sm text-[#64748B]">
             Nu ai cont?{" "}
-            <Link href="/register" className="text-[#0A1A2E] font-semibold hover:text-[#C6A667] transition-colors">
+            <Link href="/register" className="text-[#0C1A2E] font-semibold hover:text-[#C49A20] transition-colors">
               Creează cont
             </Link>
           </div>
         </div>
 
-        <div className="mt-4 bg-[#0A1A2E]/5 border border-[#E5E3D9] rounded-xl p-4">
-          <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider mb-2">Acces Admin</div>
-          <div className="text-xs text-[#5A6478]">
-            Email: <span className="font-mono text-[#0A1A2E]">admin@finexperts.ro</span><br />
-            Parolă: <span className="font-mono text-[#0A1A2E]">admin123</span>
+        <div className="mt-4 bg-[#0C1A2E]/5 border border-[#E2E8F0] rounded-xl p-4">
+          <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mb-2">Acces Admin</div>
+          <div className="text-xs text-[#64748B]">
+            Email: <span className="font-mono text-[#0C1A2E]">admin@finexperts.ro</span><br />
+            Parolă: <span className="font-mono text-[#0C1A2E]">admin123</span>
           </div>
         </div>
       </div>

@@ -40,14 +40,14 @@ export default function AdminPage() {
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-[#F7F4EC] flex items-center justify-center">
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-10 text-center max-w-sm">
+      <div className="min-h-screen bg-[#F5F7FA] flex items-center justify-center">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-10 text-center max-w-sm">
           <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
             <X className="h-7 w-7 text-red-600" />
           </div>
-          <h2 className="text-xl font-bold text-[#0A1A2E] mb-2">Acces restricționat</h2>
-          <p className="text-sm text-[#5A6478] mb-5">Trebuie să fii autentificat ca administrator pentru a accesa această pagină.</p>
-          <button onClick={() => setLocation("/login")} className="bg-[#0A1A2E] text-white font-semibold px-6 py-2.5 rounded-lg text-sm">Conectare</button>
+          <h2 className="text-xl font-bold text-[#0C1A2E] mb-2">Acces restricționat</h2>
+          <p className="text-sm text-[#64748B] mb-5">Trebuie să fii autentificat ca administrator pentru a accesa această pagină.</p>
+          <button onClick={() => setLocation("/login")} className="bg-[#0C1A2E] text-white font-semibold px-6 py-2.5 rounded-lg text-sm">Conectare</button>
         </div>
       </div>
     );
@@ -65,11 +65,11 @@ export default function AdminPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC] flex">
+    <div className="min-h-screen bg-[#F5F7FA] flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-[#0A1A2E] min-h-screen flex flex-col shrink-0">
+      <aside className="w-64 bg-[#0C1A2E] min-h-screen flex flex-col shrink-0">
         <div className="p-5 border-b border-white/10">
-          <div className="text-xs font-bold text-[#C6A667] uppercase tracking-wider mb-0.5">FinExperts</div>
+          <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">FinExperts</div>
           <div className="text-sm text-white font-semibold">Panou Admin</div>
         </div>
         <nav className="flex-1 p-3">
@@ -86,7 +86,7 @@ export default function AdminPage() {
                 {label}
               </div>
               {count !== undefined && (
-                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${activeTab === id ? "bg-[#C6A667] text-[#0A1A2E]" : "bg-white/15 text-gray-300"}`}>
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${activeTab === id ? "bg-[#C49A20] text-[#0C1A2E]" : "bg-white/15 text-gray-300"}`}>
                   {count}
                 </span>
               )}
@@ -148,10 +148,10 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">Dashboard</h1>
-          <p className="text-sm text-[#5A6478]">Bun venit, {applications.length > 0 ? `ai ${pending.length} aplicări de procesat` : "totul este la zi"}</p>
+          <h1 className="text-2xl font-bold text-[#0C1A2E]">Dashboard</h1>
+          <p className="text-sm text-[#64748B]">Bun venit, {applications.length > 0 ? `ai ${pending.length} aplicări de procesat` : "totul este la zi"}</p>
         </div>
-        <div className="flex items-center gap-2 text-xs text-[#5A6478]">
+        <div className="flex items-center gap-2 text-xs text-[#64748B]">
           <RefreshCw className="h-3.5 w-3.5" />
           Actualizat: 02.05.2026
         </div>
@@ -160,74 +160,74 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {stats.map(s => (
-          <button key={s.label} onClick={() => setActiveTab(s.tab)} className="bg-white border border-[#E5E3D9] rounded-xl p-5 text-left hover:shadow-sm transition-all hover:border-[#0A1A2E] group">
+          <button key={s.label} onClick={() => setActiveTab(s.tab)} className="bg-white border border-[#E2E8F0] rounded-xl p-5 text-left hover:shadow-sm transition-all hover:border-[#0C1A2E] group">
             <div className={`w-10 h-10 rounded-lg ${s.bg} flex items-center justify-center mb-3`}>
               <s.icon className={`h-5 w-5 ${s.color}`} />
             </div>
             <div className={`text-3xl font-bold mb-1 ${s.color}`}>{s.value}</div>
-            <div className="text-sm font-semibold text-[#0A1A2E]">{s.label}</div>
-            <div className="text-xs text-[#5A6478] mt-0.5">{s.sub}</div>
+            <div className="text-sm font-semibold text-[#0C1A2E]">{s.label}</div>
+            <div className="text-xs text-[#64748B] mt-0.5">{s.sub}</div>
           </button>
         ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6">
         {/* Aplicări recente */}
-        <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
-          <div className="px-5 py-4 border-b border-[#E5E3D9] flex items-center justify-between">
-            <h3 className="font-semibold text-[#0A1A2E]">Aplicări recente</h3>
-            <button onClick={() => setActiveTab("aplicari")} className="text-xs text-[#5A6478] hover:text-[#0A1A2E] flex items-center gap-1">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
+          <div className="px-5 py-4 border-b border-[#E2E8F0] flex items-center justify-between">
+            <h3 className="font-semibold text-[#0C1A2E]">Aplicări recente</h3>
+            <button onClick={() => setActiveTab("aplicari")} className="text-xs text-[#64748B] hover:text-[#0C1A2E] flex items-center gap-1">
               Toate <ArrowRight className="h-3 w-3" />
             </button>
           </div>
           <table className="w-full">
-            <thead className="bg-[#F7F4EC]">
+            <thead className="bg-[#F5F7FA]">
               <tr>
                 {["Solicitant", "Tip / Sumă", "Status", "Data"].map(h => (
-                  <th key={h} className="text-left text-xs font-semibold text-[#5A6478] uppercase tracking-wider px-5 py-3">{h}</th>
+                  <th key={h} className="text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider px-5 py-3">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {applications.slice(0, 6).map(app => (
-                <tr key={app.id} className="border-t border-[#E5E3D9] hover:bg-[#F7F4EC]/50">
+                <tr key={app.id} className="border-t border-[#E2E8F0] hover:bg-[#F5F7FA]/50">
                   <td className="px-5 py-3">
-                    <div className="text-sm font-medium text-[#0A1A2E]">{app.name}</div>
-                    <div className="text-xs text-[#5A6478]">{app.email}</div>
+                    <div className="text-sm font-medium text-[#0C1A2E]">{app.name}</div>
+                    <div className="text-xs text-[#64748B]">{app.email}</div>
                   </td>
                   <td className="px-5 py-3">
-                    <div className="text-xs text-[#5A6478] capitalize mb-0.5">{app.type}</div>
-                    <div className="text-sm font-semibold text-[#0A1A2E]">{app.amount.toLocaleString("ro-RO")} RON</div>
+                    <div className="text-xs text-[#64748B] capitalize mb-0.5">{app.type}</div>
+                    <div className="text-sm font-semibold text-[#0C1A2E]">{app.amount.toLocaleString("ro-RO")} RON</div>
                   </td>
                   <td className="px-5 py-3"><StatusBadge status={app.status} /></td>
-                  <td className="px-5 py-3 text-xs text-[#5A6478]">{app.date}</td>
+                  <td className="px-5 py-3 text-xs text-[#64748B]">{app.date}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {applications.length === 0 && (
-            <div className="py-10 text-center text-sm text-[#5A6478]">Nicio aplicare încă.</div>
+            <div className="py-10 text-center text-sm text-[#64748B]">Nicio aplicare încă.</div>
           )}
         </div>
 
         {/* Sidebar dreapta */}
         <div className="space-y-4">
           {/* Activitate */}
-          <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
-            <div className="px-4 py-3 border-b border-[#E5E3D9]">
-              <h3 className="font-semibold text-[#0A1A2E] text-sm">Activitate recentă</h3>
+          <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-[#E2E8F0]">
+              <h3 className="font-semibold text-[#0C1A2E] text-sm">Activitate recentă</h3>
             </div>
             <div className="p-2">
               {todayActivities.length === 0 ? (
-                <div className="py-6 text-center text-xs text-[#5A6478]">Nicio activitate recentă</div>
+                <div className="py-6 text-center text-xs text-[#64748B]">Nicio activitate recentă</div>
               ) : todayActivities.map((act, i) => (
-                <div key={i} className="flex items-start gap-3 p-2 rounded-lg hover:bg-[#F7F4EC]">
+                <div key={i} className="flex items-start gap-3 p-2 rounded-lg hover:bg-[#F5F7FA]">
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${act.type === "aplicare" ? "bg-blue-100" : "bg-purple-100"}`}>
                     {act.type === "aplicare" ? <FileText className="h-3.5 w-3.5 text-blue-600" /> : <Shield className="h-3.5 w-3.5 text-purple-600" />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs text-[#0A1A2E] font-medium leading-snug">{act.text}</div>
-                    <div className="text-[10px] text-[#5A6478] mt-0.5">{act.time}</div>
+                    <div className="text-xs text-[#0C1A2E] font-medium leading-snug">{act.text}</div>
+                    <div className="text-[10px] text-[#64748B] mt-0.5">{act.time}</div>
                   </div>
                 </div>
               ))}
@@ -235,8 +235,8 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
           </div>
 
           {/* Acțiuni rapide */}
-          <div className="bg-white border border-[#E5E3D9] rounded-xl p-4">
-            <h3 className="font-semibold text-[#0A1A2E] text-sm mb-3">Acțiuni rapide</h3>
+          <div className="bg-white border border-[#E2E8F0] rounded-xl p-4">
+            <h3 className="font-semibold text-[#0C1A2E] text-sm mb-3">Acțiuni rapide</h3>
             <div className="space-y-2">
               {[
                 { label: "Procesează aplicări în așteptare", count: pending.length, color: "text-amber-600", tab: "aplicari" as Tab },
@@ -245,12 +245,12 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
                 { label: "Adaugă ghid nou", count: null, color: "text-green-600", tab: "ghiduri" as Tab },
               ].map(a => (
                 <button key={a.label} onClick={() => setActiveTab(a.tab)}
-                  className="w-full flex items-center justify-between text-sm py-2 px-3 rounded-lg hover:bg-[#F7F4EC] transition-colors text-left">
-                  <span className="text-[#0A1A2E]">{a.label}</span>
+                  className="w-full flex items-center justify-between text-sm py-2 px-3 rounded-lg hover:bg-[#F5F7FA] transition-colors text-left">
+                  <span className="text-[#0C1A2E]">{a.label}</span>
                   {a.count !== null && a.count > 0 && (
                     <span className={`text-xs font-bold ${a.color}`}>{a.count}</span>
                   )}
-                  {a.count === null && <ArrowRight className="h-3 w-3 text-[#5A6478]" />}
+                  {a.count === null && <ArrowRight className="h-3 w-3 text-[#64748B]" />}
                 </button>
               ))}
             </div>
@@ -309,8 +309,8 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-[#0A1A2E]">Statistici</h1>
-        <p className="text-sm text-[#5A6478]">Raport general activitate — 02.05.2026</p>
+        <h1 className="text-2xl font-bold text-[#0C1A2E]">Statistici</h1>
+        <p className="text-sm text-[#64748B]">Raport general activitate — 02.05.2026</p>
       </div>
 
       {/* KPI row */}
@@ -321,26 +321,26 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
           { label: "Sumă medie", value: `${Math.round(avgAmount / 1000)}k RON`, color: "text-amber-600", icon: BarChart2 },
           { label: "Asigurări totale", value: insuranceRequests.length, color: "text-purple-600", icon: Shield },
         ].map(k => (
-          <div key={k.label} className="bg-white border border-[#E5E3D9] rounded-xl p-5">
+          <div key={k.label} className="bg-white border border-[#E2E8F0] rounded-xl p-5">
             <k.icon className={`h-5 w-5 ${k.color} mb-2`} />
             <div className={`text-2xl font-bold ${k.color} mb-0.5`}>{k.value}</div>
-            <div className="text-xs text-[#5A6478]">{k.label}</div>
+            <div className="text-xs text-[#64748B]">{k.label}</div>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* Status breakdown */}
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-5">
-          <h3 className="font-semibold text-[#0A1A2E] mb-4">Status aplicări</h3>
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
+          <h3 className="font-semibold text-[#0C1A2E] mb-4">Status aplicări</h3>
           <div className="space-y-3">
             {statusData.map(s => (
               <div key={s.label}>
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="text-[#5A6478]">{s.label}</span>
-                  <span className="font-semibold text-[#0A1A2E]">{s.count} ({s.pct.toFixed(0)}%)</span>
+                  <span className="text-[#64748B]">{s.label}</span>
+                  <span className="font-semibold text-[#0C1A2E]">{s.count} ({s.pct.toFixed(0)}%)</span>
                 </div>
-                <div className="h-2 bg-[#F7F4EC] rounded-full overflow-hidden">
+                <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
                   <div className={`h-full ${s.color} rounded-full transition-all`} style={{ width: `${s.pct}%` }} />
                 </div>
               </div>
@@ -349,17 +349,17 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
         </div>
 
         {/* By type */}
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-5">
-          <h3 className="font-semibold text-[#0A1A2E] mb-4">Aplicări pe tip de credit</h3>
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5">
+          <h3 className="font-semibold text-[#0C1A2E] mb-4">Aplicări pe tip de credit</h3>
           <div className="space-y-4">
             {byType.map(t => (
               <div key={t.type}>
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="text-[#5A6478] capitalize">{t.type === "refinantare" ? "Refinanțare" : t.type === "personal" ? "Credit personal" : "Credit ipotecar"}</span>
-                  <span className="font-semibold text-[#0A1A2E]">{t.count} ({t.approved} aprobate)</span>
+                  <span className="text-[#64748B] capitalize">{t.type === "refinantare" ? "Refinanțare" : t.type === "personal" ? "Credit personal" : "Credit ipotecar"}</span>
+                  <span className="font-semibold text-[#0C1A2E]">{t.count} ({t.approved} aprobate)</span>
                 </div>
-                <div className="h-2 bg-[#F7F4EC] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#0A1A2E] rounded-full" style={{ width: applications.length ? `${(t.count / applications.length) * 100}%` : "0%" }} />
+                <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
+                  <div className="h-full bg-[#0C1A2E] rounded-full" style={{ width: applications.length ? `${(t.count / applications.length) * 100}%` : "0%" }} />
                 </div>
               </div>
             ))}
@@ -369,17 +369,17 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
 
       {/* Top bănci */}
       {topBanks.length > 0 && (
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 mb-6">
-          <h3 className="font-semibold text-[#0A1A2E] mb-4">Top bănci solicitate</h3>
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 mb-6">
+          <h3 className="font-semibold text-[#0C1A2E] mb-4">Top bănci solicitate</h3>
           <div className="space-y-3">
             {topBanks.map(([bank, count], i) => (
               <div key={bank} className="flex items-center gap-3">
-                <span className="text-xs font-bold text-[#5A6478] w-4">{i + 1}</span>
-                <span className="text-sm text-[#0A1A2E] w-32">{bank}</span>
-                <div className="flex-1 h-2 bg-[#F7F4EC] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#C6A667] rounded-full" style={{ width: `${(count / maxBankCount) * 100}%` }} />
+                <span className="text-xs font-bold text-[#64748B] w-4">{i + 1}</span>
+                <span className="text-sm text-[#0C1A2E] w-32">{bank}</span>
+                <div className="flex-1 h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
+                  <div className="h-full bg-[#C49A20] rounded-full" style={{ width: `${(count / maxBankCount) * 100}%` }} />
                 </div>
-                <span className="text-sm font-semibold text-[#0A1A2E] w-8 text-right">{count}</span>
+                <span className="text-sm font-semibold text-[#0C1A2E] w-8 text-right">{count}</span>
               </div>
             ))}
           </div>
@@ -387,9 +387,9 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
       )}
 
       {applications.length === 0 && (
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-16 text-center">
-          <BarChart2 className="h-12 w-12 text-[#E5E3D9] mx-auto mb-3" />
-          <p className="text-sm text-[#5A6478]">Nu există date suficiente pentru statistici. Adaugă aplicări pentru a vedea rapoarte.</p>
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-16 text-center">
+          <BarChart2 className="h-12 w-12 text-[#E2E8F0] mx-auto mb-3" />
+          <p className="text-sm text-[#64748B]">Nu există date suficiente pentru statistici. Adaugă aplicări pentru a vedea rapoarte.</p>
         </div>
       )}
     </div>
@@ -417,8 +417,8 @@ function ApplicationsTab({ applications, setApplications }: { applications: Appl
     <div>
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">Aplicări credit</h1>
-          <p className="text-sm text-[#5A6478]">{applications.length} aplicări totale</p>
+          <h1 className="text-2xl font-bold text-[#0C1A2E]">Aplicări credit</h1>
+          <p className="text-sm text-[#64748B]">{applications.length} aplicări totale</p>
         </div>
         <button onClick={() => {
           const csv = ["ID,Nume,Email,Telefon,Tip,Suma,Banca,Status,Data",
@@ -427,45 +427,45 @@ function ApplicationsTab({ applications, setApplications }: { applications: Appl
           const blob = new Blob([csv], { type: "text/csv" });
           const url = URL.createObjectURL(blob);
           const link = document.createElement("a"); link.href = url; link.download = "aplicari.csv"; link.click();
-        }} className="flex items-center gap-1.5 border border-[#E5E3D9] text-[#5A6478] hover:text-[#0A1A2E] font-medium px-3 py-2 rounded-lg text-xs">
+        }} className="flex items-center gap-1.5 border border-[#E2E8F0] text-[#64748B] hover:text-[#0C1A2E] font-medium px-3 py-2 rounded-lg text-xs">
           <Download className="h-3.5 w-3.5" /> Export CSV
         </button>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4">
         <input type="text" placeholder="Caută după nume sau email..." value={search} onChange={e => setSearch(e.target.value)}
-          className="border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:border-[#0A1A2E] w-56" />
+          className="border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:border-[#0C1A2E] w-56" />
         {[["all", "Toate"], ["pending", "În așteptare"], ["in_review", "În analiză"], ["approved", "Aprobate"], ["rejected", "Respinse"], ["contacted", "Contactate"]].map(([val, label]) => (
-          <button key={val} onClick={() => setFilter(val)} className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${filter === val ? "bg-[#0A1A2E] text-white border-[#0A1A2E]" : "bg-white text-[#5A6478] border-[#E5E3D9] hover:border-[#0A1A2E]"}`}>
+          <button key={val} onClick={() => setFilter(val)} className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${filter === val ? "bg-[#0C1A2E] text-white border-[#0C1A2E]" : "bg-white text-[#64748B] border-[#E2E8F0] hover:border-[#0C1A2E]"}`}>
             {label}
           </button>
         ))}
       </div>
 
-      <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
         <table className="w-full">
-          <thead className="bg-[#F7F4EC]">
+          <thead className="bg-[#F5F7FA]">
             <tr>
               {["ID", "Solicitant", "Tip", "Sumă", "Bancă", "Status", "Data", "Acțiuni"].map(h => (
-                <th key={h} className="text-left text-xs font-semibold text-[#5A6478] uppercase tracking-wider px-4 py-3">{h}</th>
+                <th key={h} className="text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider px-4 py-3">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filtered.map((app, idx) => (
               <>
-                <tr key={app.id} className={`border-t border-[#E5E3D9] hover:bg-[#F7F4EC]/50 ${app.status === "pending" ? "bg-amber-50/30" : ""}`}>
-                  <td className="px-4 py-3 text-xs font-mono text-[#5A6478]">{app.id}</td>
+                <tr key={app.id} className={`border-t border-[#E2E8F0] hover:bg-[#F5F7FA]/50 ${app.status === "pending" ? "bg-amber-50/30" : ""}`}>
+                  <td className="px-4 py-3 text-xs font-mono text-[#64748B]">{app.id}</td>
                   <td className="px-4 py-3">
-                    <div className="text-sm font-medium text-[#0A1A2E]">{app.name}</div>
-                    <div className="text-xs text-[#5A6478]">{app.email}</div>
-                    {app.phone && <div className="text-xs text-[#5A6478]">{app.phone}</div>}
+                    <div className="text-sm font-medium text-[#0C1A2E]">{app.name}</div>
+                    <div className="text-xs text-[#64748B]">{app.email}</div>
+                    {app.phone && <div className="text-xs text-[#64748B]">{app.phone}</div>}
                   </td>
-                  <td className="px-4 py-3 text-xs text-[#5A6478] capitalize">{app.type}</td>
-                  <td className="px-4 py-3 text-sm font-semibold text-[#0A1A2E]">{app.amount.toLocaleString("ro-RO")} RON</td>
-                  <td className="px-4 py-3 text-sm text-[#5A6478]">{app.bank || "—"}</td>
+                  <td className="px-4 py-3 text-xs text-[#64748B] capitalize">{app.type}</td>
+                  <td className="px-4 py-3 text-sm font-semibold text-[#0C1A2E]">{app.amount.toLocaleString("ro-RO")} RON</td>
+                  <td className="px-4 py-3 text-sm text-[#64748B]">{app.bank || "—"}</td>
                   <td className="px-4 py-3">
-                    <select value={app.status} onChange={e => updateStatus(app.id, e.target.value as Application["status"])} className="text-xs border border-[#E5E3D9] rounded-lg px-2 py-1 bg-white focus:outline-none">
+                    <select value={app.status} onChange={e => updateStatus(app.id, e.target.value as Application["status"])} className="text-xs border border-[#E2E8F0] rounded-lg px-2 py-1 bg-white focus:outline-none">
                       <option value="pending">În așteptare</option>
                       <option value="in_review">În analiză</option>
                       <option value="approved">Aprobat</option>
@@ -474,30 +474,30 @@ function ApplicationsTab({ applications, setApplications }: { applications: Appl
                       <option value="closed">Închis</option>
                     </select>
                   </td>
-                  <td className="px-4 py-3 text-xs text-[#5A6478]">{app.date}</td>
+                  <td className="px-4 py-3 text-xs text-[#64748B]">{app.date}</td>
                   <td className="px-4 py-3">
                     <div className="flex gap-1">
-                      <button onClick={() => setExpandedId(expandedId === app.id ? null : app.id)} className="p-1.5 rounded hover:bg-[#F7F4EC] text-[#5A6478] hover:text-[#0A1A2E]" title="Detalii">
+                      <button onClick={() => setExpandedId(expandedId === app.id ? null : app.id)} className="p-1.5 rounded hover:bg-[#F5F7FA] text-[#64748B] hover:text-[#0C1A2E]" title="Detalii">
                         <Eye className="h-3.5 w-3.5" />
                       </button>
                       {app.phone && (
-                        <a href={`tel:${app.phone}`} className="p-1.5 rounded hover:bg-green-50 text-[#5A6478] hover:text-green-600" title="Sună">
+                        <a href={`tel:${app.phone}`} className="p-1.5 rounded hover:bg-green-50 text-[#64748B] hover:text-green-600" title="Sună">
                           <Phone className="h-3.5 w-3.5" />
                         </a>
                       )}
                       {app.email && (
-                        <a href={`mailto:${app.email}`} className="p-1.5 rounded hover:bg-blue-50 text-[#5A6478] hover:text-blue-600" title="Email">
+                        <a href={`mailto:${app.email}`} className="p-1.5 rounded hover:bg-blue-50 text-[#64748B] hover:text-blue-600" title="Email">
                           <Mail className="h-3.5 w-3.5" />
                         </a>
                       )}
-                      <button onClick={() => deleteApp(app.id)} className="p-1.5 rounded hover:bg-red-50 text-[#5A6478] hover:text-red-600" title="Șterge">
+                      <button onClick={() => deleteApp(app.id)} className="p-1.5 rounded hover:bg-red-50 text-[#64748B] hover:text-red-600" title="Șterge">
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     </div>
                   </td>
                 </tr>
                 {expandedId === app.id && (
-                  <tr key={app.id + "_exp"} className="border-t border-[#E5E3D9] bg-[#F7F4EC]">
+                  <tr key={app.id + "_exp"} className="border-t border-[#E2E8F0] bg-[#F5F7FA]">
                     <td colSpan={8} className="px-4 py-4">
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
                         {[
@@ -507,14 +507,14 @@ function ApplicationsTab({ applications, setApplications }: { applications: Appl
                           { label: "Status curent", val: STATUS_LABELS[app.status]?.label || app.status },
                         ].map(r => (
                           <div key={r.label}>
-                            <div className="font-semibold text-[#0A1A2E] mb-0.5">{r.label}</div>
-                            <div className="text-[#5A6478]">{r.val}</div>
+                            <div className="font-semibold text-[#0C1A2E] mb-0.5">{r.label}</div>
+                            <div className="text-[#64748B]">{r.val}</div>
                           </div>
                         ))}
                         {app.message && (
                           <div className="col-span-full">
-                            <div className="font-semibold text-[#0A1A2E] mb-0.5">Mesaj client</div>
-                            <div className="text-[#5A6478]">{app.message}</div>
+                            <div className="font-semibold text-[#0C1A2E] mb-0.5">Mesaj client</div>
+                            <div className="text-[#64748B]">{app.message}</div>
                           </div>
                         )}
                       </div>
@@ -526,7 +526,7 @@ function ApplicationsTab({ applications, setApplications }: { applications: Appl
           </tbody>
         </table>
         {filtered.length === 0 && (
-          <div className="py-12 text-center text-sm text-[#5A6478]">Nicio aplicare în această categorie.</div>
+          <div className="py-12 text-center text-sm text-[#64748B]">Nicio aplicare în această categorie.</div>
         )}
       </div>
     </div>
@@ -561,10 +561,10 @@ function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guid
     return (
       <div>
         <div className="flex items-center gap-3 mb-6">
-          <button onClick={() => { setEditing(null); setIsNew(false); }} className="text-sm text-[#5A6478] hover:text-[#0A1A2E]">← Înapoi</button>
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">{isNew ? "Ghid nou" : "Editare ghid"}</h1>
+          <button onClick={() => { setEditing(null); setIsNew(false); }} className="text-sm text-[#64748B] hover:text-[#0C1A2E]">← Înapoi</button>
+          <h1 className="text-2xl font-bold text-[#0C1A2E]">{isNew ? "Ghid nou" : "Editare ghid"}</h1>
         </div>
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-6 max-w-2xl">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 max-w-2xl">
           <div className="space-y-4">
             {[
               { key: "title" as keyof Guide, label: "Titlu", type: "text" },
@@ -574,21 +574,21 @@ function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guid
               { key: "image" as keyof Guide, label: "URL imagine", type: "text" },
             ].map(f => (
               <div key={f.key}>
-                <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">{f.label}</label>
+                <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">{f.label}</label>
                 <input type={f.type} value={String(editing[f.key])} onChange={e => setEditing({ ...editing, [f.key]: e.target.value })}
-                  className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A1A2E]" />
+                  className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0C1A2E]" />
               </div>
             ))}
             <div>
-              <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">Rezumat</label>
+              <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Rezumat</label>
               <textarea value={editing.excerpt} onChange={e => setEditing({ ...editing, excerpt: e.target.value })} rows={3}
-                className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A1A2E] resize-none" />
+                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0C1A2E] resize-none" />
             </div>
             <div className="flex gap-3 pt-2">
-              <button onClick={() => save(editing)} className="bg-[#0A1A2E] text-white font-semibold px-5 py-2 rounded-lg text-sm flex items-center gap-2">
+              <button onClick={() => save(editing)} className="bg-[#0C1A2E] text-white font-semibold px-5 py-2 rounded-lg text-sm flex items-center gap-2">
                 <Check className="h-4 w-4" /> Salvează
               </button>
-              <button onClick={() => { setEditing(null); setIsNew(false); }} className="border border-[#E5E3D9] text-[#5A6478] px-5 py-2 rounded-lg text-sm">Anulează</button>
+              <button onClick={() => { setEditing(null); setIsNew(false); }} className="border border-[#E2E8F0] text-[#64748B] px-5 py-2 rounded-lg text-sm">Anulează</button>
             </div>
           </div>
         </div>
@@ -600,34 +600,34 @@ function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guid
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">Ghiduri</h1>
-          <p className="text-sm text-[#5A6478]">{guides.length} ghiduri publicate</p>
+          <h1 className="text-2xl font-bold text-[#0C1A2E]">Ghiduri</h1>
+          <p className="text-sm text-[#64748B]">{guides.length} ghiduri publicate</p>
         </div>
-        <button onClick={() => { setEditing(emptyGuide); setIsNew(true); }} className="flex items-center gap-2 bg-[#0A1A2E] text-white font-semibold px-4 py-2 rounded-lg text-sm">
+        <button onClick={() => { setEditing(emptyGuide); setIsNew(true); }} className="flex items-center gap-2 bg-[#0C1A2E] text-white font-semibold px-4 py-2 rounded-lg text-sm">
           <Plus className="h-4 w-4" /> Ghid nou
         </button>
       </div>
-      <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
         {guides.map((guide, i) => (
-          <div key={guide.slug} className={`flex items-center gap-4 px-5 py-4 hover:bg-[#F7F4EC]/50 ${i > 0 ? "border-t border-[#E5E3D9]" : ""}`}>
-            <div className="w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-[#E5E3D9]">
+          <div key={guide.slug} className={`flex items-center gap-4 px-5 py-4 hover:bg-[#F5F7FA]/50 ${i > 0 ? "border-t border-[#E2E8F0]" : ""}`}>
+            <div className="w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-[#E2E8F0]">
               <img src={guide.image} alt="" className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-semibold text-[#0A1A2E] truncate">{guide.title}</div>
-              <div className="text-xs text-[#5A6478]">{guide.category} · {guide.date} · {guide.readTime} citire</div>
+              <div className="text-sm font-semibold text-[#0C1A2E] truncate">{guide.title}</div>
+              <div className="text-xs text-[#64748B]">{guide.category} · {guide.date} · {guide.readTime} citire</div>
             </div>
             <div className="flex gap-2 shrink-0">
-              <button onClick={() => { setEditing(guide); setIsNew(false); }} className="p-1.5 rounded hover:bg-[#F7F4EC] text-[#5A6478] hover:text-[#0A1A2E]">
+              <button onClick={() => { setEditing(guide); setIsNew(false); }} className="p-1.5 rounded hover:bg-[#F5F7FA] text-[#64748B] hover:text-[#0C1A2E]">
                 <Pencil className="h-4 w-4" />
               </button>
-              <button onClick={() => del(guide.slug)} className="p-1.5 rounded hover:bg-red-50 text-[#5A6478] hover:text-red-600">
+              <button onClick={() => del(guide.slug)} className="p-1.5 rounded hover:bg-red-50 text-[#64748B] hover:text-red-600">
                 <Trash2 className="h-4 w-4" />
               </button>
             </div>
           </div>
         ))}
-        {guides.length === 0 && <div className="py-12 text-center text-sm text-[#5A6478]">Niciun ghid publicat.</div>}
+        {guides.length === 0 && <div className="py-12 text-center text-sm text-[#64748B]">Niciun ghid publicat.</div>}
       </div>
     </div>
   );
@@ -646,51 +646,51 @@ function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[];
     <div>
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">Cereri asigurări</h1>
-          <p className="text-sm text-[#5A6478]">{requests.length} cereri totale · {requests.filter(r => r.status === "pending").length} neprocesate</p>
+          <h1 className="text-2xl font-bold text-[#0C1A2E]">Cereri asigurări</h1>
+          <p className="text-sm text-[#64748B]">{requests.length} cereri totale · {requests.filter(r => r.status === "pending").length} neprocesate</p>
         </div>
       </div>
       <div className="flex gap-2 mb-4">
         {[["all", "Toate"], ["pending", "Neprocesate"], ["contacted", "Contactate"], ["closed", "Închise"]].map(([v, l]) => (
-          <button key={v} onClick={() => setFilter(v)} className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${filter === v ? "bg-[#0A1A2E] text-white border-[#0A1A2E]" : "bg-white text-[#5A6478] border-[#E5E3D9] hover:border-[#0A1A2E]"}`}>
+          <button key={v} onClick={() => setFilter(v)} className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${filter === v ? "bg-[#0C1A2E] text-white border-[#0C1A2E]" : "bg-white text-[#64748B] border-[#E2E8F0] hover:border-[#0C1A2E]"}`}>
             {l}
           </button>
         ))}
       </div>
-      <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
         <table className="w-full">
-          <thead className="bg-[#F7F4EC]">
+          <thead className="bg-[#F5F7FA]">
             <tr>
               {["ID", "Solicitant", "Tip asigurare", "Status", "Data", "Contact", "Acțiuni"].map(h => (
-                <th key={h} className="text-left text-xs font-semibold text-[#5A6478] uppercase tracking-wider px-4 py-3">{h}</th>
+                <th key={h} className="text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider px-4 py-3">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filtered.map(req => (
-              <tr key={req.id} className={`border-t border-[#E5E3D9] hover:bg-[#F7F4EC]/50 ${req.status === "pending" ? "bg-amber-50/20" : ""}`}>
-                <td className="px-4 py-3 text-xs font-mono text-[#5A6478]">{req.id}</td>
+              <tr key={req.id} className={`border-t border-[#E2E8F0] hover:bg-[#F5F7FA]/50 ${req.status === "pending" ? "bg-amber-50/20" : ""}`}>
+                <td className="px-4 py-3 text-xs font-mono text-[#64748B]">{req.id}</td>
                 <td className="px-4 py-3">
-                  <div className="text-sm font-medium text-[#0A1A2E]">{req.name}</div>
-                  <div className="text-xs text-[#5A6478]">{req.email}</div>
+                  <div className="text-sm font-medium text-[#0C1A2E]">{req.name}</div>
+                  <div className="text-xs text-[#64748B]">{req.email}</div>
                 </td>
-                <td className="px-4 py-3 text-sm text-[#5A6478]">{req.type}</td>
+                <td className="px-4 py-3 text-sm text-[#64748B]">{req.type}</td>
                 <td className="px-4 py-3">
-                  <select value={req.status} onChange={e => updateStatus(req.id, e.target.value as InsuranceRequest["status"])} className="text-xs border border-[#E5E3D9] rounded-lg px-2 py-1 bg-white focus:outline-none">
+                  <select value={req.status} onChange={e => updateStatus(req.id, e.target.value as InsuranceRequest["status"])} className="text-xs border border-[#E2E8F0] rounded-lg px-2 py-1 bg-white focus:outline-none">
                     <option value="pending">În așteptare</option>
                     <option value="contacted">Contactat</option>
                     <option value="closed">Închis</option>
                   </select>
                 </td>
-                <td className="px-4 py-3 text-xs text-[#5A6478]">{req.date}</td>
+                <td className="px-4 py-3 text-xs text-[#64748B]">{req.date}</td>
                 <td className="px-4 py-3">
                   <div className="flex gap-1">
-                    {req.phone && <a href={`tel:${req.phone}`} className="p-1 rounded hover:bg-green-50 text-[#5A6478] hover:text-green-600" title="Sună"><Phone className="h-3.5 w-3.5" /></a>}
-                    {req.email && <a href={`mailto:${req.email}`} className="p-1 rounded hover:bg-blue-50 text-[#5A6478] hover:text-blue-600" title="Email"><Mail className="h-3.5 w-3.5" /></a>}
+                    {req.phone && <a href={`tel:${req.phone}`} className="p-1 rounded hover:bg-green-50 text-[#64748B] hover:text-green-600" title="Sună"><Phone className="h-3.5 w-3.5" /></a>}
+                    {req.email && <a href={`mailto:${req.email}`} className="p-1 rounded hover:bg-blue-50 text-[#64748B] hover:text-blue-600" title="Email"><Mail className="h-3.5 w-3.5" /></a>}
                   </div>
                 </td>
                 <td className="px-4 py-3">
-                  <button onClick={() => del(req.id)} className="p-1.5 rounded hover:bg-red-50 text-[#5A6478] hover:text-red-600">
+                  <button onClick={() => del(req.id)} className="p-1.5 rounded hover:bg-red-50 text-[#64748B] hover:text-red-600">
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
                 </td>
@@ -699,7 +699,7 @@ function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[];
           </tbody>
         </table>
         {filtered.length === 0 && (
-          <div className="py-12 text-center text-sm text-[#5A6478]">Nicio cerere în această categorie.</div>
+          <div className="py-12 text-center text-sm text-[#64748B]">Nicio cerere în această categorie.</div>
         )}
       </div>
     </div>
@@ -733,15 +733,15 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-[#0A1A2E]">Bănci partenere</h1>
-        <p className="text-sm text-[#5A6478]">{banks.length} bănci configurate · Dobânzi actualizate 02.05.2026 · Click ✏️ pentru modificare</p>
+        <h1 className="text-2xl font-bold text-[#0C1A2E]">Bănci partenere</h1>
+        <p className="text-sm text-[#64748B]">{banks.length} bănci configurate · Dobânzi actualizate 02.05.2026 · Click ✏️ pentru modificare</p>
       </div>
-      <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
         <table className="w-full">
-          <thead className="bg-[#F7F4EC]">
+          <thead className="bg-[#F5F7FA]">
             <tr>
               {["Bancă", "D. personal", "D. ipotecar", "DAE pers.", "DAE ipot.", "Rating", "Acțiuni"].map(h => (
-                <th key={h} className="text-left text-xs font-semibold text-[#5A6478] uppercase tracking-wider px-4 py-3">{h}</th>
+                <th key={h} className="text-left text-xs font-semibold text-[#64748B] uppercase tracking-wider px-4 py-3">{h}</th>
               ))}
             </tr>
           </thead>
@@ -749,10 +749,10 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
             {(banks as any[]).map((bank: any) => {
               const isEdit = editingId === bank.id;
               return (
-                <tr key={bank.id} className="border-t border-[#E5E3D9] hover:bg-[#F7F4EC]/50">
+                <tr key={bank.id} className="border-t border-[#E2E8F0] hover:bg-[#F5F7FA]/50">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-lg overflow-hidden bg-white border border-[#E5E3D9] flex items-center justify-center shrink-0">
+                      <div className="w-8 h-8 rounded-lg overflow-hidden bg-white border border-[#E2E8F0] flex items-center justify-center shrink-0">
                         <img src={bank.logo} alt={bank.name}
                           className="w-7 h-7 object-contain"
                           onError={e => {
@@ -762,7 +762,7 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
                             img.parentElement!.innerHTML = `<span style="color:white;font-weight:700;font-size:8px">${bank.initials}</span>`;
                           }} />
                       </div>
-                      <span className="text-sm font-medium text-[#0A1A2E]">{bank.name}</span>
+                      <span className="text-sm font-medium text-[#0C1A2E]">{bank.name}</span>
                     </div>
                   </td>
                   {["ratePersonal", "rateIpotecar", "daePersonal", "daeIpotecar", "rating"].map(field => (
@@ -770,9 +770,9 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
                       {isEdit ? (
                         <input type="number" step="0.01" value={editValues[field] as number}
                           onChange={e => setEditValues(v => ({ ...v, [field]: parseFloat(e.target.value) || 0 }))}
-                          className="w-20 border border-[#C6A667] rounded px-2 py-1 text-sm focus:outline-none" />
+                          className="w-20 border border-[#C49A20] rounded px-2 py-1 text-sm focus:outline-none" />
                       ) : (
-                        <span className="text-sm text-[#0A1A2E]">{(bank[field] as number).toFixed(2)}{field === "rating" ? "" : "%"}</span>
+                        <span className="text-sm text-[#0C1A2E]">{(bank[field] as number).toFixed(2)}{field === "rating" ? "" : "%"}</span>
                       )}
                     </td>
                   ))}
@@ -785,8 +785,8 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
                         </>
                       ) : (
                         <>
-                          <button onClick={() => startEdit(bank)} className="p-1.5 rounded hover:bg-[#F7F4EC] text-[#5A6478] hover:text-[#0A1A2E]"><Pencil className="h-3.5 w-3.5" /></button>
-                          <button onClick={() => deleteBank(bank.id)} className="p-1.5 rounded hover:bg-red-50 text-[#5A6478] hover:text-red-600"><Trash2 className="h-3.5 w-3.5" /></button>
+                          <button onClick={() => startEdit(bank)} className="p-1.5 rounded hover:bg-[#F5F7FA] text-[#64748B] hover:text-[#0C1A2E]"><Pencil className="h-3.5 w-3.5" /></button>
+                          <button onClick={() => deleteBank(bank.id)} className="p-1.5 rounded hover:bg-red-50 text-[#64748B] hover:text-red-600"><Trash2 className="h-3.5 w-3.5" /></button>
                         </>
                       )}
                     </div>
@@ -797,8 +797,8 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
           </tbody>
         </table>
       </div>
-      <div className="mt-3 text-xs text-[#5A6478] flex items-center gap-1.5">
-        <Star className="h-3 w-3 text-[#C6A667]" />
+      <div className="mt-3 text-xs text-[#64748B] flex items-center gap-1.5">
+        <Star className="h-3 w-3 text-[#C49A20]" />
         Dobânzile afișate pe site se actualizează automat la salvare.
       </div>
     </div>

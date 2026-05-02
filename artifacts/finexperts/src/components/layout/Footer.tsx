@@ -3,14 +3,14 @@ import { ShieldCheck, ExternalLink, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0D1F3C] text-white">
+    <footer className="bg-[#0C1A2E] text-white">
       {/* PARTENER OFICIAL bar */}
       <div className="border-b border-white/10 px-4 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 border border-[#C6A667]/50 rounded-full px-3 py-1">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#C6A667]" />
-              <span className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider">Partener oficial</span>
+            <div className="flex items-center gap-1.5 border border-[#C49A20]/50 rounded-full px-3 py-1">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#C49A20]" />
+              <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Partener oficial</span>
             </div>
             <span className="text-sm text-gray-400">
               Membri ARBC — Asociația Română a Brokerilor de Credite

@@ -35,20 +35,20 @@ function SliderInput({
   return (
     <div className="mb-7">
       <div className="flex justify-between items-center mb-3">
-        <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">{label}</span>
+        <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">{label}</span>
         {editing ? (
           <input
             autoFocus
             type="number"
             defaultValue={value}
-            className="w-36 text-right text-sm font-semibold text-[#0A1A2E] border-b-2 border-[#C6A667] bg-transparent focus:outline-none"
+            className="w-36 text-right text-sm font-semibold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
             onBlur={e => commit(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
           />
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="text-base font-semibold text-[#0A1A2E] hover:text-[#C6A667] transition-colors border-b border-dashed border-[#C6A667]/40 hover:border-[#C6A667]"
+            className="text-base font-semibold text-[#0C1A2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
             title="Click pentru a edita manual"
           >
             {displayVal}
@@ -64,7 +64,7 @@ function SliderInput({
         onValueChange={([v]) => onChange(v)}
         className="mb-2"
       />
-      <div className="flex justify-between text-xs text-[#5A6478]">
+      <div className="flex justify-between text-xs text-[#64748B]">
         <span>{format ? format(min) : min.toLocaleString("ro-RO")}</span>
         <span>{format ? format(max) : max.toLocaleString("ro-RO")}</span>
       </div>
@@ -93,28 +93,28 @@ export default function MaxLoanPage() {
   }, [activeType, venit, rateAlte, perioada]);
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
+    <div className="min-h-screen bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 py-10">
         {/* Header */}
         <div className="mb-8">
-          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Calculator sumă maximă</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
+          <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Calculator sumă maximă</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
             Cât poți împrumuta?
           </h1>
-          <p className="text-[#5A6478] text-base max-w-xl">
+          <p className="text-[#64748B] text-base max-w-xl">
             Calcul automat conform BNR (grad de îndatorare maxim 40% din venitul net). Modifică valorile cu slider-ul sau tastând direct.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-0 bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-0 bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
           {/* Left */}
-          <div className="p-6 lg:p-8 border-r border-[#E5E3D9]">
+          <div className="p-6 lg:p-8 border-r border-[#E2E8F0]">
             {/* Tab */}
             <div className="flex gap-2 mb-7">
               <button
                 onClick={() => setActiveType("personal")}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  activeType === "personal" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
+                  activeType === "personal" ? "bg-[#0C1A2E] text-white" : "text-[#64748B] hover:text-[#0C1A2E]"
                 }`}
               >
                 <FileText className="h-4 w-4" />
@@ -123,7 +123,7 @@ export default function MaxLoanPage() {
               <button
                 onClick={() => setActiveType("ipotecar")}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  activeType === "ipotecar" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
+                  activeType === "ipotecar" ? "bg-[#0C1A2E] text-white" : "text-[#64748B] hover:text-[#0C1A2E]"
                 }`}
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -134,8 +134,8 @@ export default function MaxLoanPage() {
               </button>
             </div>
 
-            <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+            <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
+              <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />
               Poți modifica valorile și cu click pe cifre
             </p>
 
@@ -174,7 +174,7 @@ export default function MaxLoanPage() {
           </div>
 
           {/* Right: dark result */}
-          <div className="bg-[#0A1A2E] p-6 lg:p-8">
+          <div className="bg-[#0C1A2E] p-6 lg:p-8">
             <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sumă maximă disponibilă</div>
             {result.maxLoan > 0 ? (
               <>
@@ -210,21 +210,21 @@ export default function MaxLoanPage() {
                   <span className="text-white font-medium">- {formatRON(rateAlte)}</span>
                 </div>
                 <div className="border-t border-white/10 pt-1.5 flex justify-between text-sm">
-                  <span className="text-[#C6A667] font-semibold">Rată maximă nouă</span>
-                  <span className="text-[#C6A667] font-bold">{formatRON(Math.round(result.rataMaxima))}</span>
+                  <span className="text-[#C49A20] font-semibold">Rată maximă nouă</span>
+                  <span className="text-[#C49A20] font-bold">{formatRON(Math.round(result.rataMaxima))}</span>
                 </div>
               </div>
             </div>
 
             <Link href="/aplica">
-              <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+              <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                 Aplică pentru această sumă
                 <ArrowRight className="h-4 w-4" />
               </button>
             </Link>
 
             <div className="mt-5 flex items-start gap-2 text-xs text-gray-400">
-              <Info className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C6A667]" />
+              <Info className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C49A20]" />
               Calcul informativ. Banca poate aplica un coeficient mai strict pentru veniturile variabile (PFA, dividende).
             </div>
           </div>

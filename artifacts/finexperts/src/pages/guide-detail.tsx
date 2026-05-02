@@ -42,11 +42,11 @@ export default function GuideDetailPage() {
 
   if (!guide) {
     return (
-      <div className="min-h-screen bg-[#F7F4EC] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F5F7FA] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#0A1A2E] mb-4">Ghidul nu a fost găsit</h1>
+          <h1 className="text-2xl font-bold text-[#0C1A2E] mb-4">Ghidul nu a fost găsit</h1>
           <Link href="/ghiduri">
-            <button className="bg-[#0A1A2E] text-white px-6 py-2 rounded-lg">Înapoi la ghiduri</button>
+            <button className="bg-[#0C1A2E] text-white px-6 py-2 rounded-lg">Înapoi la ghiduri</button>
           </Link>
         </div>
       </div>
@@ -55,26 +55,26 @@ export default function GuideDetailPage() {
 
   const renderBody = (text: string) => {
     return text.split('\n').map((line, i) => {
-      if (line.startsWith('## ')) return <h2 key={i} className="text-2xl font-bold text-[#0A1A2E] mt-8 mb-4">{line.slice(3)}</h2>;
-      if (line.startsWith('**') && line.endsWith('**')) return <p key={i} className="font-semibold text-[#0A1A2E] mt-4 mb-2">{line.slice(2, -2)}</p>;
-      if (line.startsWith('- ')) return <li key={i} className="ml-5 text-[#5A6478] my-1 list-disc">{line.slice(2)}</li>;
+      if (line.startsWith('## ')) return <h2 key={i} className="text-2xl font-bold text-[#0C1A2E] mt-8 mb-4">{line.slice(3)}</h2>;
+      if (line.startsWith('**') && line.endsWith('**')) return <p key={i} className="font-semibold text-[#0C1A2E] mt-4 mb-2">{line.slice(2, -2)}</p>;
+      if (line.startsWith('- ')) return <li key={i} className="ml-5 text-[#64748B] my-1 list-disc">{line.slice(2)}</li>;
       if (line.trim() === '') return <div key={i} className="h-2" />;
-      return <p key={i} className="text-[#5A6478] my-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />;
+      return <p key={i} className="text-[#64748B] my-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />;
     });
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
+    <div className="min-h-screen bg-[#F5F7FA]">
       <div className="max-w-4xl mx-auto px-4 py-10">
         {/* Back */}
-        <Link href="/ghiduri" className="inline-flex items-center gap-1.5 text-sm text-[#5A6478] hover:text-[#0A1A2E] mb-6 transition-colors">
+        <Link href="/ghiduri" className="inline-flex items-center gap-1.5 text-sm text-[#64748B] hover:text-[#0C1A2E] mb-6 transition-colors">
           <ArrowLeft className="h-4 w-4" /> Înapoi la ghiduri
         </Link>
 
         {/* Header */}
-        <div className="text-xs font-bold text-[#C6A667] uppercase tracking-wider mb-3">{guide.category}</div>
-        <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] mb-3">{guide.title}</h1>
-        <div className="flex items-center gap-3 text-sm text-[#5A6478] mb-8">
+        <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-3">{guide.category}</div>
+        <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] mb-3">{guide.title}</h1>
+        <div className="flex items-center gap-3 text-sm text-[#64748B] mb-8">
           <span>{guide.date}</span>
           <span>·</span>
           <span>{guide.readTime} citire</span>
@@ -86,17 +86,17 @@ export default function GuideDetailPage() {
         </div>
 
         {/* Content */}
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-6 md:p-10 mb-8">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 md:p-10 mb-8">
           {renderBody(guide.body)}
         </div>
 
         {/* CTA */}
-        <div className="bg-[#0A1A2E] rounded-xl p-8 text-white">
+        <div className="bg-[#0C1A2E] rounded-xl p-8 text-white">
           <h3 className="text-xl font-bold mb-2">Calculează rata ta</h3>
           <p className="text-gray-300 mb-5">Folosește calculatorul FinExperts pentru a vedea rata exactă la toate cele 11 bănci.</p>
           <div className="flex gap-3 flex-wrap">
             <Link href="/calculator">
-              <button className="bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold px-5 py-2.5 rounded-lg transition-colors">
+              <button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold px-5 py-2.5 rounded-lg transition-colors">
                 Calculator credite
               </button>
             </Link>

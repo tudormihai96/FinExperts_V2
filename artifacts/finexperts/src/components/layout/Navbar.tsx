@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top info bar */}
-      <div className="bg-[#0D1F3C] text-white text-xs px-4 py-2">
+      <div className="bg-[#0C1A2E] text-white text-xs px-4 py-2">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-5">
             <a href="tel:0799715101" className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors">
@@ -67,14 +67,14 @@ export default function Navbar() {
       </div>
 
       {/* Main navbar */}
-      <div className="bg-white border-b border-[#E2DDD6] shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 h-[108px] flex items-center justify-between">
+      <div className="bg-white border-b border-[#E2E8F0] shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 h-[116px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0">
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[100px] w-auto"
+              className="h-[110px] w-auto"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";
@@ -82,8 +82,8 @@ export default function Navbar() {
               }}
             />
             <div className="hidden flex-col">
-              <span className="text-[22px] font-bold text-[#0A1A2E] leading-tight">FinExperts</span>
-              <span className="text-[9px] text-[#5A6478] tracking-wider uppercase">partener KIWI Finance</span>
+              <span className="text-[22px] font-bold text-[#0C1A2E] leading-tight">FinExperts</span>
+              <span className="text-[9px] text-[#64748B] tracking-wider uppercase">partener KIWI Finance</span>
             </div>
           </Link>
 
@@ -95,8 +95,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-3.5 py-2 text-[15px] font-medium rounded-md transition-colors ${
                   isActive(link.href)
-                    ? "text-[#0D1F3C] font-semibold border-b-2 border-[#B8944F]"
-                    : "text-[#64748B] hover:text-[#0D1F3C]"
+                    ? "text-[#0C1A2E] font-semibold border-b-2 border-[#C49A20]"
+                    : "text-[#64748B] hover:text-[#0C1A2E]"
                 }`}
               >
                 {link.label}
@@ -110,29 +110,29 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 border border-[#E2DDD6] hover:border-[#0D1F3C] px-3 py-2 rounded-lg transition-colors"
+                  className="flex items-center gap-2 border border-[#E2E8F0] hover:border-[#0C1A2E] px-3 py-2 rounded-lg transition-colors"
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#0D1F3C] flex items-center justify-center text-white text-[9px] font-bold">
+                  <div className="w-6 h-6 rounded-full bg-[#0C1A2E] flex items-center justify-center text-white text-[9px] font-bold">
                     {initials}
                   </div>
-                  <span className="text-sm font-medium text-[#0D1F3C]">{user?.name?.split(" ")[0]}</span>
-                  {isAdmin && <span className="text-[9px] font-bold text-[#B8944F] uppercase bg-[#B8944F]/15 px-1.5 py-0.5 rounded">Admin</span>}
+                  <span className="text-sm font-medium text-[#0C1A2E]">{user?.name?.split(" ")[0]}</span>
+                  {isAdmin && <span className="text-[9px] font-bold text-[#C49A20] uppercase bg-[#C49A20]/15 px-1.5 py-0.5 rounded">Admin</span>}
                 </button>
                 {userMenuOpen && (
-                  <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-[#E2DDD6] rounded-xl shadow-lg py-1 z-50">
+                  <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-[#E2E8F0] rounded-xl shadow-lg py-1 z-50">
                     {isAdmin && (
                       <Link href="/admin" onClick={() => setUserMenuOpen(false)}>
-                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0D1F3C] hover:bg-[#F8F7F4] cursor-pointer">
-                          <Settings className="h-4 w-4 text-[#B8944F]" /> Panou admin
+                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F5F7FA] cursor-pointer">
+                          <Settings className="h-4 w-4 text-[#C49A20]" /> Panou admin
                         </div>
                       </Link>
                     )}
                     <Link href="/cont" onClick={() => setUserMenuOpen(false)}>
-                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0D1F3C] hover:bg-[#F8F7F4] cursor-pointer">
+                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F5F7FA] cursor-pointer">
                         <User className="h-4 w-4" /> Contul meu
                       </div>
                     </Link>
-                    <div className="border-t border-[#E2DDD6] my-1" />
+                    <div className="border-t border-[#E2E8F0] my-1" />
                     <button onClick={() => { logout(); setUserMenuOpen(false); }} className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 cursor-pointer">
                       <LogOut className="h-4 w-4" /> Deconectare
                     </button>
@@ -142,7 +142,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="flex items-center gap-1.5 text-sm font-medium text-[#0D1F3C] border border-[#E2DDD6] hover:border-[#0D1F3C] px-4 py-2 rounded-lg transition-colors"
+                className="flex items-center gap-1.5 text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] hover:border-[#0C1A2E] px-4 py-2 rounded-lg transition-colors"
               >
                 <LogIn className="h-4 w-4" />
                 Conectare
@@ -150,7 +150,7 @@ export default function Navbar() {
             )}
             <Link
               href="/aplica"
-              className="flex items-center text-sm font-semibold text-white bg-[#0D1F3C] hover:bg-[#162847] px-5 py-2 rounded-lg transition-colors shadow-sm"
+              className="flex items-center text-sm font-semibold text-white bg-[#0C1A2E] hover:bg-[#162847] px-5 py-2 rounded-lg transition-colors shadow-sm"
             >
               Aplică acum
             </Link>
@@ -158,7 +158,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 text-[#0D1F3C]"
+            className="lg:hidden p-2 text-[#0C1A2E]"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -168,15 +168,15 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-[#E2DDD6] bg-[#F8F7F4] px-4 py-4 space-y-1">
+          <div className="lg:hidden border-t border-[#E2E8F0] bg-[#F5F7FA] px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`block px-3 py-2.5 text-sm font-medium rounded-md transition-colors ${
                   isActive(link.href)
-                    ? "bg-[#0D1F3C] text-white"
-                    : "text-[#0D1F3C] hover:bg-[#E2DDD6]"
+                    ? "bg-[#0C1A2E] text-white"
+                    : "text-[#0C1A2E] hover:bg-[#E2E8F0]"
                 }`}
                 onClick={() => setMobileOpen(false)}
               >
@@ -187,20 +187,20 @@ export default function Navbar() {
               {isLoggedIn ? (
                 <>
                   {isAdmin && (
-                    <Link href="/admin" className="flex-1 text-center text-sm font-medium text-[#B8944F] border border-[#B8944F] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+                    <Link href="/admin" className="flex-1 text-center text-sm font-medium text-[#C49A20] border border-[#C49A20] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
                       Admin
                     </Link>
                   )}
-                  <Link href="/cont" className="flex-1 text-center text-sm font-medium text-[#0D1F3C] border border-[#E2DDD6] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+                  <Link href="/cont" className="flex-1 text-center text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
                     Contul meu
                   </Link>
                 </>
               ) : (
-                <Link href="/login" className="flex-1 text-center text-sm font-medium text-[#0D1F3C] border border-[#E2DDD6] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+                <Link href="/login" className="flex-1 text-center text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
                   Conectare
                 </Link>
               )}
-              <Link href="/aplica" className="flex-1 text-center text-sm font-semibold text-white bg-[#0D1F3C] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+              <Link href="/aplica" className="flex-1 text-center text-sm font-semibold text-white bg-[#0C1A2E] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
                 Aplică acum
               </Link>
             </div>

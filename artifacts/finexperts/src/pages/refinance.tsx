@@ -39,21 +39,21 @@ function SliderInput({
   return (
     <div>
       <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">{label}</span>
+        <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">{label}</span>
         {editing ? (
           <input
             autoFocus
             type="number"
             defaultValue={value}
             step={step}
-            className="w-32 text-right text-sm font-semibold text-[#0A1A2E] border-b-2 border-[#C6A667] bg-transparent focus:outline-none"
+            className="w-32 text-right text-sm font-semibold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
             onBlur={e => commit(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
           />
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="text-sm font-semibold text-[#0A1A2E] hover:text-[#C6A667] transition-colors border-b border-dashed border-[#C6A667]/40 hover:border-[#C6A667]"
+            className="text-sm font-semibold text-[#0C1A2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
             title="Click pentru a edita manual"
           >
             {displayVal}
@@ -61,7 +61,7 @@ function SliderInput({
         )}
       </div>
       <Slider min={min} max={max} step={step} value={[value]} onValueChange={([v]) => onChange(Math.round(v / step) * step)} className="mb-1" />
-      <div className="flex justify-between text-[10px] text-[#5A6478]">
+      <div className="flex justify-between text-[10px] text-[#64748B]">
         <span>{format ? format(min) : min.toLocaleString("ro-RO")}</span>
         <span>{format ? format(max) : max.toLocaleString("ro-RO")}</span>
       </div>
@@ -99,31 +99,31 @@ export default function RefinancePage() {
   }, [sold, dobandaCurenta, luniRamase, comisionRambursare, dobandaNoua, perioadaNoua, taxaAnaliza]);
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
+    <div className="min-h-screen bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 py-10">
         {/* Header */}
         <div className="mb-8">
-          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Calculator refinanțare</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
+          <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Calculator refinanțare</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
             Cât economisești prin{" "}
-            <span className="text-[#C6A667]">refinanțare</span>?
+            <span className="text-[#C49A20]">refinanțare</span>?
           </h1>
-          <p className="text-[#5A6478] text-base max-w-xl">
+          <p className="text-[#64748B] text-base max-w-xl">
             Compară creditul actual cu o ofertă nouă. Modifică valorile cu slider-ul sau tastând direct pe cifre.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-0 bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-0 bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
           {/* Left: 2 sub-panels */}
-          <div className="border-r border-[#E5E3D9]">
+          <div className="border-r border-[#E2E8F0]">
             {/* CREDITUL ACTUAL */}
-            <div className="p-6 lg:p-8 border-b border-[#E5E3D9]">
+            <div className="p-6 lg:p-8 border-b border-[#E2E8F0]">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-1 h-5 bg-[#C6A667] rounded-full" />
-                <span className="text-xs font-bold text-[#0A1A2E] uppercase tracking-wider">Creditul actual</span>
+                <div className="w-1 h-5 bg-[#C49A20] rounded-full" />
+                <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Creditul actual</span>
               </div>
-              <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
-                <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+              <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />
                 Click pe cifre pentru a introduce valorile manual
               </p>
 
@@ -171,7 +171,7 @@ export default function RefinancePage() {
             <div className="p-6 lg:p-8">
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-1 h-5 bg-[#2E7D5B] rounded-full" />
-                <span className="text-xs font-bold text-[#0A1A2E] uppercase tracking-wider">Oferta nouă</span>
+                <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Oferta nouă</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -207,10 +207,10 @@ export default function RefinancePage() {
           </div>
 
           {/* Right: dark result */}
-          <div className="bg-[#0A1A2E] p-6 lg:p-8 flex flex-col">
+          <div className="bg-[#0C1A2E] p-6 lg:p-8 flex flex-col">
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="h-4 w-4 text-[#C6A667]" />
-              <span className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider">Refinanțare recomandată</span>
+              <Sparkles className="h-4 w-4 text-[#C49A20]" />
+              <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Refinanțare recomandată</span>
             </div>
 
             <div className="text-xs text-gray-400 mb-1">Economie totală</div>
@@ -261,7 +261,7 @@ export default function RefinancePage() {
             </div>
 
             <Link href="/aplica" className="mt-6 block">
-              <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+              <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                 Vreau să refinanțez
                 <Sparkles className="h-4 w-4" />
               </button>

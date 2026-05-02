@@ -21,21 +21,21 @@ function SliderInput({
   return (
     <div className="mb-6">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">{label}</span>
+        <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">{label}</span>
         {editing ? (
           <input autoFocus type="number" defaultValue={value}
-            className="w-36 text-right text-sm font-bold text-[#0A1A2E] border-b-2 border-[#C6A667] bg-transparent focus:outline-none"
+            className="w-36 text-right text-sm font-bold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
             onBlur={e => commit(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }} />
         ) : (
           <button onClick={() => setEditing(true)}
-            className="text-sm font-bold text-[#0A1A2E] hover:text-[#C6A667] transition-colors border-b border-dashed border-[#C6A667]/40 hover:border-[#C6A667]"
+            className="text-sm font-bold text-[#0C1A2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
             title="Click pentru a edita manual">{display}</button>
         )}
       </div>
       <Slider data-testid={testId} min={min} max={max} step={step} value={[value]}
         onValueChange={([v]) => onChange(v)} className="mb-1" />
-      <div className="flex justify-between text-[10px] text-[#5A6478]">
+      <div className="flex justify-between text-[10px] text-[#64748B]">
         <span>{format ? format(min) : min.toLocaleString("ro-RO")}</span>
         <span>{format ? format(max) : max.toLocaleString("ro-RO")}</span>
       </div>
@@ -72,9 +72,9 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px]">
       {/* Left */}
-      <div className="p-6 lg:p-8 border-r border-[#E5E3D9]">
-        <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+      <div className="p-6 lg:p-8 border-r border-[#E2E8F0]">
+        <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />
           Click pe orice cifră pentru a introduce valoarea manual
         </p>
         <SliderInput label="Sumă dorită" value={amount}
@@ -91,42 +91,42 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           format={v => `${v.toFixed(2)}%`} testId="slider-rate" />
 
         {/* DTI */}
-        <div className="border border-[#E5E3D9] rounded-xl overflow-hidden mt-2">
+        <div className="border border-[#E2E8F0] rounded-xl overflow-hidden mt-2">
           <button onClick={() => setDtiOpen(!dtiOpen)}
-            className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#0A1A2E] hover:bg-[#F7F4EC] transition-colors">
+            className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#0C1A2E] hover:bg-[#F5F7FA] transition-colors">
             <div className="flex items-center gap-2">
-              <Info className="h-4 w-4 text-[#5A6478]" />
+              <Info className="h-4 w-4 text-[#64748B]" />
               <span>Verifică gradul de îndatorare (DTI 40% BNR) — opțional</span>
             </div>
-            {dtiOpen ? <ChevronUp className="h-4 w-4 text-[#5A6478]" /> : <ChevronDown className="h-4 w-4 text-[#5A6478]" />}
+            {dtiOpen ? <ChevronUp className="h-4 w-4 text-[#64748B]" /> : <ChevronDown className="h-4 w-4 text-[#64748B]" />}
           </button>
           {dtiOpen && (
-            <div className="px-4 pb-4 border-t border-[#E5E3D9] bg-[#F7F4EC]">
+            <div className="px-4 pb-4 border-t border-[#E2E8F0] bg-[#F5F7FA]">
               <div className="grid grid-cols-2 gap-3 mt-3">
                 <div>
-                  <label className="text-xs text-[#5A6478] block mb-1">Venit net lunar (RON)</label>
+                  <label className="text-xs text-[#64748B] block mb-1">Venit net lunar (RON)</label>
                   <input type="number" value={venit}
                     onChange={e => setVenit(parseFloat(e.target.value) || 0)}
-                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0A1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0C1A2E]" />
                 </div>
                 <div>
-                  <label className="text-xs text-[#5A6478] block mb-1">Rate alte credite (RON/lună)</label>
+                  <label className="text-xs text-[#64748B] block mb-1">Rate alte credite (RON/lună)</label>
                   <input type="number" value={obligatii}
                     onChange={e => setObligatii(parseFloat(e.target.value) || 0)}
-                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0A1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0C1A2E]" />
                 </div>
               </div>
               <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-                <div className="bg-white rounded-lg p-2 border border-[#E5E3D9]">
-                  <div className="text-xs text-[#5A6478] mb-0.5">Plafon 40%</div>
-                  <div className="text-sm font-bold text-[#0A1A2E]">{formatRON(venit * 0.4)}</div>
+                <div className="bg-white rounded-lg p-2 border border-[#E2E8F0]">
+                  <div className="text-xs text-[#64748B] mb-0.5">Plafon 40%</div>
+                  <div className="text-sm font-bold text-[#0C1A2E]">{formatRON(venit * 0.4)}</div>
                 </div>
-                <div className="bg-white rounded-lg p-2 border border-[#E5E3D9]">
-                  <div className="text-xs text-[#5A6478] mb-0.5">Rate existente</div>
-                  <div className="text-sm font-bold text-[#0A1A2E]">{formatRON(obligatii)}</div>
+                <div className="bg-white rounded-lg p-2 border border-[#E2E8F0]">
+                  <div className="text-xs text-[#64748B] mb-0.5">Rate existente</div>
+                  <div className="text-sm font-bold text-[#0C1A2E]">{formatRON(obligatii)}</div>
                 </div>
                 <div className={`rounded-lg p-2 border ${dtiOk ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
-                  <div className="text-xs text-[#5A6478] mb-0.5">Rată max posibilă</div>
+                  <div className="text-xs text-[#64748B] mb-0.5">Rată max posibilă</div>
                   <div className={`text-sm font-bold ${dtiOk ? "text-[#2E7D5B]" : "text-[#C4432F]"}`}>{formatRON(Math.max(0, dtiMax))}</div>
                 </div>
               </div>
@@ -140,7 +140,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
       </div>
 
       {/* Right */}
-      <div className="bg-[#0A1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+      <div className="bg-[#0C1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Rată lunară estimativă</div>
         <div data-testid="result-monthly" className="text-5xl font-bold text-white mb-1">{Math.round(monthly).toLocaleString("ro-RO")} RON</div>
         <div className="text-sm text-gray-400 mb-6">pe lună, timp de {months} luni</div>
@@ -150,7 +150,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
         </div>
         {bestBank && (
           <div className="bg-white/8 rounded-xl p-4 mb-5">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#C6A667] mb-2">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#C49A20] mb-2">
               <TrendingDown className="h-3.5 w-3.5" />Cea mai bună ofertă azi
             </div>
             <div className="flex items-center gap-2 mb-1">
@@ -169,7 +169,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
             const r = type === "personal" ? bank.ratePersonal : bank.rateIpotecar;
             const m = calculateMonthlyPayment(amount, r, months);
             return (
-              <div key={bank.id} className={`flex items-center justify-between py-1.5 px-2 rounded-lg ${i === 0 ? "bg-[#C6A667]/10" : ""}`}>
+              <div key={bank.id} className={`flex items-center justify-between py-1.5 px-2 rounded-lg ${i === 0 ? "bg-[#C49A20]/10" : ""}`}>
                 <div className="flex items-center gap-2">
                   <img src={bank.logo} alt={bank.name} className="w-5 h-5 rounded object-contain bg-white p-0.5"
                     onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
@@ -181,7 +181,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           })}
         </div>
         <Link href="/aplica">
-          <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Aplică pentru acest credit <ArrowRight className="h-4 w-4" />
           </button>
         </Link>
@@ -209,17 +209,17 @@ function MaxLoanCalculator() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px]">
-      <div className="p-6 lg:p-8 border-r border-[#E5E3D9]">
+      <div className="p-6 lg:p-8 border-r border-[#E2E8F0]">
         <div className="flex gap-2 mb-6">
           {(["personal", "ipotecar"] as const).map(t => (
             <button key={t} onClick={() => setActiveType(t)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === t ? "bg-[#0A1A2E] text-white" : "border border-[#E5E3D9] text-[#5A6478] hover:text-[#0A1A2E]"}`}>
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === t ? "bg-[#0C1A2E] text-white" : "border border-[#E2E8F0] text-[#64748B] hover:text-[#0C1A2E]"}`}>
               {t === "personal" ? "Credit de Nevoi Personale" : "Credit ipotecar"}
             </button>
           ))}
         </div>
-        <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />
+        <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />
           Click pe cifre pentru a introduce valorile manual
         </p>
         <SliderInput label="Venit net lunar (RON)" value={venit} min={1000} max={30000} step={500}
@@ -231,7 +231,7 @@ function MaxLoanCalculator() {
           step={activeType === "personal" ? 6 : 12} onChange={setPerioada}
           format={v => `${v} luni (${(v / 12).toFixed(1)} ani)`} testId="slider-perioada" />
       </div>
-      <div className="bg-[#0A1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+      <div className="bg-[#0C1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sumă maximă disponibilă</div>
         {result.maxLoan > 0 ? (
           <>
@@ -258,18 +258,18 @@ function MaxLoanCalculator() {
               </div>
             ))}
             <div className="border-t border-white/10 pt-2 flex justify-between text-sm">
-              <span className="text-[#C6A667] font-semibold">Rată max nouă</span>
-              <span className="text-[#C6A667] font-bold">{formatRON(Math.round(result.rataMaxima))}</span>
+              <span className="text-[#C49A20] font-semibold">Rată max nouă</span>
+              <span className="text-[#C49A20] font-bold">{formatRON(Math.round(result.rataMaxima))}</span>
             </div>
           </div>
         </div>
         <Link href="/aplica">
-          <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Aplică pentru această sumă <ArrowRight className="h-4 w-4" />
           </button>
         </Link>
         <div className="mt-4 flex items-start gap-2 text-xs text-gray-400">
-          <Info className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C6A667]" />
+          <Info className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C49A20]" />
           Calcul la cea mai bună dobândă actuală ({result.bestRate}%). Banca poate aplica marje diferite.
         </div>
       </div>
@@ -308,15 +308,15 @@ function RefinanceCalculator() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px]">
-      <div className="border-r border-[#E5E3D9]">
+      <div className="border-r border-[#E2E8F0]">
         {/* Creditul actual */}
-        <div className="p-6 lg:p-8 border-b border-[#E5E3D9]">
+        <div className="p-6 lg:p-8 border-b border-[#E2E8F0]">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-1 h-5 bg-[#C6A667] rounded-full" />
-            <span className="text-xs font-bold text-[#0A1A2E] uppercase tracking-wider">Creditul actual</span>
+            <div className="w-1 h-5 bg-[#C49A20] rounded-full" />
+            <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Creditul actual</span>
           </div>
-          <p className="text-xs text-[#5A6478] mb-5 flex items-center gap-1.5">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#C6A667]" />Click pe cifre pentru valori manuale
+          <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />Click pe cifre pentru valori manuale
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <SliderInput label="Sold rămas (RON)" value={sold} min={5000} max={500000} step={5000} onChange={setSold} format={formatRON} />
@@ -331,7 +331,7 @@ function RefinanceCalculator() {
         <div className="p-6 lg:p-8">
           <div className="flex items-center gap-2 mb-5">
             <div className="w-1 h-5 bg-[#2E7D5B] rounded-full" />
-            <span className="text-xs font-bold text-[#0A1A2E] uppercase tracking-wider">Oferta nouă</span>
+            <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Oferta nouă</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <SliderInput label="Dobândă nouă (%)" value={dobNoua} min={3} max={18} step={0.01}
@@ -342,10 +342,10 @@ function RefinanceCalculator() {
         </div>
       </div>
       {/* Result */}
-      <div className="bg-[#0A1A2E] p-6 lg:p-8 flex flex-col rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+      <div className="bg-[#0C1A2E] p-6 lg:p-8 flex flex-col rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="h-4 w-4 text-[#C6A667]" />
-          <span className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider">Rezultat refinanțare</span>
+          <Sparkles className="h-4 w-4 text-[#C49A20]" />
+          <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Rezultat refinanțare</span>
         </div>
         <div className="text-xs text-gray-400 mb-1">Economie totală</div>
         <div data-testid="result-economie-totala"
@@ -381,7 +381,7 @@ function RefinanceCalculator() {
           ))}
         </div>
         <Link href="/aplica" className="mt-5 block">
-          <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Vreau să refinanțez <Sparkles className="h-4 w-4" />
           </button>
         </Link>
@@ -404,17 +404,17 @@ export default function CalculatorPage() {
   const tab = TABS.find(t => t.id === active)!;
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
+    <div className="min-h-screen bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 py-10">
         {/* Header */}
         <div className="mb-8">
-          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Calculatoare credite</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
+          <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Calculatoare credite</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
             {tab.id === "personal" && <>Credit de Nevoi Personale,<br />la toate cele 11 bănci.</>}
             {tab.id === "ipotecar" && <>Rată credit ipotecar,<br />la toate cele 11 bănci.</>}
-            {tab.id === "refinantare" && <>Cât economisești<br />prin <span className="text-[#C6A667]">refinanțare</span>?</>}
+            {tab.id === "refinantare" && <>Cât economisești<br />prin <span className="text-[#C49A20]">refinanțare</span>?</>}
           </h1>
-          <p className="text-[#5A6478] text-base max-w-xl">{tab.desc}</p>
+          <p className="text-[#64748B] text-base max-w-xl">{tab.desc}</p>
         </div>
 
         {/* Tab selector — card grid */}
@@ -422,16 +422,16 @@ export default function CalculatorPage() {
           {TABS.map(t => (
             <button key={t.id} onClick={() => setActive(t.id)}
               className={`text-left p-4 rounded-xl border transition-all ${active === t.id
-                ? "bg-[#0A1A2E] border-[#0A1A2E] text-white shadow-sm"
-                : "bg-white border-[#E5E3D9] text-[#5A6478] hover:border-[#0A1A2E] hover:text-[#0A1A2E]"}`}>
-              <div className={`mb-2 ${active === t.id ? "text-[#C6A667]" : "text-[#0A1A2E]"}`}>{t.icon}</div>
+                ? "bg-[#0C1A2E] border-[#0C1A2E] text-white shadow-sm"
+                : "bg-white border-[#E2E8F0] text-[#64748B] hover:border-[#0C1A2E] hover:text-[#0C1A2E]"}`}>
+              <div className={`mb-2 ${active === t.id ? "text-[#C49A20]" : "text-[#0C1A2E]"}`}>{t.icon}</div>
               <div className="text-sm font-semibold leading-tight">{t.label}</div>
             </button>
           ))}
         </div>
 
         {/* Calculator panel */}
-        <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
           {active === "personal" && <CreditCalculator key="personal" type="personal" />}
           {active === "ipotecar" && <CreditCalculator key="ipotecar" type="ipotecar" />}
           {active === "refinantare" && <RefinanceCalculator />}
@@ -440,28 +440,28 @@ export default function CalculatorPage() {
         {/* Bank rates table */}
         {(active === "personal" || active === "ipotecar") && (
           <div className="mt-8">
-            <h2 className="text-lg font-bold text-[#0A1A2E] mb-4">Toate dobânzile — {active === "personal" ? "credit de nevoi personale" : "credit ipotecar"} (02.05.2026)</h2>
-            <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+            <h2 className="text-lg font-bold text-[#0C1A2E] mb-4">Toate dobânzile — {active === "personal" ? "credit de nevoi personale" : "credit ipotecar"} (02.05.2026)</h2>
+            <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#F7F4EC] border-b border-[#E5E3D9]">
+                  <thead className="bg-[#F5F7FA] border-b border-[#E2E8F0]">
                     <tr>
-                      <th className="text-left px-4 py-3 text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Bancă</th>
-                      <th className="text-right px-4 py-3 text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Dobândă</th>
-                      <th className="text-right px-4 py-3 text-xs font-semibold text-[#5A6478] uppercase tracking-wider">DAE</th>
-                      <th className="text-right px-4 py-3 text-xs font-semibold text-[#5A6478] uppercase tracking-wider hidden md:table-cell">Rating</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-[#64748B] uppercase tracking-wider">Bancă</th>
+                      <th className="text-right px-4 py-3 text-xs font-semibold text-[#64748B] uppercase tracking-wider">Dobândă</th>
+                      <th className="text-right px-4 py-3 text-xs font-semibold text-[#64748B] uppercase tracking-wider">DAE</th>
+                      <th className="text-right px-4 py-3 text-xs font-semibold text-[#64748B] uppercase tracking-wider hidden md:table-cell">Rating</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E5E3D9]">
+                  <tbody className="divide-y divide-[#E2E8F0]">
                     {[...banks].sort((a, b) => active === "personal" ? a.ratePersonal - b.ratePersonal : a.rateIpotecar - b.rateIpotecar).map((bank, i) => {
                       const rate = active === "personal" ? bank.ratePersonal : bank.rateIpotecar;
                       const dae = active === "personal" ? bank.daePersonal : bank.daeIpotecar;
                       return (
-                        <tr key={bank.id} className={i === 0 ? "bg-[#C6A667]/5" : "hover:bg-[#F7F4EC]"}>
+                        <tr key={bank.id} className={i === 0 ? "bg-[#C49A20]/5" : "hover:bg-[#F5F7FA]"}>
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-3">
                               <div className="relative">
-                                <img src={bank.logo} alt={bank.name} className="w-8 h-8 rounded-lg object-contain bg-white border border-[#E5E3D9] p-0.5"
+                                <img src={bank.logo} alt={bank.name} className="w-8 h-8 rounded-lg object-contain bg-white border border-[#E2E8F0] p-0.5"
                                   onError={e => {
                                     const el = e.target as HTMLImageElement;
                                     el.style.display = "none";
@@ -471,17 +471,17 @@ export default function CalculatorPage() {
                                   style={{ backgroundColor: bank.color }}>{bank.initials}</div>
                               </div>
                               <div>
-                                <div className="font-medium text-[#0A1A2E]">{bank.name}</div>
-                                {i === 0 && <div className="text-[10px] text-[#C6A667] font-bold">⭐ Cea mai bună</div>}
+                                <div className="font-medium text-[#0C1A2E]">{bank.name}</div>
+                                {i === 0 && <div className="text-[10px] text-[#C49A20] font-bold">⭐ Cea mai bună</div>}
                               </div>
                             </div>
                           </td>
-                          <td className="px-4 py-3 text-right font-bold text-[#0A1A2E]">{rate.toFixed(2)}%</td>
-                          <td className="px-4 py-3 text-right text-[#5A6478]">{dae.toFixed(2)}%</td>
+                          <td className="px-4 py-3 text-right font-bold text-[#0C1A2E]">{rate.toFixed(2)}%</td>
+                          <td className="px-4 py-3 text-right text-[#64748B]">{dae.toFixed(2)}%</td>
                           <td className="px-4 py-3 text-right hidden md:table-cell">
                             <div className="flex items-center justify-end gap-1">
-                              <Star className="h-3 w-3 fill-[#C6A667] text-[#C6A667]" />
-                              <span className="text-[#5A6478]">{bank.rating.toFixed(1)}</span>
+                              <Star className="h-3 w-3 fill-[#C49A20] text-[#C49A20]" />
+                              <span className="text-[#64748B]">{bank.rating.toFixed(1)}</span>
                             </div>
                           </td>
                         </tr>
@@ -490,7 +490,7 @@ export default function CalculatorPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="px-4 py-3 bg-[#F7F4EC] border-t border-[#E5E3D9] text-xs text-[#5A6478]">
+              <div className="px-4 py-3 bg-[#F5F7FA] border-t border-[#E2E8F0] text-xs text-[#64748B]">
                 Dobânzi actualizate la 02.05.2026 de pe site-urile oficiale ale băncilor. IRCC T1/2026 = 5.58%.
               </div>
             </div>

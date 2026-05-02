@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 90">
-  <rect width="280" height="90" fill="white"/>
-  <text x="20" y="68" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-size="64" font-weight="900" fill="#E30613" letter-spacing="-2">BCR</text>
-  <text x="21" y="82" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" fill="#999999" letter-spacing="2.5">ERSTE GROUP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- BCR official-style wordmark: bold red letters on white -->
+  <rect width="200" height="60" fill="white"/>
+  <!-- B -->
+  <path d="M12 10 L12 50 L30 50 C38 50 44 45 44 38 C44 33 41 29 36 28 C40 26.5 42 23 42 19 C42 13.5 37 10 30 10 Z M20 18 L28 18 C31.5 18 34 19.5 34 22.5 C34 25.5 31.5 27 28 27 L20 27 Z M20 33 L29 33 C33 33 36 34.8 36 38.2 C36 41.5 33 43 29 43 L20 43 Z" fill="#E30613"/>
+  <!-- C -->
+  <path d="M82 15 C74 15 67 22 67 30 C67 38 74 45 82 45 C87.5 45 92.5 42.5 95.5 38.5 L88.5 34.5 C86.8 37 84.5 38 82 38 C78 38 74.5 34.5 74.5 30 C74.5 25.5 78 22 82 22 C84.5 22 86.8 23 88.5 25.5 L95.5 21.5 C92.5 17.5 87.5 15 82 15Z" fill="#E30613"/>
+  <!-- R -->
+  <path d="M102 10 L102 50 L110 50 L110 33 L118 33 L126 50 L135 50 L126 31.5 C131 29.5 134 25.5 134 21 C134 14.5 129 10 122 10 Z M110 18 L121 18 C124.5 18 126 20 126 22.5 C126 25 124.5 27 121 27 L110 27 Z" fill="#E30613"/>
+  <!-- Erste Group tagline -->
+  <text x="12" y="57" font-family="Arial,Helvetica,sans-serif" font-size="6" fill="#999999" letter-spacing="1.8">ERSTE GROUP</text>
 </svg>

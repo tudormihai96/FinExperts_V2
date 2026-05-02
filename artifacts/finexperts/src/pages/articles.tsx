@@ -34,8 +34,8 @@ const articles = [
 
 export default function ArticlesPage() {
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
-      <div className="bg-[#0A1A2E] py-12">
+    <div className="min-h-screen bg-[#F5F7FA]">
+      <div className="bg-[#0C1A2E] py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Ghiduri & articole</h1>
           <p className="text-gray-300">Articole scrise de experți în credite și finanțe personale.</p>
@@ -48,7 +48,7 @@ export default function ArticlesPage() {
             <div
               key={article.slug}
               data-testid={`article-card-${article.slug}`}
-              className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden hover:shadow-md transition-shadow group"
+              className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden hover:shadow-md transition-shadow group"
             >
               <div className="h-52 overflow-hidden">
                 <img
@@ -59,14 +59,14 @@ export default function ArticlesPage() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold text-[#C6A667] uppercase tracking-wider">{article.category}</span>
-                  <span className="text-xs text-[#5A6478]">{article.readTime} citire</span>
+                  <span className="text-xs font-bold text-[#C49A20] uppercase tracking-wider">{article.category}</span>
+                  <span className="text-xs text-[#64748B]">{article.readTime} citire</span>
                 </div>
-                <h3 className="text-lg font-bold text-[#0A1A2E] mb-3 leading-snug">{article.title}</h3>
-                <p className="text-sm text-[#5A6478] mb-5 line-clamp-3">{article.excerpt}</p>
+                <h3 className="text-lg font-bold text-[#0C1A2E] mb-3 leading-snug">{article.title}</h3>
+                <p className="text-sm text-[#64748B] mb-5 line-clamp-3">{article.excerpt}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-[#5A6478]">{article.date}</span>
-                  <Link href={`/articole/${article.slug}`} data-testid={`btn-read-${article.slug}`} className="flex items-center gap-1 text-sm font-semibold text-[#0A1A2E] hover:text-[#C6A667] transition-colors">
+                  <span className="text-xs text-[#64748B]">{article.date}</span>
+                  <Link href={`/articole/${article.slug}`} data-testid={`btn-read-${article.slug}`} className="flex items-center gap-1 text-sm font-semibold text-[#0C1A2E] hover:text-[#C49A20] transition-colors">
                     Citește <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

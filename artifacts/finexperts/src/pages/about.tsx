@@ -9,7 +9,7 @@ const team = [
     role: "Manager Franciză",
     bio: "Coordonează rețeaua FinExperts și relațiile cu băncile partenere. Background în Banca Transilvania și Raiffeisen Bank.",
     avatar: "AA",
-    color: "#C6A667",
+    color: "#C49A20",
     email: "alexandra.achim@kiwifinance.ro",
     phone: "0799 715 101",
     zone: "Cluj-Napoca",
@@ -20,7 +20,7 @@ const team = [
     role: "Broker de Credite",
     bio: "Specializată în credite ipotecare și refinanțări. Background în BRD și Raiffeisen Bank.",
     avatar: "CC",
-    color: "#0A1A2E",
+    color: "#0C1A2E",
     email: "cristina.coman@kiwifinance.ro",
     phone: "0725 596 672",
     zone: "Cluj-Napoca",
@@ -106,7 +106,7 @@ function TeamCard({ member }: { member: typeof team[0] }) {
   return (
     <div
       data-testid={`team-card-${member.id}`}
-      className="relative bg-white border border-[#E5E3D9] rounded-xl overflow-hidden cursor-default"
+      className="relative bg-white border border-[#E2E8F0] rounded-xl overflow-hidden cursor-default"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -118,9 +118,9 @@ function TeamCard({ member }: { member: typeof team[0] }) {
         >
           {member.avatar}
         </div>
-        <h3 className="font-semibold text-[#0A1A2E] text-center mb-0.5">{member.name}</h3>
-        <div className="text-xs font-medium text-[#C6A667] text-center mb-3 uppercase tracking-wider">{member.role}</div>
-        <p className="text-sm text-[#5A6478] text-center">{member.bio}</p>
+        <h3 className="font-semibold text-[#0C1A2E] text-center mb-0.5">{member.name}</h3>
+        <div className="text-xs font-medium text-[#C49A20] text-center mb-3 uppercase tracking-wider">{member.role}</div>
+        <p className="text-sm text-[#64748B] text-center">{member.bio}</p>
       </div>
 
       {/* Hover overlay */}
@@ -161,36 +161,36 @@ function TeamCard({ member }: { member: typeof team[0] }) {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
+    <div className="min-h-screen bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 py-10">
         {/* Hero */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16 items-start">
           <div>
-            <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Despre FinExperts</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] mb-2 leading-tight">
+            <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Despre FinExperts</div>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] mb-2 leading-tight">
               Experți în credite.
             </h1>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#C6A667] mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#C49A20] mb-6 leading-tight">
               Oamenii la primul loc.
             </h2>
-            <p className="text-[#5A6478] text-base leading-relaxed">
+            <p className="text-[#64748B] text-base leading-relaxed">
               FinExperts e fondat de profesioniști care au lucrat în băncile mari din România. Cunoaștem procedurile, decidenții și capcanele birocratice. De aceea îți obținem creditul fără stres și la cea mai bună dobândă reală.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-[#0A1A2E] text-white rounded-xl p-6">
+            <div className="bg-[#0C1A2E] text-white rounded-xl p-6">
               <div className="text-4xl font-bold mb-1">4</div>
               <div className="text-sm text-gray-300">brokeri dedicați</div>
             </div>
-            <div className="bg-[#0A1A2E] text-white rounded-xl p-6">
+            <div className="bg-[#0C1A2E] text-white rounded-xl p-6">
               <div className="text-4xl font-bold mb-1">11</div>
               <div className="text-sm text-gray-300">bănci partenere</div>
             </div>
-            <div className="bg-[#0A1A2E] text-white rounded-xl p-6">
+            <div className="bg-[#0C1A2E] text-white rounded-xl p-6">
               <div className="text-4xl font-bold mb-1">1.000+</div>
               <div className="text-sm text-gray-300">clienți mulțumiți</div>
             </div>
-            <div className="bg-[#0A1A2E] text-white rounded-xl p-6">
+            <div className="bg-[#0C1A2E] text-white rounded-xl p-6">
               <div className="text-4xl font-bold mb-1">&gt;90%</div>
               <div className="text-sm text-gray-300">rată aprobare</div>
             </div>
@@ -199,8 +199,8 @@ export default function AboutPage() {
 
         {/* Ce ne diferențiază */}
         <div className="mb-16">
-          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Ce ne diferențiază</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0A1A2E] mb-8">
+          <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Ce ne diferențiază</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-8">
             De ce echipa FinExperts e altfel.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -212,12 +212,12 @@ export default function AboutPage() {
             ].map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="bg-white border border-[#E5E3D9] rounded-xl p-6">
-                  <div className="w-10 h-10 rounded-lg bg-[#0A1A2E]/8 flex items-center justify-center mb-4">
-                    <Icon className="h-5 w-5 text-[#0A1A2E]" />
+                <div key={i} className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+                  <div className="w-10 h-10 rounded-lg bg-[#0C1A2E]/8 flex items-center justify-center mb-4">
+                    <Icon className="h-5 w-5 text-[#0C1A2E]" />
                   </div>
-                  <h3 className="font-semibold text-[#0A1A2E] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[#5A6478] leading-relaxed">{item.desc}</p>
+                  <h3 className="font-semibold text-[#0C1A2E] mb-2">{item.title}</h3>
+                  <p className="text-sm text-[#64748B] leading-relaxed">{item.desc}</p>
                 </div>
               );
             })}
@@ -226,9 +226,9 @@ export default function AboutPage() {
 
         {/* Team */}
         <div className="mb-16">
-          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Echipa noastră</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0A1A2E] mb-2">Brokeři dedicați pentru tine</h2>
-          <p className="text-[#5A6478] mb-8 text-sm">Treci cu mouse-ul peste un broker pentru a vedea datele de contact directe.</p>
+          <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Echipa noastră</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-2">Brokeři dedicați pentru tine</h2>
+          <p className="text-[#64748B] mb-8 text-sm">Treci cu mouse-ul peste un broker pentru a vedea datele de contact directe.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member) => (
               <TeamCard key={member.id} member={member} />
@@ -238,16 +238,16 @@ export default function AboutPage() {
 
         {/* FAQ */}
         <div>
-          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Întrebări frecvente</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0A1A2E] mb-8">Tot ce vrei să știi despre credite</h2>
-          <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+          <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Întrebări frecvente</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-8">Tot ce vrei să știi despre credite</h2>
+          <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
             <Accordion type="single" collapsible>
               {faq.map((item, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border-b border-[#E5E3D9] last:border-b-0 px-6">
-                  <AccordionTrigger className="text-[#0A1A2E] font-medium py-5 hover:text-[#C6A667] hover:no-underline text-left">
+                <AccordionItem key={i} value={`faq-${i}`} className="border-b border-[#E2E8F0] last:border-b-0 px-6">
+                  <AccordionTrigger className="text-[#0C1A2E] font-medium py-5 hover:text-[#C49A20] hover:no-underline text-left">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-[#5A6478] pb-5 leading-relaxed">
+                  <AccordionContent className="text-[#64748B] pb-5 leading-relaxed">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
