@@ -82,6 +82,7 @@ export default function Navbar() {
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
               className="h-[128px] w-auto"
+              style={{ filter: "hue-rotate(-25deg) saturate(1.3) brightness(0.92)" }}
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";
@@ -161,7 +162,7 @@ export default function Navbar() {
             )}
             <Link
               href="/aplica"
-              className="flex items-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0B2E2E] to-[#1B3356] hover:from-[#162847] hover:to-[#24446E] px-7 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+              className="flex items-center gap-2 text-[15px] font-bold text-[#0B2E2E] bg-gradient-to-r from-[#D4AA28] to-[#B08015] hover:from-[#C49A20] hover:to-[#9A7010] px-7 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               Aplică acum
               <ChevronRight className="h-4 w-4" />

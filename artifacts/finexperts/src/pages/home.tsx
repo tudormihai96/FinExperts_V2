@@ -20,7 +20,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#F4F6FB]">
 
       {/* ── HERO ── */}
-      <section className="bg-[#0B2E2E] pt-12 sm:pt-16 pb-0 overflow-hidden">
+      <section className="bg-gradient-to-br from-[#0D3838] via-[#0B2E2E] to-[#071E1E] pt-12 sm:pt-16 pb-0 overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(196,154,32,0.08),transparent_60%)] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 border border-[#C49A20]/40 rounded-full px-3 py-1 mb-5">
@@ -36,7 +37,7 @@ export default function HomePage() {
             </p>
             <div className="flex gap-3 flex-wrap mb-10 sm:mb-12">
               <Link href="/calculator">
-                <button className="bg-[#C49A20] hover:bg-[#a07e3e] text-white font-semibold px-5 sm:px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-md text-sm sm:text-base">
+                <button className="bg-gradient-to-r from-[#D4AA28] to-[#B08015] hover:from-[#C49A20] hover:to-[#9A7010] text-[#0B2E2E] font-bold px-5 sm:px-6 py-3 rounded-xl transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm sm:text-base">
                   Calculează rata
                   <ArrowRight className="h-4 w-4" />
                 </button>
