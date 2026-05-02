@@ -15,7 +15,7 @@ export default function ConfidentialitatePage() {
             <section>
               <h2 className="text-base font-bold text-[#0C1A2E] mb-2">1. Operatorul de date</h2>
               <p>
-                Datele tale personale sunt prelucrate de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroiești, Comuna Dobroiești, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, CUI <strong>54405887</strong>, broker de credite autorizat ASF și partener KIWI Finance.
+                Datele tale personale sunt prelucrate de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroesti, Comuna Dobroesti, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, CUI <strong>54405887</strong>, broker de credite autorizat ASF și partener KIWI Finance.
               </p>
               <p className="mt-2">
                 Contact: <a href="mailto:kbaa@kiwifinance.ro" className="text-[#C49A20] hover:underline">kbaa@kiwifinance.ro</a> | <a href="tel:0799715101" className="text-[#C49A20] hover:underline">0799 715 101</a>

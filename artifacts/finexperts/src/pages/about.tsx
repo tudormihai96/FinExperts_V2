@@ -231,7 +231,7 @@ export default function AboutPage() {
               <p className="text-white text-sm font-medium leading-relaxed">
                 Str. Stejarului, nr. 117A<br />
                 Camera 1, parter, ap. 3<br />
-                Sat Dobroiești, Com. Dobroiești<br />
+                Sat Dobroesti, Com. Dobroesti<br />
                 Jud. Ilfov
               </p>
             </div>

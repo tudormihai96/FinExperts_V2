@@ -15,7 +15,7 @@ export default function TermeniPage() {
             <section>
               <h2 className="text-base font-bold text-[#0C1A2E] mb-2">1. Informații despre operator</h2>
               <p>
-                Site-ul <strong>finexperts.ro</strong> este administrat de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroiești, Comuna Dobroiești, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, înregistrată la Registrul Comerțului cu CUI <strong>54405887</strong>, broker de credite autorizat ASF, membră a Asociației Române a Brokerilor de Credite (ARBC) și partener KIWI Finance.
+                Site-ul <strong>finexperts.ro</strong> este administrat de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroesti, Comuna Dobroesti, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, înregistrată la Registrul Comerțului cu CUI <strong>54405887</strong>, broker de credite autorizat ASF, membră a Asociației Române a Brokerilor de Credite (ARBC) și partener KIWI Finance.
               </p>
             </section>
 
