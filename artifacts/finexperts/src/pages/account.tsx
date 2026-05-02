@@ -986,29 +986,21 @@ export default function AccountPage() {
               </div>
             </div>
 
-            {/* CTA — trimite dosar */}
-            <div className="bg-[#0B2E2E] rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div>
-                <div className="text-white font-semibold mb-0.5">Trimite dosarul brokerului tău</div>
-                <div className="text-gray-400 text-sm">
-                  {selectedBroker.name} — verifică documentele și îți confirmă în 24h
-                </div>
-                <div className="text-[#C49A20] text-xs mt-1 flex items-center gap-1">
-                  <CheckCircle className="h-3 w-3" />
-                  CC automat la coordonator {CC_EMAIL}
-                </div>
+            {/* Informare — fără CTA de trimitere */}
+            <div className="bg-[#F5F7FA] border border-[#E2E8F0] rounded-xl p-5 flex items-start gap-3">
+              <div className="w-8 h-8 rounded-lg bg-[#0B2E2E]/8 flex items-center justify-center shrink-0 mt-0.5">
+                <Info className="h-4 w-4 text-[#0B2E2E]" />
               </div>
-              <div className="flex flex-col sm:flex-row gap-2 shrink-0">
-                <a href={buildBrokerMailto(selectedBroker, "Dosar credit - FinExperts", `Bună ziua,\n\nVă trimit dosarul de credit.\n\nClient: ${user?.name}\nEmail: ${user?.email}\nTip credit: ${docCreditType === "ipotecar" ? "Ipotecar" : "Personal"}\nSursă venit: ${currentCat.label}\nDocumente pregătite: ${checkedInCurrent}/${totalDocGroups}\n\nDocumentele sunt atașate în email.\n\nVă mulțumesc.`)}>
-                  <button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap">
-                    <Mail className="h-4 w-4" /> Trimite dosar
-                  </button>
-                </a>
-                <Link href="/aplica">
-                  <button className="border border-white/20 text-white font-semibold text-sm py-2.5 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center gap-2 whitespace-nowrap">
-                    <FileText className="h-4 w-4" /> Aplică online
-                  </button>
-                </Link>
+              <div>
+                <div className="text-sm font-semibold text-[#0B2E2E] mb-1">Pasul următor</div>
+                <p className="text-sm text-[#64748B]">
+                  Bifează documentele pe care le ai pregătite, apoi contactează direct brokerul tău —{" "}
+                  <strong className="text-[#0B2E2E]">{selectedBroker.name}</strong> ({selectedBroker.phone}) —
+                  pentru a stabili o întâlnire sau a depune dosarul fizic. Brokerul îți va confirma lista completă în funcție de situația ta specifică.
+                </p>
+                <p className="text-xs text-[#94A3B8] mt-2">
+                  FinExperts — Partener oficial KIWI Finance · Autorizat BNR
+                </p>
               </div>
             </div>
           </div>

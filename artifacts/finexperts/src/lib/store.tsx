@@ -1,6 +1,12 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { banks as initialBanks, Bank } from "./data";
 
+export interface ApplicationNote {
+  text: string;
+  author: string;
+  ts: number;
+}
+
 export interface Application {
   id: string;
   name: string;
@@ -9,9 +15,11 @@ export interface Application {
   type: "personal" | "ipotecar" | "refinantare";
   amount: number;
   bank?: string;
-  status: "pending" | "in_review" | "approved" | "rejected";
+  status: "pending" | "in_review" | "approved" | "rejected" | "contacted" | "closed";
   date: string;
   message?: string;
+  brokerId?: string;
+  notes?: ApplicationNote[];
 }
 
 export interface InsuranceRequest {
@@ -34,12 +42,35 @@ export interface Guide {
   date: string;
 }
 
+export interface SiteSettings {
+  irccValue: string;
+  announcementActive: boolean;
+  announcementText: string;
+  announcementColor: "gold" | "teal" | "red" | "green";
+  maintenanceMode: boolean;
+  allowNewRegistrations: boolean;
+  footerNote: string;
+}
+
+const DEFAULT_SETTINGS: SiteSettings = {
+  irccValue: "5.58%",
+  announcementActive: false,
+  announcementText: "",
+  announcementColor: "gold",
+  maintenanceMode: false,
+  allowNewRegistrations: true,
+  footerNote: "Partener oficial KIWI Finance — autorizat BNR",
+};
+
 const initialApplications: Application[] = [
-  { id: "APP001", name: "Ion Popescu", email: "ion@exemplu.ro", phone: "0722 111 222", type: "ipotecar", amount: 200000, bank: "ING Bank", status: "approved", date: "01 mai 2026", message: "Credit imobiliar pentru apartament 3 camere" },
-  { id: "APP002", name: "Maria Ionescu", email: "maria@exemplu.ro", phone: "0733 222 333", type: "personal", amount: 30000, bank: "BCR", status: "in_review", date: "28 apr 2026", message: "Credit nevoi personale renovare" },
-  { id: "APP003", name: "Andrei Dumitrescu", email: "andrei@exemplu.ro", phone: "0744 333 444", type: "refinantare", amount: 80000, bank: "Intesa Sanpaolo Bank", status: "pending", date: "25 apr 2026" },
-  { id: "APP004", name: "Elena Constantin", email: "elena@exemplu.ro", phone: "0755 444 555", type: "personal", amount: 15000, bank: "Raiffeisen Bank", status: "pending", date: "22 apr 2026" },
-  { id: "APP005", name: "Mihai Georgescu", email: "mihai@exemplu.ro", phone: "0766 555 666", type: "ipotecar", amount: 350000, bank: "BRD", status: "rejected", date: "18 apr 2026", message: "DTI depășit" },
+  { id: "APP001", name: "Ion Popescu", email: "ion@exemplu.ro", phone: "0722 111 222", type: "ipotecar", amount: 200000, bank: "ING Bank", status: "approved", date: "01 mai 2026", message: "Credit imobiliar pentru apartament 3 camere", brokerId: "alexandra-achim", notes: [{ text: "Client verificat BNR OK. Dosar complet.", author: "Alexandra Achim", ts: 1746000000000 }] },
+  { id: "APP002", name: "Maria Ionescu", email: "maria@exemplu.ro", phone: "0733 222 333", type: "personal", amount: 30000, bank: "BCR", status: "in_review", date: "28 apr 2026", message: "Credit nevoi personale renovare", brokerId: "cristina-coman", notes: [] },
+  { id: "APP003", name: "Andrei Dumitrescu", email: "andrei@exemplu.ro", phone: "0744 333 444", type: "refinantare", amount: 80000, bank: "Intesa Sanpaolo Bank", status: "contacted", date: "25 apr 2026", brokerId: "tudor-mihai", notes: [{ text: "Contact telefonic reușit. Programare luni 13:00.", author: "Tudor Mihai", ts: 1745800000000 }] },
+  { id: "APP004", name: "Elena Constantin", email: "elena@exemplu.ro", phone: "0755 444 555", type: "personal", amount: 15000, bank: "Raiffeisen Bank", status: "pending", date: "22 apr 2026", brokerId: "ana-maria-erji", notes: [] },
+  { id: "APP005", name: "Mihai Georgescu", email: "mihai@exemplu.ro", phone: "0766 555 666", type: "ipotecar", amount: 350000, bank: "BRD", status: "rejected", date: "18 apr 2026", message: "DTI depășit", brokerId: "alexandra-achim", notes: [{ text: "Respins — DTI 47%. Sugestie: codebitator.", author: "Alexandra Achim", ts: 1745600000000 }] },
+  { id: "APP006", name: "Radu Stoian", email: "radu.s@exemplu.ro", phone: "0788 666 777", type: "ipotecar", amount: 280000, bank: "Raiffeisen Bank", status: "in_review", date: "15 apr 2026", brokerId: "cristina-coman", notes: [] },
+  { id: "APP007", name: "Alina Munteanu", email: "alina.m@exemplu.ro", phone: "0799 777 888", type: "personal", amount: 20000, bank: "ING Bank", status: "approved", date: "10 apr 2026", brokerId: "tudor-mihai", notes: [{ text: "Aprobat rapid — profil excelent.", author: "Tudor Mihai", ts: 1745000000000 }] },
+  { id: "APP008", name: "Florin Petre", email: "florin.p@exemplu.ro", phone: "0711 888 999", type: "refinantare", amount: 120000, bank: "BRD", status: "pending", date: "5 mai 2026", brokerId: "ana-maria-erji", notes: [] },
 ];
 
 const initialInsuranceRequests: InsuranceRequest[] = [
@@ -60,6 +91,8 @@ const initialGuides: Guide[] = [
 interface StoreContextType {
   applications: Application[];
   setApplications: (apps: Application[]) => void;
+  updateApplication: (id: string, updates: Partial<Application>) => void;
+  addNoteToApplication: (id: string, note: ApplicationNote) => void;
   insuranceRequests: InsuranceRequest[];
   setInsuranceRequests: (reqs: InsuranceRequest[]) => void;
   guides: Guide[];
@@ -68,6 +101,8 @@ interface StoreContextType {
   setAdminBanks: (banks: Bank[]) => void;
   addApplication: (app: Omit<Application, "id" | "date">) => void;
   addInsuranceRequest: (req: Omit<InsuranceRequest, "id" | "date">) => void;
+  siteSettings: SiteSettings;
+  setSiteSettings: (s: SiteSettings) => void;
 }
 
 const StoreContext = createContext<StoreContextType>({} as StoreContextType);
@@ -77,12 +112,24 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [insuranceRequests, setInsuranceRequests] = useState<InsuranceRequest[]>(initialInsuranceRequests);
   const [guides, setGuides] = useState<Guide[]>(initialGuides);
   const [adminBanks, setAdminBanks] = useState<Bank[]>(initialBanks);
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(DEFAULT_SETTINGS);
+
+  const updateApplication = (id: string, updates: Partial<Application>) => {
+    setApplications(prev => prev.map(a => a.id === id ? { ...a, ...updates } : a));
+  };
+
+  const addNoteToApplication = (id: string, note: ApplicationNote) => {
+    setApplications(prev => prev.map(a =>
+      a.id === id ? { ...a, notes: [...(a.notes || []), note] } : a
+    ));
+  };
 
   const addApplication = (app: Omit<Application, "id" | "date">) => {
     const newApp: Application = {
       ...app,
       id: "APP" + String(applications.length + 1).padStart(3, "0"),
       date: new Date().toLocaleDateString("ro-RO", { day: "2-digit", month: "short", year: "numeric" }),
+      notes: [],
     };
     setApplications(prev => [newApp, ...prev]);
   };
@@ -98,11 +145,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   return (
     <StoreContext.Provider value={{
-      applications, setApplications,
+      applications, setApplications, updateApplication, addNoteToApplication,
       insuranceRequests, setInsuranceRequests,
       guides, setGuides,
       adminBanks, setAdminBanks,
       addApplication, addInsuranceRequest,
+      siteSettings, setSiteSettings,
     }}>
       {children}
     </StoreContext.Provider>

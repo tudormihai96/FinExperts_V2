@@ -1,63 +1,174 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-export type UserRole = "admin" | "client" | null;
+export type UserRole = "super_admin" | "broker" | "client" | null;
 
-interface AuthUser {
+export interface AuthUser {
   email: string;
   name: string;
   role: UserRole;
+  brokerId?: string;
+  loginAt: number;
 }
 
 interface AuthContextType {
   user: AuthUser | null;
-  login: (email: string, password: string) => boolean;
+  login: (email: string, password: string) => { success: boolean; error?: string };
   logout: () => void;
   isAdmin: boolean;
+  isSuperAdmin: boolean;
+  isBroker: boolean;
   isLoggedIn: boolean;
+  failedAttempts: number;
+  isLocked: boolean;
+  lockRemainingMin: number;
+}
+
+export type AuditEvent = {
+  ts: number;
+  type: "login_success" | "login_fail" | "logout" | "lockout";
+  email: string;
+  ip?: string;
+};
+
+export function getAuditLog(): AuditEvent[] {
+  try { return JSON.parse(localStorage.getItem("finexperts_audit") || "[]"); } catch { return []; }
+}
+function appendAudit(ev: AuditEvent) {
+  const log = getAuditLog().slice(-199);
+  log.push(ev);
+  localStorage.setItem("finexperts_audit", JSON.stringify(log));
+}
+
+const SUPER_ADMIN_CREDENTIALS: [string, string][] = [
+  ["admin@finexperts.ro", "Admin#2026!"],
+  ["admin@finexperts.ro", "admin123"],
+];
+
+export const BROKER_ACCOUNTS: Record<string, { name: string; brokerId: string; password: string }> = {
+  "alexandra.achim@kiwifinance.ro": { name: "Alexandra Achim", brokerId: "alexandra-achim", password: "Kiwi#2026!" },
+  "cristina.coman@kiwifinance.ro":  { name: "Cristina Coman",  brokerId: "cristina-coman",  password: "Kiwi#2026!" },
+  "ana-maria.gheorghe@kiwifinance.ro": { name: "Ana-Maria Erji", brokerId: "ana-maria-erji", password: "Kiwi#2026!" },
+  "mihai.tudor@kiwifinance.ro":     { name: "Tudor Mihai",     brokerId: "tudor-mihai",     password: "Kiwi#2026!" },
+};
+
+const SESSION_MS = 8 * 60 * 60 * 1000;
+const MAX_FAILS = 5;
+const LOCK_MS = 15 * 60 * 1000;
+const FAIL_KEY = "finexperts_fails";
+const LOCK_KEY = "finexperts_lockuntil";
+
+function getFails(): number {
+  return parseInt(localStorage.getItem(FAIL_KEY) || "0", 10);
+}
+function getLockUntil(): number {
+  return parseInt(localStorage.getItem(LOCK_KEY) || "0", 10);
+}
+function incFail(email: string) {
+  const n = getFails() + 1;
+  localStorage.setItem(FAIL_KEY, String(n));
+  if (n >= MAX_FAILS) {
+    const until = Date.now() + LOCK_MS;
+    localStorage.setItem(LOCK_KEY, String(until));
+    appendAudit({ ts: Date.now(), type: "lockout", email });
+  }
+}
+function resetFails() {
+  localStorage.removeItem(FAIL_KEY);
+  localStorage.removeItem(LOCK_KEY);
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
-  login: () => false,
+  login: () => ({ success: false }),
   logout: () => {},
   isAdmin: false,
+  isSuperAdmin: false,
+  isBroker: false,
   isLoggedIn: false,
+  failedAttempts: 0,
+  isLocked: false,
+  lockRemainingMin: 0,
 });
-
-const ADMIN_EMAIL = "admin@finexperts.ro";
-const ADMIN_PASS = "admin123";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(() => {
     try {
       const saved = localStorage.getItem("finexperts_user");
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
+      if (!saved) return null;
+      const u: AuthUser = JSON.parse(saved);
+      if (Date.now() - u.loginAt > SESSION_MS) {
+        localStorage.removeItem("finexperts_user");
+        return null;
+      }
+      return u;
+    } catch { return null; }
   });
 
-  const login = (email: string, password: string): boolean => {
-    if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
-      const adminUser: AuthUser = { email, name: "Administrator", role: "admin" };
-      setUser(adminUser);
-      localStorage.setItem("finexperts_user", JSON.stringify(adminUser));
-      return true;
+  const [failedAttempts, setFailedAttempts] = useState(getFails);
+  const [lockUntil, setLockUntil] = useState(getLockUntil);
+
+  const isLocked = Date.now() < lockUntil;
+  const lockRemainingMin = isLocked ? Math.ceil((lockUntil - Date.now()) / 60000) : 0;
+
+  const login = (email: string, password: string): { success: boolean; error?: string } => {
+    const now = Date.now();
+    const currentLock = getLockUntil();
+    if (now < currentLock) {
+      const min = Math.ceil((currentLock - now) / 60000);
+      return { success: false, error: `Cont blocat temporar. Reîncearcă în ${min} minut${min > 1 ? "e" : ""}.` };
     }
-    if (email && password.length >= 6) {
+
+    const emailNorm = email.trim().toLowerCase();
+
+    const isSuper = SUPER_ADMIN_CREDENTIALS.some(([e, p]) => e === emailNorm && p === password);
+    if (isSuper) {
+      const u: AuthUser = { email: emailNorm, name: "Administrator", role: "super_admin", loginAt: now };
+      setUser(u);
+      localStorage.setItem("finexperts_user", JSON.stringify(u));
+      resetFails(); setFailedAttempts(0); setLockUntil(0);
+      appendAudit({ ts: now, type: "login_success", email: emailNorm });
+      return { success: true };
+    }
+
+    const brokerAcc = BROKER_ACCOUNTS[emailNorm];
+    if (brokerAcc && brokerAcc.password === password) {
+      const u: AuthUser = { email: emailNorm, name: brokerAcc.name, role: "broker", brokerId: brokerAcc.brokerId, loginAt: now };
+      setUser(u);
+      localStorage.setItem("finexperts_user", JSON.stringify(u));
+      resetFails(); setFailedAttempts(0); setLockUntil(0);
+      appendAudit({ ts: now, type: "login_success", email: emailNorm });
+      return { success: true };
+    }
+
+    if (emailNorm && password.length >= 6) {
       const clientUser: AuthUser = {
-        email,
-        name: email.split("@")[0].replace(/\./g, " ").replace(/^\w/, c => c.toUpperCase()),
+        email: emailNorm,
+        name: emailNorm.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, c => c.toUpperCase()),
         role: "client",
+        loginAt: now,
       };
       setUser(clientUser);
       localStorage.setItem("finexperts_user", JSON.stringify(clientUser));
-      return true;
+      resetFails(); setFailedAttempts(0); setLockUntil(0);
+      appendAudit({ ts: now, type: "login_success", email: emailNorm });
+      return { success: true };
     }
-    return false;
+
+    incFail(emailNorm);
+    const newFails = getFails();
+    setFailedAttempts(newFails);
+    const newLock = getLockUntil();
+    setLockUntil(newLock);
+    appendAudit({ ts: now, type: "login_fail", email: emailNorm });
+    if (newFails >= MAX_FAILS) {
+      const min = Math.ceil(LOCK_MS / 60000);
+      return { success: false, error: `Prea multe încercări eșuate. Cont blocat ${min} minute.` };
+    }
+    return { success: false, error: `Date incorecte. (${MAX_FAILS - newFails} încercări rămase)` };
   };
 
   const logout = () => {
+    if (user) appendAudit({ ts: Date.now(), type: "logout", email: user.email });
     setUser(null);
     localStorage.removeItem("finexperts_user");
   };
@@ -67,8 +178,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       login,
       logout,
-      isAdmin: user?.role === "admin",
+      isAdmin: user?.role === "super_admin" || user?.role === "broker",
+      isSuperAdmin: user?.role === "super_admin",
+      isBroker: user?.role === "broker",
       isLoggedIn: !!user,
+      failedAttempts,
+      isLocked,
+      lockRemainingMin,
     }}>
       {children}
     </AuthContext.Provider>

@@ -21,6 +21,7 @@ import LoginPage from "@/pages/login";
 import RegisterPage from "@/pages/register";
 import AccountPage from "@/pages/account";
 import AdminPage from "@/pages/admin";
+import BrokerPage from "@/pages/broker";
 import TermeniPage from "@/pages/termeni";
 import ConfidentialitatePage from "@/pages/confidentialitate";
 import CookiesPage from "@/pages/cookies";
@@ -45,6 +46,7 @@ function Router() {
       <Route path="/register" component={RegisterPage} />
       <Route path="/cont" component={AccountPage} />
       <Route path="/admin" component={AdminPage} />
+      <Route path="/broker" component={BrokerPage} />
       <Route path="/termeni" component={TermeniPage} />
       <Route path="/confidentialitate" component={ConfidentialitatePage} />
       <Route path="/cookies" component={CookiesPage} />
