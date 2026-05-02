@@ -26,6 +26,150 @@ const IRCC_HISTORY = [
   { q: "T3'26*", v: 5.56 },
 ];
 
+// ── Rate data T2 2026 (IRCC = 5.58%) ─────────────────────────────────────────
+const IRCC_NOW = 5.58;
+
+const RATES_IPOTECAR = [
+  { name: "BRD", initials: "BRD", logo: "/logos/brd.png",           color: "#0055A4", marja: 1.70, dae: 7.85,  max: 700000 },
+  { name: "Banca Transilvania",   initials: "BT", logo: "/logos/bt.svg",  color: "#0067B0", marja: 1.75, dae: 7.90,  max: 800000 },
+  { name: "ING Bank",             initials: "ING",logo: "/logos/ing.svg",  color: "#FF6200", marja: 1.95, dae: 8.10,  max: 600000 },
+  { name: "BCR",                  initials: "BCR",logo: "/logos/bcr.svg",  color: "#2870ed", marja: 2.10, dae: 8.25,  max: 1000000 },
+  { name: "Raiffeisen Bank",      initials: "RB", logo: "/logos/raiffeisen.svg", color: "#FFDD00", marja: 2.10, dae: 8.30, max: 700000 },
+  { name: "CEC Bank",             initials: "CEC",logo: "/logos/cec.svg",  color: "#003399", marja: 2.15, dae: 8.35,  max: 500000 },
+  { name: "Intesa Sanpaolo Bank", initials: "IS", logo: "/logos/intesa.png", color: "#003087", marja: 2.20, dae: 8.40, max: 800000 },
+  { name: "UniCredit Bank",       initials: "UC", logo: "/logos/unicredit.svg", color: "#E11F26", marja: 2.30, dae: 8.50, max: 700000 },
+  { name: "Garanti BBVA",         initials: "GB", logo: "/logos/garanti.png", color: "#00A758", marja: 2.35, dae: 8.55, max: 500000 },
+  { name: "Exim Banca Românească",initials: "EB", logo: "/logos/exim.svg",  color: "#00338D", marja: 2.50, dae: 8.70,  max: 400000 },
+  { name: "First Bank",           initials: "FB", logo: "/logos/firstbank.svg", color: "#E31837", marja: 2.60, dae: 8.80, max: 500000 },
+  { name: "Libra Internet Bank",  initials: "LB", logo: "/logos/libra.svg",  color: "#5B21B6", marja: 2.80, dae: 9.00,  max: 350000 },
+  { name: "Patria Bank",          initials: "PB", logo: "/logos/patria.svg", color: "#0B1F5C", marja: 3.50, dae: 9.70,  max: 300000 },
+  { name: "Nexent Bank",          initials: "NB", logo: "/logos/nexent.png", color: "#1E293B", marja: 4.00, dae: 10.20, max: 250000 },
+].map(b => ({ ...b, rate: +(IRCC_NOW + b.marja).toFixed(2) }))
+  .sort((a, b) => a.rate - b.rate);
+
+const RATES_PERSONAL = [
+  { name: "Garanti BBVA",          initials: "GB", logo: "/logos/garanti.png",    color: "#00A758", rate: 4.99,  dae: 6.80,  max: 250000 },
+  { name: "Raiffeisen Bank",        initials: "RB", logo: "/logos/raiffeisen.svg", color: "#FFDD00", rate: 5.55,  dae: 9.49,  max: 250000 },
+  { name: "BCR",                    initials: "BCR",logo: "/logos/bcr.svg",        color: "#2870ed", rate: 7.99,  dae: 9.20,  max: 150000 },
+  { name: "ING Bank",               initials: "ING",logo: "/logos/ing.svg",        color: "#FF6200", rate: 8.99,  dae: 9.80,  max: 250000 },
+  { name: "CEC Bank",               initials: "CEC",logo: "/logos/cec.svg",        color: "#003399", rate: 9.25,  dae: 10.10, max: 120000 },
+  { name: "BRD",                    initials: "BRD",logo: "/logos/brd.png",        color: "#0055A4", rate: 9.49,  dae: 10.28, max: 100000 },
+  { name: "Banca Transilvania",     initials: "BT", logo: "/logos/bt.svg",         color: "#0067B0", rate: 9.90,  dae: 10.70, max: 200000 },
+  { name: "UniCredit Bank",         initials: "UC", logo: "/logos/unicredit.svg",  color: "#E11F26", rate: 10.75, dae: 11.60, max: 250000 },
+  { name: "Exim Banca Românească",  initials: "EB", logo: "/logos/exim.svg",       color: "#00338D", rate: 10.25, dae: 11.10, max: 100000 },
+  { name: "Intesa Sanpaolo Bank",   initials: "IS", logo: "/logos/intesa.png",     color: "#003087", rate: 11.49, dae: 12.40, max: 200000 },
+  { name: "Libra Internet Bank",    initials: "LB", logo: "/logos/libra.svg",      color: "#5B21B6", rate: 11.99, dae: 12.90, max: 60000  },
+  { name: "Patria Bank",            initials: "PB", logo: "/logos/patria.svg",     color: "#0B1F5C", rate: 12.99, dae: 14.15, max: 50000  },
+  { name: "Nexent Bank",            initials: "NB", logo: "/logos/nexent.png",     color: "#1E293B", rate: 13.99, dae: 15.20, max: 50000  },
+].sort((a, b) => a.rate - b.rate);
+
+function SmallBankLogo({ logo, name, initials, color }: { logo: string; name: string; initials: string; color: string }) {
+  return (
+    <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 overflow-hidden relative" style={{ backgroundColor: color }}>
+      <img src={logo} alt={name} className="w-full h-full object-contain p-0.5"
+        onError={e => { const img = e.target as HTMLImageElement; img.style.display = "none"; const s = img.nextElementSibling as HTMLElement; if (s) s.style.display = "flex"; }} />
+      <span className="absolute inset-0 items-center justify-center text-white text-[8px] font-bold" style={{ display: "none" }}>{initials}</span>
+    </div>
+  );
+}
+
+function RatesTable() {
+  const [tab, setTab] = useState<"ipotecar" | "personal">("ipotecar");
+  const rows = tab === "ipotecar" ? RATES_IPOTECAR : RATES_PERSONAL;
+
+  return (
+    <div className="mt-8 bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden">
+      {/* Header */}
+      <div className="px-5 sm:px-7 py-5 border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div>
+          <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-1">Dobânzi actualizate</div>
+          <h2 className="text-xl font-bold text-[#0B2E2E]">Tabel dobânzi — toate băncile</h2>
+          <p className="text-sm text-[#64748B] mt-0.5">Oferte T2 2026 · IRCC = {IRCC_NOW}% · Sursa: ofertele publice ale băncilor</p>
+        </div>
+        <div className="flex rounded-xl border border-[#E2E8F0] overflow-hidden shrink-0 self-start">
+          {(["ipotecar", "personal"] as const).map(k => (
+            <button key={k} onClick={() => setTab(k)}
+              className={`px-4 py-2 text-xs font-semibold transition-colors ${tab === k ? "bg-[#0B2E2E] text-white" : "bg-white text-[#64748B] hover:bg-[#F4F6FB]"}`}>
+              {k === "ipotecar" ? "Credite Ipotecare" : "Nevoi Personale"}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="bg-[#F4F6FB] border-b border-[#E2E8F0]">
+              <th className="text-left px-4 py-3 text-[10px] font-semibold text-[#64748B] uppercase tracking-wider w-7">#</th>
+              <th className="text-left px-3 py-3 text-[10px] font-semibold text-[#64748B] uppercase tracking-wider">Bancă</th>
+              {tab === "ipotecar" && (
+                <th className="text-center px-4 py-3 text-[10px] font-semibold text-[#64748B] uppercase tracking-wider">Marjă</th>
+              )}
+              <th className="text-center px-4 py-3 text-[10px] font-semibold text-[#64748B] uppercase tracking-wider">
+                {tab === "ipotecar" ? "Dobândă (IRCC+marjă)" : "Dobândă fixă/an"}
+              </th>
+              <th className="text-center px-4 py-3 text-[10px] font-semibold text-[#64748B] uppercase tracking-wider">DAE</th>
+              <th className="text-right px-4 py-3 text-[10px] font-semibold text-[#64748B] uppercase tracking-wider">Sumă max.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((bank, idx) => (
+              <tr key={bank.name}
+                className={`border-b border-[#E2E8F0] last:border-0 transition-colors ${idx === 0 ? "bg-[#F0FDF4] hover:bg-[#E6FAF0]" : "hover:bg-[#F4F6FB]/70"}`}>
+                <td className="px-4 py-3">
+                  <span className={`text-[11px] font-bold ${idx === 0 ? "text-[#059669]" : idx < 3 ? "text-[#C49A20]" : "text-[#CBD5E1]"}`}>
+                    {idx + 1}
+                  </span>
+                </td>
+                <td className="px-3 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <SmallBankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
+                    <span className="font-semibold text-[#0B2E2E] text-sm whitespace-nowrap">{bank.name}</span>
+                    {idx === 0 && (
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 bg-[#D1FAE5] text-[#059669] rounded uppercase tracking-wider whitespace-nowrap">Cel mai mic</span>
+                    )}
+                  </div>
+                </td>
+                {tab === "ipotecar" && (
+                  <td className="px-4 py-3 text-center">
+                    <span className="text-[#64748B] text-xs font-medium">
+                      IRCC + {(bank as typeof RATES_IPOTECAR[0]).marja.toFixed(2)}%
+                    </span>
+                  </td>
+                )}
+                <td className="px-4 py-3 text-center">
+                  <span className="text-base font-bold text-[#0B2E2E]">{bank.rate.toFixed(2)}%</span>
+                </td>
+                <td className="px-4 py-3 text-center">
+                  <span className="text-sm text-[#64748B]">{bank.dae.toFixed(2)}%</span>
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <span className="text-sm text-[#475569] font-medium whitespace-nowrap">
+                    {bank.max >= 1000000
+                      ? `${(bank.max / 1000000).toLocaleString("ro-RO")} mil. RON`
+                      : `${(bank.max / 1000).toLocaleString("ro-RO")}k RON`}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="px-5 sm:px-7 py-4 border-t border-[#E2E8F0] bg-[#F4F6FB] flex items-start gap-2">
+        <Info className="h-3.5 w-3.5 text-[#64748B] shrink-0 mt-0.5" />
+        <p className="text-xs text-[#64748B]">
+          {tab === "ipotecar"
+            ? `Dobânzile ipotecare sunt variabile: IRCC T2/2026 (${IRCC_NOW}%) + marjă fixă a băncii. Rata se recalculează trimestrial la actualizarea IRCC. Marjele pot fi negociate.`
+            : "Dobânzile la creditele de nevoi personale sunt fixe pe toată durata creditului și pot varia în funcție de profilul clientului, venitul lunar net și relația cu banca."}
+          {" "}<span className="font-medium text-[#0B2E2E]">FinExperts negociază condiții mai bune față de oferta publică.</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function IRCCSection() {
   const current = 5.58;
   const prev = 5.68;
@@ -255,7 +399,7 @@ export default function BanksPage() {
             <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider text-center">Dobândă</div>
             <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider text-center">DAE</div>
             <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider text-right">Rată / lună</div>
-            <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider text-right pr-1">Acțiune</div>
+            <div></div>
           </div>
 
           {sortedBanks.map((bank) => (
@@ -268,7 +412,7 @@ export default function BanksPage() {
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="min-w-0">
                   <div className="font-semibold text-[#0B2E2E] text-sm">{bank.name}</div>
-                  <div className="text-[11px] text-[#64748B] mt-0.5 leading-tight max-w-[300px] line-clamp-2">{bank.description}</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 leading-tight max-w-[300px] line-clamp-1">{bank.description}</div>
                 </div>
               </div>
               <div className="text-center"><span className="text-sm font-semibold text-[#0B2E2E]">{bank.rate.toFixed(2)}%</span></div>
@@ -306,7 +450,7 @@ export default function BanksPage() {
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="flex-1 min-w-0">
                   <div className="font-semibold text-[#0B2E2E] text-sm">{bank.name}</div>
-                  <div className="text-[11px] text-[#64748B] mt-0.5 leading-tight line-clamp-2">{bank.description}</div>
+                  <div className="text-[11px] text-[#64748B] mt-0.5 leading-tight line-clamp-1">{bank.description}</div>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-2 mb-3 bg-[#F4F6FB] rounded-xl p-3">
@@ -338,6 +482,7 @@ export default function BanksPage() {
           ))}
         </div>
 
+        <RatesTable />
         <IRCCSection />
       </div>
     </div>
