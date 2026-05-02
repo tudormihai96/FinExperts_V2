@@ -213,7 +213,7 @@ function MaxLoanCalculator() {
           {(["personal", "ipotecar"] as const).map(t => (
             <button key={t} onClick={() => setActiveType(t)}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === t ? "bg-[#0A1A2E] text-white" : "border border-[#E5E3D9] text-[#5A6478] hover:text-[#0A1A2E]"}`}>
-              {t === "personal" ? "Credit personal" : "Credit ipotecar"}
+              {t === "personal" ? "Credit de Nevoi Personale" : "Credit ipotecar"}
             </button>
           ))}
         </div>
@@ -393,14 +393,14 @@ function RefinanceCalculator() {
 type CalcTab = "personal" | "ipotecar" | "maxima" | "refinantare";
 
 const TABS: { id: CalcTab; label: string; icon: React.ReactNode; desc: string }[] = [
-  { id: "personal", label: "Credit personal", icon: <FileText className="h-4 w-4" />, desc: "Rată lunară și cost total pentru credit de nevoi personale." },
   { id: "ipotecar", label: "Credit ipotecar", icon: <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>, desc: "Calculator credit imobiliar cu cele mai bune oferte ipotecare." },
+  { id: "personal", label: "Credit de Nevoi Personale", icon: <FileText className="h-4 w-4" />, desc: "Rată lunară și cost total pentru credit de nevoi personale." },
   { id: "maxima", label: "Sumă maximă", icon: <Table className="h-4 w-4" />, desc: "Cât poți împrumuta în funcție de venit (DTI 40% BNR)." },
   { id: "refinantare", label: "Refinanțare", icon: <TrendingDown className="h-4 w-4" />, desc: "Cât economisești prin mutarea creditului la o bancă mai ieftină." },
 ];
 
 export default function CalculatorPage() {
-  const [active, setActive] = useState<CalcTab>("personal");
+  const [active, setActive] = useState<CalcTab>("ipotecar");
   const tab = TABS.find(t => t.id === active)!;
 
   return (
@@ -410,7 +410,7 @@ export default function CalculatorPage() {
         <div className="mb-8">
           <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Calculatoare credite</div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
-            {tab.id === "personal" && <>Rată credit personal,<br />la toate cele 11 bănci.</>}
+            {tab.id === "personal" && <>Credit de Nevoi Personale,<br />la toate cele 11 bănci.</>}
             {tab.id === "ipotecar" && <>Rată credit ipotecar,<br />la toate cele 11 bănci.</>}
             {tab.id === "maxima" && <>Cât poți împrumuta<br />cu venitul tău?</>}
             {tab.id === "refinantare" && <>Cât economisești<br />prin <span className="text-[#C6A667]">refinanțare</span>?</>}
@@ -442,7 +442,7 @@ export default function CalculatorPage() {
         {/* Bank rates table */}
         {(active === "personal" || active === "ipotecar") && (
           <div className="mt-8">
-            <h2 className="text-lg font-bold text-[#0A1A2E] mb-4">Toate dobânzile — {active === "personal" ? "credit personal" : "credit ipotecar"} (02.05.2026)</h2>
+            <h2 className="text-lg font-bold text-[#0A1A2E] mb-4">Toate dobânzile — {active === "personal" ? "credit de nevoi personale" : "credit ipotecar"} (02.05.2026)</h2>
             <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">

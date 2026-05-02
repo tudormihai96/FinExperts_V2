@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <rect x="8" y="8" width="64" height="64" rx="12" fill="#FF6200"/>
+  <text x="40" y="52" font-family="Arial,sans-serif" font-size="26" font-weight="900" fill="white" text-anchor="middle">ING</text>
+  <text x="90" y="38" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#FF6200">Bank</text>
+  <line x1="90" y1="44" x2="190" y2="44" stroke="#FF6200" stroke-width="2"/>
+</svg>

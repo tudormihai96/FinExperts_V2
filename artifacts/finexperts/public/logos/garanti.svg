@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <rect x="8" y="8" width="184" height="64" rx="8" fill="#009B77"/>
+  <text x="100" y="35" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="white" text-anchor="middle">Garanti BBVA</text>
+  <line x1="40" y1="46" x2="160" y2="46" stroke="white" stroke-width="1" opacity="0.4"/>
+  <text x="100" y="62" font-family="Arial,sans-serif" font-size="11" fill="white" text-anchor="middle" opacity="0.9">România</text>
+</svg>

@@ -34,7 +34,7 @@ export const banks: Bank[] = [
     name: "Raiffeisen Bank",
     initials: "RB",
     color: "#FFDD00",
-    logo: "https://logo.clearbit.com/raiffeisen.ro",
+    logo: "/logos/raiffeisen.svg",
     // sursa: raiffeisen.ro/credite/credit-de-nevoi-personale-fara-ipoteca — 5.55%/an
     ratePersonal: 5.55,
     rateIpotecar: 5.40,
@@ -58,7 +58,7 @@ export const banks: Bank[] = [
     name: "ING Bank",
     initials: "ING",
     color: "#FF6200",
-    logo: "https://logo.clearbit.com/ing.ro",
+    logo: "/logos/ing.svg",
     // sursa: ing.ro/credite/ing-personal — de la 5.99%/an fixă
     ratePersonal: 5.99,
     rateIpotecar: 4.85,
@@ -82,7 +82,7 @@ export const banks: Bank[] = [
     name: "Exim Banca Românească",
     initials: "EB",
     color: "#005BAA",
-    logo: "https://logo.clearbit.com/eximbank.ro",
+    logo: "/logos/exim.svg",
     // sursa: eximbank.ro — pachet VREAU SI EU! dobândă 5.99%/an (cu card credit)
     ratePersonal: 5.99,
     rateIpotecar: 5.80,
@@ -106,7 +106,7 @@ export const banks: Bank[] = [
     name: "Garanti BBVA",
     initials: "GB",
     color: "#009B77",
-    logo: "https://logo.clearbit.com/garantibbva.ro",
+    logo: "/logos/garanti.svg",
     // sursa: garantibbva.ro — oferta credit nevoi personale de la 6.45%
     ratePersonal: 6.45,
     rateIpotecar: 5.45,
@@ -130,7 +130,7 @@ export const banks: Bank[] = [
     name: "BCR",
     initials: "BCR",
     color: "#E30613",
-    logo: "https://logo.clearbit.com/bcr.ro",
+    logo: "/logos/bcr.svg",
     // sursa: bcr.ro — IRCC 5.58% + marjă; personal ~8.20%, ipotecar fix venit≥10k ~7.83%
     ratePersonal: 8.20,
     rateIpotecar: 5.58,
@@ -154,7 +154,7 @@ export const banks: Bank[] = [
     name: "BRD",
     initials: "BRD",
     color: "#0066B2",
-    logo: "https://logo.clearbit.com/brd.ro",
+    logo: "/logos/brd.svg",
     // sursa: credite.cc/blog/credit-ipotecar-brd-2026 — ipotecar de la 4.69% variabilă, 6.30% fixă; personal ~7.50%
     ratePersonal: 7.50,
     rateIpotecar: 4.69,
@@ -176,7 +176,7 @@ export const banks: Bank[] = [
     name: "UniCredit Bank",
     initials: "UC",
     color: "#E11F26",
-    logo: "https://logo.clearbit.com/unicredit.ro",
+    logo: "/logos/unicredit.svg",
     // sursa: mrfinance.ro/unicredit — personal variabilă IRCC+marjă ~7.50%
     ratePersonal: 7.50,
     rateIpotecar: 5.50,
@@ -198,7 +198,7 @@ export const banks: Bank[] = [
     name: "Libra Internet Bank",
     initials: "LB",
     color: "#7B2D8B",
-    logo: "https://logo.clearbit.com/librabank.ro",
+    logo: "/logos/libra.svg",
     // sursa: librabank.ro — ipotecar IRCC 5.68%+marjă 2.15% = 7.83%; personal similar
     ratePersonal: 7.84,
     rateIpotecar: 7.84,
@@ -220,7 +220,7 @@ export const banks: Bank[] = [
     name: "Intesa Sanpaolo Bank",
     initials: "IS",
     color: "#1C3F7A",
-    logo: "https://logo.clearbit.com/intesasanpaolobank.ro",
+    logo: "/logos/intesa.svg",
     // sursa: intesasanpaolobank.ro — personal 8.77%-16.99%, DAE 9.87%-19.16%
     ratePersonal: 8.77,
     rateIpotecar: 5.20,
@@ -242,7 +242,7 @@ export const banks: Bank[] = [
     name: "Patria Bank",
     initials: "PB",
     color: "#1A1A6E",
-    logo: "https://logo.clearbit.com/patriabank.ro",
+    logo: "/logos/patria.svg",
     // sursa: patriabank.ro/patria-plus — variabilă de la 8.75%+, fixed ~9.50%
     ratePersonal: 9.50,
     rateIpotecar: 7.50,
@@ -264,7 +264,7 @@ export const banks: Bank[] = [
     name: "Nexent Bank",
     initials: "NB",
     color: "#444444",
-    logo: "https://logo.clearbit.com/nexentbank.ro",
+    logo: "/logos/nexent.svg",
     ratePersonal: 10.00,
     rateIpotecar: 7.80,
     daePersonal: 11.20,

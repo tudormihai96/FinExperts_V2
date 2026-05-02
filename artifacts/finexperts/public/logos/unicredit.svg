@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <circle cx="28" cy="40" r="22" fill="#E11F26"/>
+  <path d="M16,40 Q16,30 28,30 Q40,30 40,40 Q40,50 28,50" fill="none" stroke="white" stroke-width="4"/>
+  <text x="58" y="34" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#E11F26">UniCredit</text>
+  <text x="58" y="54" font-family="Arial,sans-serif" font-size="12" fill="#666">Bank Romania</text>
+</svg>

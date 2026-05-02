@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <circle cx="28" cy="40" r="22" fill="#7B2D8B"/>
+  <text x="28" y="46" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="white" text-anchor="middle">LIB</text>
+  <text x="58" y="34" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#7B2D8B">Libra Internet</text>
+  <text x="58" y="52" font-family="Arial,sans-serif" font-size="12" fill="#555">Bank</text>
+</svg>

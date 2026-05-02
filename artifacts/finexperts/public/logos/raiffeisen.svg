@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <!-- Yellow diamond/gear shape -->
+  <polygon points="20,40 32,20 52,20 64,40 52,60 32,60" fill="#FFDD00"/>
+  <polygon points="28,40 36,26 48,26 56,40 48,54 36,54" fill="#0A1A2E"/>
+  <polygon points="35,40 40,32 44,32 49,40 44,48 40,48" fill="#FFDD00"/>
+  <text x="72" y="36" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#0A1A2E">Raiffeisen</text>
+  <text x="72" y="54" font-family="Arial,sans-serif" font-size="11" font-weight="500" fill="#0A1A2E">Bank</text>
+</svg>

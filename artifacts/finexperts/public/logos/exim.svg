@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <rect x="8" y="8" width="50" height="64" rx="6" fill="#005BAA"/>
+  <text x="33" y="52" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle">EX</text>
+  <text x="68" y="33" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#005BAA">Exim</text>
+  <text x="68" y="52" font-family="Arial,sans-serif" font-size="10" fill="#333">Banca Românească</text>
+</svg>

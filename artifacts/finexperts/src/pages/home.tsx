@@ -5,7 +5,7 @@ import { Star, ArrowRight, ShieldCheck, Users, TrendingDown, FileText, Phone } f
 import { Slider } from "@/components/ui/slider";
 
 export default function HomePage() {
-  const [activeType, setActiveType] = useState<"personal" | "ipotecar">("personal");
+  const [activeType, setActiveType] = useState<"personal" | "ipotecar">("ipotecar");
   const [amount, setAmount] = useState(30000);
   const [months, setMonths] = useState(36);
 
@@ -125,13 +125,6 @@ export default function HomePage() {
             </p>
             <div className="flex gap-2 mb-6">
               <button
-                onClick={() => setActiveType("personal")}
-                className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === "personal" ? "bg-[#0A1A2E] text-white" : "border border-[#E5E3D9] text-[#5A6478] hover:text-[#0A1A2E]"}`}
-              >
-                <FileText className="h-4 w-4" />
-                Credit personal
-              </button>
-              <button
                 onClick={() => setActiveType("ipotecar")}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === "ipotecar" ? "bg-[#0A1A2E] text-white" : "border border-[#E5E3D9] text-[#5A6478] hover:text-[#0A1A2E]"}`}
               >
@@ -140,6 +133,13 @@ export default function HomePage() {
                   <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
                 Credit ipotecar
+              </button>
+              <button
+                onClick={() => setActiveType("personal")}
+                className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === "personal" ? "bg-[#0A1A2E] text-white" : "border border-[#E5E3D9] text-[#5A6478] hover:text-[#0A1A2E]"}`}
+              >
+                <FileText className="h-4 w-4" />
+                Credit de Nevoi Personale
               </button>
             </div>
             <Link href="/calculator">

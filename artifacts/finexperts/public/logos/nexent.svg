@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="white"/>
+  <rect x="8" y="12" width="184" height="56" rx="8" fill="#2D3748"/>
+  <text x="100" y="46" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle">NEXENT BANK</text>
+</svg>
