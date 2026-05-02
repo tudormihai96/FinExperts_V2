@@ -1,115 +1,224 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "wouter";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { banks, calculateMonthlyPayment } from "@/lib/data";
-import { ArrowRight } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { banks, calculateMonthlyPayment, formatRON } from "@/lib/data";
+import { Star, ArrowRight } from "lucide-react";
 
-function formatRON(value: number) {
-  return new Intl.NumberFormat("ro-RO", { maximumFractionDigits: 0 }).format(value) + " RON";
-}
+type SortKey = "monthly" | "rate" | "dae" | "rating";
 
-function BankCard({ bank, type }: { bank: typeof banks[0]; type: "personal" | "ipotecar" }) {
-  const rate = type === "personal" ? bank.ratePersonal : bank.rateIpotecar;
-  const exampleAmount = type === "personal" ? 20000 : 150000;
-  const exampleMonths = type === "personal" ? 36 : 120;
-  const monthly = calculateMonthlyPayment(exampleAmount, rate, exampleMonths);
-
+function BankInitialsAvatar({ initials, color }: { initials: string; color: string }) {
   return (
     <div
-      data-testid={`bank-card-${bank.id}`}
-      className="bg-white border border-[#E5E3D9] rounded-xl p-6 hover:shadow-md hover:border-[#0A1A2E] transition-all group"
+      className="w-11 h-11 rounded-xl flex items-center justify-center text-white text-xs font-bold shrink-0"
+      style={{ backgroundColor: color }}
     >
-      <div className="flex items-center gap-4 mb-5">
-        <div className="w-14 h-14 rounded-lg border border-[#E5E3D9] flex items-center justify-center bg-[#F7F4EC] overflow-hidden p-1.5">
-          <img
-            src={bank.logo}
-            alt={bank.name}
-            className="h-10 w-10 object-contain"
-            onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${bank.name}&background=0A1A2E&color=fff&size=40`; }}
-          />
-        </div>
-        <div>
-          <h3 className="text-lg font-bold text-[#0A1A2E]">{bank.name}</h3>
-          <div className="text-sm text-[#5A6478]">Dobândă de la <span className="font-semibold text-[#0A1A2E]">{rate}%</span></div>
-        </div>
-      </div>
+      {initials}
+    </div>
+  );
+}
 
-      <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-[#F7F4EC] rounded-lg">
-        <div>
-          <div className="text-xs text-[#5A6478] mb-1">Exemplu rată lunară</div>
-          <div className="text-lg font-bold text-[#0A1A2E]">{formatRON(monthly)}</div>
-          <div className="text-[11px] text-[#5A6478]">{formatRON(exampleAmount)} / {exampleMonths} luni</div>
-        </div>
-        <div>
-          <div className="text-xs text-[#5A6478] mb-1">DAE estimat</div>
-          <div className="text-lg font-bold text-[#0A1A2E]">{(rate + (type === "personal" ? 1.2 : 0.8)).toFixed(1)}%</div>
-          <div className="text-[11px] text-[#5A6478]">Include comisioane</div>
-        </div>
-      </div>
-
-      <Link href={`/banci/${bank.slug}`}>
-        <Button
-          data-testid={`btn-bank-detail-${bank.id}`}
-          variant="outline"
-          className="w-full border-[#0A1A2E] text-[#0A1A2E] group-hover:bg-[#0A1A2E] group-hover:text-white transition-colors"
-        >
-          Vezi detalii <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-      </Link>
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <div className="flex items-center gap-0.5">
+      <Star className="h-3 w-3 fill-[#C6A667] text-[#C6A667]" />
+      <span className="text-xs text-[#5A6478]">{rating.toFixed(1)}</span>
     </div>
   );
 }
 
 export default function BanksPage() {
+  const [activeType, setActiveType] = useState<"personal" | "ipotecar">("personal");
+  const [amount, setAmount] = useState(30000);
+  const [months, setMonths] = useState(36);
+  const [sortBy, setSortBy] = useState<SortKey>("monthly");
+
+  const sortedBanks = useMemo(() => {
+    return [...banks].map(bank => {
+      const rate = activeType === "personal" ? bank.ratePersonal : bank.rateIpotecar;
+      const dae = activeType === "personal" ? bank.daePersonal : bank.daeIpotecar;
+      const monthly = calculateMonthlyPayment(amount, rate, months);
+      const total = monthly * months;
+      return { ...bank, rate, dae, monthly, total };
+    }).sort((a, b) => {
+      if (sortBy === "monthly") return a.monthly - b.monthly;
+      if (sortBy === "rate") return a.rate - b.rate;
+      if (sortBy === "dae") return a.dae - b.dae;
+      if (sortBy === "rating") return b.rating - a.rating;
+      return 0;
+    });
+  }, [activeType, amount, months, sortBy]);
+
   return (
     <div className="min-h-screen bg-[#F7F4EC]">
-      <div className="bg-[#0A1A2E] py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Comparator bănci</h1>
-          <p className="text-gray-300">Compară cele 11 bănci românești. Rate actualizate 2026.</p>
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Comparator bănci</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
+            Compară cele 11 bănci<br />românești.
+          </h1>
+          <p className="text-[#5A6478] text-base max-w-xl">
+            Setează suma și durata dorită; vei vedea rata lunară exactă pentru fiecare bancă, plus DAE și rating.
+          </p>
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-12">
-        <Tabs defaultValue="personal" className="w-full">
-          <TabsList className="mb-8 bg-white border border-[#E5E3D9] p-1 h-auto">
-            <TabsTrigger value="personal" data-testid="tab-personal" className="data-[state=active]:bg-[#0A1A2E] data-[state=active]:text-white px-6 py-3 text-sm font-semibold">
+        {/* Sliders + tab panel */}
+        <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 mb-6">
+          <div className="flex gap-2 mb-5">
+            <button
+              data-testid="tab-personal"
+              onClick={() => setActiveType("personal")}
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                activeType === "personal" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
+              }`}
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
               Credit personal
-            </TabsTrigger>
-            <TabsTrigger value="ipotecar" data-testid="tab-ipotecar" className="data-[state=active]:bg-[#0A1A2E] data-[state=active]:text-white px-6 py-3 text-sm font-semibold">
+            </button>
+            <button
+              data-testid="tab-ipotecar"
+              onClick={() => setActiveType("ipotecar")}
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                activeType === "ipotecar" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
+              }`}
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
               Credit ipotecar
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="personal" className="mt-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {banks.sort((a, b) => a.ratePersonal - b.ratePersonal).map(bank => (
-                <BankCard key={bank.id} bank={bank} type="personal" />
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="ipotecar" className="mt-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {banks.sort((a, b) => a.rateIpotecar - b.rateIpotecar).map(bank => (
-                <BankCard key={bank.id} bank={bank} type="ipotecar" />
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
-
-        <div className="mt-12 bg-gradient-to-r from-[#0A1A2E] to-[#132846] rounded-xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-xl font-bold mb-2">Vrei ajutor să alegi banca potrivită?</h3>
-            <p className="text-gray-300">Consultanții FinExperts îți analizează gratuit profilul și îți recomandă cea mai bună ofertă.</p>
+            </button>
           </div>
-          <Link href="/aplicare-credit">
-            <Button className="bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-bold px-8 shrink-0" data-testid="btn-apply-cta">
-              Aplică gratuit
-            </Button>
-          </Link>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Sumă</span>
+                <span className="text-sm font-semibold text-[#0A1A2E]">{formatRON(amount)}</span>
+              </div>
+              <Slider
+                min={activeType === "personal" ? 1000 : 30000}
+                max={activeType === "personal" ? 200000 : 600000}
+                step={activeType === "personal" ? 1000 : 5000}
+                value={[amount]}
+                onValueChange={([v]) => setAmount(v)}
+              />
+            </div>
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Perioadă</span>
+                <span className="text-sm font-semibold text-[#0A1A2E]">{months} luni</span>
+              </div>
+              <Slider
+                min={activeType === "personal" ? 6 : 12}
+                max={activeType === "personal" ? 60 : 360}
+                step={activeType === "personal" ? 6 : 12}
+                value={[months]}
+                onValueChange={([v]) => setMonths(v)}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Sort buttons */}
+        <div className="flex items-center gap-2 mb-4 flex-wrap">
+          <span className="text-sm text-[#5A6478] mr-1">Sortează:</span>
+          {([
+            { key: "monthly" as SortKey, label: "Rată lunară" },
+            { key: "rate" as SortKey, label: "Dobândă" },
+            { key: "dae" as SortKey, label: "DAE" },
+            { key: "rating" as SortKey, label: "Rating" },
+          ]).map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setSortBy(key)}
+              className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors flex items-center gap-1 ${
+                sortBy === key
+                  ? "bg-[#0A1A2E] text-white border-[#0A1A2E]"
+                  : "bg-white text-[#5A6478] border-[#E5E3D9] hover:border-[#0A1A2E] hover:text-[#0A1A2E]"
+              }`}
+            >
+              ↕ {label}
+            </button>
+          ))}
+        </div>
+
+        {/* Banks table */}
+        <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+          {/* Table header */}
+          <div className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-3 bg-[#F7F4EC] border-b border-[#E5E3D9]">
+            <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Banca</div>
+            <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider text-center">Dobândă</div>
+            <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider text-center">DAE</div>
+            <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider text-right">Rată / lună</div>
+            <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider text-right pr-1">Acțiune</div>
+          </div>
+
+          {sortedBanks.map((bank) => (
+            <div
+              key={bank.id}
+              data-testid={`bank-row-${bank.id}`}
+              className="grid grid-cols-[2fr_1fr_1fr_1.5fr_auto] items-center px-5 py-4 border-b border-[#E5E3D9] last:border-b-0 hover:bg-[#F7F4EC]/50 transition-colors"
+            >
+              {/* Bank name + info */}
+              <div className="flex items-center gap-3 min-w-0">
+                <BankInitialsAvatar initials={bank.initials} color={bank.color} />
+                <div className="min-w-0">
+                  <div className="font-semibold text-[#0A1A2E] text-sm truncate">{bank.name}</div>
+                  <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                    <div className="flex items-center gap-1">
+                      <StarRating rating={bank.rating} />
+                      <span className="text-[10px] text-[#5A6478]">• #{bank.rank}</span>
+                    </div>
+                    {bank.badge && (
+                      <span
+                        className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                        style={{
+                          backgroundColor: (bank.badgeColor || "#5A6478") + "18",
+                          color: bank.badgeColor || "#5A6478"
+                        }}
+                      >
+                        {bank.badge}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Dobândă */}
+              <div className="text-center">
+                <span className="text-sm font-semibold text-[#0A1A2E]">{bank.rate.toFixed(2)}%</span>
+              </div>
+
+              {/* DAE */}
+              <div className="text-center">
+                <span className="text-sm text-[#5A6478]">{bank.dae.toFixed(2)}%</span>
+              </div>
+
+              {/* Rată */}
+              <div className="text-right">
+                <div className="text-sm font-bold text-[#0A1A2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")} RON</div>
+                <div className="text-xs text-[#5A6478]">Total: {formatRON(bank.total)}</div>
+              </div>
+
+              {/* Acțiuni */}
+              <div className="flex items-center gap-2 pl-3">
+                <Link href={`/banci/${bank.slug}`}>
+                  <button className="px-3 py-1.5 text-xs font-medium border border-[#E5E3D9] rounded-lg text-[#0A1A2E] hover:border-[#0A1A2E] transition-colors whitespace-nowrap">
+                    Detalii
+                  </button>
+                </Link>
+                <Link href="/aplica">
+                  <button className="px-3 py-1.5 text-xs font-medium bg-[#0A1A2E] text-white rounded-lg hover:bg-[#132846] transition-colors flex items-center gap-1 whitespace-nowrap">
+                    Aplică <ArrowRight className="h-3 w-3" />
+                  </button>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

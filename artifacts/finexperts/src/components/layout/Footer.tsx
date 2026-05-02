@@ -1,57 +1,100 @@
 import { Link } from "wouter";
+import { ShieldCheck, ExternalLink, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A1A2E] text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex flex-col mb-4">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[26px] font-bold text-white">FinExperts</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span className="text-[10px] font-semibold text-[#C6A667] uppercase tracking-wider">partener</span>
-                <img src="https://www.kiwifinance.ro/wp-content/uploads/2022/02/Kiwi-Finance-Logo.png" alt="KIWI Finance" className="h-[14px] brightness-0 invert opacity-80" />
-              </div>
+    <footer className="bg-[#0A1A2E] text-white">
+      {/* PARTENER OFICIAL bar */}
+      <div className="border-b border-white/10 px-4 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 border border-[#C6A667]/50 rounded-full px-3 py-1">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#C6A667]" />
+              <span className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider">Partener oficial</span>
             </div>
-            <p className="text-sm text-gray-400 mt-4">
-              FinExperts — compară independent de credite, broker autorizat, partener oficial KIWI Finance. CUI înregistrat conform legii.
-            </p>
+            <span className="text-sm text-gray-400">
+              Membri ARBC — Asociația Română a Brokerilor de Credite
+            </span>
+          </div>
+          <a
+            href="https://kiwifinance.ro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 bg-[#1a2e48] hover:bg-[#243d5c] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            kiwifinance.ro
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </div>
+
+      {/* Main footer content */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Logo + description */}
+          <div>
+            <img
+              src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
+              alt="FinExperts"
+              className="h-10 mb-5 brightness-0 invert opacity-90"
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                img.style.display = "none";
+                img.nextElementSibling?.classList.remove("hidden");
+              }}
+            />
+            <div className="hidden text-xl font-bold text-white mb-5">FinExperts</div>
           </div>
 
+          {/* Produse */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-[#C6A667]">Calculatoare</h4>
-            <ul className="space-y-3">
-              <li><Link href="/calculator" className="text-sm text-gray-300 hover:text-white transition-colors">Calculator credit de nevoi personale</Link></li>
-              <li><Link href="/calculator" className="text-sm text-gray-300 hover:text-white transition-colors">Calculator credit ipotecar</Link></li>
-              <li><Link href="/calculator/suma-maxima" className="text-sm text-gray-300 hover:text-white transition-colors">Calculator sumă maximă</Link></li>
-              <li><Link href="/calculator/refinantare" className="text-sm text-gray-300 hover:text-white transition-colors">Calculator refinanțare</Link></li>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Produse</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="/calculator" className="text-sm text-gray-400 hover:text-white transition-colors">Calculator credite</Link></li>
+              <li><Link href="/banci" className="text-sm text-gray-400 hover:text-white transition-colors">Comparator bănci</Link></li>
+              <li><Link href="/calculator/suma-maxima" className="text-sm text-gray-400 hover:text-white transition-colors">DAE vs dobândă</Link></li>
+              <li><Link href="/calculator/refinantare" className="text-sm text-gray-400 hover:text-white transition-colors">Calculator refinanțare</Link></li>
+              <li><Link href="/asigurari" className="text-sm text-gray-400 hover:text-white transition-colors">Asigurări</Link></li>
             </ul>
           </div>
 
+          {/* Companie */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-[#C6A667]">Bănci</h4>
-            <ul className="space-y-3">
-              <li><Link href="/banci/bcr" className="text-sm text-gray-300 hover:text-white transition-colors">Credit BCR</Link></li>
-              <li><Link href="/banci/brd" className="text-sm text-gray-300 hover:text-white transition-colors">Credit BRD</Link></li>
-              <li><Link href="/banci/ing" className="text-sm text-gray-300 hover:text-white transition-colors">Credit ING</Link></li>
-              <li><Link href="/banci" className="text-sm text-gray-300 hover:text-white transition-colors">Toate băncile</Link></li>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Companie</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="/despre" className="text-sm text-gray-400 hover:text-white transition-colors">Despre noi</Link></li>
+              <li><Link href="/ghiduri" className="text-sm text-gray-400 hover:text-white transition-colors">Ghiduri credite</Link></li>
+              <li><Link href="/aplica" className="text-sm text-gray-400 hover:text-white transition-colors">Aplică credit</Link></li>
+              <li><Link href="/login" className="text-sm text-gray-400 hover:text-white transition-colors">Conectare</Link></li>
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-[#C6A667]">Contact</h4>
-            <ul className="space-y-3">
-              <li className="text-sm text-gray-300">Email: contact@finexperts.ro</li>
-              <li className="text-sm text-gray-300">Telefon: 031 000 0000</li>
-              <li className="text-sm text-gray-300">Adresă: București, România</li>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contact</h4>
+            <ul className="space-y-2.5">
+              <li>
+                <a href="tel:0799715101" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  0799 715 101
+                </a>
+              </li>
+              <li>
+                <a href="mailto:kbaa@kiwifinance.ro" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  kbaa@kiwifinance.ro
+                </a>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <MapPin className="h-3.5 w-3.5 text-gray-500 mt-0.5 shrink-0" />
+                <span className="text-sm text-gray-400">
+                  Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1, Sector 1, București, România
+                </span>
+              </li>
             </ul>
           </div>
         </div>
-        
-        <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} FinExperts. Toate drepturile rezervate.
+
+        <div className="mt-10 pt-8 border-t border-white/10 text-center text-xs text-gray-500">
+          &copy; {new Date().getFullYear()} FinExperts. Broker autorizat, partener oficial KIWI Finance. Toate drepturile rezervate.
         </div>
       </div>
     </footer>

@@ -1,114 +1,64 @@
 import { useState, useMemo } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Slider } from "@/components/ui/slider";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { banks, calculateMonthlyPayment } from "@/lib/data";
-import { Info } from "lucide-react";
-
-function formatRON(value: number) {
-  return new Intl.NumberFormat("ro-RO", { maximumFractionDigits: 0 }).format(value) + " RON";
-}
-
-function BankResultsTable({ principal, months, type }: { principal: number; months: number; type: "personal" | "ipotecar" }) {
-  const results = useMemo(() => {
-    return banks
-      .map((bank) => {
-        const rate = type === "personal" ? bank.ratePersonal : bank.rateIpotecar;
-        const monthly = calculateMonthlyPayment(principal, rate, months);
-        const total = monthly * months;
-        const dae = rate + (type === "personal" ? 1.2 : 0.8);
-        return { ...bank, monthly, total, dae, rate };
-      })
-      .sort((a, b) => a.monthly - b.monthly);
-  }, [principal, months, type]);
-
-  return (
-    <div className="mt-8 border border-[#E5E3D9] rounded-xl overflow-hidden bg-white">
-      <div className="grid grid-cols-12 bg-[#0A1A2E] text-white text-xs font-semibold uppercase tracking-wider px-4 py-3">
-        <div className="col-span-4">Bancă</div>
-        <div className="col-span-2 text-right">Dobândă</div>
-        <div className="col-span-3 text-right">Rată lunară</div>
-        <div className="col-span-2 text-right">Total</div>
-        <div className="col-span-1"></div>
-      </div>
-      {results.map((bank, i) => (
-        <div
-          key={bank.id}
-          data-testid={`bank-row-${bank.id}`}
-          className={`grid grid-cols-12 items-center px-4 py-4 border-b border-[#E5E3D9] last:border-b-0 hover:bg-[#F7F4EC] transition-colors ${i === 0 ? "border-l-4 border-l-[#2E7D5B]" : ""}`}
-        >
-          <div className="col-span-4 flex items-center gap-3">
-            <img
-              src={bank.logo}
-              alt={bank.name}
-              className="h-8 w-8 object-contain rounded"
-              onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${bank.name}&background=0A1A2E&color=fff&size=32`; }}
-            />
-            <div>
-              <div className="font-semibold text-[#0A1A2E] text-sm">{bank.name}</div>
-              {i === 0 && (
-                <span className="text-[10px] font-bold text-[#2E7D5B] uppercase tracking-wider">Cea mai bună</span>
-              )}
-            </div>
-          </div>
-          <div className="col-span-2 text-right">
-            <span className="text-sm font-semibold text-[#0A1A2E]">{bank.rate.toFixed(2)}%</span>
-            <div className="text-[11px] text-[#5A6478]">DAE {bank.dae.toFixed(2)}%</div>
-          </div>
-          <div className="col-span-3 text-right">
-            <span className="text-base font-bold text-[#0A1A2E]">{formatRON(bank.monthly)}</span>
-          </div>
-          <div className="col-span-2 text-right text-sm text-[#5A6478]">
-            {formatRON(bank.total)}
-          </div>
-          <div className="col-span-1 text-right">
-            <Link href={`/banci/${bank.slug}`}>
-              <Button size="sm" variant="ghost" className="text-[#0A1A2E] hover:text-[#C6A667] text-xs px-2">
-                Detalii
-              </Button>
-            </Link>
-          </div>
-        </div>
-      ))}
-      <div className="px-4 py-3 bg-[#F7F4EC] text-xs text-[#5A6478] flex items-start gap-2">
-        <Info className="h-4 w-4 mt-0.5 shrink-0 text-[#C6A667]" />
-        Calcul informativ. Banca poate ajusta oferta în funcție de scoring și venit.
-      </div>
-    </div>
-  );
-}
+import { Slider } from "@/components/ui/slider";
+import { banks, calculateMonthlyPayment, formatRON } from "@/lib/data";
+import { FileText, Table, TrendingDown, ChevronDown, ChevronUp, ArrowRight, Info } from "lucide-react";
 
 function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
   const isIpotecar = type === "ipotecar";
-  const [amount, setAmount] = useState(isIpotecar ? 150000 : 20000);
+  const [amount, setAmount] = useState(isIpotecar ? 150000 : 30000);
   const [months, setMonths] = useState(isIpotecar ? 120 : 36);
-  const [rate, setRate] = useState(isIpotecar ? 5.5 : 8.0);
+  const [rate, setRate] = useState(isIpotecar ? 5.20 : 7.49);
+  const [dtiOpen, setDtiOpen] = useState(false);
+  const [venit, setVenit] = useState(5000);
+  const [obligatii, setObligatii] = useState(0);
 
   const minAmount = isIpotecar ? 30000 : 1000;
-  const maxAmount = isIpotecar ? 600000 : 150000;
+  const maxAmount = isIpotecar ? 600000 : 200000;
   const minMonths = isIpotecar ? 12 : 6;
-  const maxMonths = isIpotecar ? 360 : 84;
+  const maxMonths = isIpotecar ? 360 : 60;
+  const minRate = isIpotecar ? 3.0 : 4.0;
+  const maxRate = isIpotecar ? 12.0 : 18.0;
 
-  const bestRate = isIpotecar ? 5.9 : 8.9;
-  const monthlyPayment = useMemo(() => calculateMonthlyPayment(amount, rate, months), [amount, rate, months]);
+  const monthly = useMemo(() => calculateMonthlyPayment(amount, rate, months), [amount, rate, months]);
+  const total = monthly * months;
+  const totalDobanda = total - amount;
+
+  const sortedBanks = useMemo(() => {
+    return [...banks]
+      .filter(b => {
+        const bankRate = type === "personal" ? b.ratePersonal : b.rateIpotecar;
+        return bankRate <= rate + 2;
+      })
+      .sort((a, b) => {
+        const ra = type === "personal" ? a.ratePersonal : a.rateIpotecar;
+        const rb = type === "personal" ? b.ratePersonal : b.rateIpotecar;
+        return ra - rb;
+      });
+  }, [type, rate]);
+
+  const bestBank = sortedBanks[0];
+  const bestMonthly = bestBank ? calculateMonthlyPayment(amount, type === "personal" ? bestBank.ratePersonal : bestBank.rateIpotecar, months) : monthly;
+  const bestDae = bestBank ? (type === "personal" ? bestBank.daePersonal : bestBank.daeIpotecar) : rate;
+
+  const dtiMax = venit * 0.4 - obligatii;
+  const dtiOk = monthly <= dtiMax;
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
-        <div>
-          <div className="flex justify-between mb-2">
-            <Label className="text-sm font-semibold text-[#0A1A2E]">Suma creditului</Label>
-            <span className="text-sm font-bold text-[#C6A667]">{formatRON(amount)}</span>
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-0">
+      {/* Left: sliders */}
+      <div className="p-6 lg:p-8 border-r border-[#E5E3D9]">
+        {/* SUMĂ DORITĂ */}
+        <div className="mb-7">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Sumă dorită</span>
+            <span className="text-base font-semibold text-[#0A1A2E]">{formatRON(amount)}</span>
           </div>
           <Slider
             data-testid="slider-amount"
             min={minAmount}
             max={maxAmount}
-            step={isIpotecar ? 5000 : 500}
+            step={isIpotecar ? 5000 : 1000}
             value={[amount]}
             onValueChange={([v]) => setAmount(v)}
             className="mb-2"
@@ -119,10 +69,11 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           </div>
         </div>
 
-        <div>
-          <div className="flex justify-between mb-2">
-            <Label className="text-sm font-semibold text-[#0A1A2E]">Perioada</Label>
-            <span className="text-sm font-bold text-[#C6A667]">{months} luni ({(months / 12).toFixed(1)} ani)</span>
+        {/* PERIOADĂ RAMBURSARE */}
+        <div className="mb-7">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Perioadă rambursare</span>
+            <span className="text-base font-semibold text-[#0A1A2E]">{months} luni ({(months / 12).toFixed(1)} ani)</span>
           </div>
           <Slider
             data-testid="slider-months"
@@ -139,116 +90,204 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           </div>
         </div>
 
-        <div>
-          <div className="flex justify-between mb-2">
-            <Label className="text-sm font-semibold text-[#0A1A2E]">Dobânda anuală</Label>
-            <span className="text-sm font-bold text-[#C6A667]">{rate.toFixed(2)}%</span>
+        {/* DOBÂNDĂ ESTIMATIVĂ */}
+        <div className="mb-7">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider">Dobândă estimativă</span>
+            <span className="text-base font-semibold text-[#0A1A2E]">{rate.toFixed(2)}%</span>
           </div>
-          <div className="relative">
-            <Input
-              data-testid="input-rate"
-              type="number"
-              value={rate}
-              onChange={(e) => setRate(parseFloat(e.target.value) || 0)}
-              step={0.1}
-              min={1}
-              max={30}
-              className="pr-8 border-[#E5E3D9]"
-            />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5A6478] text-sm">%</span>
+          <Slider
+            data-testid="slider-rate"
+            min={minRate}
+            max={maxRate}
+            step={0.01}
+            value={[rate]}
+            onValueChange={([v]) => setRate(Math.round(v * 100) / 100)}
+            className="mb-2"
+          />
+          <div className="flex justify-between text-xs text-[#5A6478]">
+            <span>{minRate}%</span>
+            <span>{maxRate}%</span>
           </div>
-          <div className="text-xs text-[#5A6478] mt-1">Cea mai bună ofertă: {bestRate}% (ING)</div>
+        </div>
+
+        {/* DTI Accordion */}
+        <div className="border border-[#E5E3D9] rounded-xl overflow-hidden">
+          <button
+            onClick={() => setDtiOpen(!dtiOpen)}
+            className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#0A1A2E] hover:bg-[#F7F4EC] transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <Info className="h-4 w-4 text-[#5A6478]" />
+              <span>Verifică încadrarea (DTI 40%)</span>
+            </div>
+            {dtiOpen ? <ChevronUp className="h-4 w-4 text-[#5A6478]" /> : <ChevronDown className="h-4 w-4 text-[#5A6478]" />}
+          </button>
+          {dtiOpen && (
+            <div className="px-4 pb-4 border-t border-[#E5E3D9] bg-[#F7F4EC]">
+              <div className="grid grid-cols-2 gap-3 mt-3">
+                <div>
+                  <label className="text-xs text-[#5A6478] block mb-1">Venit net lunar (RON)</label>
+                  <input
+                    type="number"
+                    value={venit}
+                    onChange={(e) => setVenit(parseFloat(e.target.value) || 0)}
+                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-[#5A6478] block mb-1">Rate alte credite (RON/lună)</label>
+                  <input
+                    type="number"
+                    value={obligatii}
+                    onChange={(e) => setObligatii(parseFloat(e.target.value) || 0)}
+                    className="w-full border border-[#E5E3D9] rounded-lg px-3 py-1.5 text-sm bg-white"
+                  />
+                </div>
+              </div>
+              <div className={`mt-3 text-sm font-medium flex items-center gap-2 ${dtiOk ? "text-[#2E7D5B]" : "text-[#C4432F]"}`}>
+                <div className={`w-2 h-2 rounded-full ${dtiOk ? "bg-[#2E7D5B]" : "bg-[#C4432F]"}`} />
+                {dtiOk
+                  ? `Te încadrezi în limita BNR (DTI ≤ 40%)`
+                  : `Depășești limita BNR de 40% — nu te încadrezi`}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-[#0A1A2E] to-[#132846] rounded-xl p-6 text-white flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div className="text-sm text-gray-400 mb-1">Rata lunară estimată</div>
-          <div data-testid="result-monthly" className="text-4xl font-bold">{formatRON(monthlyPayment)}</div>
-        </div>
-        <div className="grid grid-cols-2 gap-6">
+      {/* Right: dark result panel */}
+      <div className="bg-[#0A1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Rată lunară estimativă</div>
+        <div data-testid="result-monthly" className="text-5xl font-bold text-white mb-1">{Math.round(monthly).toLocaleString("ro-RO")} RON</div>
+        <div className="text-sm text-gray-400 mb-6">pe lună, timp de {months} luni</div>
+
+        <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b border-white/10">
           <div>
-            <div className="text-xs text-gray-400">Total rambursabil</div>
-            <div className="text-xl font-semibold">{formatRON(monthlyPayment * months)}</div>
+            <div className="text-xs text-gray-400 mb-1">Total rambursat</div>
+            <div className="text-base font-semibold text-white">{formatRON(total)}</div>
           </div>
           <div>
-            <div className="text-xs text-gray-400">Dobânzi totale</div>
-            <div className="text-xl font-semibold">{formatRON(monthlyPayment * months - amount)}</div>
+            <div className="text-xs text-gray-400 mb-1">Cost total dobândă</div>
+            <div className="text-base font-semibold text-white">{formatRON(totalDobanda)}</div>
           </div>
         </div>
-        <Link href="/aplicare-credit">
-          <Button className="bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-bold px-6" data-testid="btn-apply">
-            Aplică credit
-          </Button>
+
+        {bestBank && (
+          <div className="bg-white/8 rounded-xl p-4 mb-5">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#C6A667] mb-2">
+              <TrendingDown className="h-3.5 w-3.5" />
+              Cea mai bună ofertă
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-white">{bestBank.name}</span>
+              <span className="text-sm font-bold text-white">{Math.round(bestMonthly).toLocaleString("ro-RO")} RON / lună</span>
+            </div>
+            <div className="text-xs text-gray-400 mt-0.5">DAE {bestDae.toFixed(2)}%</div>
+          </div>
+        )}
+
+        <Link href="/aplica">
+          <button className="w-full bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+            Aplică pentru acest credit
+            <ArrowRight className="h-4 w-4" />
+          </button>
         </Link>
       </div>
-
-      <BankResultsTable principal={amount} months={months} type={type} />
     </div>
   );
 }
 
 export default function CalculatorPage() {
+  const [activeType, setActiveType] = useState<"personal" | "ipotecar">("personal");
+
   return (
     <div className="min-h-screen bg-[#F7F4EC]">
-      <div className="bg-[#0A1A2E] py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Calculator credit personal și ipotecar</h1>
-          <p className="text-gray-300">Compară instant rata lunară la 11 bănci din România. Date oficiale 2026.</p>
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="text-xs font-semibold text-[#C6A667] uppercase tracking-wider mb-3">Calculatoare credite</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A2E] leading-tight mb-3">
+            Rată lunară și cost total,<br />pentru fiecare bancă.
+          </h1>
+          <p className="text-[#5A6478] text-base max-w-xl">
+            Modifică suma, durata și dobânda pentru a vedea instant rata lunară. Ofertele reale sunt generate în timp real pentru cele 11 bănci partenere.
+          </p>
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-12">
-        <Tabs defaultValue="personal" className="w-full">
-          <TabsList className="mb-8 bg-white border border-[#E5E3D9] p-1 h-auto">
-            <TabsTrigger
-              value="personal"
-              data-testid="tab-personal"
-              className="data-[state=active]:bg-[#0A1A2E] data-[state=active]:text-white px-6 py-3 text-sm font-semibold"
-            >
-              Credit personal
-            </TabsTrigger>
-            <TabsTrigger
-              value="ipotecar"
-              data-testid="tab-ipotecar"
-              className="data-[state=active]:bg-[#0A1A2E] data-[state=active]:text-white px-6 py-3 text-sm font-semibold"
-            >
-              Credit ipotecar
-            </TabsTrigger>
-          </TabsList>
-
-          <div className="bg-white border border-[#E5E3D9] rounded-xl p-8">
-            <TabsContent value="personal" className="mt-0">
-              <CreditCalculator type="personal" />
-            </TabsContent>
-            <TabsContent value="ipotecar" className="mt-0">
-              <CreditCalculator type="ipotecar" />
-            </TabsContent>
-          </div>
-        </Tabs>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* 3 calculator type cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <Link href="/calculator">
+            <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 hover:border-[#0A1A2E] hover:shadow-sm transition-all cursor-pointer flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-[#0A1A2E]/8 flex items-center justify-center shrink-0">
+                <FileText className="h-5 w-5 text-[#0A1A2E]" />
+              </div>
+              <div>
+                <div className="font-semibold text-[#0A1A2E] text-sm mb-0.5">Calculator credit standard</div>
+                <div className="text-xs text-[#5A6478]">Rată lunară pentru credit personal sau ipotecar.</div>
+              </div>
+            </div>
+          </Link>
           <Link href="/calculator/suma-maxima">
-            <div className="bg-white border border-[#E5E3D9] rounded-xl p-6 hover:border-[#0A1A2E] hover:shadow-md transition-all cursor-pointer">
-              <div className="text-xs font-bold text-[#C6A667] uppercase tracking-wider mb-2">Calculator</div>
-              <div className="font-bold text-[#0A1A2E]">Sumă maximă</div>
-              <div className="text-sm text-[#5A6478]">Cât poți împrumuta în funcție de venit (DTI 40%)</div>
+            <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 hover:border-[#0A1A2E] hover:shadow-sm transition-all cursor-pointer flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-[#0A1A2E]/8 flex items-center justify-center shrink-0">
+                <Table className="h-5 w-5 text-[#0A1A2E]" />
+              </div>
+              <div>
+                <div className="font-semibold text-[#0A1A2E] text-sm mb-0.5">Sumă maximă credit</div>
+                <div className="text-xs text-[#5A6478]">Cât poți împrumuta în funcție de venitul tău (DTI 40%).</div>
+              </div>
             </div>
           </Link>
           <Link href="/calculator/refinantare">
-            <div className="bg-white border border-[#E5E3D9] rounded-xl p-6 hover:border-[#0A1A2E] hover:shadow-md transition-all cursor-pointer">
-              <div className="text-xs font-bold text-[#C6A667] uppercase tracking-wider mb-2">Calculator</div>
-              <div className="font-bold text-[#0A1A2E]">Refinanțare</div>
-              <div className="text-sm text-[#5A6478]">Calculează economia față de creditul actual</div>
+            <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 hover:border-[#0A1A2E] hover:shadow-sm transition-all cursor-pointer flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-[#0A1A2E]/8 flex items-center justify-center shrink-0">
+                <TrendingDown className="h-5 w-5 text-[#0A1A2E]" />
+              </div>
+              <div>
+                <div className="font-semibold text-[#0A1A2E] text-sm mb-0.5">Calculator refinanțare</div>
+                <div className="text-xs text-[#5A6478]">Cât economisești prin mutarea creditului la altă bancă.</div>
+              </div>
             </div>
           </Link>
-          <Link href="/banci">
-            <div className="bg-white border border-[#E5E3D9] rounded-xl p-6 hover:border-[#0A1A2E] hover:shadow-md transition-all cursor-pointer">
-              <div className="text-xs font-bold text-[#C6A667] uppercase tracking-wider mb-2">Comparator</div>
-              <div className="font-bold text-[#0A1A2E]">Toate băncile</div>
-              <div className="text-sm text-[#5A6478]">Profil complet pentru fiecare bancă</div>
+        </div>
+
+        {/* Main calculator */}
+        <div className="bg-white border border-[#E5E3D9] rounded-xl overflow-hidden">
+          {/* Tab switcher */}
+          <div className="px-6 pt-5 pb-0 border-b border-[#E5E3D9]">
+            <div className="flex gap-2">
+              <button
+                data-testid="tab-personal"
+                onClick={() => setActiveType("personal")}
+                className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg mb-[-1px] transition-colors ${
+                  activeType === "personal"
+                    ? "bg-[#0A1A2E] text-white"
+                    : "text-[#5A6478] hover:text-[#0A1A2E]"
+                }`}
+              >
+                <FileText className="h-4 w-4" />
+                Credit personal
+              </button>
+              <button
+                data-testid="tab-ipotecar"
+                onClick={() => setActiveType("ipotecar")}
+                className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg mb-[-1px] transition-colors ${
+                  activeType === "ipotecar"
+                    ? "bg-[#0A1A2E] text-white"
+                    : "text-[#5A6478] hover:text-[#0A1A2E]"
+                }`}
+              >
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                Credit ipotecar
+              </button>
             </div>
-          </Link>
+          </div>
+
+          <CreditCalculator key={activeType} type={activeType} />
         </div>
       </div>
     </div>

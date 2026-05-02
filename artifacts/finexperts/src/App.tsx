@@ -10,8 +10,8 @@ import MaxLoanPage from "@/pages/max-loan";
 import RefinancePage from "@/pages/refinance";
 import BanksPage from "@/pages/banks";
 import BankDetailPage from "@/pages/bank-detail";
-import ArticlesPage from "@/pages/articles";
-import ArticleDetailPage from "@/pages/article-detail";
+import GuidesPage from "@/pages/guides";
+import GuideDetailPage from "@/pages/guide-detail";
 import InsurancePage from "@/pages/insurance";
 import AboutPage from "@/pages/about";
 import ApplyPage from "@/pages/apply";
@@ -30,11 +30,11 @@ function Router() {
       <Route path="/calculator/refinantare" component={RefinancePage} />
       <Route path="/banci" component={BanksPage} />
       <Route path="/banci/:slug" component={BankDetailPage} />
-      <Route path="/articole" component={ArticlesPage} />
-      <Route path="/articole/:slug" component={ArticleDetailPage} />
+      <Route path="/ghiduri" component={GuidesPage} />
+      <Route path="/ghiduri/:slug" component={GuideDetailPage} />
       <Route path="/asigurari" component={InsurancePage} />
       <Route path="/despre" component={AboutPage} />
-      <Route path="/aplicare-credit" component={ApplyPage} />
+      <Route path="/aplica" component={ApplyPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/cont" component={AccountPage} />
