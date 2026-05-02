@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { LogIn, Menu, X, Phone, Mail, Clock, Facebook, Instagram, User, Settings, LogOut } from "lucide-react";
+import { LogIn, Menu, X, Phone, Mail, Clock, Facebook, Instagram, User, Settings, LogOut, ChevronRight } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
   const { user, isLoggedIn, isAdmin, logout } = useAuth();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navLinks = [
     { href: "/", label: "Acasă" },
@@ -16,7 +23,6 @@ export default function Navbar() {
     { href: "/asigurari", label: "Asigurări" },
     { href: "/ghiduri", label: "Ghiduri" },
     { href: "/despre", label: "Despre noi" },
-    { href: "/aplica", label: "Aplică" },
   ];
 
   const isActive = (href: string) => {
@@ -67,14 +73,15 @@ export default function Navbar() {
       </div>
 
       {/* Main navbar */}
-      <div className="bg-white border-b border-[#E2E8F0] shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 h-[116px] flex items-center justify-between">
+      <div className={`bg-white border-b border-[#E2E8F0] transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
+        <div className="max-w-7xl mx-auto px-4 h-[120px] flex items-center justify-between gap-4">
+
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0">
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[110px] w-auto"
+              className="h-[114px] w-auto"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";
@@ -88,18 +95,22 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-2 text-[15px] font-medium rounded-md transition-colors ${
+                className={`relative px-4 py-2.5 text-[14.5px] font-medium rounded-lg transition-all duration-200 group ${
                   isActive(link.href)
-                    ? "text-[#0C1A2E] font-semibold border-b-2 border-[#C49A20]"
-                    : "text-[#64748B] hover:text-[#0C1A2E]"
+                    ? "text-[#0C1A2E] font-semibold"
+                    : "text-[#64748B] hover:text-[#0C1A2E] hover:bg-[#F4F6FB]"
                 }`}
               >
                 {link.label}
+                {/* Animated underline */}
+                <span className={`absolute bottom-1 left-4 right-4 h-0.5 rounded-full bg-[#C49A20] transition-all duration-300 origin-left ${
+                  isActive(link.href) ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-60"
+                }`} />
               </Link>
             ))}
           </nav>
@@ -110,30 +121,30 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 border border-[#E2E8F0] hover:border-[#0C1A2E] px-3 py-2 rounded-lg transition-colors"
+                  className="flex items-center gap-2 border border-[#E2E8F0] hover:border-[#C49A20]/40 hover:bg-[#F4F6FB] px-3.5 py-2 rounded-xl transition-all duration-200"
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#0C1A2E] flex items-center justify-center text-white text-[9px] font-bold">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0C1A2E] to-[#1E3A5F] flex items-center justify-center text-white text-[9px] font-bold">
                     {initials}
                   </div>
                   <span className="text-sm font-medium text-[#0C1A2E]">{user?.name?.split(" ")[0]}</span>
                   {isAdmin && <span className="text-[9px] font-bold text-[#C49A20] uppercase bg-[#C49A20]/15 px-1.5 py-0.5 rounded">Admin</span>}
                 </button>
                 {userMenuOpen && (
-                  <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-[#E2E8F0] rounded-xl shadow-lg py-1 z-50">
+                  <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-[#E2E8F0] rounded-2xl shadow-xl py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                     {isAdmin && (
                       <Link href="/admin" onClick={() => setUserMenuOpen(false)}>
-                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F5F7FA] cursor-pointer">
+                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
                           <Settings className="h-4 w-4 text-[#C49A20]" /> Panou admin
                         </div>
                       </Link>
                     )}
                     <Link href="/cont" onClick={() => setUserMenuOpen(false)}>
-                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F5F7FA] cursor-pointer">
+                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
                         <User className="h-4 w-4" /> Contul meu
                       </div>
                     </Link>
-                    <div className="border-t border-[#E2E8F0] my-1" />
-                    <button onClick={() => { logout(); setUserMenuOpen(false); }} className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 cursor-pointer">
+                    <div className="border-t border-[#E2E8F0] my-1.5 mx-2" />
+                    <button onClick={() => { logout(); setUserMenuOpen(false); }} className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 cursor-pointer rounded-lg mx-1 transition-colors">
                       <LogOut className="h-4 w-4" /> Deconectare
                     </button>
                   </div>
@@ -142,7 +153,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="flex items-center gap-1.5 text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] hover:border-[#0C1A2E] px-4 py-2 rounded-lg transition-colors"
+                className="flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#0C1A2E] border border-[#E2E8F0] hover:border-[#C49A20]/40 hover:bg-[#F4F6FB] px-4 py-2.5 rounded-xl transition-all duration-200"
               >
                 <LogIn className="h-4 w-4" />
                 Conectare
@@ -150,15 +161,16 @@ export default function Navbar() {
             )}
             <Link
               href="/aplica"
-              className="flex items-center text-sm font-semibold text-white bg-[#0C1A2E] hover:bg-[#162847] px-5 py-2 rounded-lg transition-colors shadow-sm"
+              className="flex items-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0C1A2E] to-[#1B3356] hover:from-[#162847] hover:to-[#24446E] px-7 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               Aplică acum
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 text-[#0C1A2E]"
+            className="lg:hidden p-2.5 text-[#0C1A2E] rounded-xl hover:bg-[#F4F6FB] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -166,42 +178,49 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — fancy slide-down */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-[#E2E8F0] bg-[#F5F7FA] px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block px-3 py-2.5 text-sm font-medium rounded-md transition-colors ${
-                  isActive(link.href)
-                    ? "bg-[#0C1A2E] text-white"
-                    : "text-[#0C1A2E] hover:bg-[#E2E8F0]"
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="pt-3 flex gap-3">
+          <div className="lg:hidden border-t border-[#E2E8F0] bg-white">
+            <div className="px-4 pt-3 pb-2 space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center justify-between px-4 py-3 text-[15px] font-medium rounded-xl transition-colors ${
+                    isActive(link.href)
+                      ? "bg-[#0C1A2E] text-white"
+                      : "text-[#0C1A2E] hover:bg-[#F4F6FB]"
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                  {isActive(link.href) && <ChevronRight className="h-4 w-4 opacity-60" />}
+                </Link>
+              ))}
+            </div>
+            <div className="px-4 pb-4 pt-2 border-t border-[#F4F6FB] flex flex-col gap-2.5">
               {isLoggedIn ? (
                 <>
                   {isAdmin && (
-                    <Link href="/admin" className="flex-1 text-center text-sm font-medium text-[#C49A20] border border-[#C49A20] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
-                      Admin
+                    <Link href="/admin" className="flex items-center justify-center gap-2 text-sm font-semibold text-[#C49A20] border-2 border-[#C49A20]/30 bg-[#C49A20]/5 px-4 py-3 rounded-xl" onClick={() => setMobileOpen(false)}>
+                      <Settings className="h-4 w-4" /> Panou Admin
                     </Link>
                   )}
-                  <Link href="/cont" className="flex-1 text-center text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
-                    Contul meu
+                  <Link href="/cont" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
+                    <User className="h-4 w-4" /> Contul meu
                   </Link>
                 </>
               ) : (
-                <Link href="/login" className="flex-1 text-center text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
-                  Conectare
+                <Link href="/login" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
+                  <LogIn className="h-4 w-4" /> Conectare
                 </Link>
               )}
-              <Link href="/aplica" className="flex-1 text-center text-sm font-semibold text-white bg-[#0C1A2E] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
-                Aplică acum
+              <Link
+                href="/aplica"
+                className="flex items-center justify-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0C1A2E] to-[#1B3356] px-4 py-3.5 rounded-xl shadow-md"
+                onClick={() => setMobileOpen(false)}
+              >
+                Aplică acum <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
