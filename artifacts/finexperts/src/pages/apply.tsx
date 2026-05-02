@@ -200,7 +200,7 @@ export default function ApplyPage() {
                   </div>
                   <div className="flex-1">
                     <p className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">Birou consultanță</p>
-                    <p className="text-sm font-semibold text-[#0B2E2E]">Bd. Ion Câmpineanu, nr. 26</p>
+                    <p className="text-sm font-semibold text-[#0B2E2E]">Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1</p>
                     <p className="text-xs text-[#64748B]">Sector 1, București · KIWI Finance</p>
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function ApplyPage() {
               </div>
               <div className="h-[200px] w-full">
                 <iframe
-                  title="Birou FinExperts — Bd. Ion Câmpineanu 26, București"
+                  title="Birou FinExperts — Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1, Sector 1, București"
                   src="https://maps.google.com/maps?q=Bd.+Ion+C%C3%A2mpineanu+26,+Bucure%C8%99ti&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%" height="100%" style={{ border: 0 }}
                   allowFullScreen={false} loading="lazy"
@@ -227,7 +227,7 @@ export default function ApplyPage() {
                 />
               </div>
               <div className="px-5 py-2.5 bg-[#F8FAFC] border-t border-[#E2E8F0]">
-                <a href="https://maps.google.com/?q=Bd.+Ion+Câmpineanu+26,+București"
+                <a href="https://maps.google.com/?q=Str.+Ion+Câmpineanu+nr.+26,+bl.+8,+sc.+2,+et.+1,+Sector+1,+București"
                   target="_blank" rel="noopener noreferrer"
                   className="text-xs text-[#C49A20] hover:underline font-medium flex items-center gap-1">
                   <MapPin className="h-3 w-3" /> Deschide în Google Maps

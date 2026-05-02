@@ -245,7 +245,7 @@ export default function AboutPage() {
                 <span className="text-xs font-bold text-[#C49A20] uppercase tracking-wider">Birou consultanță</span>
               </div>
               <p className="text-white text-sm font-medium leading-relaxed mb-3">
-                Bd. Ion Câmpineanu, nr. 26<br />
+                Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1,<br />
                 Sector 1, București<br />
                 <span className="text-gray-400 text-xs">(sediu KIWI Finance)</span>
               </p>

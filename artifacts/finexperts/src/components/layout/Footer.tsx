@@ -38,7 +38,7 @@ export default function Footer() {
               </a>
               <span className="flex items-start gap-2.5 text-sm text-gray-500">
                 <MapPin className="h-3.5 w-3.5 text-[#C49A20] shrink-0 mt-0.5" />
-                Bd. Ion Câmpineanu, nr. 26,<br />Sector 1, București
+                Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1,<br />Sector 1, București, România
               </span>
             </div>
 

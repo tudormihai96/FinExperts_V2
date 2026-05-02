@@ -102,7 +102,7 @@ export default function CookiesPage() {
               <ul className="list-none space-y-1.5 text-sm">
                 <li>📧 <a href="mailto:kbaa@kiwifinance.ro" className="text-[#C49A20] hover:underline">kbaa@kiwifinance.ro</a></li>
                 <li>📞 <a href="tel:0799715101" className="text-[#C49A20] hover:underline">0799 715 101</a></li>
-                <li>📍 Bd. Ion Câmpineanu, nr. 26, Sector 1, București</li>
+                <li>📍 Str. Ion Câmpineanu nr. 26, bl. 8, sc. 2, et. 1, Sector 1, București, România</li>
               </ul>
             </section>
 
