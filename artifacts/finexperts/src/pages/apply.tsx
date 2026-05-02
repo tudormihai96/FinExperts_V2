@@ -8,7 +8,7 @@ export default function ApplyPage() {
     nume: "",
     telefon: "",
     email: "",
-    tipCredit: "Credit personal",
+    tipCredit: "Credit ipotecar",
     suma: "30000",
     perioada: "36",
     venit: "",
@@ -129,8 +129,9 @@ export default function ApplyPage() {
                     onChange={handleChange}
                     className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] bg-white"
                   >
-                    <option>Credit personal</option>
                     <option>Credit ipotecar</option>
+                    <option>Credit de Nevoi Personale</option>
+                    <option>Refinanțare</option>
                   </select>
                 </div>
                 <div>

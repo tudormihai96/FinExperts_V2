@@ -43,7 +43,7 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function BanksPage() {
-  const [activeType, setActiveType] = useState<"personal" | "ipotecar">("personal");
+  const [activeType, setActiveType] = useState<"personal" | "ipotecar">("ipotecar");
   const [amount, setAmount] = useState(30000);
   const [months, setMonths] = useState(36);
   const [sortBy, setSortBy] = useState<SortKey>("monthly");
@@ -82,19 +82,6 @@ export default function BanksPage() {
         <div className="bg-white border border-[#E5E3D9] rounded-xl p-5 mb-6">
           <div className="flex gap-2 mb-5">
             <button
-              data-testid="tab-personal"
-              onClick={() => { setActiveType("personal"); setAmount(30000); setMonths(36); }}
-              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                activeType === "personal" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
-              }`}
-            >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                <line x1="12" y1="18" x2="12.01" y2="18"/>
-              </svg>
-              Credit personal
-            </button>
-            <button
               data-testid="tab-ipotecar"
               onClick={() => { setActiveType("ipotecar"); setAmount(150000); setMonths(120); }}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
@@ -106,6 +93,19 @@ export default function BanksPage() {
                 <polyline points="9 22 9 12 15 12 15 22"/>
               </svg>
               Credit ipotecar
+            </button>
+            <button
+              data-testid="tab-personal"
+              onClick={() => { setActiveType("personal"); setAmount(30000); setMonths(36); }}
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                activeType === "personal" ? "bg-[#0A1A2E] text-white" : "text-[#5A6478] hover:text-[#0A1A2E]"
+              }`}
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+              Credit de Nevoi Personale
             </button>
           </div>
 

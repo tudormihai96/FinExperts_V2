@@ -127,3 +127,17 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Hide Replit "Made with" badge */
+[data-cy="replit-badge"],
+#replit-badge,
+.replit-badge,
+a[href*="replit.com"][style*="position: fixed"],
+a[href*="replit.com"][style*="position:fixed"],
+div[style*="position: fixed"][style*="bottom"][style*="z-index: 9999"],
+div[style*="position:fixed"][style*="bottom"][style*="z-index:9999"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
