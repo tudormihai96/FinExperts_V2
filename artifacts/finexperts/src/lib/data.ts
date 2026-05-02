@@ -31,12 +31,13 @@ export type Bank = {
 // BNR publică IRCC trimestrial (T1=Ian-Mar, T2=Apr-Iun, T3=Iul-Sep, T4=Oct-Dec)
 // Tabel istoric + prognoze:
 const IRCC_TABLE: Record<string, number> = {
-  "2025-Q1": 5.95,
-  "2025-Q2": 5.82,
-  "2025-Q3": 5.70,
-  "2025-Q4": 5.62,
-  "2026-Q1": 5.58,
-  "2026-Q2": 5.44, // estimat, se actualizează când BNR publică oficial
+  "2025-Q1": 6.06,
+  "2025-Q2": 6.06,
+  "2025-Q3": 5.68,
+  "2025-Q4": 5.68,
+  "2026-Q1": 5.68,
+  "2026-Q2": 5.58, // oficial BNR, valabil 1 apr – 30 iun 2026
+  "2026-Q3": 5.56, // estimat din 1 iulie 2026
 };
 
 export function getCurrentIRCC(): number {
