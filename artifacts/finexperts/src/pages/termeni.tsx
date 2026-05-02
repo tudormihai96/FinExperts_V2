@@ -1,4 +1,3 @@
-import DisputeBadges from "@/components/ui/DisputeBadges";
 
 export default function TermeniPage() {
   return (
@@ -133,7 +132,6 @@ export default function TermeniPage() {
 
           </div>
 
-          <DisputeBadges />
         </div>
       </div>
     </div>

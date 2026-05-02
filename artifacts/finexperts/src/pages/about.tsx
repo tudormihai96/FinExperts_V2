@@ -261,49 +261,6 @@ export default function AboutPage() {
 
           </div>
 
-          {/* Dispute resolution */}
-          <div className="border-t border-white/10 pt-8">
-            <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-5">
-              Soluționarea alternativă a litigiilor
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-
-              {/* ANPC SAL official button image */}
-              <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
-                title="ANPC — Soluționarea Alternativă a Litigiilor">
-                <img src="/logos/anpc-sal-btn.png" alt="ANPC SAL"
-                  className="h-12 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" />
-              </a>
-
-              <div className="h-8 w-px bg-white/10" />
-
-              {/* CSALB */}
-              <a href="https://www.csalb.ro/" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 hover:bg-white/10 transition-colors">
-                <img src="/logos/csalb.png" alt="CSALB"
-                  className="h-8 w-auto object-contain brightness-0 invert opacity-70"
-                  onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                <div>
-                  <p className="text-[10px] font-bold text-gray-300 uppercase tracking-wide leading-tight">CSALB</p>
-                  <p className="text-[9px] text-gray-500 leading-tight">Centrul Soluționare Litigii Bancare</p>
-                </div>
-                <ExternalLink className="h-3 w-3 text-gray-500 ml-1" />
-              </a>
-
-              {/* SOL */}
-              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 hover:bg-white/10 transition-colors">
-                <div>
-                  <p className="text-[10px] font-bold text-gray-300 uppercase tracking-wide leading-tight">Platforma SOL</p>
-                  <p className="text-[9px] text-gray-500 leading-tight">ec.europa.eu/consumers/odr</p>
-                </div>
-                <ExternalLink className="h-3 w-3 text-gray-500" />
-              </a>
-
-            </div>
-          </div>
-
         </div>
       </div>
 

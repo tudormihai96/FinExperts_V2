@@ -1,4 +1,3 @@
-import DisputeBadges from "@/components/ui/DisputeBadges";
 
 export default function ConfidentialitatePage() {
   return (
@@ -131,7 +130,6 @@ export default function ConfidentialitatePage() {
 
           </div>
 
-          <DisputeBadges />
         </div>
       </div>
     </div>

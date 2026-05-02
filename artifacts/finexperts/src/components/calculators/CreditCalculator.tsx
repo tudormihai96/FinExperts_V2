@@ -1,13 +1,20 @@
 import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { Slider } from "@/components/ui/slider";
-import { banks, calculateMonthlyPayment, formatRON } from "@/lib/data";
+import { banks, calculateMonthlyPayment, formatRON, getCurrentIRCC } from "@/lib/data";
 import { TrendingDown, Info, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 
+const EUR_RATE = 4.97; // 1 EUR = 4.97 RON (BNR referință mai 2026)
+const IRCC = getCurrentIRCC();
+
+// Best starting rates
+const BEST_RATE_PERSONAL = 4.99;  // Garanti BBVA
+const BEST_RATE_IPOTECAR = +(IRCC + 1.70).toFixed(2); // BRD — cea mai mică marjă
+
 export function SliderInput({
-  label, value, min, max, step, onChange, format, testId,
+  label, value, min, max, step, onChange, format, testId, sublabel,
 }: {
-  label: string; value: number; min: number; max: number; step: number;
+  label: string; sublabel?: string; value: number; min: number; max: number; step: number;
   onChange: (v: number) => void; format?: (v: number) => string; testId?: string;
 }) {
   const [editing, setEditing] = useState(false);
@@ -18,9 +25,12 @@ export function SliderInput({
     setEditing(false);
   };
   return (
-    <div className="mb-6">
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">{label}</span>
+    <div className="mb-5">
+      <div className="flex justify-between items-center mb-1.5">
+        <div>
+          <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">{label}</span>
+          {sublabel && <span className="text-[10px] text-[#94A3B8] ml-2">{sublabel}</span>}
+        </div>
         {editing ? (
           <input autoFocus type="number" defaultValue={value}
             className="w-36 text-right text-sm font-bold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
@@ -34,7 +44,7 @@ export function SliderInput({
       </div>
       <Slider data-testid={testId} min={min} max={max} step={step} value={[value]}
         onValueChange={([v]) => onChange(v)} className="mb-1" />
-      <div className="flex justify-between text-[10px] text-[#64748B]">
+      <div className="flex justify-between text-[10px] text-[#94A3B8]">
         <span>{format ? format(min) : min.toLocaleString("ro-RO")}</span>
         <span>{format ? format(max) : max.toLocaleString("ro-RO")}</span>
       </div>
@@ -44,23 +54,48 @@ export function SliderInput({
 
 export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
   const isIp = type === "ipotecar";
-  const [amount, setAmount] = useState(isIp ? 150000 : 30000);
-  const [months, setMonths] = useState(isIp ? 120 : 36);
-  const [rate, setRate] = useState(isIp ? 4.85 : 5.55);
+
+  // Currency
+  const [currency, setCurrency] = useState<"RON" | "EUR">("RON");
+
+  // Avans (only for ipotecar)
+  const [propertyStatus, setPropertyStatus] = useState<"first" | "second">("first");
+  const minAvans = propertyStatus === "first" ? 15 : 25;
+  const [avansPct, setAvansPct] = useState(minAvans);
+
+  // Amount — always RON internally; for ipotecar it's valoarea imobilului
+  const [amount, setAmount] = useState(isIp ? 300000 : 30000);
+  const [months, setMonths] = useState(isIp ? 240 : 36);
+  const [rate, setRate] = useState(isIp ? BEST_RATE_IPOTECAR : BEST_RATE_PERSONAL);
   const [dtiOpen, setDtiOpen] = useState(false);
   const [venit, setVenit] = useState(5000);
   const [obligatii, setObligatii] = useState(0);
 
-  const monthly = useMemo(() => calculateMonthlyPayment(amount, rate, months), [amount, rate, months]);
+  // Ensure avans doesn't go below new minimum if propertyStatus changes
+  const effectiveAvansPct = Math.max(avansPct, minAvans);
+
+  // Credit amount = property value minus avans
+  const creditAmount = isIp ? amount * (1 - effectiveAvansPct / 100) : amount;
+  const avansRON = isIp ? amount * effectiveAvansPct / 100 : 0;
+
+  // Format helpers
+  const fmtRON = (v: number) => formatRON(Math.round(v));
+  const fmtEUR = (v: number) => `€${Math.round(v / EUR_RATE).toLocaleString("ro-RO")}`;
+  const fmtCur = (v: number) => currency === "EUR" ? fmtEUR(v) : fmtRON(v);
+  const fmtSlider = (v: number) => currency === "EUR"
+    ? `€${Math.round(v / EUR_RATE).toLocaleString("ro-RO")}`
+    : formatRON(v);
+
+  const monthly = useMemo(() => calculateMonthlyPayment(creditAmount, rate, months), [creditAmount, rate, months]);
   const total = monthly * months;
-  const totalDobanda = total - amount;
+  const totalDobanda = total - creditAmount;
 
   const sortedBanks = useMemo(() =>
     [...banks].sort((a, b) => (type === "personal" ? a.ratePersonal - b.ratePersonal : a.rateIpotecar - b.rateIpotecar)),
     [type]);
   const bestBank = sortedBanks[0];
   const bestRate = type === "personal" ? bestBank.ratePersonal : bestBank.rateIpotecar;
-  const bestMonthly = calculateMonthlyPayment(amount, bestRate, months);
+  const bestMonthly = calculateMonthlyPayment(creditAmount, bestRate, months);
   const bestDae = type === "personal" ? bestBank.daePersonal : bestBank.daeIpotecar;
 
   const dtiMax = venit * 0.4 - obligatii;
@@ -70,22 +105,93 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px]">
       {/* Left — sliders */}
       <div className="p-6 lg:p-8 border-r border-[#E2E8F0]">
-        <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />
+
+        {/* Currency + tip imobil toggles */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
+          {/* Currency toggle */}
+          <div className="flex rounded-lg border border-[#E2E8F0] overflow-hidden">
+            {(["RON", "EUR"] as const).map(c => (
+              <button key={c} onClick={() => setCurrency(c)}
+                className={`px-4 py-1.5 text-xs font-bold transition-colors ${currency === c ? "bg-[#0C1A2E] text-white" : "bg-white text-[#64748B] hover:bg-[#F5F7FA]"}`}>
+                {c}
+              </button>
+            ))}
+          </div>
+
+          {/* Property status — only for ipotecar */}
+          {isIp && (
+            <div className="flex rounded-lg border border-[#E2E8F0] overflow-hidden text-[11px]">
+              <button onClick={() => { setPropertyStatus("first"); setAvansPct(15); }}
+                className={`px-3 py-1.5 font-semibold transition-colors ${propertyStatus === "first" ? "bg-[#0C1A2E] text-white" : "bg-white text-[#64748B] hover:bg-[#F5F7FA]"}`}>
+                1. Imobil (avans 15%)
+              </button>
+              <button onClick={() => { setPropertyStatus("second"); setAvansPct(25); }}
+                className={`px-3 py-1.5 font-semibold transition-colors ${propertyStatus === "second" ? "bg-[#0C1A2E] text-white" : "bg-white text-[#64748B] hover:bg-[#F5F7FA]"}`}>
+                2. Imobil (avans 25%)
+              </button>
+            </div>
+          )}
+        </div>
+
+        <p className="text-[10px] text-[#94A3B8] mb-4 flex items-center gap-1.5">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C49A20]" />
           Click pe orice cifră pentru a introduce valoarea manual
+          {currency === "EUR" && <span className="ml-1 text-[#C49A20] font-semibold">· 1 EUR = {EUR_RATE} RON (BNR ref.)</span>}
         </p>
-        <SliderInput label={isIp ? "Valoare imobil" : "Sumă dorită"} value={amount}
-          min={isIp ? 30000 : 1000} max={isIp ? 600000 : 250000}
-          step={isIp ? 5000 : 1000} onChange={setAmount}
-          format={formatRON} testId="slider-amount" />
+
+        {/* Property value slider */}
+        <SliderInput
+          label={isIp ? "Valoare imobil" : "Sumă dorită"}
+          sublabel={currency === "EUR" ? `(${fmtEUR(amount)})` : undefined}
+          value={amount}
+          min={isIp ? 30000 : 1000}
+          max={isIp ? 2500000 : 250000}
+          step={isIp ? 10000 : 1000}
+          onChange={setAmount}
+          format={fmtSlider}
+          testId="slider-amount"
+        />
+
+        {/* Avans slider — only for ipotecar */}
+        {isIp && (
+          <div className="mb-5">
+            <div className="flex justify-between items-center mb-1.5">
+              <div>
+                <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Avans</span>
+                <span className="text-[10px] text-[#94A3B8] ml-2">minim {minAvans}% conform BNR</span>
+              </div>
+              <span className="text-sm font-bold text-[#0C1A2E]">
+                {effectiveAvansPct}% — {fmtCur(avansRON)}
+              </span>
+            </div>
+            <Slider min={minAvans} max={80} step={1} value={[effectiveAvansPct]}
+              onValueChange={([v]) => setAvansPct(v)} className="mb-1" />
+            <div className="flex justify-between text-[10px] text-[#94A3B8]">
+              <span>{minAvans}%</span>
+              <span>80%</span>
+            </div>
+            {/* Credit = property - avans */}
+            <div className="mt-2.5 bg-[#F0F4FF] border border-[#C6D2FF] rounded-lg px-3 py-2 flex items-center justify-between">
+              <span className="text-xs text-[#3B4F99] font-medium">Credit solicitat (valoare − avans):</span>
+              <span className="text-sm font-bold text-[#0C1A2E]">
+                {fmtCur(creditAmount)}
+                {currency === "RON" && <span className="text-xs text-[#64748B] font-normal ml-1">({fmtEUR(creditAmount)})</span>}
+                {currency === "EUR" && <span className="text-xs text-[#64748B] font-normal ml-1">({fmtRON(creditAmount)})</span>}
+              </span>
+            </div>
+          </div>
+        )}
+
         <SliderInput label="Perioadă rambursare" value={months}
           min={isIp ? 12 : 6} max={isIp ? 360 : 60}
           step={isIp ? 12 : 6} onChange={setMonths}
           format={v => `${v} luni (${(v / 12).toFixed(1)} ani)`} testId="slider-months" />
+
         <SliderInput label="Dobândă estimativă" value={rate}
-          min={isIp ? 3.0 : 4.0} max={isIp ? 12.0 : 18.0}
+          min={isIp ? 3.0 : 3.0} max={isIp ? 14.0 : 20.0}
           step={0.01} onChange={v => setRate(Math.round(v * 100) / 100)}
-          format={v => `${v.toFixed(2)}%`} testId="slider-rate" />
+          format={v => `${v.toFixed(2)}%`} testId="slider-rate"
+          sublabel={isIp ? `IRCC ${IRCC.toFixed(2)}% + marjă` : undefined} />
 
         {/* DTI */}
         <div className="border border-[#E2E8F0] rounded-xl overflow-hidden mt-2">
@@ -93,7 +199,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
             className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#0C1A2E] hover:bg-[#F5F7FA] transition-colors">
             <div className="flex items-center gap-2">
               <Info className="h-4 w-4 text-[#64748B]" />
-              <span>Verifică gradul de îndatorare (DTI 40% BNR) — opțional</span>
+              <span className="text-xs">Verifică gradul de îndatorare (DTI 40% BNR) — opțional</span>
             </div>
             {dtiOpen ? <ChevronUp className="h-4 w-4 text-[#64748B]" /> : <ChevronDown className="h-4 w-4 text-[#64748B]" />}
           </button>
@@ -128,7 +234,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                 </div>
               </div>
               <div className={`mt-3 text-sm font-medium flex items-center gap-2 ${dtiOk ? "text-[#2E7D5B]" : "text-[#C4432F]"}`}>
-                <div className={`w-2 h-2 rounded-full ${dtiOk ? "bg-[#2E7D5B]" : "bg-[#C4432F]"}`} />
+                <div className={`w-2 h-2 rounded-full shrink-0 ${dtiOk ? "bg-[#2E7D5B]" : "bg-[#C4432F]"}`} />
                 {dtiOk
                   ? `Te încadrezi în limita BNR (rata ${formatRON(Math.round(monthly))} ≤ ${formatRON(Math.round(dtiMax))})`
                   : `Nu te încadrezi — rata depășește plafonul de 40% DTI`}
@@ -141,14 +247,47 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
       {/* Right — results */}
       <div className="bg-[#0C1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Rată lunară estimativă</div>
-        <div className="text-5xl font-bold text-white mb-1">{Math.round(monthly).toLocaleString("ro-RO")} RON</div>
-        <div className="text-sm text-gray-400 mb-6">pe lună, timp de {months} luni</div>
-        <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b border-white/10">
-          <div><div className="text-xs text-gray-400 mb-1">Total rambursat</div><div className="text-base font-semibold text-white">{formatRON(total)}</div></div>
-          <div><div className="text-xs text-gray-400 mb-1">Cost total dobândă</div><div className="text-base font-semibold text-white">{formatRON(totalDobanda)}</div></div>
+        {/* Primary currency */}
+        <div className="text-4xl font-bold text-white mb-0.5">
+          {currency === "EUR"
+            ? `€${Math.round(monthly / EUR_RATE).toLocaleString("ro-RO")}`
+            : `${Math.round(monthly).toLocaleString("ro-RO")} RON`}
         </div>
+        {/* Secondary currency */}
+        <div className="text-sm text-gray-500 mb-1">
+          {currency === "EUR"
+            ? `≈ ${Math.round(monthly).toLocaleString("ro-RO")} RON`
+            : `≈ €${Math.round(monthly / EUR_RATE).toLocaleString("ro-RO")}`}
+        </div>
+        <div className="text-sm text-gray-400 mb-5">pe lună, timp de {months} luni</div>
+
+        <div className="grid grid-cols-2 gap-3 mb-5 pb-5 border-b border-white/10">
+          <div>
+            <div className="text-xs text-gray-400 mb-0.5">Total rambursat</div>
+            <div className="text-sm font-semibold text-white">{fmtCur(total)}</div>
+            <div className="text-[10px] text-gray-600">{currency === "EUR" ? fmtRON(total) : fmtEUR(total)}</div>
+          </div>
+          <div>
+            <div className="text-xs text-gray-400 mb-0.5">Cost total dobândă</div>
+            <div className="text-sm font-semibold text-white">{fmtCur(totalDobanda)}</div>
+            <div className="text-[10px] text-gray-600">{currency === "EUR" ? fmtRON(totalDobanda) : fmtEUR(totalDobanda)}</div>
+          </div>
+          {isIp && (
+            <>
+              <div>
+                <div className="text-xs text-gray-400 mb-0.5">Credit solicitat</div>
+                <div className="text-sm font-semibold text-white">{fmtCur(creditAmount)}</div>
+              </div>
+              <div>
+                <div className="text-xs text-gray-400 mb-0.5">Avans ({effectiveAvansPct}%)</div>
+                <div className="text-sm font-semibold text-white">{fmtCur(avansRON)}</div>
+              </div>
+            </>
+          )}
+        </div>
+
         {bestBank && (
-          <div className="bg-white/8 rounded-xl p-4 mb-5">
+          <div className="bg-white/8 rounded-xl p-4 mb-4">
             <div className="flex items-center gap-1.5 text-xs font-semibold text-[#C49A20] mb-2">
               <TrendingDown className="h-3.5 w-3.5" />Cea mai bună ofertă azi
             </div>
@@ -157,15 +296,20 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                 className="w-6 h-6 rounded object-contain bg-white p-0.5"
                 onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
               <span className="text-sm font-medium text-white">{bestBank.name}</span>
-              <span className="ml-auto text-sm font-bold text-white">{Math.round(bestMonthly).toLocaleString("ro-RO")} RON/lună</span>
+              <span className="ml-auto text-sm font-bold text-white">
+                {currency === "EUR"
+                  ? `€${Math.round(bestMonthly / EUR_RATE).toLocaleString("ro-RO")}/lună`
+                  : `${Math.round(bestMonthly).toLocaleString("ro-RO")} RON/lună`}
+              </span>
             </div>
             <div className="text-xs text-gray-400">Dobândă {bestRate.toFixed(2)}% · DAE {bestDae.toFixed(2)}%</div>
           </div>
         )}
-        <div className="space-y-2 mb-5">
+
+        <div className="space-y-1.5 mb-5">
           {sortedBanks.slice(0, 3).map((bank, i) => {
             const r = type === "personal" ? bank.ratePersonal : bank.rateIpotecar;
-            const m = calculateMonthlyPayment(amount, r, months);
+            const m = calculateMonthlyPayment(creditAmount, r, months);
             return (
               <div key={bank.id} className={`flex items-center justify-between py-1.5 px-2 rounded-lg ${i === 0 ? "bg-[#C49A20]/10" : ""}`}>
                 <div className="flex items-center gap-2">
@@ -173,11 +317,16 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                     onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                   <span className="text-xs text-gray-300">{bank.name}</span>
                 </div>
-                <span className="text-xs font-bold text-white">{Math.round(m).toLocaleString("ro-RO")} RON</span>
+                <span className="text-xs font-bold text-white">
+                  {currency === "EUR"
+                    ? `€${Math.round(m / EUR_RATE).toLocaleString("ro-RO")}`
+                    : `${Math.round(m).toLocaleString("ro-RO")} RON`}
+                </span>
               </div>
             );
           })}
         </div>
+
         <Link href="/aplica">
           <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Aplică pentru acest credit <ArrowRight className="h-4 w-4" />
