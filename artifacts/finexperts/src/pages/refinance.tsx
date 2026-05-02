@@ -46,14 +46,14 @@ function SliderInput({
             type="number"
             defaultValue={value}
             step={step}
-            className="w-32 text-right text-sm font-semibold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
+            className="w-32 text-right text-sm font-semibold text-[#0B2E2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
             onBlur={e => commit(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
           />
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="text-sm font-semibold text-[#0C1A2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
+            className="text-sm font-semibold text-[#0B2E2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
             title="Click pentru a edita manual"
           >
             {displayVal}
@@ -104,7 +104,7 @@ export default function RefinancePage() {
         {/* Header */}
         <div className="mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Calculator refinanțare</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0B2E2E] leading-tight mb-3">
             Cât economisești prin{" "}
             <span className="text-[#C49A20]">refinanțare</span>?
           </h1>
@@ -120,7 +120,7 @@ export default function RefinancePage() {
             <div className="p-6 lg:p-8 border-b border-[#E2E8F0]">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-1 h-5 bg-[#C49A20] rounded-full" />
-                <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Creditul actual</span>
+                <span className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider">Creditul actual</span>
               </div>
               <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
                 <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />
@@ -171,7 +171,7 @@ export default function RefinancePage() {
             <div className="p-6 lg:p-8">
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-1 h-5 bg-[#2E7D5B] rounded-full" />
-                <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Oferta nouă</span>
+                <span className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider">Oferta nouă</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -207,7 +207,7 @@ export default function RefinancePage() {
           </div>
 
           {/* Right: dark result */}
-          <div className="bg-[#0C1A2E] p-6 lg:p-8 flex flex-col">
+          <div className="bg-[#0B2E2E] p-6 lg:p-8 flex flex-col">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="h-4 w-4 text-[#C49A20]" />
               <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Refinanțare recomandată</span>
@@ -261,7 +261,7 @@ export default function RefinancePage() {
             </div>
 
             <Link href="/aplica" className="mt-6 block">
-              <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+              <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                 Vreau să refinanțez
                 <Sparkles className="h-4 w-4" />
               </button>

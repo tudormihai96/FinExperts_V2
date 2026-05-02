@@ -70,24 +70,24 @@
 :root {
   /* Modern fintech palette 2025-2026 */
   --background: #F4F6FB;          /* Clean cool-light background */
-  --foreground: #0C1A2E;          /* Deep navy */
+  --foreground: #0B2E2E;          /* Deep navy */
   --border: #E0E7F0;
   --input: #E0E7F0;
   --ring: #C49A20;                /* Amber gold ring */
 
   --card: #FFFFFF;
-  --card-foreground: #0C1A2E;
+  --card-foreground: #0B2E2E;
   --card-border: #E0E7F0;
 
   --popover: #FFFFFF;
-  --popover-foreground: #0C1A2E;
+  --popover-foreground: #0B2E2E;
   --popover-border: #E0E7F0;
 
-  --primary: #0C1A2E;
+  --primary: #0B2E2E;
   --primary-foreground: #FFFFFF;
 
   --secondary: #F4F6FB;
-  --secondary-foreground: #0C1A2E;
+  --secondary-foreground: #0B2E2E;
 
   --muted: #EEF2F8;
   --muted-foreground: #64748B;

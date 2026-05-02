@@ -69,7 +69,7 @@ export default function CookieConsent() {
 
       {/* Banner */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-[999] bg-[#0C1A2E] border-t border-white/10 shadow-2xl"
+        className="fixed bottom-0 left-0 right-0 z-[999] bg-[#0B2E2E] border-t border-white/10 shadow-2xl"
         role="dialog"
         aria-modal="false"
         aria-label="Consimțământ cookie-uri"
@@ -111,7 +111,7 @@ export default function CookieConsent() {
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="px-5 py-2 text-xs font-bold bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] rounded-lg transition-colors whitespace-nowrap"
+                  className="px-5 py-2 text-xs font-bold bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] rounded-lg transition-colors whitespace-nowrap"
                 >
                   Acceptă toate
                 </button>
@@ -202,7 +202,7 @@ export default function CookieConsent() {
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="px-5 py-2 text-xs font-bold bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] rounded-lg transition-colors"
+                  className="px-5 py-2 text-xs font-bold bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] rounded-lg transition-colors"
                 >
                   Acceptă toate
                 </button>

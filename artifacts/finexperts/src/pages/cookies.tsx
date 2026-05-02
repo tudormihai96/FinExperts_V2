@@ -7,14 +7,14 @@ export default function CookiesPage() {
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-10">
           <div className="mb-8">
             <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Legal</div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0C1A2E] mb-2">Politica de Cookies</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#0B2E2E] mb-2">Politica de Cookies</h1>
             <p className="text-sm text-[#64748B]">Ultima actualizare: mai 2026 · în conformitate cu Directiva ePrivacy și GDPR (Regulamentul UE 2016/679)</p>
           </div>
 
           <div className="text-[#334155] text-sm leading-relaxed space-y-8">
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-3">Ce sunt cookie-urile?</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-3">Ce sunt cookie-urile?</h2>
               <p className="mb-2">
                 Cookie-urile sunt fișiere mici salvate pe dispozitivul tău (calculator, telefon, tabletă) atunci când vizitezi un site web. Ele nu conțin viruși, nu accesează fișierele tale și nu îți pot afecta dispozitivul în niciun fel.
               </p>
@@ -24,17 +24,17 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-4">Ce cookie-uri folosim</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-4">Ce cookie-uri folosim</h2>
               <div className="space-y-4">
 
                 {/* Necesare */}
                 <div className="flex gap-4 p-4 border border-[#E2E8F0] rounded-xl">
-                  <div className="w-9 h-9 rounded-lg bg-[#0C1A2E]/6 flex items-center justify-center shrink-0 mt-0.5">
-                    <Shield className="h-4 w-4 text-[#0C1A2E]" />
+                  <div className="w-9 h-9 rounded-lg bg-[#0B2E2E]/6 flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield className="h-4 w-4 text-[#0B2E2E]" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1.5">
-                      <span className="font-semibold text-[#0C1A2E] text-[13px]">Cookie-uri necesare</span>
+                      <span className="font-semibold text-[#0B2E2E] text-[13px]">Cookie-uri necesare</span>
                       <span className="text-[10px] font-semibold text-[#C49A20] uppercase tracking-wide border border-[#C49A20]/30 rounded px-1.5 py-0.5">Mereu active</span>
                     </div>
                     <p className="text-[#64748B] text-xs leading-relaxed">
@@ -45,11 +45,11 @@ export default function CookiesPage() {
 
                 {/* Analiză */}
                 <div className="flex gap-4 p-4 border border-[#E2E8F0] rounded-xl">
-                  <div className="w-9 h-9 rounded-lg bg-[#0C1A2E]/6 flex items-center justify-center shrink-0 mt-0.5">
-                    <BarChart2 className="h-4 w-4 text-[#0C1A2E]" />
+                  <div className="w-9 h-9 rounded-lg bg-[#0B2E2E]/6 flex items-center justify-center shrink-0 mt-0.5">
+                    <BarChart2 className="h-4 w-4 text-[#0B2E2E]" />
                   </div>
                   <div>
-                    <div className="font-semibold text-[#0C1A2E] text-[13px] mb-1.5">Cookie-uri de analiză</div>
+                    <div className="font-semibold text-[#0B2E2E] text-[13px] mb-1.5">Cookie-uri de analiză</div>
                     <p className="text-[#64748B] text-xs leading-relaxed">
                       Ne ajută să înțelegem cum este folosit site-ul — ce pagini sunt vizitate cel mai des, cât timp petrec vizitatorii pe site și de unde provin (căutare Google, rețele sociale etc.). Aceste informații ne permit să îmbunătățim continuu experiența de navigare. Datele sunt colectate în mod anonim și nu pot fi folosite pentru a te identifica personal. Sunt furnizate de Google Analytics și rămân stocate până la 2 ani. Pot fi dezactivate din panoul de cookie-uri.
                     </p>
@@ -58,11 +58,11 @@ export default function CookiesPage() {
 
                 {/* Preferințe */}
                 <div className="flex gap-4 p-4 border border-[#E2E8F0] rounded-xl">
-                  <div className="w-9 h-9 rounded-lg bg-[#0C1A2E]/6 flex items-center justify-center shrink-0 mt-0.5">
-                    <Settings className="h-4 w-4 text-[#0C1A2E]" />
+                  <div className="w-9 h-9 rounded-lg bg-[#0B2E2E]/6 flex items-center justify-center shrink-0 mt-0.5">
+                    <Settings className="h-4 w-4 text-[#0B2E2E]" />
                   </div>
                   <div>
-                    <div className="font-semibold text-[#0C1A2E] text-[13px] mb-1.5">Cookie-uri de preferințe</div>
+                    <div className="font-semibold text-[#0B2E2E] text-[13px] mb-1.5">Cookie-uri de preferințe</div>
                     <p className="text-[#64748B] text-xs leading-relaxed">
                       Rețin alegerile pe care le-ai făcut pe site — de exemplu, tipul de credit pe care l-ai selectat în calculator sau valorile introduse — astfel încât să găsești totul la locul lui când revii. Nu conțin date personale. Se păstrează timp de 30 de zile. Pot fi dezactivate din panoul de cookie-uri.
                     </p>
@@ -73,7 +73,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-3">Cum îți poți gestiona preferințele</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-3">Cum îți poți gestiona preferințele</h2>
               <p className="mb-3">
                 Poți accepta sau refuza cookie-urile opționale în orice moment folosind butonul de gestionare a preferințelor care apare la prima vizită. De asemenea, orice browser modern îți permite să ștergi cookie-urile sau să blochezi plasarea lor nouă. Reține că dezactivarea celor necesare poate afecta funcționarea site-ului.
               </p>
@@ -87,7 +87,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-3">Drepturile tale</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-3">Drepturile tale</h2>
               <p className="mb-2">
                 Ai dreptul să accesezi, să corectezi sau să soliciți ștergerea datelor colectate prin cookie-uri, să te opui prelucrării sau să ceri restricționarea acesteia. Poți depune o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP) la adresa <a href="https://www.dataprotection.ro" target="_blank" rel="noopener noreferrer" className="text-[#C49A20] hover:underline">dataprotection.ro</a>.
               </p>
@@ -97,7 +97,7 @@ export default function CookiesPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-3">Contact</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-3">Contact</h2>
               <p className="mb-3">Dacă ai întrebări despre modul în care folosim cookie-urile, ne poți contacta:</p>
               <ul className="list-none space-y-1.5 text-sm">
                 <li>📧 <a href="mailto:kbaa@kiwifinance.ro" className="text-[#C49A20] hover:underline">kbaa@kiwifinance.ro</a></li>

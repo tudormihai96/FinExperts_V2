@@ -6,14 +6,14 @@ export default function ConfidentialitatePage() {
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-10">
           <div className="mb-8">
             <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Legal</div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0C1A2E] mb-2">Politica de utilizare a datelor personale</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#0B2E2E] mb-2">Politica de utilizare a datelor personale</h1>
             <p className="text-sm text-[#64748B]">Ultima actualizare: mai 2026 · în conformitate cu GDPR (Regulamentul UE 2016/679) și Legea nr. 190/2018</p>
           </div>
 
           <div className="prose max-w-none text-[#334155] text-sm leading-relaxed space-y-6">
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">1. Operatorul de date</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">1. Operatorul de date</h2>
               <p>
                 Datele tale personale sunt prelucrate de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroesti, Comuna Dobroesti, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, CUI <strong>54405887</strong>, broker de credite autorizat ASF și partener KIWI Finance.
               </p>
@@ -23,7 +23,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">2. Ce date colectăm</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">2. Ce date colectăm</h2>
               <p>Colectăm exclusiv datele pe care ni le furnizezi voluntar:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><strong>Date de identificare:</strong> nume, prenume</li>
@@ -37,7 +37,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">3. Scopul prelucrării</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">3. Scopul prelucrării</h2>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Furnizarea serviciilor de consultanță și intermediere credite</li>
                 <li>Contactarea ta pentru prezentarea ofertelor bancare personalizate</li>
@@ -49,7 +49,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">4. Temeiul legal al prelucrării</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">4. Temeiul legal al prelucrării</h2>
               <ul className="list-disc pl-5 space-y-1">
                 <li><strong>Consimțământul tău</strong> (Art. 6(1)(a) GDPR) — la completarea formularelor</li>
                 <li><strong>Executarea unui contract / măsuri precontractuale</strong> (Art. 6(1)(b) GDPR)</li>
@@ -59,7 +59,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">5. Partajarea datelor cu terți</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">5. Partajarea datelor cu terți</h2>
               <p>Datele tale pot fi partajate exclusiv cu:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><strong>Instituțiile de credit partenere</strong> — doar cu acordul tău explicit, pentru analiza dosarului de creditare</li>
@@ -70,7 +70,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">6. Durata păstrării datelor</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">6. Durata păstrării datelor</h2>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Date de contact formular (fără dosar credit): <strong>24 luni</strong> de la ultima interacțiune</li>
                 <li>Date dosar credit (aprobat sau refuzat): <strong>5 ani</strong> (obligație legală ASF)</li>
@@ -79,7 +79,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">7. Drepturile tale conform GDPR</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">7. Drepturile tale conform GDPR</h2>
               <p>Ai următoarele drepturi:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><strong>Dreptul de acces</strong> (Art. 15) — să știi ce date prelucrăm și să primești o copie</li>
@@ -97,7 +97,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">8. Securitatea datelor</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">8. Securitatea datelor</h2>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Conexiune HTTPS cu certificat SSL valid</li>
                 <li>Acces restricționat la datele personale pe baza principiului „need to know"</li>
@@ -107,7 +107,7 @@ export default function ConfidentialitatePage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">9. Cookies</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">9. Cookies</h2>
               <p>
                 Informații detaliate despre utilizarea cookie-urilor sunt disponibile în <a href="/cookies" className="text-[#C49A20] hover:underline">Politica de Cookies</a>.
               </p>

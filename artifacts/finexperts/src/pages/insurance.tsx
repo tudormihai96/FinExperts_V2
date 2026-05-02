@@ -7,7 +7,7 @@ const insurances = [
     title: "Asigurare locuință",
     description: "PAD obligatoriu (~120 RON) + facultativă extinsă pentru incendiu, inundații, furt, daune apă.",
     icon: Home,
-    iconBg: "#0C1A2E",
+    iconBg: "#0B2E2E",
     price: 280,
     note: "PAD + facultativă de bază",
   },
@@ -90,7 +90,7 @@ export default function InsurancePage() {
         {/* Header */}
         <div className="mb-8 sm:mb-10">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Asigurări</div>
-          <h1 className="text-2xl sm:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-2xl sm:text-4xl font-bold text-[#0B2E2E] leading-tight mb-3">
             Asigurări complete,<br />
             <span className="text-[#C49A20]">alături de creditul tău.</span>
           </h1>
@@ -115,13 +115,13 @@ export default function InsurancePage() {
                 >
                   <Icon className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="font-semibold text-[#0C1A2E] mb-2 text-base">{ins.title}</h3>
+                <h3 className="font-semibold text-[#0B2E2E] mb-2 text-base">{ins.title}</h3>
                 <p className="text-sm text-[#64748B] leading-relaxed flex-1">{ins.description}</p>
                 <div className="mt-5 pt-4 border-t border-[#E2E8F0] flex items-end justify-between">
                   <div>
                     <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-semibold mb-0.5">De la</div>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-2xl font-bold text-[#0C1A2E]">{ins.price.toLocaleString("ro-RO")}</span>
+                      <span className="text-2xl font-bold text-[#0B2E2E]">{ins.price.toLocaleString("ro-RO")}</span>
                       <span className="text-sm text-[#64748B]">RON/an</span>
                     </div>
                     <div className="text-[10px] text-[#94A3B8] mt-0.5">{ins.note}</div>
@@ -143,7 +143,7 @@ export default function InsurancePage() {
         <div id="formular-asigurare" className="bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left info panel */}
-            <div className="bg-[#0C1A2E] p-7 sm:p-10 text-white flex flex-col justify-between">
+            <div className="bg-[#0B2E2E] p-7 sm:p-10 text-white flex flex-col justify-between">
               <div>
                 <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-4">Solicită ofertă asigurare</div>
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
@@ -179,13 +179,13 @@ export default function InsurancePage() {
                   <div className="w-16 h-16 rounded-full bg-[#D1FAE5] flex items-center justify-center mb-4">
                     <CheckCircle className="h-8 w-8 text-[#059669]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#0C1A2E] mb-2">Cerere trimisă!</h3>
+                  <h3 className="text-xl font-bold text-[#0B2E2E] mb-2">Cerere trimisă!</h3>
                   <p className="text-[#64748B] text-sm mb-6 max-w-xs">
                     Te vom contacta în cel mult 24h cu oferta personalizată.
                   </p>
                   <button
                     onClick={handleClose}
-                    className="text-sm font-medium text-[#0C1A2E] hover:text-[#C49A20] transition-colors flex items-center gap-1"
+                    className="text-sm font-medium text-[#0B2E2E] hover:text-[#C49A20] transition-colors flex items-center gap-1"
                   >
                     <X className="h-4 w-4" /> Închide
                   </button>
@@ -193,7 +193,7 @@ export default function InsurancePage() {
               ) : (
                 <>
                   <div className="mb-6">
-                    <h3 className="text-lg font-bold text-[#0C1A2E] mb-1">
+                    <h3 className="text-lg font-bold text-[#0B2E2E] mb-1">
                       {selected ? `Ofertă: ${selected.title}` : "Solicită ofertă asigurare"}
                     </h3>
                     <p className="text-sm text-[#64748B]">
@@ -203,14 +203,14 @@ export default function InsurancePage() {
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                         Tip asigurare *
                       </label>
                       <select
                         required
                         value={selectedIns || ""}
                         onChange={e => setSelectedIns(e.target.value)}
-                        className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm text-[#0C1A2E] focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] bg-white"
+                        className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm text-[#0B2E2E] focus:outline-none focus:ring-2 focus:ring-[#059669]/30 focus:border-[#059669] bg-white"
                       >
                         <option value="">Selectează tipul de asigurare</option>
                         {insurances.map(i => (
@@ -221,7 +221,7 @@ export default function InsurancePage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Nume *</label>
+                        <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Nume *</label>
                         <input
                           type="text"
                           required
@@ -232,7 +232,7 @@ export default function InsurancePage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Telefon *</label>
+                        <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Telefon *</label>
                         <input
                           type="tel"
                           required
@@ -245,7 +245,7 @@ export default function InsurancePage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Email</label>
+                      <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Email</label>
                       <input
                         type="email"
                         placeholder="email@exemplu.ro"
@@ -256,7 +256,7 @@ export default function InsurancePage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Detalii suplimentare</label>
+                      <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Detalii suplimentare</label>
                       <textarea
                         rows={3}
                         placeholder="Ex: mașină an 2022, valoare 45.000 RON, fără daune anterioare..."

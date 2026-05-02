@@ -39,9 +39,9 @@ export default function BankDetailPage() {
     return (
       <div className="min-h-screen bg-[#F5F7FA] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#0C1A2E] mb-4">Banca nu a fost găsită</h1>
+          <h1 className="text-2xl font-bold text-[#0B2E2E] mb-4">Banca nu a fost găsită</h1>
           <Link href="/banci">
-            <button className="bg-[#0C1A2E] text-white px-6 py-2 rounded-lg">Înapoi la bănci</button>
+            <button className="bg-[#0B2E2E] text-white px-6 py-2 rounded-lg">Înapoi la bănci</button>
           </Link>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function BankDetailPage() {
     <div className="min-h-screen bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Back */}
-        <Link href="/banci" className="inline-flex items-center gap-1.5 text-sm text-[#64748B] hover:text-[#0C1A2E] mb-6 transition-colors">
+        <Link href="/banci" className="inline-flex items-center gap-1.5 text-sm text-[#64748B] hover:text-[#0B2E2E] mb-6 transition-colors">
           <ArrowLeft className="h-4 w-4" /> Înapoi la toate băncile
         </Link>
 
@@ -83,7 +83,7 @@ export default function BankDetailPage() {
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h1 className="text-2xl font-bold text-[#0C1A2E] mb-1.5">{bank.name}</h1>
+            <h1 className="text-2xl font-bold text-[#0B2E2E] mb-1.5">{bank.name}</h1>
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex items-center gap-0.5">
                 {[1,2,3,4,5].map(s => (
@@ -95,7 +95,7 @@ export default function BankDetailPage() {
                 href={siteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm text-[#64748B] hover:text-[#0C1A2E] transition-colors"
+                className="flex items-center gap-1 text-sm text-[#64748B] hover:text-[#0B2E2E] transition-colors"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 Site oficial
@@ -117,7 +117,7 @@ export default function BankDetailPage() {
           <div className="space-y-5">
             {/* Descriere */}
             <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
-              <h2 className="text-base font-semibold text-[#0C1A2E] mb-3">Despre {bank.name}</h2>
+              <h2 className="text-base font-semibold text-[#0B2E2E] mb-3">Despre {bank.name}</h2>
               <p className="text-sm text-[#64748B] leading-relaxed">{bank.description}</p>
             </div>
 
@@ -150,24 +150,24 @@ export default function BankDetailPage() {
             {/* Ofertele disponibile */}
             <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
               <div className="px-6 py-4 border-b border-[#E2E8F0]">
-                <h3 className="text-base font-semibold text-[#0C1A2E]">Ofertele disponibile</h3>
+                <h3 className="text-base font-semibold text-[#0B2E2E]">Ofertele disponibile</h3>
               </div>
 
               {/* Credit personal */}
               <div className="p-6 border-b border-[#E2E8F0]">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <div className="font-semibold text-[#0C1A2E] mb-0.5">Credit personal</div>
+                    <div className="font-semibold text-[#0B2E2E] mb-0.5">Credit personal</div>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-[#64748B]">DAE</div>
-                    <div className="text-lg font-bold text-[#0C1A2E]">{bank.daePersonal.toFixed(2)}%</div>
+                    <div className="text-lg font-bold text-[#0B2E2E]">{bank.daePersonal.toFixed(2)}%</div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   <div>
                     <div className="text-xs text-[#64748B] mb-0.5">Dobândă</div>
-                    <div className="text-sm font-semibold text-[#0C1A2E]">{bank.ratePersonal.toFixed(2)}%</div>
+                    <div className="text-sm font-semibold text-[#0B2E2E]">{bank.ratePersonal.toFixed(2)}%</div>
                   </div>
                   <div>
                     <div className="text-xs text-[#64748B] mb-0.5">Sumă</div>
@@ -181,7 +181,7 @@ export default function BankDetailPage() {
                   </div>
                 </div>
                 <Link href="/aplica">
-                  <button className="flex items-center gap-1.5 border border-[#0C1A2E] text-[#0C1A2E] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#0C1A2E] hover:text-white transition-colors">
+                  <button className="flex items-center gap-1.5 border border-[#0B2E2E] text-[#0B2E2E] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#0B2E2E] hover:text-white transition-colors">
                     Aplică <ArrowRight className="h-3 w-3" />
                   </button>
                 </Link>
@@ -191,17 +191,17 @@ export default function BankDetailPage() {
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <div className="font-semibold text-[#0C1A2E] mb-0.5">Credit ipotecar</div>
+                    <div className="font-semibold text-[#0B2E2E] mb-0.5">Credit ipotecar</div>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-[#64748B]">DAE</div>
-                    <div className="text-lg font-bold text-[#0C1A2E]">{bank.daeIpotecar.toFixed(2)}%</div>
+                    <div className="text-lg font-bold text-[#0B2E2E]">{bank.daeIpotecar.toFixed(2)}%</div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   <div>
                     <div className="text-xs text-[#64748B] mb-0.5">Dobândă</div>
-                    <div className="text-sm font-semibold text-[#0C1A2E]">{bank.rateIpotecar.toFixed(2)}%</div>
+                    <div className="text-sm font-semibold text-[#0B2E2E]">{bank.rateIpotecar.toFixed(2)}%</div>
                   </div>
                   <div>
                     <div className="text-xs text-[#64748B] mb-0.5">Sumă</div>
@@ -215,7 +215,7 @@ export default function BankDetailPage() {
                   </div>
                 </div>
                 <Link href="/aplica">
-                  <button className="flex items-center gap-1.5 border border-[#0C1A2E] text-[#0C1A2E] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#0C1A2E] hover:text-white transition-colors">
+                  <button className="flex items-center gap-1.5 border border-[#0B2E2E] text-[#0B2E2E] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#0B2E2E] hover:text-white transition-colors">
                     Aplică <ArrowRight className="h-3 w-3" />
                   </button>
                 </Link>
@@ -224,12 +224,12 @@ export default function BankDetailPage() {
 
             {/* Condiții eligibilitate */}
             <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
-              <h3 className="text-base font-semibold text-[#0C1A2E] mb-4">Condiții de eligibilitate</h3>
+              <h3 className="text-base font-semibold text-[#0B2E2E] mb-4">Condiții de eligibilitate</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {conds.map((cond, i) => (
                   <div key={i} className="flex items-start gap-2.5">
-                    <div className="w-5 h-5 rounded-full bg-[#0C1A2E]/8 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-[9px] font-bold text-[#0C1A2E]">{i + 1}</span>
+                    <div className="w-5 h-5 rounded-full bg-[#0B2E2E]/8 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[9px] font-bold text-[#0B2E2E]">{i + 1}</span>
                     </div>
                     <span className="text-sm text-[#64748B]">{cond}</span>
                   </div>
@@ -242,14 +242,14 @@ export default function BankDetailPage() {
           <div>
             <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 sticky top-6">
               <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-2">Aplică direct</div>
-              <h3 className="text-xl font-bold text-[#0C1A2E] mb-3">Primești ofertă în 24h</h3>
+              <h3 className="text-xl font-bold text-[#0B2E2E] mb-3">Primești ofertă în 24h</h3>
               <p className="text-sm text-[#64748B] mb-5 leading-relaxed">
                 Trimite datele prin FinExperts și un consilier te va contacta în maxim o zi lucrătoare.
               </p>
               <Link href="/aplica">
                 <button
                   data-testid="btn-apply-bank"
-                  className="w-full bg-[#0C1A2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors mb-2"
+                  className="w-full bg-[#0B2E2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors mb-2"
                 >
                   Aplică la {bank.name}
                 </button>

@@ -175,7 +175,7 @@ export default function ArticleDetailPage() {
     return (
       <div className="min-h-screen bg-[#F5F7FA] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#0C1A2E] mb-4">Articolul nu a fost găsit</h1>
+          <h1 className="text-2xl font-bold text-[#0B2E2E] mb-4">Articolul nu a fost găsit</h1>
           <Link href="/articole"><Button>Înapoi la articole</Button></Link>
         </div>
       </div>
@@ -184,8 +184,8 @@ export default function ArticleDetailPage() {
 
   const formatContent = (content: string) => {
     return content.split('\n').map((line, i) => {
-      if (line.startsWith('## ')) return <h2 key={i} className="text-2xl font-bold text-[#0C1A2E] mt-8 mb-4">{line.slice(3)}</h2>;
-      if (line.startsWith('**') && line.endsWith('**')) return <p key={i} className="font-bold text-[#0C1A2E] mt-4 mb-2">{line.slice(2, -2)}</p>;
+      if (line.startsWith('## ')) return <h2 key={i} className="text-2xl font-bold text-[#0B2E2E] mt-8 mb-4">{line.slice(3)}</h2>;
+      if (line.startsWith('**') && line.endsWith('**')) return <p key={i} className="font-bold text-[#0B2E2E] mt-4 mb-2">{line.slice(2, -2)}</p>;
       if (line.startsWith('- ')) return <li key={i} className="ml-4 text-[#64748B] my-1">{line.slice(2)}</li>;
       if (line.trim() === '') return <br key={i} />;
       return <p key={i} className="text-[#64748B] my-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />;
@@ -194,7 +194,7 @@ export default function ArticleDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#F5F7FA]">
-      <div className="bg-[#0C1A2E] py-8">
+      <div className="bg-[#0B2E2E] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <Link href="/articole" className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-4 text-sm transition-colors">
             <ArrowLeft className="h-4 w-4" /> Înapoi la articole
@@ -220,12 +220,12 @@ export default function ArticleDetailPage() {
           </div>
         </div>
 
-        <div className="mt-10 bg-gradient-to-r from-[#0C1A2E] to-[#132846] rounded-xl p-8 text-white">
+        <div className="mt-10 bg-gradient-to-r from-[#0B2E2E] to-[#132846] rounded-xl p-8 text-white">
           <h3 className="text-xl font-bold mb-2">Calculează rata ta</h3>
           <p className="text-gray-300 mb-5">Folosește calculatorul FinExperts pentru a vedea rata exactă la toate băncile din România.</p>
           <div className="flex gap-4">
-            <Link href="/calculator"><Button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-bold">Calculator credite</Button></Link>
-            <Link href="/aplicare-credit"><Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#0C1A2E]">Aplică credit</Button></Link>
+            <Link href="/calculator"><Button className="bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-bold">Calculator credite</Button></Link>
+            <Link href="/aplicare-credit"><Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#0B2E2E]">Aplică credit</Button></Link>
           </div>
         </div>
       </div>

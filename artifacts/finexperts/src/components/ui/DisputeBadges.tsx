@@ -14,7 +14,7 @@ export default function DisputeBadges() {
             className="h-12 w-auto object-contain shrink-0"
           />
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-bold text-[#0C1A2E] uppercase tracking-wide leading-tight">
+            <p className="text-[10px] font-bold text-[#0B2E2E] uppercase tracking-wide leading-tight">
               Soluționarea Alternativă<br />a Litigiilor
             </p>
           </div>
@@ -36,7 +36,7 @@ export default function DisputeBadges() {
             className="h-12 w-auto object-contain shrink-0"
           />
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-bold text-[#0C1A2E] uppercase tracking-wide leading-tight">
+            <p className="text-[10px] font-bold text-[#0B2E2E] uppercase tracking-wide leading-tight">
               Centrul de Soluționare<br />Alternativă — Domeniu Bancar
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function DisputeBadges() {
         {/* SOL — Soluționarea Online a Litigiilor */}
         <div className="flex items-center gap-3 border border-[#E2E8F0] rounded-xl px-4 py-3 bg-white shadow-sm min-w-[260px] flex-1">
           <div className="flex-1 min-w-0">
-            <p className="text-[11px] font-bold text-[#0C1A2E] uppercase tracking-wide leading-tight">
+            <p className="text-[11px] font-bold text-[#0B2E2E] uppercase tracking-wide leading-tight">
               Soluționarea Online<br />a Litigiilor
             </p>
             <p className="text-[9px] text-[#64748B] mt-0.5">Platforma europeană ec.europa.eu/consumers/odr</p>

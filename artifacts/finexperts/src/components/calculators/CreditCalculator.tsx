@@ -64,12 +64,12 @@ export function SliderInput({
         </div>
         {editing ? (
           <input autoFocus type="number" defaultValue={value}
-            className="w-36 text-right text-sm font-bold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
+            className="w-36 text-right text-sm font-bold text-[#0B2E2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
             onBlur={e => commit(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }} />
         ) : (
           <button onClick={() => setEditing(true)}
-            className="text-sm font-bold text-[#0C1A2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
+            className="text-sm font-bold text-[#0B2E2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
             title="Click pentru a edita manual">{display}</button>
         )}
       </div>
@@ -160,7 +160,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
           <div className="flex rounded-lg border border-[#E2E8F0] overflow-hidden">
             {(["RON", "EUR"] as const).map(c => (
               <button key={c} onClick={() => setCurrency(c)}
-                className={`px-4 py-1.5 text-xs font-bold transition-colors ${currency === c ? "bg-[#0C1A2E] text-white" : "bg-white text-[#64748B] hover:bg-[#F5F7FA]"}`}>
+                className={`px-4 py-1.5 text-xs font-bold transition-colors ${currency === c ? "bg-[#0B2E2E] text-white" : "bg-white text-[#64748B] hover:bg-[#F5F7FA]"}`}>
                 {c}
               </button>
             ))}
@@ -173,8 +173,8 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                 onClick={() => handleOwnsPropertyChange(!ownsProperty)}
                 className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors ${
                   ownsProperty
-                    ? "bg-[#0C1A2E] border-[#0C1A2E]"
-                    : "bg-white border-[#CBD5E1] group-hover:border-[#0C1A2E]"
+                    ? "bg-[#0B2E2E] border-[#0B2E2E]"
+                    : "bg-white border-[#CBD5E1] group-hover:border-[#0B2E2E]"
                 }`}
               >
                 {ownsProperty && (
@@ -212,7 +212,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                       type="number"
                       defaultValue={eurRate}
                       step="0.0001"
-                      className="w-20 text-xs font-bold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none text-center"
+                      className="w-20 text-xs font-bold text-[#0B2E2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none text-center"
                       onBlur={e => commitEurRate(e.target.value)}
                       onKeyDown={e => { if (e.key === "Enter") commitEurRate((e.target as HTMLInputElement).value); if (e.key === "Escape") setEurRateEditing(false); }}
                     />
@@ -266,7 +266,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                   {ownsProperty ? " (al 2-lea imobil)" : " (primul imobil)"}
                 </span>
               </div>
-              <span className="text-sm font-bold text-[#0C1A2E]">
+              <span className="text-sm font-bold text-[#0B2E2E]">
                 {effectiveAvansPct}% — {fmtCur(avansRON)}
               </span>
             </div>
@@ -279,7 +279,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
             {/* Credit = property - avans */}
             <div className="mt-2.5 bg-[#F0F4FF] border border-[#C6D2FF] rounded-lg px-3 py-2 flex items-center justify-between">
               <span className="text-xs text-[#3B4F99] font-medium">Credit solicitat (valoare − avans):</span>
-              <span className="text-sm font-bold text-[#0C1A2E]">
+              <span className="text-sm font-bold text-[#0B2E2E]">
                 {fmtCur(creditAmount)}
                 {currency === "RON" && <span className="text-xs text-[#64748B] font-normal ml-1">({fmtEUR(creditAmount)})</span>}
                 {currency === "EUR" && <span className="text-xs text-[#64748B] font-normal ml-1">({fmtRON(creditAmount)})</span>}
@@ -302,7 +302,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
         {/* DTI */}
         <div className="border border-[#E2E8F0] rounded-xl overflow-hidden mt-2">
           <button onClick={() => setDtiOpen(!dtiOpen)}
-            className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#0C1A2E] hover:bg-[#F5F7FA] transition-colors">
+            className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#0B2E2E] hover:bg-[#F5F7FA] transition-colors">
             <div className="flex items-center gap-2">
               <Info className="h-4 w-4 text-[#64748B]" />
               <span className="text-xs">Verifică gradul de îndatorare (DTI 40% BNR) — opțional</span>
@@ -316,23 +316,23 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
                   <label className="text-xs text-[#64748B] block mb-1">Venit net lunar (RON)</label>
                   <input type="number" value={venit}
                     onChange={e => setVenit(parseFloat(e.target.value) || 0)}
-                    className="w-full border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0C1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0B2E2E]" />
                 </div>
                 <div>
                   <label className="text-xs text-[#64748B] block mb-1">Rate alte credite (RON/lună)</label>
                   <input type="number" value={obligatii}
                     onChange={e => setObligatii(parseFloat(e.target.value) || 0)}
-                    className="w-full border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0C1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:border-[#0B2E2E]" />
                 </div>
               </div>
               <div className="mt-3 grid grid-cols-3 gap-2 text-center">
                 <div className="bg-white rounded-lg p-2 border border-[#E2E8F0]">
                   <div className="text-xs text-[#64748B] mb-0.5">Plafon 40%</div>
-                  <div className="text-sm font-bold text-[#0C1A2E]">{formatRON(venit * 0.4)}</div>
+                  <div className="text-sm font-bold text-[#0B2E2E]">{formatRON(venit * 0.4)}</div>
                 </div>
                 <div className="bg-white rounded-lg p-2 border border-[#E2E8F0]">
                   <div className="text-xs text-[#64748B] mb-0.5">Rate existente</div>
-                  <div className="text-sm font-bold text-[#0C1A2E]">{formatRON(obligatii)}</div>
+                  <div className="text-sm font-bold text-[#0B2E2E]">{formatRON(obligatii)}</div>
                 </div>
                 <div className={`rounded-lg p-2 border ${dtiOk ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
                   <div className="text-xs text-[#64748B] mb-0.5">Rată max posibilă</div>
@@ -351,7 +351,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
       </div>
 
       {/* Right — results */}
-      <div className="bg-[#0C1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+      <div className="bg-[#0B2E2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Rată lunară estimativă</div>
         <div className="text-4xl font-bold text-white mb-0.5">
           {currency === "EUR"
@@ -432,7 +432,7 @@ export function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
         </div>
 
         <Link href="/aplica">
-          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Aplică pentru acest credit <ArrowRight className="h-4 w-4" />
           </button>
         </Link>

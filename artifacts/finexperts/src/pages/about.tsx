@@ -20,7 +20,7 @@ const team = [
     role: "Broker de Credite",
     bio: "Specializată în credite ipotecare și refinanțări. Background în BRD și Raiffeisen Bank.",
     avatar: "CC",
-    color: "#0C1A2E",
+    color: "#0B2E2E",
     email: "cristina.coman@kiwifinance.ro",
     phone: "0725 596 672",
     zone: "Cluj-Napoca",
@@ -76,7 +76,7 @@ function TeamCard({ member }: { member: typeof team[0] }) {
           style={{ backgroundColor: member.color }}>
           {member.avatar}
         </div>
-        <h3 className="font-semibold text-[#0C1A2E] text-center mb-0.5">{member.name}</h3>
+        <h3 className="font-semibold text-[#0B2E2E] text-center mb-0.5">{member.name}</h3>
         <div className="text-xs font-medium text-[#C49A20] text-center mb-3 uppercase tracking-wider">{member.role}</div>
         <p className="text-sm text-[#64748B] text-center">{member.bio}</p>
       </div>
@@ -115,7 +115,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16 items-start">
           <div>
             <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Despre FinExperts</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] mb-2 leading-tight">Experți în credite.</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#0B2E2E] mb-2 leading-tight">Experți în credite.</h1>
             <h2 className="text-3xl md:text-4xl font-bold text-[#C49A20] mb-6 leading-tight">Oamenii la primul loc.</h2>
             <p className="text-[#64748B] text-base leading-relaxed">
               FinExperts e fondat de profesioniști care au lucrat în băncile mari din România. Cunoaștem procedurile, decidenții și capcanele birocratice. De aceea îți obținem creditul fără stres și la cea mai bună dobândă reală.
@@ -128,7 +128,7 @@ export default function AboutPage() {
               { v: "1.000+", l: "clienți mulțumiți" },
               { v: ">90%", l: "rată aprobare" },
             ].map((s, i) => (
-              <div key={i} className="bg-[#0C1A2E] text-white rounded-xl p-6">
+              <div key={i} className="bg-[#0B2E2E] text-white rounded-xl p-6">
                 <div className="text-4xl font-bold mb-1">{s.v}</div>
                 <div className="text-sm text-gray-300">{s.l}</div>
               </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
         {/* Ce ne diferențiază */}
         <div className="mb-16">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Ce ne diferențiază</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-8">De ce echipa FinExperts e altfel.</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0B2E2E] mb-8">De ce echipa FinExperts e altfel.</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
               { icon: Briefcase, title: "Venim din bancă", desc: "Echipa FinExperts a lucrat direct în Raiffeisen Bank, BRD, Banca Transilvania și alte instituții de top. Cunoaștem procedurile interne, nu doar broșurile." },
@@ -150,10 +150,10 @@ export default function AboutPage() {
               const Icon = item.icon;
               return (
                 <div key={i} className="bg-white border border-[#E2E8F0] rounded-xl p-6">
-                  <div className="w-10 h-10 rounded-lg bg-[#0C1A2E]/8 flex items-center justify-center mb-4">
-                    <Icon className="h-5 w-5 text-[#0C1A2E]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#0B2E2E]/8 flex items-center justify-center mb-4">
+                    <Icon className="h-5 w-5 text-[#0B2E2E]" />
                   </div>
-                  <h3 className="font-semibold text-[#0C1A2E] mb-2">{item.title}</h3>
+                  <h3 className="font-semibold text-[#0B2E2E] mb-2">{item.title}</h3>
                   <p className="text-sm text-[#64748B] leading-relaxed">{item.desc}</p>
                 </div>
               );
@@ -164,7 +164,7 @@ export default function AboutPage() {
         {/* Team */}
         <div className="mb-16">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Echipa noastră</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-2">Brokeri dedicați pentru tine</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0B2E2E] mb-2">Brokeri dedicați pentru tine</h2>
           <p className="text-[#64748B] mb-8 text-sm">Treci cu mouse-ul peste un broker pentru a vedea datele de contact directe.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member) => (
@@ -176,12 +176,12 @@ export default function AboutPage() {
         {/* FAQ */}
         <div className="mb-16">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Întrebări frecvente</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0C1A2E] mb-8">Tot ce vrei să știi despre credite</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0B2E2E] mb-8">Tot ce vrei să știi despre credite</h2>
           <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
             <Accordion type="single" collapsible>
               {faq.map((item, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-b border-[#E2E8F0] last:border-b-0 px-6">
-                  <AccordionTrigger className="text-[#0C1A2E] font-medium py-5 hover:text-[#C49A20] hover:no-underline text-left">
+                  <AccordionTrigger className="text-[#0B2E2E] font-medium py-5 hover:text-[#C49A20] hover:no-underline text-left">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-[#64748B] pb-5 leading-relaxed">
@@ -196,7 +196,7 @@ export default function AboutPage() {
       </div>
 
       {/* ── Date companie — dark section ── */}
-      <div id="date-companie" className="bg-[#0C1A2E]">
+      <div id="date-companie" className="bg-[#0B2E2E]">
         <div className="max-w-7xl mx-auto px-4 py-14">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-2">Transparență</div>
           <h2 className="text-2xl font-bold text-white mb-10">Date companie & informații legale</h2>

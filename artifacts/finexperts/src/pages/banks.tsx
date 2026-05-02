@@ -70,7 +70,7 @@ export default function BanksPage() {
         {/* Header */}
         <div className="mb-6 sm:mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Comparator bănci</div>
-          <h1 className="text-2xl sm:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-2xl sm:text-4xl font-bold text-[#0B2E2E] leading-tight mb-3">
             Compară cele 11 bănci<br />românești.
           </h1>
           <p className="text-[#64748B] text-sm sm:text-base max-w-xl">
@@ -85,7 +85,7 @@ export default function BanksPage() {
               data-testid="tab-ipotecar"
               onClick={() => { setActiveType("ipotecar"); setAmount(150000); setMonths(120); }}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                activeType === "ipotecar" ? "bg-[#0C1A2E] text-white" : "text-[#64748B] hover:text-[#0C1A2E]"
+                activeType === "ipotecar" ? "bg-[#0B2E2E] text-white" : "text-[#64748B] hover:text-[#0B2E2E]"
               }`}
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -98,7 +98,7 @@ export default function BanksPage() {
               data-testid="tab-personal"
               onClick={() => { setActiveType("personal"); setAmount(30000); setMonths(36); }}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                activeType === "personal" ? "bg-[#0C1A2E] text-white" : "text-[#64748B] hover:text-[#0C1A2E]"
+                activeType === "personal" ? "bg-[#0B2E2E] text-white" : "text-[#64748B] hover:text-[#0B2E2E]"
               }`}
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -113,7 +113,7 @@ export default function BanksPage() {
             <div>
               <div className="flex justify-between items-center mb-2">
                 <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Sumă</span>
-                <span className="text-sm font-semibold text-[#0C1A2E]">{formatRON(amount)}</span>
+                <span className="text-sm font-semibold text-[#0B2E2E]">{formatRON(amount)}</span>
               </div>
               <Slider
                 min={activeType === "personal" ? 1000 : 30000}
@@ -126,7 +126,7 @@ export default function BanksPage() {
             <div>
               <div className="flex justify-between items-center mb-2">
                 <span className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Perioadă</span>
-                <span className="text-sm font-semibold text-[#0C1A2E]">{months} luni</span>
+                <span className="text-sm font-semibold text-[#0B2E2E]">{months} luni</span>
               </div>
               <Slider
                 min={activeType === "personal" ? 6 : 12}
@@ -153,8 +153,8 @@ export default function BanksPage() {
               onClick={() => setSortBy(key)}
               className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors flex items-center gap-1 ${
                 sortBy === key
-                  ? "bg-[#0C1A2E] text-white border-[#0C1A2E]"
-                  : "bg-white text-[#64748B] border-[#E2E8F0] hover:border-[#0C1A2E] hover:text-[#0C1A2E]"
+                  ? "bg-[#0B2E2E] text-white border-[#0B2E2E]"
+                  : "bg-white text-[#64748B] border-[#E2E8F0] hover:border-[#0B2E2E] hover:text-[#0B2E2E]"
               }`}
             >
               ↕ {label}
@@ -181,7 +181,7 @@ export default function BanksPage() {
               <div className="flex items-center gap-3 min-w-0">
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="min-w-0">
-                  <div className="font-semibold text-[#0C1A2E] text-sm truncate">{bank.name}</div>
+                  <div className="font-semibold text-[#0B2E2E] text-sm truncate">{bank.name}</div>
                   <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                     <div className="flex items-center gap-1">
                       <StarRating rating={bank.rating} />
@@ -195,18 +195,18 @@ export default function BanksPage() {
                   </div>
                 </div>
               </div>
-              <div className="text-center"><span className="text-sm font-semibold text-[#0C1A2E]">{bank.rate.toFixed(2)}%</span></div>
+              <div className="text-center"><span className="text-sm font-semibold text-[#0B2E2E]">{bank.rate.toFixed(2)}%</span></div>
               <div className="text-center"><span className="text-sm text-[#64748B]">{bank.dae.toFixed(2)}%</span></div>
               <div className="text-right">
-                <div className="text-sm font-bold text-[#0C1A2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")} RON</div>
+                <div className="text-sm font-bold text-[#0B2E2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")} RON</div>
                 <div className="text-xs text-[#64748B]">Total: {formatRON(Math.round(bank.total))}</div>
               </div>
               <div className="flex items-center gap-2 pl-3">
                 <Link href={`/banci/${bank.slug}`}>
-                  <button className="px-3 py-1.5 text-xs font-medium border border-[#E2E8F0] rounded-lg text-[#0C1A2E] hover:border-[#0C1A2E] transition-colors whitespace-nowrap">Detalii</button>
+                  <button className="px-3 py-1.5 text-xs font-medium border border-[#E2E8F0] rounded-lg text-[#0B2E2E] hover:border-[#0B2E2E] transition-colors whitespace-nowrap">Detalii</button>
                 </Link>
                 <Link href="/aplica">
-                  <button className="px-3 py-1.5 text-xs font-medium bg-[#0C1A2E] text-white rounded-lg hover:bg-[#132846] transition-colors flex items-center gap-1 whitespace-nowrap">
+                  <button className="px-3 py-1.5 text-xs font-medium bg-[#0B2E2E] text-white rounded-lg hover:bg-[#132846] transition-colors flex items-center gap-1 whitespace-nowrap">
                     Aplică <ArrowRight className="h-3 w-3" />
                   </button>
                 </Link>
@@ -229,7 +229,7 @@ export default function BanksPage() {
               <div className="flex items-center gap-3 mb-3">
                 <BankLogo logo={bank.logo} name={bank.name} initials={bank.initials} color={bank.color} />
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-[#0C1A2E] text-sm">{bank.name}</div>
+                  <div className="font-semibold text-[#0B2E2E] text-sm">{bank.name}</div>
                   <div className="flex items-center gap-2 mt-0.5">
                     <StarRating rating={bank.rating} />
                     {bank.badge && (
@@ -243,24 +243,24 @@ export default function BanksPage() {
               <div className="grid grid-cols-3 gap-2 mb-3 bg-[#F4F6FB] rounded-xl p-3">
                 <div className="text-center">
                   <div className="text-[10px] text-[#64748B] mb-0.5">Dobândă</div>
-                  <div className="text-sm font-bold text-[#0C1A2E]">{bank.rate.toFixed(2)}%</div>
+                  <div className="text-sm font-bold text-[#0B2E2E]">{bank.rate.toFixed(2)}%</div>
                 </div>
                 <div className="text-center border-x border-[#E2E8F0]">
                   <div className="text-[10px] text-[#64748B] mb-0.5">DAE</div>
-                  <div className="text-sm font-semibold text-[#0C1A2E]">{bank.dae.toFixed(2)}%</div>
+                  <div className="text-sm font-semibold text-[#0B2E2E]">{bank.dae.toFixed(2)}%</div>
                 </div>
                 <div className="text-center">
                   <div className="text-[10px] text-[#64748B] mb-0.5">Rată/lună</div>
-                  <div className="text-sm font-bold text-[#0C1A2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")}</div>
+                  <div className="text-sm font-bold text-[#0B2E2E]">{Math.round(bank.monthly).toLocaleString("ro-RO")}</div>
                   <div className="text-[9px] text-[#94A3B8]">RON</div>
                 </div>
               </div>
               <div className="flex gap-2">
                 <Link href={`/banci/${bank.slug}`} className="flex-1">
-                  <button className="w-full py-2 text-xs font-medium border border-[#E2E8F0] rounded-xl text-[#0C1A2E] hover:border-[#0C1A2E] transition-colors">Detalii</button>
+                  <button className="w-full py-2 text-xs font-medium border border-[#E2E8F0] rounded-xl text-[#0B2E2E] hover:border-[#0B2E2E] transition-colors">Detalii</button>
                 </Link>
                 <Link href="/aplica" className="flex-1">
-                  <button className="w-full py-2 text-xs font-semibold bg-[#0C1A2E] text-white rounded-xl flex items-center justify-center gap-1">
+                  <button className="w-full py-2 text-xs font-semibold bg-[#0B2E2E] text-white rounded-xl flex items-center justify-center gap-1">
                     Aplică <ArrowRight className="h-3 w-3" />
                   </button>
                 </Link>

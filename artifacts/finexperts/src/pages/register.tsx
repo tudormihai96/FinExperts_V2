@@ -26,7 +26,7 @@ export default function RegisterPage() {
             className="h-10 mx-auto mb-5"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
-          <h1 className="text-2xl font-bold text-[#0C1A2E]">Creează cont gratuit</h1>
+          <h1 className="text-2xl font-bold text-[#0B2E2E]">Creează cont gratuit</h1>
           <p className="text-sm text-[#64748B] mt-1">Aplică credite și urmărește ofertele tale</p>
         </div>
 
@@ -46,7 +46,7 @@ export default function RegisterPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Nume complet</label>
+              <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Nume complet</label>
               <input
                 data-testid="input-name"
                 type="text"
@@ -54,11 +54,11 @@ export default function RegisterPage() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Ion Popescu"
                 required
-                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors"
+                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] transition-colors"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Email</label>
+              <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Email</label>
               <input
                 data-testid="input-email"
                 type="email"
@@ -66,11 +66,11 @@ export default function RegisterPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="ion@exemplu.ro"
                 required
-                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors"
+                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] transition-colors"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Parolă</label>
+              <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Parolă</label>
               <input
                 data-testid="input-password"
                 type="password"
@@ -79,13 +79,13 @@ export default function RegisterPage() {
                 placeholder="Minim 6 caractere"
                 required
                 minLength={6}
-                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors"
+                className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] transition-colors"
               />
             </div>
             <button
               type="submit"
               data-testid="btn-register"
-              className="w-full bg-[#0C1A2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors"
+              className="w-full bg-[#0B2E2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors"
             >
               Creează cont gratuit
             </button>
@@ -93,7 +93,7 @@ export default function RegisterPage() {
 
           <div className="mt-5 pt-5 border-t border-[#E2E8F0] text-center text-sm text-[#64748B]">
             Ai deja cont?{" "}
-            <Link href="/login" className="text-[#0C1A2E] font-semibold hover:text-[#C49A20] transition-colors">
+            <Link href="/login" className="text-[#0B2E2E] font-semibold hover:text-[#C49A20] transition-colors">
               Conectare
             </Link>
           </div>

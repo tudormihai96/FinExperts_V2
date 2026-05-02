@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0C1A2E] text-white">
+    <footer className="bg-[#0B2E2E] text-white">
 
       {/* ── Main footer ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12">
@@ -14,7 +14,7 @@ export default function Footer() {
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-16 w-auto object-contain mb-4 brightness-0 invert opacity-90"
+              className="h-16 w-auto object-contain mb-4"
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
             />
             <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">

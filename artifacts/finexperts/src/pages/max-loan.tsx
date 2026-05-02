@@ -41,14 +41,14 @@ function SliderInput({
             autoFocus
             type="number"
             defaultValue={value}
-            className="w-36 text-right text-sm font-semibold text-[#0C1A2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
+            className="w-36 text-right text-sm font-semibold text-[#0B2E2E] border-b-2 border-[#C49A20] bg-transparent focus:outline-none"
             onBlur={e => commit(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter") commit((e.target as HTMLInputElement).value); }}
           />
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="text-base font-semibold text-[#0C1A2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
+            className="text-base font-semibold text-[#0B2E2E] hover:text-[#C49A20] transition-colors border-b border-dashed border-[#C49A20]/40 hover:border-[#C49A20]"
             title="Click pentru a edita manual"
           >
             {displayVal}
@@ -98,7 +98,7 @@ export default function MaxLoanPage() {
         {/* Header */}
         <div className="mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Calculator sumă maximă</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0B2E2E] leading-tight mb-3">
             Cât poți împrumuta?
           </h1>
           <p className="text-[#64748B] text-base max-w-xl">
@@ -114,7 +114,7 @@ export default function MaxLoanPage() {
               <button
                 onClick={() => setActiveType("personal")}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  activeType === "personal" ? "bg-[#0C1A2E] text-white" : "text-[#64748B] hover:text-[#0C1A2E]"
+                  activeType === "personal" ? "bg-[#0B2E2E] text-white" : "text-[#64748B] hover:text-[#0B2E2E]"
                 }`}
               >
                 <FileText className="h-4 w-4" />
@@ -123,7 +123,7 @@ export default function MaxLoanPage() {
               <button
                 onClick={() => setActiveType("ipotecar")}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  activeType === "ipotecar" ? "bg-[#0C1A2E] text-white" : "text-[#64748B] hover:text-[#0C1A2E]"
+                  activeType === "ipotecar" ? "bg-[#0B2E2E] text-white" : "text-[#64748B] hover:text-[#0B2E2E]"
                 }`}
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -174,7 +174,7 @@ export default function MaxLoanPage() {
           </div>
 
           {/* Right: dark result */}
-          <div className="bg-[#0C1A2E] p-6 lg:p-8">
+          <div className="bg-[#0B2E2E] p-6 lg:p-8">
             <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sumă maximă disponibilă</div>
             {result.maxLoan > 0 ? (
               <>
@@ -217,7 +217,7 @@ export default function MaxLoanPage() {
             </div>
 
             <Link href="/aplica">
-              <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+              <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                 Aplică pentru această sumă
                 <ArrowRight className="h-4 w-4" />
               </button>

@@ -33,7 +33,7 @@ export default function ApplyPage() {
           <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
             <CheckCircle className="h-9 w-9 text-[#2E7D5B]" />
           </div>
-          <h2 className="text-2xl font-bold text-[#0C1A2E] mb-3">Cerere trimisă!</h2>
+          <h2 className="text-2xl font-bold text-[#0B2E2E] mb-3">Cerere trimisă!</h2>
           <p className="text-[#64748B] mb-6 leading-relaxed">
             Un consultant FinExperts te va contacta în maxim 24h pentru a-ți prezenta oferta personalizată.
           </p>
@@ -43,7 +43,7 @@ export default function ApplyPage() {
             </p>
           </div>
           <Link href="/calculator">
-            <button className="w-full border border-[#E2E8F0] text-[#0C1A2E] hover:border-[#0C1A2E] font-medium py-2.5 rounded-xl transition-colors text-sm flex items-center justify-center gap-2">
+            <button className="w-full border border-[#E2E8F0] text-[#0B2E2E] hover:border-[#0B2E2E] font-medium py-2.5 rounded-xl transition-colors text-sm flex items-center justify-center gap-2">
               Calculează o altă rată <ArrowRight className="h-3.5 w-3.5" />
             </button>
           </Link>
@@ -56,7 +56,7 @@ export default function ApplyPage() {
     <div className="min-h-screen bg-[#F5F7FA]">
 
       {/* ── Page header ── */}
-      <div className="bg-[#0C1A2E] pt-10 pb-16">
+      <div className="bg-[#0B2E2E] pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Aplicare credit</div>
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
@@ -73,71 +73,71 @@ export default function ApplyPage() {
 
           {/* Left: form card — lifted from the dark header */}
           <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 lg:p-8 shadow-sm">
-            <h2 className="text-lg font-bold text-[#0C1A2E] mb-1">Formular de aplicare</h2>
+            <h2 className="text-lg font-bold text-[#0B2E2E] mb-1">Formular de aplicare</h2>
             <p className="text-xs text-[#64748B] mb-6">Câmpurile marcate cu <span className="text-[#C4432F]">*</span> sunt obligatorii.</p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                     Nume complet <span className="text-[#C4432F]">*</span>
                   </label>
                   <input name="nume" value={form.nume} onChange={handleChange} required
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors" />
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                     Telefon <span className="text-[#C4432F]">*</span>
                   </label>
                   <input name="telefon" value={form.telefon} onChange={handleChange} placeholder="07xx xxx xxx" required
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors" />
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] transition-colors" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                   Email <span className="text-[#C4432F]">*</span>
                 </label>
                 <input name="email" type="email" value={form.email} onChange={handleChange} required
-                  className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] transition-colors" />
+                  className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] transition-colors" />
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Tip credit</label>
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Tip credit</label>
                   <select name="tipCredit" value={form.tipCredit} onChange={handleChange}
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] bg-white">
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] bg-white">
                     <option>Credit ipotecar</option>
                     <option>Credit de Nevoi Personale</option>
                     <option>Refinanțare</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Sumă (RON)</label>
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Sumă (RON)</label>
                   <input name="suma" type="number" value={form.suma} onChange={handleChange}
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">Perioadă (luni)</label>
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">Perioadă (luni)</label>
                   <input name="perioada" type="number" value={form.perioada} onChange={handleChange}
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]" />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                     Venit lunar (RON, opțional)
                   </label>
                   <input name="venit" type="number" value={form.venit} onChange={handleChange}
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E]" />
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                     Banca preferată (opțional)
                   </label>
                   <select name="banca" value={form.banca} onChange={handleChange}
-                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] bg-white">
+                    className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] bg-white">
                     <option>Cea mai bună ofertă</option>
                     {banks.map(b => <option key={b.id}>{b.name}</option>)}
                   </select>
@@ -145,15 +145,15 @@ export default function ApplyPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#0C1A2E] uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
                   Mesaj (opțional)
                 </label>
                 <textarea name="mesaj" value={form.mesaj} onChange={handleChange} rows={3}
-                  className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0C1A2E] resize-none" />
+                  className="w-full border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E] resize-none" />
               </div>
 
               <button type="submit" data-testid="btn-submit"
-                className="w-full bg-[#0C1A2E] hover:bg-[#132846] text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
+                className="w-full bg-[#0B2E2E] hover:bg-[#132846] text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
                 Trimite aplicarea <ArrowRight className="h-4 w-4" />
               </button>
 
@@ -170,7 +170,7 @@ export default function ApplyPage() {
 
             {/* Benefits */}
             <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-sm">
-              <h3 className="text-sm font-bold text-[#0C1A2E] uppercase tracking-wider mb-4">De ce să aplici prin noi</h3>
+              <h3 className="text-sm font-bold text-[#0B2E2E] uppercase tracking-wider mb-4">De ce să aplici prin noi</h3>
               <div className="space-y-3.5">
                 {[
                   { icon: "🎯", title: "100% gratuit", desc: "Nicio taxă pentru tine. Suntem plătiți de bancă." },
@@ -183,7 +183,7 @@ export default function ApplyPage() {
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-[#0C1A2E]">{item.title}</p>
+                      <p className="text-sm font-semibold text-[#0B2E2E]">{item.title}</p>
                       <p className="text-xs text-[#64748B] mt-0.5">{item.desc}</p>
                     </div>
                   </div>
@@ -200,15 +200,15 @@ export default function ApplyPage() {
                   </div>
                   <div className="flex-1">
                     <p className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">Birou consultanță</p>
-                    <p className="text-sm font-semibold text-[#0C1A2E]">Bd. Ion Câmpineanu, nr. 26</p>
+                    <p className="text-sm font-semibold text-[#0B2E2E]">Bd. Ion Câmpineanu, nr. 26</p>
                     <p className="text-xs text-[#64748B]">Sector 1, București · KIWI Finance</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-2 mt-3">
-                  <a href="tel:0799715101" className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0C1A2E] transition-colors">
+                  <a href="tel:0799715101" className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors">
                     <Phone className="h-3 w-3 text-[#C49A20] shrink-0" /> 0799 715 101
                   </a>
-                  <a href="mailto:kbaa@kiwifinance.ro" className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0C1A2E] transition-colors col-span-2">
+                  <a href="mailto:kbaa@kiwifinance.ro" className="flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B2E2E] transition-colors col-span-2">
                     <Mail className="h-3 w-3 text-[#C49A20] shrink-0" /> kbaa@kiwifinance.ro
                   </a>
                   <span className="flex items-center gap-1.5 text-xs text-[#64748B] col-span-3">

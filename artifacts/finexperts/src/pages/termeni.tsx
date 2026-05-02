@@ -6,21 +6,21 @@ export default function TermeniPage() {
         <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-10">
           <div className="mb-8">
             <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Legal</div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0C1A2E] mb-2">Termeni și Condiții</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#0B2E2E] mb-2">Termeni și Condiții</h1>
             <p className="text-sm text-[#64748B]">Ultima actualizare: mai 2026</p>
           </div>
 
           <div className="prose max-w-none text-[#334155] text-sm leading-relaxed space-y-6">
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">1. Informații despre operator</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">1. Informații despre operator</h2>
               <p>
                 Site-ul <strong>finexperts.ro</strong> este administrat de <strong>Alexandra Achim PFA</strong>, cu sediul în Județul Ilfov, Sat Dobroesti, Comuna Dobroesti, Strada Stejarului, nr. 117A, camera nr. 1, etaj parter, ap. 3, înregistrată la Registrul Comerțului cu CUI <strong>54405887</strong>, broker de credite autorizat ASF, membră a Asociației Române a Brokerilor de Credite (ARBC) și partener KIWI Finance.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">2. Proprietate intelectuală</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">2. Proprietate intelectuală</h2>
               <p>
                 Toate informațiile, textele, imaginile, logo-urile și materialele conținute pe site-ul finexperts.ro sunt proprietatea <strong>Alexandra Achim PFA</strong> sau sunt utilizate cu acordul titularilor de drepturi. Este interzisă reproducerea, distribuirea sau publicarea sub orice formă a conținutului, fără acordul scris prealabil al administratorului.
               </p>
@@ -30,7 +30,7 @@ export default function TermeniPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">3. Caracterul informativ al conținutului</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">3. Caracterul informativ al conținutului</h2>
               <p>
                 FinExperts depune toate eforturile pentru a prezenta informații clare și corecte. Cu toate acestea, nu garantează exactitatea în timp real a tuturor datelor publicate și nu răspunde pentru inadvertențe sau descrieri eronate ale informațiilor prezentate.
               </p>
@@ -40,7 +40,7 @@ export default function TermeniPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">4. Serviciile oferite</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">4. Serviciile oferite</h2>
               <p>FinExperts oferă, în calitate de intermediar de credit autorizat:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li>Servicii de consultanță și intermediere în domeniul creditelor bancare (personale, ipotecare, refinanțare)</li>
@@ -55,7 +55,7 @@ export default function TermeniPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">5. Obligațiile utilizatorului</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">5. Obligațiile utilizatorului</h2>
               <p>Prin utilizarea site-ului, utilizatorul se obligă să:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li>Furnizeze informații corecte, complete și actuale în formularele de contact sau de aplicare</li>
@@ -66,14 +66,14 @@ export default function TermeniPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">6. Limitarea răspunderii</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">6. Limitarea răspunderii</h2>
               <p>
                 FinExperts nu garantează aprobarea niciunui dosar de creditare. Decizia finală de creditare aparține exclusiv instituției de credit. FinExperts nu răspunde pentru pierderi financiare rezultate din utilizarea informațiilor orientative publicate pe site, din întreruperi ale serviciilor cauzate de forță majoră sau defecțiuni tehnice.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">7. Protecția datelor personale</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">7. Protecția datelor personale</h2>
               <p>
                 Prelucrarea datelor personale se realizează în conformitate cu Regulamentul UE 2016/679 (GDPR) și legislația română în vigoare. Detalii complete în{" "}
                 <a href="/confidentialitate" className="text-[#C49A20] hover:underline">Politica de date personale</a>{" "}
@@ -83,7 +83,7 @@ export default function TermeniPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">8. Legea aplicabilă și soluționarea litigiilor</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">8. Legea aplicabilă și soluționarea litigiilor</h2>
               <p>
                 Prezentele Termeni și Condiții sunt guvernate de legea română. Orice litigiu va fi soluționat pe cale amiabilă. În cazul în care soluționarea amiabilă nu este posibilă, litigiul va fi supus instanțelor judecătorești competente din România.
               </p>
@@ -98,14 +98,14 @@ export default function TermeniPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">9. Modificarea termenilor</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">9. Modificarea termenilor</h2>
               <p>
                 Alexandra Achim PFA își rezervă dreptul de a modifica oricând prezentele Termeni și Condiții. Modificările intră în vigoare la data publicării pe site. Vă recomandăm să consultați periodic această pagină.
               </p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#0C1A2E] mb-2">10. Contact</h2>
+              <h2 className="text-base font-bold text-[#0B2E2E] mb-2">10. Contact</h2>
               <ul className="list-none mt-2 space-y-1">
                 <li>📧 <a href="mailto:kbaa@kiwifinance.ro" className="text-[#C49A20] hover:underline">kbaa@kiwifinance.ro</a></li>
                 <li>📞 <a href="tel:0799715101" className="text-[#C49A20] hover:underline">0799 715 101</a></li>

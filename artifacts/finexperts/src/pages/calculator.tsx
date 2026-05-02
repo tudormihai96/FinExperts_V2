@@ -27,7 +27,7 @@ function MaxLoanCalculator() {
         <div className="flex gap-2 mb-6">
           {(["personal", "ipotecar"] as const).map(t => (
             <button key={t} onClick={() => setActiveType(t)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === t ? "bg-[#0C1A2E] text-white" : "border border-[#E2E8F0] text-[#64748B] hover:text-[#0C1A2E]"}`}>
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${activeType === t ? "bg-[#0B2E2E] text-white" : "border border-[#E2E8F0] text-[#64748B] hover:text-[#0B2E2E]"}`}>
               {t === "personal" ? "Credit de Nevoi Personale" : "Credit ipotecar"}
             </button>
           ))}
@@ -45,7 +45,7 @@ function MaxLoanCalculator() {
           step={activeType === "personal" ? 6 : 12} onChange={setPerioada}
           format={v => `${v} luni (${(v / 12).toFixed(1)} ani)`} testId="slider-perioada" />
       </div>
-      <div className="bg-[#0C1A2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+      <div className="bg-[#0B2E2E] p-6 lg:p-8 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sumă maximă disponibilă</div>
         {result.maxLoan > 0 ? (
           <>
@@ -78,7 +78,7 @@ function MaxLoanCalculator() {
           </div>
         </div>
         <Link href="/aplica">
-          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Aplică pentru această sumă <ArrowRight className="h-4 w-4" />
           </button>
         </Link>
@@ -127,7 +127,7 @@ function RefinanceCalculator() {
         <div className="p-6 lg:p-8 border-b border-[#E2E8F0]">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-1 h-5 bg-[#C49A20] rounded-full" />
-            <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Creditul actual</span>
+            <span className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider">Creditul actual</span>
           </div>
           <p className="text-xs text-[#64748B] mb-5 flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-[#C49A20]" />Click pe cifre pentru valori manuale
@@ -145,7 +145,7 @@ function RefinanceCalculator() {
         <div className="p-6 lg:p-8">
           <div className="flex items-center gap-2 mb-5">
             <div className="w-1 h-5 bg-[#2E7D5B] rounded-full" />
-            <span className="text-xs font-bold text-[#0C1A2E] uppercase tracking-wider">Oferta nouă</span>
+            <span className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider">Oferta nouă</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <SliderInput label="Dobândă nouă (%)" value={dobNoua} min={3} max={18} step={0.01}
@@ -156,7 +156,7 @@ function RefinanceCalculator() {
         </div>
       </div>
       {/* Result */}
-      <div className="bg-[#0C1A2E] p-6 lg:p-8 flex flex-col rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
+      <div className="bg-[#0B2E2E] p-6 lg:p-8 flex flex-col rounded-b-xl lg:rounded-b-none lg:rounded-r-xl">
         <div className="flex items-center gap-2 mb-4">
           <Sparkles className="h-4 w-4 text-[#C49A20]" />
           <span className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider">Rezultat refinanțare</span>
@@ -195,7 +195,7 @@ function RefinanceCalculator() {
           ))}
         </div>
         <Link href="/aplica" className="mt-5 block">
-          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0C1A2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+          <button className="w-full bg-[#C49A20] hover:bg-[#b09255] text-[#0B2E2E] font-semibold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
             Vreau să refinanțez <Sparkles className="h-4 w-4" />
           </button>
         </Link>
@@ -223,7 +223,7 @@ export default function CalculatorPage() {
         {/* Header */}
         <div className="mb-8">
           <div className="text-xs font-semibold text-[#C49A20] uppercase tracking-wider mb-3">Calculatoare credite</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0C1A2E] leading-tight mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#0B2E2E] leading-tight mb-3">
             {tab.id === "personal" && <>Credit de Nevoi Personale,<br />la toate cele 11 bănci.</>}
             {tab.id === "ipotecar" && <>Rată credit ipotecar,<br />la toate cele 11 bănci.</>}
             {tab.id === "refinantare" && <>Cât economisești<br />prin <span className="text-[#C49A20]">refinanțare</span>?</>}
@@ -236,9 +236,9 @@ export default function CalculatorPage() {
           {TABS.map(t => (
             <button key={t.id} onClick={() => setActive(t.id)}
               className={`text-left p-4 rounded-xl border transition-all ${active === t.id
-                ? "bg-[#0C1A2E] border-[#0C1A2E] text-white shadow-sm"
-                : "bg-white border-[#E2E8F0] text-[#64748B] hover:border-[#0C1A2E] hover:text-[#0C1A2E]"}`}>
-              <div className={`mb-2 ${active === t.id ? "text-[#C49A20]" : "text-[#0C1A2E]"}`}>{t.icon}</div>
+                ? "bg-[#0B2E2E] border-[#0B2E2E] text-white shadow-sm"
+                : "bg-white border-[#E2E8F0] text-[#64748B] hover:border-[#0B2E2E] hover:text-[#0B2E2E]"}`}>
+              <div className={`mb-2 ${active === t.id ? "text-[#C49A20]" : "text-[#0B2E2E]"}`}>{t.icon}</div>
               <div className="text-sm font-semibold leading-tight">{t.label}</div>
             </button>
           ))}
@@ -254,7 +254,7 @@ export default function CalculatorPage() {
         {/* Bank rates table */}
         {(active === "personal" || active === "ipotecar") && (
           <div className="mt-8">
-            <h2 className="text-lg font-bold text-[#0C1A2E] mb-4">Toate dobânzile — {active === "personal" ? "credit de nevoi personale" : "credit ipotecar"} (02.05.2026)</h2>
+            <h2 className="text-lg font-bold text-[#0B2E2E] mb-4">Toate dobânzile — {active === "personal" ? "credit de nevoi personale" : "credit ipotecar"} (02.05.2026)</h2>
             <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -285,12 +285,12 @@ export default function CalculatorPage() {
                                   style={{ backgroundColor: bank.color }}>{bank.initials}</div>
                               </div>
                               <div>
-                                <div className="font-medium text-[#0C1A2E]">{bank.name}</div>
+                                <div className="font-medium text-[#0B2E2E]">{bank.name}</div>
                                 {i === 0 && <div className="text-[10px] text-[#C49A20] font-bold">⭐ Cea mai bună</div>}
                               </div>
                             </div>
                           </td>
-                          <td className="px-4 py-3 text-right font-bold text-[#0C1A2E]">{rate.toFixed(2)}%</td>
+                          <td className="px-4 py-3 text-right font-bold text-[#0B2E2E]">{rate.toFixed(2)}%</td>
                           <td className="px-4 py-3 text-right text-[#64748B]">{dae.toFixed(2)}%</td>
                           <td className="px-4 py-3 text-right hidden md:table-cell">
                             <div className="flex items-center justify-end gap-1">

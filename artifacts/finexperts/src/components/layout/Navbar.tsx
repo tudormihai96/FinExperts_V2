@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top info bar */}
-      <div className="bg-[#0C1A2E] text-white text-xs px-4 py-2">
+      <div className="bg-[#0B2E2E] text-white text-xs px-4 py-2">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-5">
             <a href="tel:0799715101" className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors">
@@ -89,7 +89,7 @@ export default function Navbar() {
               }}
             />
             <div className="hidden flex-col">
-              <span className="text-[22px] font-bold text-[#0C1A2E] leading-tight">FinExperts</span>
+              <span className="text-[22px] font-bold text-[#0B2E2E] leading-tight">FinExperts</span>
               <span className="text-[9px] text-[#64748B] tracking-wider uppercase">partener KIWI Finance</span>
             </div>
           </Link>
@@ -102,8 +102,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-4 py-2.5 text-[14.5px] font-medium rounded-lg transition-all duration-200 group ${
                   isActive(link.href)
-                    ? "text-[#0C1A2E] font-semibold"
-                    : "text-[#64748B] hover:text-[#0C1A2E] hover:bg-[#F4F6FB]"
+                    ? "text-[#0B2E2E] font-semibold"
+                    : "text-[#64748B] hover:text-[#0B2E2E] hover:bg-[#F4F6FB]"
                 }`}
               >
                 {link.label}
@@ -123,23 +123,23 @@ export default function Navbar() {
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center gap-2 border border-[#E2E8F0] hover:border-[#C49A20]/40 hover:bg-[#F4F6FB] px-3.5 py-2 rounded-xl transition-all duration-200"
                 >
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0C1A2E] to-[#1E3A5F] flex items-center justify-center text-white text-[9px] font-bold">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0B2E2E] to-[#1E3A5F] flex items-center justify-center text-white text-[9px] font-bold">
                     {initials}
                   </div>
-                  <span className="text-sm font-medium text-[#0C1A2E]">{user?.name?.split(" ")[0]}</span>
+                  <span className="text-sm font-medium text-[#0B2E2E]">{user?.name?.split(" ")[0]}</span>
                   {isAdmin && <span className="text-[9px] font-bold text-[#C49A20] uppercase bg-[#C49A20]/15 px-1.5 py-0.5 rounded">Admin</span>}
                 </button>
                 {userMenuOpen && (
                   <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-[#E2E8F0] rounded-2xl shadow-xl py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                     {isAdmin && (
                       <Link href="/admin" onClick={() => setUserMenuOpen(false)}>
-                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
+                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0B2E2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
                           <Settings className="h-4 w-4 text-[#C49A20]" /> Panou admin
                         </div>
                       </Link>
                     )}
                     <Link href="/cont" onClick={() => setUserMenuOpen(false)}>
-                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0C1A2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
+                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0B2E2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
                         <User className="h-4 w-4" /> Contul meu
                       </div>
                     </Link>
@@ -153,7 +153,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#0C1A2E] border border-[#E2E8F0] hover:border-[#C49A20]/40 hover:bg-[#F4F6FB] px-4 py-2.5 rounded-xl transition-all duration-200"
+                className="flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#0B2E2E] border border-[#E2E8F0] hover:border-[#C49A20]/40 hover:bg-[#F4F6FB] px-4 py-2.5 rounded-xl transition-all duration-200"
               >
                 <LogIn className="h-4 w-4" />
                 Conectare
@@ -161,7 +161,7 @@ export default function Navbar() {
             )}
             <Link
               href="/aplica"
-              className="flex items-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0C1A2E] to-[#1B3356] hover:from-[#162847] hover:to-[#24446E] px-7 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+              className="flex items-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0B2E2E] to-[#1B3356] hover:from-[#162847] hover:to-[#24446E] px-7 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               Aplică acum
               <ChevronRight className="h-4 w-4" />
@@ -170,7 +170,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2.5 text-[#0C1A2E] rounded-xl hover:bg-[#F4F6FB] transition-colors"
+            className="lg:hidden p-2.5 text-[#0B2E2E] rounded-xl hover:bg-[#F4F6FB] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -188,8 +188,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center justify-between px-4 py-3 text-[15px] font-medium rounded-xl transition-colors ${
                     isActive(link.href)
-                      ? "bg-[#0C1A2E] text-white"
-                      : "text-[#0C1A2E] hover:bg-[#F4F6FB]"
+                      ? "bg-[#0B2E2E] text-white"
+                      : "text-[#0B2E2E] hover:bg-[#F4F6FB]"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -206,18 +206,18 @@ export default function Navbar() {
                       <Settings className="h-4 w-4" /> Panou Admin
                     </Link>
                   )}
-                  <Link href="/cont" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
+                  <Link href="/cont" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0B2E2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
                     <User className="h-4 w-4" /> Contul meu
                   </Link>
                 </>
               ) : (
-                <Link href="/login" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0C1A2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
+                <Link href="/login" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0B2E2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
                   <LogIn className="h-4 w-4" /> Conectare
                 </Link>
               )}
               <Link
                 href="/aplica"
-                className="flex items-center justify-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0C1A2E] to-[#1B3356] px-4 py-3.5 rounded-xl shadow-md"
+                className="flex items-center justify-center gap-2 text-[15px] font-bold text-white bg-gradient-to-r from-[#0B2E2E] to-[#1B3356] px-4 py-3.5 rounded-xl shadow-md"
                 onClick={() => setMobileOpen(false)}
               >
                 Aplică acum <ChevronRight className="h-4 w-4" />
