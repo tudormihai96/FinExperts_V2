@@ -23,26 +23,26 @@ export default function HomePage() {
   const marqueeItems = [...banks, ...banks];
 
   return (
-    <div className="min-h-screen bg-[#F7F4EC]">
+    <div className="min-h-screen bg-[#F8F7F4]">
 
       {/* ── HERO ── */}
-      <section className="bg-[#0A1A2E] pt-16 pb-0 overflow-hidden">
+      <section className="bg-[#0D1F3C] pt-16 pb-0 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 border border-[#C6A667]/40 rounded-full px-3 py-1 mb-6">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#C6A667]" />
-              <span className="text-xs text-[#C6A667] font-medium">Partener oficial KIWI Finance</span>
+            <div className="inline-flex items-center gap-2 border border-[#B8944F]/40 rounded-full px-3 py-1 mb-6">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#B8944F]" />
+              <span className="text-xs text-[#B8944F] font-medium">Partener oficial KIWI Finance</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
               Cel mai bun credit.<br />
-              <span className="text-[#C6A667]">Fără stres.</span>
+              <span className="text-[#B8944F]">Fără stres.</span>
             </h1>
             <p className="text-gray-300 text-lg mb-8 leading-relaxed">
               Compară rata lunară la toate cele 11 bănci din România. Calculatoare gratuite, broker dedicat, aprobare garantată.
             </p>
             <div className="flex gap-3 flex-wrap mb-12">
               <Link href="/calculator">
-                <button className="bg-[#C6A667] hover:bg-[#b09255] text-[#0A1A2E] font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2">
+                <button className="bg-[#B8944F] hover:bg-[#a07e3e] text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-md">
                   Calculează rata
                   <ArrowRight className="h-4 w-4" />
                 </button>
@@ -62,8 +62,8 @@ export default function HomePage() {
             <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">11 bănci partenere</span>
           </div>
           <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0A1A2E] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0A1A2E] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0D1F3C] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0D1F3C] to-transparent z-10 pointer-events-none" />
             <div className="flex gap-4 animate-marquee" style={{ width: "max-content" }}>
               {marqueeItems.map((bank, i) => (
                 <div
@@ -93,7 +93,7 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section className="bg-white border-b border-[#E5E3D9]">
+      <section className="bg-white border-b border-[#E2DDD6]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5E3D9]">
             {[

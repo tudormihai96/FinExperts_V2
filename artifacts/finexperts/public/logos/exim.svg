@@ -1,7 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
-  <rect width="200" height="80" fill="white"/>
-  <rect x="8" y="8" width="50" height="64" rx="6" fill="#005BAA"/>
-  <text x="33" y="52" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle">EX</text>
-  <text x="68" y="33" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#005BAA">Exim</text>
-  <text x="68" y="52" font-family="Arial,sans-serif" font-size="10" fill="#333">Banca Românească</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80">
+  <rect width="220" height="80" fill="white"/>
+  <!-- Exim Banca Românească - blue brand -->
+  <!-- Blue block with EB -->
+  <rect x="8" y="10" width="60" height="60" rx="8" fill="#003F7F"/>
+  <text x="38" y="38" font-family="'Arial Black', Arial, sans-serif" font-size="14" font-weight="900" fill="white" text-anchor="middle">EXIM</text>
+  <line x1="18" y1="44" x2="58" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <text x="38" y="60" font-family="Arial, sans-serif" font-size="9" font-weight="600" fill="rgba(255,255,255,0.85)" text-anchor="middle">BANCA</text>
+  <!-- Text -->
+  <text x="80" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#003F7F">Exim Banca</text>
+  <text x="80" y="50" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#003F7F">Românească</text>
+  <text x="80" y="65" font-family="Arial, sans-serif" font-size="8" fill="#888">bancă de stat</text>
 </svg>

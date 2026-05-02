@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
   <rect width="200" height="80" fill="white"/>
-  <rect x="8" y="12" width="184" height="56" rx="8" fill="#1A1A6E"/>
-  <text x="100" y="46" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="white" text-anchor="middle">PATRIA BANK</text>
+  <!-- Patria Bank - dark blue/navy brand -->
+  <rect x="8" y="8" width="184" height="64" rx="6" fill="#0D1B5E"/>
+  <!-- PATRIA text -->
+  <text x="100" y="38" font-family="'Arial Black', Arial, sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">PATRIA</text>
+  <line x1="30" y1="46" x2="170" y2="46" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <text x="100" y="63" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="3">BANK</text>
 </svg>

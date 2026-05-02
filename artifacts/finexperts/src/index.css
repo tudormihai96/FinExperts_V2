@@ -68,39 +68,39 @@
 }
 
 :root {
-  --background: #F7F4EC; /* Cream */
-  --foreground: #0A1A2E; /* Navy */
-  --border: #E5E3D9;
-  --input: #E5E3D9;
-  --ring: #C6A667; /* Gold */
+  --background: #F8F7F4; /* Off-white warm */
+  --foreground: #0D1F3C; /* Deep navy */
+  --border: #E2DDD6;
+  --input: #E2DDD6;
+  --ring: #B8944F; /* Refined gold */
 
   --card: #FFFFFF;
-  --card-foreground: #0A1A2E;
-  --card-border: #E5E3D9;
+  --card-foreground: #0D1F3C;
+  --card-border: #E2DDD6;
 
   --popover: #FFFFFF;
-  --popover-foreground: #0A1A2E;
-  --popover-border: #E5E3D9;
+  --popover-foreground: #0D1F3C;
+  --popover-border: #E2DDD6;
 
-  --primary: #0A1A2E;
+  --primary: #0D1F3C;
   --primary-foreground: #FFFFFF;
 
-  --secondary: #F7F4EC;
-  --secondary-foreground: #0A1A2E;
+  --secondary: #F8F7F4;
+  --secondary-foreground: #0D1F3C;
 
-  --muted: #F3F4F6;
-  --muted-foreground: #5A6478;
+  --muted: #F1EFE9;
+  --muted-foreground: #64748B;
 
-  --accent: #C6A667;
+  --accent: #B8944F;
   --accent-foreground: #FFFFFF;
 
-  --destructive: #C4432F;
+  --destructive: #C0392B;
   --destructive-foreground: #FFFFFF;
 
-  --success: #2E7D5B;
+  --success: #1E6B47;
   --success-foreground: #FFFFFF;
 
-  --app-font-sans: 'Inter', sans-serif;
+  --app-font-sans: 'Outfit', sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0.5rem;

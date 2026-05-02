@@ -49,6 +49,7 @@ function CreditCalculator({ type }: { type: "personal" | "ipotecar" }) {
   const [amount, setAmount] = useState(isIp ? 150000 : 30000);
   const [months, setMonths] = useState(isIp ? 120 : 36);
   const [rate, setRate] = useState(isIp ? 4.85 : 5.55);
+  const maxAmount = isIp ? 600000 : 250000;
   const [dtiOpen, setDtiOpen] = useState(false);
   const [venit, setVenit] = useState(5000);
   const [obligatii, setObligatii] = useState(0);

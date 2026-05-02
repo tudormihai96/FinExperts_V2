@@ -3,7 +3,7 @@ import { ShieldCheck, ExternalLink, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A1A2E] text-white">
+    <footer className="bg-[#0D1F3C] text-white">
       {/* PARTENER OFICIAL bar */}
       <div className="border-b border-white/10 px-4 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
@@ -20,7 +20,7 @@ export default function Footer() {
             href="https://kiwifinance.ro"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 bg-[#1a2e48] hover:bg-[#243d5c] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+            className="flex items-center gap-1.5 bg-[#1a3256] hover:bg-[#243d6a] text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
           >
             kiwifinance.ro
             <ExternalLink className="h-3.5 w-3.5" />
