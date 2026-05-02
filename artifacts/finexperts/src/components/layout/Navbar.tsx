@@ -81,7 +81,7 @@ export default function Navbar() {
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[114px] w-auto"
+              className="h-[128px] w-auto"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";

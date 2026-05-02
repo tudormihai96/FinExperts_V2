@@ -56,31 +56,31 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── MARQUEE bănci ── */}
-        <div className="border-t border-white/10 pt-5 pb-6 overflow-hidden">
-          <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0C1A2E] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0C1A2E] to-transparent z-10 pointer-events-none" />
-            <div className="flex gap-8 animate-marquee" style={{ width: "max-content" }}>
+        {/* ── MARQUEE bănci ── white band */}
+        <div className="bg-white border-t border-gray-100 overflow-hidden">
+          <div className="relative py-4">
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            <div className="flex gap-10 animate-marquee" style={{ width: "max-content" }}>
               {marqueeItems.map((bank, i) => (
                 <div
                   key={`${bank.id}-${i}`}
-                  className="flex items-center gap-3 shrink-0 px-2 py-1"
+                  className="flex items-center gap-3 shrink-0 px-2"
                 >
                   <img
                     src={bank.logo}
                     alt={bank.name}
-                    className="h-9 w-auto object-contain bg-white rounded-lg p-1"
-                    style={{ maxWidth: "52px" }}
+                    className="h-11 w-auto object-contain"
+                    style={{ maxWidth: "62px" }}
                     onError={e => {
                       const img = e.target as HTMLImageElement;
                       img.style.backgroundColor = bank.color;
                       img.style.borderRadius = "8px";
-                      img.style.padding = "4px";
+                      img.style.padding = "5px";
                       img.alt = bank.initials;
                     }}
                   />
-                  <span className="text-[15px] font-semibold text-white whitespace-nowrap">{bank.name}</span>
+                  <span className="text-[15px] font-semibold text-[#1E293B] whitespace-nowrap">{bank.name}</span>
                 </div>
               ))}
             </div>
