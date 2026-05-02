@@ -34,11 +34,11 @@ export default function HomePage() {
               <span className="text-xs text-[#C49A20] font-medium">Partener oficial KIWI Finance</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-              Rata ta optimă.<br />
-              <span className="text-[#C49A20]">Negociată cu 11 bănci.</span>
+              Credite mai inteligente.<br />
+              <span className="text-[#C49A20]">Negociate de experți.</span>
             </h1>
             <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-              Comparăm ofertele de la toate băncile din România și negociem în numele tău. Broker dedicat, aprobare garantată, 100% gratuit.
+              Accesăm toate ofertele de la 11 bănci din România și negociem în locul tău. Rapid, gratuit, profesional.
             </p>
             <div className="flex gap-3 flex-wrap mb-12">
               <Link href="/calculator">
@@ -68,13 +68,13 @@ export default function HomePage() {
               {marqueeItems.map((bank, i) => (
                 <div
                   key={`${bank.id}-${i}`}
-                  className="flex items-center gap-3 bg-white/10 border border-white/15 rounded-2xl px-5 py-3 shrink-0 hover:bg-white/18 transition-colors"
+                  className="flex items-center bg-white/10 border border-white/15 rounded-2xl px-4 py-3 shrink-0 hover:bg-white/18 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 overflow-hidden p-1">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 overflow-hidden p-1.5">
                     <img
                       src={bank.logo}
                       alt={bank.name}
-                      className="w-10 h-10 object-contain"
+                      className="w-full h-full object-contain"
                       onError={e => {
                         const img = e.target as HTMLImageElement;
                         const parent = img.parentElement!;
@@ -84,7 +84,6 @@ export default function HomePage() {
                       }}
                     />
                   </div>
-                  <span className="text-base font-semibold text-white whitespace-nowrap">{bank.name}</span>
                 </div>
               ))}
             </div>
@@ -97,10 +96,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E2E8F0]">
             {[
-              { value: "4", label: "brokeri specializați" },
               { value: "11", label: "bănci partenere" },
               { value: "1.000+", label: "clienți mulțumiți" },
               { value: ">90%", label: "rată aprobare" },
+              { value: "100%", label: "gratuit" },
             ].map((stat, i) => (
               <div key={i} className="py-5 px-6 text-center">
                 <div className="text-2xl font-bold text-[#0C1A2E]">{stat.value}</div>
