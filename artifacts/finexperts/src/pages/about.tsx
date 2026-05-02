@@ -3,25 +3,32 @@ import { Briefcase, ShieldCheck, Award, Users } from "lucide-react";
 
 const team = [
   {
-    id: "andrei",
-    name: "Andrei Popescu",
+    id: "alexandra",
+    name: "Alexandra Achim",
     role: "Manager Franciză",
-    bio: "Coordonează rețeaua FinExperts și relațiile cu băncile partenere. 10+ ani în brokeraj credite.",
-    avatar: "AP",
+    bio: "Coordonează rețeaua FinExperts și relațiile cu băncile partenere. 10+ ani experiență bancară.",
+    avatar: "AA",
   },
   {
-    id: "ioana",
-    name: "Ioana Mihai",
-    role: "Consultant Senior Credite",
-    bio: "Expertă în credite de nevoi personale și soluții pentru PFA. Background în ING și BRD.",
-    avatar: "IM",
-  },
-  {
-    id: "cristian",
-    name: "Cristian Dumitrescu",
-    role: "Specialist Credite Imobiliare",
+    id: "cristina",
+    name: "Cristina Coman",
+    role: "Broker de Credite",
     bio: "Specializată în credite ipotecare și refinanțări. Experiență anterioară în BCR și Raiffeisen.",
-    avatar: "CD",
+    avatar: "CC",
+  },
+  {
+    id: "erji",
+    name: "Erji Ana-Maria",
+    role: "Broker de Credite",
+    bio: "Expertă în credite de nevoi personale și soluții pentru PFA. Background în ING și BRD.",
+    avatar: "EA",
+  },
+  {
+    id: "tudor",
+    name: "Tudor Mihai",
+    role: "Broker de Credite",
+    bio: "Focus pe credite cu garanții imobiliare și soluții complexe pentru antreprenori.",
+    avatar: "TM",
   },
 ];
 
