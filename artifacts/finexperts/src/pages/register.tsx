@@ -1,91 +1,100 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/lib/auth";
+import { CheckCircle } from "lucide-react";
 
 export default function RegisterPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useAuth();
   const [, setLocation] = useLocation();
-  const { toast } = useToast();
-  const [form, setForm] = useState({ nume: "", email: "", password: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Cont creat! Bine ai venit.", description: "Contul tău FinExperts a fost creat cu succes." });
+    login(email, password);
     setLocation("/cont");
   };
 
   return (
     <div className="min-h-screen bg-[#F7F4EC] flex items-center justify-center py-16 px-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-10">
-          <div className="flex justify-center mb-4">
-            <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="50" cy="50" rx="45" ry="35" fill="#2E7D5B"/>
-              <ellipse cx="50" cy="50" rx="35" ry="25" fill="#CDE29D"/>
-              <circle cx="50" cy="50" r="10" fill="#E8F1D2"/>
-              <circle cx="35" cy="45" r="2" fill="#4A3B32"/>
-              <circle cx="45" cy="35" r="2" fill="#4A3B32"/>
-              <circle cx="55" cy="35" r="2" fill="#4A3B32"/>
-              <circle cx="65" cy="45" r="2" fill="#4A3B32"/>
-              <circle cx="65" cy="55" r="2" fill="#4A3B32"/>
-              <circle cx="55" cy="65" r="2" fill="#4A3B32"/>
-              <circle cx="45" cy="65" r="2" fill="#4A3B32"/>
-              <circle cx="35" cy="55" r="2" fill="#4A3B32"/>
-            </svg>
-          </div>
-          <h1 className="text-2xl font-bold text-[#0A1A2E]">Creează cont FinExperts</h1>
-          <p className="text-[#5A6478] mt-2">Urmărește aplicările și ofertele tale</p>
+      <div className="w-full max-w-sm">
+        <div className="text-center mb-8">
+          <img
+            src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
+            alt="FinExperts"
+            className="h-10 mx-auto mb-5"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+          />
+          <h1 className="text-2xl font-bold text-[#0A1A2E]">Creează cont gratuit</h1>
+          <p className="text-sm text-[#5A6478] mt-1">Aplică credite și urmărește ofertele tale</p>
         </div>
 
-        <div className="bg-white border border-[#E5E3D9] rounded-xl p-8">
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="bg-white border border-[#E5E3D9] rounded-xl p-7 mb-4">
+          <div className="space-y-2 mb-5 pb-5 border-b border-[#E5E3D9]">
+            {[
+              "Urmărești starea aplicărilor tale",
+              "Acces rapid la toate asigurările",
+              "Consultanță gratuită de la broker",
+            ].map((text, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-[#2E7D5B] shrink-0" />
+                <span className="text-sm text-[#5A6478]">{text}</span>
+              </div>
+            ))}
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Label className="text-sm font-semibold text-[#0A1A2E] mb-2 block">Nume complet</Label>
-              <Input
-                data-testid="input-nume"
-                value={form.nume}
-                onChange={(e) => setForm(p => ({ ...p, nume: e.target.value }))}
+              <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">Nume complet</label>
+              <input
+                data-testid="input-name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Ion Popescu"
-                className="border-[#E5E3D9]"
                 required
+                className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] transition-colors"
               />
             </div>
             <div>
-              <Label className="text-sm font-semibold text-[#0A1A2E] mb-2 block">Email</Label>
-              <Input
+              <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">Email</label>
+              <input
                 data-testid="input-email"
                 type="email"
-                value={form.email}
-                onChange={(e) => setForm(p => ({ ...p, email: e.target.value }))}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="ion@exemplu.ro"
-                className="border-[#E5E3D9]"
                 required
+                className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] transition-colors"
               />
             </div>
             <div>
-              <Label className="text-sm font-semibold text-[#0A1A2E] mb-2 block">Parolă</Label>
-              <Input
+              <label className="block text-xs font-semibold text-[#0A1A2E] uppercase tracking-wider mb-1.5">Parolă</label>
+              <input
                 data-testid="input-password"
                 type="password"
-                value={form.password}
-                onChange={(e) => setForm(p => ({ ...p, password: e.target.value }))}
-                placeholder="Minim 8 caractere"
-                className="border-[#E5E3D9]"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Minim 6 caractere"
                 required
-                minLength={8}
+                minLength={6}
+                className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] transition-colors"
               />
             </div>
-            <Button type="submit" data-testid="btn-register" className="w-full bg-[#0A1A2E] hover:bg-[#132846] text-white font-bold h-12">
-              Creează cont
-            </Button>
+            <button
+              type="submit"
+              data-testid="btn-register"
+              className="w-full bg-[#0A1A2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors"
+            >
+              Creează cont gratuit
+            </button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-[#5A6478]">
+          <div className="mt-5 pt-5 border-t border-[#E5E3D9] text-center text-sm text-[#5A6478]">
             Ai deja cont?{" "}
-            <Link href="/login" className="text-[#0A1A2E] font-semibold hover:text-[#C6A667]">
-              Intră în cont
+            <Link href="/login" className="text-[#0A1A2E] font-semibold hover:text-[#C6A667] transition-colors">
+              Conectare
             </Link>
           </div>
         </div>

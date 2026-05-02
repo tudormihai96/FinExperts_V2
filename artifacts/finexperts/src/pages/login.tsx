@@ -1,12 +1,28 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
+import { useAuth } from "@/lib/auth";
+import { AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const [, setLocation] = useLocation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    const ok = login(email, password);
+    if (ok) {
+      if (email === "admin@finexperts.ro") {
+        setLocation("/admin");
+      } else {
+        setLocation("/cont");
+      }
+    } else {
+      setError("Email sau parolă incorectă. Încearcă din nou.");
+    }
   };
 
   return (
@@ -17,9 +33,7 @@ export default function LoginPage() {
             src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
             alt="FinExperts"
             className="h-10 mx-auto mb-5"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-            }}
+            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
           <h1 className="text-2xl font-bold text-[#0A1A2E]">Intră în contul tău</h1>
           <p className="text-sm text-[#5A6478] mt-1">Accesează aplicările și ofertele tale</p>
@@ -54,6 +68,14 @@ export default function LoginPage() {
                 className="w-full border border-[#E5E3D9] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0A1A2E] transition-colors"
               />
             </div>
+
+            {error && (
+              <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                {error}
+              </div>
+            )}
+
             <button
               type="submit"
               data-testid="btn-login"
@@ -68,6 +90,14 @@ export default function LoginPage() {
             <Link href="/register" className="text-[#0A1A2E] font-semibold hover:text-[#C6A667] transition-colors">
               Creează cont
             </Link>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-[#0A1A2E]/5 border border-[#E5E3D9] rounded-xl p-4">
+          <div className="text-xs font-semibold text-[#5A6478] uppercase tracking-wider mb-2">Acces Admin</div>
+          <div className="text-xs text-[#5A6478]">
+            Email: <span className="font-mono text-[#0A1A2E]">admin@finexperts.ro</span><br />
+            Parolă: <span className="font-mono text-[#0A1A2E]">admin123</span>
           </div>
         </div>
       </div>

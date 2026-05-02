@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { LogIn, Menu, X, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
+import { LogIn, Menu, X, Phone, Mail, Clock, Facebook, Instagram, User, Settings, LogOut } from "lucide-react";
+import { useAuth } from "@/lib/auth";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { user, isLoggedIn, isAdmin, logout } = useAuth();
 
   const navLinks = [
     { href: "/", label: "Acasă" },
@@ -20,6 +23,8 @@ export default function Navbar() {
     if (href === "/") return location === "/";
     return location.startsWith(href);
   };
+
+  const initials = user?.name?.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() || "U";
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -101,13 +106,48 @@ export default function Navbar() {
 
           {/* Right buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/login"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#0A1A2E] border border-[#E5E3D9] hover:border-[#0A1A2E] px-4 py-2 rounded-lg transition-colors"
-            >
-              <LogIn className="h-4 w-4" />
-              Conectare
-            </Link>
+            {isLoggedIn ? (
+              <div className="relative">
+                <button
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  className="flex items-center gap-2 border border-[#E5E3D9] hover:border-[#0A1A2E] px-3 py-2 rounded-lg transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-full bg-[#0A1A2E] flex items-center justify-center text-white text-[9px] font-bold">
+                    {initials}
+                  </div>
+                  <span className="text-sm font-medium text-[#0A1A2E]">{user?.name?.split(" ")[0]}</span>
+                  {isAdmin && <span className="text-[9px] font-bold text-[#C6A667] uppercase bg-[#C6A667]/15 px-1.5 py-0.5 rounded">Admin</span>}
+                </button>
+                {userMenuOpen && (
+                  <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-[#E5E3D9] rounded-xl shadow-lg py-1 z-50">
+                    {isAdmin && (
+                      <Link href="/admin" onClick={() => setUserMenuOpen(false)}>
+                        <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0A1A2E] hover:bg-[#F7F4EC] cursor-pointer">
+                          <Settings className="h-4 w-4 text-[#C6A667]" /> Panou admin
+                        </div>
+                      </Link>
+                    )}
+                    <Link href="/cont" onClick={() => setUserMenuOpen(false)}>
+                      <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0A1A2E] hover:bg-[#F7F4EC] cursor-pointer">
+                        <User className="h-4 w-4" /> Contul meu
+                      </div>
+                    </Link>
+                    <div className="border-t border-[#E5E3D9] my-1" />
+                    <button onClick={() => { logout(); setUserMenuOpen(false); }} className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 cursor-pointer">
+                      <LogOut className="h-4 w-4" /> Deconectare
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="flex items-center gap-1.5 text-sm font-medium text-[#0A1A2E] border border-[#E5E3D9] hover:border-[#0A1A2E] px-4 py-2 rounded-lg transition-colors"
+              >
+                <LogIn className="h-4 w-4" />
+                Conectare
+              </Link>
+            )}
             <Link
               href="/aplica"
               className="flex items-center text-sm font-semibold text-white bg-[#0A1A2E] hover:bg-[#132846] px-5 py-2 rounded-lg transition-colors"
@@ -144,18 +184,23 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="pt-3 flex gap-3">
-              <Link
-                href="/login"
-                className="flex-1 text-center text-sm font-medium text-[#0A1A2E] border border-[#E5E3D9] px-4 py-2 rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                Conectare
-              </Link>
-              <Link
-                href="/aplica"
-                className="flex-1 text-center text-sm font-semibold text-white bg-[#0A1A2E] px-4 py-2 rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
+              {isLoggedIn ? (
+                <>
+                  {isAdmin && (
+                    <Link href="/admin" className="flex-1 text-center text-sm font-medium text-[#C6A667] border border-[#C6A667] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+                      Admin
+                    </Link>
+                  )}
+                  <Link href="/cont" className="flex-1 text-center text-sm font-medium text-[#0A1A2E] border border-[#E5E3D9] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+                    Contul meu
+                  </Link>
+                </>
+              ) : (
+                <Link href="/login" className="flex-1 text-center text-sm font-medium text-[#0A1A2E] border border-[#E5E3D9] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
+                  Conectare
+                </Link>
+              )}
+              <Link href="/aplica" className="flex-1 text-center text-sm font-semibold text-white bg-[#0A1A2E] px-4 py-2 rounded-lg" onClick={() => setMobileOpen(false)}>
                 Aplică acum
               </Link>
             </div>
