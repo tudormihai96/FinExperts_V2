@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/lib/auth";
 import { useStore, Application, ApplicationNote } from "@/lib/store";
@@ -34,6 +34,7 @@ export default function BrokerPage() {
   const [noteText, setNoteText] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [search, setSearch] = useState("");
+  const brokerInfo = useMemo(() => BROKERS.find(b => b.id === user?.brokerId) || BROKERS[0], [user?.brokerId]);
 
   if (!isBroker) {
     return (
@@ -151,6 +152,27 @@ export default function BrokerPage() {
         {/* ── DASHBOARD ── */}
         {activeTab === "dashboard" && (
           <div>
+            <div className="bg-[#0B2E2E] rounded-2xl p-6 mb-6 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-2">Dashboard broker</div>
+                <h1 className="text-3xl font-bold leading-tight">{brokerInfo.name}</h1>
+                <p className="text-white/70 mt-2">Bun venit, {user?.name}. Aici vezi portofoliul tău, clienții și activitatea curentă.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-3 min-w-[280px]">
+                {[
+                  { label: "Dosare", value: myApps.length },
+                  { label: "Aprobate", value: myApps.filter(a => a.status === "approved").length },
+                  { label: "În lucru", value: myApps.filter(a => ["pending", "in_review", "contacted"].includes(a.status)).length },
+                  { label: "Clienți", value: new Set(myApps.map(a => a.email)).size },
+                ].map(item => (
+                  <div key={item.label} className="rounded-xl bg-white/10 border border-white/10 p-4">
+                    <div className="text-2xl font-bold">{item.value}</div>
+                    <div className="text-xs uppercase tracking-wider text-white/60 mt-1">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h1 className="text-2xl font-bold text-[#0B2E2E]">Bun venit, {user?.name?.split(" ")[0]}!</h1>

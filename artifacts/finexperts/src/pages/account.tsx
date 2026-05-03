@@ -637,10 +637,21 @@ export default function AccountPage() {
                         {STATUS_LABELS[app.status]}
                       </span>
                     </div>
-                    <div className="grid grid-cols-3 gap-3 mb-4">
-                      <div><div className="text-xs text-[#64748B] mb-0.5">Sumă</div><div className="text-sm font-semibold text-[#0B2E2E]">{app.amount.toLocaleString("ro-RO")} RON</div></div>
-                      <div><div className="text-xs text-[#64748B] mb-0.5">Bancă</div><div className="text-sm text-[#0B2E2E]">{app.bank || "—"}</div></div>
-                      {app.message && <div><div className="text-xs text-[#64748B] mb-0.5">Notă</div><div className="text-sm text-[#64748B] truncate">{app.message}</div></div>}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                      <div className="rounded-xl bg-[#F5F7FA] p-3">
+                        <div className="text-xs text-[#64748B] mb-0.5">Sumă</div>
+                        <div className="text-sm font-semibold text-[#0B2E2E]">{app.amount.toLocaleString("ro-RO")} RON</div>
+                      </div>
+                      <div className="rounded-xl bg-[#F5F7FA] p-3">
+                        <div className="text-xs text-[#64748B] mb-0.5">Bancă</div>
+                        <div className="text-sm text-[#0B2E2E]">{app.bank || "—"}</div>
+                      </div>
+                      {app.message && (
+                        <div className="sm:col-span-2 rounded-xl bg-[#F5F7FA] p-3">
+                          <div className="text-xs text-[#64748B] mb-0.5">Notă</div>
+                          <div className="text-sm text-[#64748B]">{app.message}</div>
+                        </div>
+                      )}
                     </div>
                     <div className="border-t border-[#E2E8F0] pt-4">
                       <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mb-2">Progress aplicare</div>
