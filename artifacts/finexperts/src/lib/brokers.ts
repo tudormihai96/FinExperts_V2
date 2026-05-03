@@ -38,7 +38,7 @@ export const BROKERS: Broker[] = [
   },
   {
     id: "tudor",
-    name: "Tudor Mihai",
+    name: "Mihai Tudor",
     role: "Broker de Credite",
     avatar: "TM",
     color: "#005BAA",

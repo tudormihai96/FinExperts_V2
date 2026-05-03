@@ -49,7 +49,7 @@ export const BROKER_ACCOUNTS: Record<string, BrokerAccount> = {
   "alexandra.achim@kiwifinance.ro": { name: "Alexandra Achim", brokerId: "alexandra-achim", password: "Kiwi#2026!" },
   "cristina.coman@kiwifinance.ro":  { name: "Cristina Coman",  brokerId: "cristina-coman",  password: "Kiwi#2026!" },
   "ana-maria.gheorghe@kiwifinance.ro": { name: "Ana-Maria Erji", brokerId: "ana-maria-erji", password: "Kiwi#2026!" },
-  "mihai.tudor@kiwifinance.ro":     { name: "Tudor Mihai",     brokerId: "tudor-mihai",     password: "Kiwi#2026!" },
+  "mihai.tudor@kiwifinance.ro":     { name: "Mihai Tudor",     brokerId: "tudor-mihai",     password: "Kiwi#2026!" },
 };
 
 export function setBrokerAccounts(accounts: Record<string, BrokerAccount>) {
