@@ -428,7 +428,7 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
   );
 }
 
-// ─── Aplicări ────────────────────────────────────────────────────────────────
+// ─── Aplicări ─────────────────────────────────────────────────────────────────
 function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) {
   const [query, setQuery] = useState("");
   const filtered = applications.filter(app =>
@@ -493,7 +493,7 @@ function ApplicationsTab({ applications, setApplications, updateApplication }: {
   );
 }
 
-// ─── Ghiduri ────────────────────────────────────────────────────────────────
+// ─── Ghiduri ─────────────────────────────────────────────────────────────────
 function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) {
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
@@ -530,7 +530,7 @@ function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[];
   );
 }
 
-// ─── Bănci ────────────────────────────────────────────────────────────────
+// ─── Bănci ───────────────────────────────────────────────────────────────────
 function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) {
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
@@ -544,7 +544,7 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
   );
 }
 
-// ─── Utilizatori / Brokeri ──────────────────────────────────────────────────
+// ─── Utilizatori / Brokeri ───────────────────────────────────────────────────
 function UsersTab({ applications }: { applications: Application[] }) {
   const users = applications.map(app => ({ email: app.email, name: app.name, source: "applications" }));
   return (
