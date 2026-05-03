@@ -14,7 +14,7 @@ export default function Footer() {
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[72px] w-auto mb-3"
+              className="h-[80px] w-auto mb-3"
               style={{ filter: "brightness(0) saturate(100%) invert(42%) sepia(8%) saturate(700%) hue-rotate(173deg) brightness(112%) contrast(90%)" }}
             />
             <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
