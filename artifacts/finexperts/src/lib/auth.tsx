@@ -79,6 +79,13 @@ export function checkEmailExists(email: string): "broker" | "admin" | "client" |
   if (emailNorm === "admin@finexperts.ro") return "admin";
   const accounts = getBrokerAccounts();
   if (accounts[emailNorm]) return "broker";
+  const savedUser = localStorage.getItem("finexperts_user");
+  if (savedUser) {
+    try {
+      const u: AuthUser = JSON.parse(savedUser);
+      if (u.email.trim().toLowerCase() === emailNorm) return "client";
+    } catch {}
+  }
   return null;
 }
 
