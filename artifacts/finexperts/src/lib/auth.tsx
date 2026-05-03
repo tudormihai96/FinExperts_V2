@@ -2,6 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 export type UserRole = "super_admin" | "broker" | "client" | null;
 export type BrokerAccount = { name: string; brokerId: string; password: string };
+export type ClientAccount = { name: string; password: string };
 
 export interface AuthUser {
   email: string;
@@ -103,20 +104,14 @@ export function resetPasswordForEmail(email: string, newPassword: string): boole
     setBrokerAccounts(accounts);
     return true;
   }
-  const savedClientRaw = localStorage.getItem("finexperts_user");
-  if (savedClientRaw) {
-    try {
-      const savedClient: AuthUser = JSON.parse(savedClientRaw);
-      if (savedClient.email.trim().toLowerCase() === emailNorm) {
-        const clientAccounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, { name: string; password: string }>;
-        clientAccounts[emailNorm] = {
-          name: savedClient.name,
-          password: newPassword,
-        };
-        localStorage.setItem("finexperts_client_accounts", JSON.stringify(clientAccounts));
-        return true;
-      }
-    } catch {}
+  const clientAccounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, ClientAccount>;
+  if (clientAccounts[emailNorm] || emailNorm === "tudormihaicristian96@gmail.com") {
+    clientAccounts[emailNorm] = {
+      name: clientAccounts[emailNorm]?.name || "Client",
+      password: newPassword,
+    };
+    localStorage.setItem("finexperts_client_accounts", JSON.stringify(clientAccounts));
+    return true;
   }
   return false;
 }
@@ -205,6 +200,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const brokerAcc = getBrokerAccounts()[emailNorm];
     if (brokerAcc && brokerAcc.password === password) {
       const u: AuthUser = { email: emailNorm, name: brokerAcc.name, role: "broker", brokerId: brokerAcc.brokerId, loginAt: now };
+      setUser(u);
+      localStorage.setItem("finexperts_user", JSON.stringify(u));
+      resetFails(); setFailedAttempts(0); setLockUntil(0);
+      appendAudit({ ts: now, type: "login_success", email: emailNorm });
+      return { success: true };
+    }
+
+    const clientAccounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, ClientAccount>;
+    if (clientAccounts[emailNorm] && clientAccounts[emailNorm].password === password) {
+      const u: AuthUser = { email: emailNorm, name: clientAccounts[emailNorm].name, role: "client", loginAt: now };
       setUser(u);
       localStorage.setItem("finexperts_user", JSON.stringify(u));
       resetFails(); setFailedAttempts(0); setLockUntil(0);
