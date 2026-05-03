@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "iRkKrzjY1113Lg6WMDfl3"
+uri = "file://artifacts/finexperts/public/favicon.png"
+type = "image"
+title = "FinExperts favicon"
