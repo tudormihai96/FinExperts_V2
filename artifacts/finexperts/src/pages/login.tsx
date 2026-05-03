@@ -114,11 +114,18 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-5 pt-5 border-t border-[#E2E8F0] text-center text-sm text-[#64748B]">
-            Nu ai cont?{" "}
-            <Link href="/register" className="text-[#0B2E2E] font-semibold hover:text-[#C49A20] transition-colors">
-              Creează cont
-            </Link>
+          <div className="mt-5 pt-5 border-t border-[#E2E8F0] text-center space-y-2">
+            <div className="text-sm text-[#64748B]">
+              <Link href="/recuperare-parola" className="text-[#0B2E2E] font-semibold hover:text-[#C49A20] transition-colors">
+                Ai uitat parola?
+              </Link>
+            </div>
+            <div className="text-sm text-[#64748B]">
+              Nu ai cont?{" "}
+              <Link href="/register" className="text-[#0B2E2E] font-semibold hover:text-[#C49A20] transition-colors">
+                Creează cont
+              </Link>
+            </div>
           </div>
         </div>
 

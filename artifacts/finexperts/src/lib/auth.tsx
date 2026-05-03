@@ -72,6 +72,33 @@ export function getBrokerAccountsList(): Array<{ email: string; account: BrokerA
   return Object.entries(getBrokerAccounts()).map(([email, account]) => ({ email, account }));
 }
 
+const ADMIN_OVERRIDE_KEY = "finexperts_admin_password";
+
+export function checkEmailExists(email: string): "broker" | "admin" | "client" | null {
+  const emailNorm = email.trim().toLowerCase();
+  if (emailNorm === "admin@finexperts.ro") return "admin";
+  const accounts = getBrokerAccounts();
+  if (accounts[emailNorm]) return "broker";
+  return null;
+}
+
+export function resetPasswordForEmail(email: string, newPassword: string): boolean {
+  const emailNorm = email.trim().toLowerCase();
+  if (emailNorm === "admin@finexperts.ro") {
+    try {
+      localStorage.setItem(ADMIN_OVERRIDE_KEY, newPassword);
+      return true;
+    } catch { return false; }
+  }
+  const accounts = getBrokerAccounts();
+  if (accounts[emailNorm]) {
+    accounts[emailNorm] = { ...accounts[emailNorm], password: newPassword };
+    setBrokerAccounts(accounts);
+    return true;
+  }
+  return false;
+}
+
 const SESSION_MS = 8 * 60 * 60 * 1000;
 const MAX_FAILS = 5;
 const LOCK_MS = 15 * 60 * 1000;
@@ -141,7 +168,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const emailNorm = email.trim().toLowerCase();
 
-    const isSuper = SUPER_ADMIN_CREDENTIALS.some(([e, p]) => e === emailNorm && p === password);
+    const adminOverride = localStorage.getItem("finexperts_admin_password");
+    const isSuper = (adminOverride && emailNorm === "admin@finexperts.ro" && password === adminOverride)
+      || SUPER_ADMIN_CREDENTIALS.some(([e, p]) => e === emailNorm && p === password);
     if (isSuper) {
       const u: AuthUser = { email: emailNorm, name: "Administrator", role: "super_admin", loginAt: now };
       setUser(u);

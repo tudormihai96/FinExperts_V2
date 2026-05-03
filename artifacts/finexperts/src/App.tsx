@@ -25,6 +25,7 @@ import BrokerPage from "@/pages/broker";
 import TermeniPage from "@/pages/termeni";
 import ConfidentialitatePage from "@/pages/confidentialitate";
 import CookiesPage from "@/pages/cookies";
+import ForgotPasswordPage from "@/pages/forgot-password";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ function Router() {
       <Route path="/termeni" component={TermeniPage} />
       <Route path="/confidentialitate" component={ConfidentialitatePage} />
       <Route path="/cookies" component={CookiesPage} />
+      <Route path="/recuperare-parola" component={ForgotPasswordPage} />
       <Route component={NotFound} />
     </Switch>
   );
