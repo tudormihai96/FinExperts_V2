@@ -35,6 +35,7 @@ export default function BrokerPage() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [search, setSearch] = useState("");
   const brokerInfo = useMemo(() => getBroker(user?.brokerId || "tudor-mihai"), [user?.brokerId]);
+  const displayName = user?.name || brokerInfo.name;
 
   if (!isBroker) {
     return (
@@ -113,7 +114,7 @@ export default function BrokerPage() {
             <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
               style={{ backgroundColor: brokerInfo.color }}>{brokerInfo.avatar}</div>
             <div className="min-w-0">
-              <div className="text-sm font-semibold text-white truncate">{brokerInfo.name}</div>
+              <div className="text-sm font-semibold text-white truncate">{displayName}</div>
               <div className="text-[10px] text-[#C49A20] font-semibold">Broker activ</div>
             </div>
           </div>
@@ -154,8 +155,8 @@ export default function BrokerPage() {
             <div className="bg-[#0B2E2E] rounded-2xl p-6 mb-6 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="max-w-2xl">
                 <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-2">Dashboard broker</div>
-                <h1 className="text-3xl font-bold leading-tight">{brokerInfo.name}</h1>
-                <p className="text-white/70 mt-2">Bun venit, {user?.name}. Aici vezi portofoliul tău, clienții și activitatea curentă.</p>
+                <h1 className="text-3xl font-bold leading-tight">{displayName}</h1>
+                <p className="text-white/70 mt-2">Bun venit, {displayName}. Aici vezi portofoliul tău, clienții și activitatea curentă.</p>
               </div>
               <div className="grid grid-cols-2 gap-3 min-w-[280px]">
                 {[
