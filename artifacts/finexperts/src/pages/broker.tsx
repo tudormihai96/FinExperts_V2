@@ -51,7 +51,6 @@ export default function BrokerPage() {
     );
   }
 
-  const brokerInfo = BROKERS.find(b => b.id === user?.brokerId);
   const myApps = applications.filter(a => a.brokerId === user?.brokerId);
 
   const stats = {
