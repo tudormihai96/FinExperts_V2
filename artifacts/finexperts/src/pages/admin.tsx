@@ -533,7 +533,9 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
 }
 
 function UsersTab({ applications }: { applications: Application[] }) {
-  const users = applications.map(app => ({ email: app.email, name: app.name, source: "applications" }));
+  const users = applications
+    .filter((app, index, arr) => arr.findIndex(a => a.email === app.email) === index)
+    .map(app => ({ email: app.email, name: app.name, source: "applications" }));
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
       <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Utilizatori</h2>
