@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { Link, useLocation } from "wouter";
-import { checkEmailExists, resetPasswordForEmail } from "@/lib/auth";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useRoute } from "wouter";
+import { checkEmailExists, consumePasswordResetToken, createPasswordResetRequest, getPasswordResetEmail } from "@/lib/auth";
 import { AlertCircle, ArrowLeft, CheckCircle, Eye, EyeOff, KeyRound, Lock, Mail } from "lucide-react";
-
-type Step = "email" | "reset" | "done";
 
 export default function ForgotPasswordPage() {
   const [, setLocation] = useLocation();
-  const [step, setStep] = useState<Step>("email");
+  const [match, params] = useRoute("/recuperare-parola/:token");
+  const token = match ? params?.token ?? "" : "";
+  const [step, setStep] = useState<"email" | "reset" | "done">(token ? "reset" : "email");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -15,6 +15,18 @@ export default function ForgotPasswordPage() {
   const [showNew, setShowNew] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [resetError, setResetError] = useState("");
+
+  useEffect(() => {
+    if (!token) return;
+    const requestEmail = getPasswordResetEmail(token);
+    if (!requestEmail) {
+      setResetError("Linkul de reset este invalid sau a expirat.");
+      setStep("email");
+      return;
+    }
+    setEmail(requestEmail);
+    setStep("reset");
+  }, [token]);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +37,12 @@ export default function ForgotPasswordPage() {
       setEmailError("Nu am găsit niciun cont asociat acestui email.");
       return;
     }
-    setStep("reset");
+    const resetToken = createPasswordResetRequest(emailNorm);
+    if (!resetToken) {
+      setEmailError("Nu am putut genera linkul de reset.");
+      return;
+    }
+    setLocation(`/recuperare-parola/${resetToken}`);
   };
 
   const handleResetSubmit = (e: React.FormEvent) => {
@@ -39,7 +56,11 @@ export default function ForgotPasswordPage() {
       setResetError("Parolele nu coincid.");
       return;
     }
-    const ok = resetPasswordForEmail(email.trim().toLowerCase(), newPassword);
+    if (!token) {
+      setResetError("Lipsește linkul de reset.");
+      return;
+    }
+    const ok = consumePasswordResetToken(token, newPassword);
     if (!ok) {
       setResetError("A apărut o eroare. Reîncearcă.");
       return;

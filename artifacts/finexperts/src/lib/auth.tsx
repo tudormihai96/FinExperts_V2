@@ -3,6 +3,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 export type UserRole = "super_admin" | "broker" | "client" | null;
 export type BrokerAccount = { name: string; brokerId: string; password: string };
 export type ClientAccount = { name: string; password: string };
+type PasswordResetRequest = { email: string; expiresAt: number };
 
 export interface AuthUser {
   email: string;
@@ -74,27 +75,49 @@ export function getBrokerAccountsList(): Array<{ email: string; account: BrokerA
 }
 
 const ADMIN_OVERRIDE_KEY = "finexperts_admin_password";
+const RESET_PREFIX = "finexperts_reset_";
 
 export function checkEmailExists(email: string): "broker" | "admin" | "client" | null {
   const emailNorm = email.trim().toLowerCase();
   if (emailNorm === "admin@finexperts.ro") return "admin";
-  if (emailNorm === "tudormihaicristian96@gmail.com") return "client";
   if (BROKER_ACCOUNTS[emailNorm] || getBrokerAccounts()[emailNorm]) return "broker";
-  const savedUser = localStorage.getItem("finexperts_user");
-  if (savedUser) {
-    try {
-      const u: AuthUser = JSON.parse(savedUser);
-      if (u.email.trim().toLowerCase() === emailNorm) return "client";
-    } catch {}
-  }
+  const clientAccounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, ClientAccount>;
+  if (clientAccounts[emailNorm] || emailNorm === "tudormihaicristian96@gmail.com") return "client";
   return null;
 }
 
-export function resetPasswordForEmail(email: string, newPassword: string): boolean {
+export function createPasswordResetRequest(email: string): string | null {
+  const emailNorm = email.trim().toLowerCase();
+  if (!checkEmailExists(emailNorm)) return null;
+  const token = crypto.randomUUID();
+  const request: PasswordResetRequest = { email: emailNorm, expiresAt: Date.now() + 15 * 60 * 1000 };
+  localStorage.setItem(`${RESET_PREFIX}${token}`, JSON.stringify(request));
+  return token;
+}
+
+export function getPasswordResetEmail(token: string): string | null {
+  const raw = localStorage.getItem(`${RESET_PREFIX}${token}`);
+  if (!raw) return null;
+  try {
+    const request: PasswordResetRequest = JSON.parse(raw);
+    if (Date.now() > request.expiresAt) {
+      localStorage.removeItem(`${RESET_PREFIX}${token}`);
+      return null;
+    }
+    return request.email;
+  } catch {
+    return null;
+  }
+}
+
+export function consumePasswordResetToken(token: string, newPassword: string): boolean {
+  const email = getPasswordResetEmail(token);
+  if (!email) return false;
   const emailNorm = email.trim().toLowerCase();
   if (emailNorm === "admin@finexperts.ro") {
     try {
       localStorage.setItem(ADMIN_OVERRIDE_KEY, newPassword);
+      localStorage.removeItem(`${RESET_PREFIX}${token}`);
       return true;
     } catch { return false; }
   }
@@ -102,6 +125,7 @@ export function resetPasswordForEmail(email: string, newPassword: string): boole
   if (accounts[emailNorm]) {
     accounts[emailNorm] = { ...accounts[emailNorm], password: newPassword };
     setBrokerAccounts(accounts);
+    localStorage.removeItem(`${RESET_PREFIX}${token}`);
     return true;
   }
   const clientAccounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, ClientAccount>;
@@ -111,6 +135,7 @@ export function resetPasswordForEmail(email: string, newPassword: string): boole
       password: newPassword,
     };
     localStorage.setItem("finexperts_client_accounts", JSON.stringify(clientAccounts));
+    localStorage.removeItem(`${RESET_PREFIX}${token}`);
     return true;
   }
   return false;
