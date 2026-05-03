@@ -103,21 +103,17 @@ export function resetPasswordForEmail(email: string, newPassword: string): boole
     setBrokerAccounts(accounts);
     return true;
   }
-  const savedUserRaw = localStorage.getItem("finexperts_user");
-  if (savedUserRaw) {
+  const savedClientRaw = localStorage.getItem("finexperts_user");
+  if (savedClientRaw) {
     try {
-      const savedUser: AuthUser = JSON.parse(savedUserRaw);
-      if (savedUser.email.trim().toLowerCase() === emailNorm) {
-        const updatedUser = { ...savedUser, loginAt: Date.now() };
-        localStorage.setItem("finexperts_user", JSON.stringify(updatedUser));
-        setBrokerAccounts({
-          ...getBrokerAccounts(),
-          [emailNorm]: {
-            name: savedUser.name,
-            brokerId: savedUser.brokerId || emailNorm.split("@")[0].replace(/[^a-z0-9]+/g, "-"),
-            password: newPassword,
-          },
-        });
+      const savedClient: AuthUser = JSON.parse(savedClientRaw);
+      if (savedClient.email.trim().toLowerCase() === emailNorm) {
+        const clientAccounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, { name: string; password: string }>;
+        clientAccounts[emailNorm] = {
+          name: savedClient.name,
+          password: newPassword,
+        };
+        localStorage.setItem("finexperts_client_accounts", JSON.stringify(clientAccounts));
         return true;
       }
     } catch {}
