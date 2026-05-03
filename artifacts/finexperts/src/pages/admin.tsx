@@ -329,7 +329,7 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
       <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Statistici</h2>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{applications.length}</div><div className="text-xs text-[#64748B]">Aplicări totale</div></div>
         <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{pending}</div><div className="text-xs text-[#64748B]">În așteptare</div></div>
         <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{approved}</div><div className="text-xs text-[#64748B]">Aprobate</div></div>
@@ -360,18 +360,91 @@ function ApplicationsTab({ applications, updateApplication }: { applications: Ap
   );
 }
 function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6"><h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Ghiduri</h2><div className="text-sm text-[#64748B]">{guides.length} articole publicate</div></div>;
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Ghiduri</h2>
+      <div className="text-sm text-[#64748B] mb-4">{guides.length} articole publicate</div>
+      <div className="space-y-2">
+        {guides.slice(0, 4).map(g => (
+          <div key={g.slug} className="border border-[#E2E8F0] rounded-lg p-3">
+            <div className="font-semibold text-[#0B2E2E] text-sm">{g.title}</div>
+            <div className="text-xs text-[#64748B]">{g.category} · {g.readTime}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6"><h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Asigurări</h2><div className="text-sm text-[#64748B]">{requests.length} cereri</div></div>;
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Asigurări</h2>
+      <div className="text-sm text-[#64748B] mb-4">{requests.length} cereri</div>
+      <div className="space-y-2">
+        {requests.slice(0, 4).map(r => (
+          <div key={r.id} className="border border-[#E2E8F0] rounded-lg p-3 flex items-center justify-between">
+            <div>
+              <div className="font-semibold text-[#0B2E2E] text-sm">{r.name}</div>
+              <div className="text-xs text-[#64748B]">{r.type}</div>
+            </div>
+            <div className="text-xs text-[#64748B]">{r.status}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6"><h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Bănci</h2><div className="text-sm text-[#64748B]">{banks.length} bănci configurate</div></div>;
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Bănci</h2>
+      <div className="text-sm text-[#64748B] mb-4">{banks.length} bănci configurate</div>
+      <div className="grid grid-cols-2 gap-2">
+        {banks.slice(0, 6).map((bank: any) => (
+          <div key={bank.name} className="border border-[#E2E8F0] rounded-lg p-3 text-sm text-[#0B2E2E]">{bank.name}</div>
+        ))}
+      </div>
+    </div>
+  );
 }
 function BrokeriTab({ applications }: { applications: Application[] }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6"><h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Brokeri</h2><div className="text-sm text-[#64748B]">{applications.filter(a => a.brokerId).length} aplicări asignate</div></div>;
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Brokeri</h2>
+      <div className="text-sm text-[#64748B] mb-4">{applications.filter(a => a.brokerId).length} aplicări asignate</div>
+      <div className="space-y-2">
+        {applications.filter(a => a.brokerId).slice(0, 4).map(a => (
+          <div key={a.id} className="border border-[#E2E8F0] rounded-lg p-3">
+            <div className="font-semibold text-[#0B2E2E] text-sm">{a.name}</div>
+            <div className="text-xs text-[#64748B]">{a.brokerId}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6"><h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Conținut</h2><div className="text-sm text-[#64748B]">Setări site active</div></div>;
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Conținut</h2>
+      <div className="text-sm text-[#64748B] mb-4">Setări site active</div>
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between border border-[#E2E8F0] rounded-lg p-3"><span>IRCC</span><span className="font-semibold">{settings.irccValue}</span></div>
+        <div className="flex justify-between border border-[#E2E8F0] rounded-lg p-3"><span>Anunț activ</span><span className="font-semibold">{settings.announcementActive ? "Da" : "Nu"}</span></div>
+        <div className="flex justify-between border border-[#E2E8F0] rounded-lg p-3"><span>Înregistrări noi</span><span className="font-semibold">{settings.allowNewRegistrations ? "Permise" : "Oprite"}</span></div>
+      </div>
+    </div>
+  );
 }
-function SecurityTab() { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6"><h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Securitate</h2><div className="text-sm text-[#64748B]">Controale de acces</div></div>; }
+function SecurityTab() {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-2">Securitate</h2>
+      <div className="text-sm text-[#64748B] mb-4">Controale de acces</div>
+      <div className="space-y-2 text-sm">
+        <div className="border border-[#E2E8F0] rounded-lg p-3">Autentificare admin activă</div>
+        <div className="border border-[#E2E8F0] rounded-lg p-3">Protecție cont super-admin</div>
+      </div>
+    </div>
+  );
+}
