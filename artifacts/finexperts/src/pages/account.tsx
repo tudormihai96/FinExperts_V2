@@ -1125,6 +1125,25 @@ export default function AccountPage() {
                         />
                       </div>
                     ))}
+                    <button
+                      onClick={() => {
+                        setPasswordError("");
+                        if (!passwordForm.next || passwordForm.next.length < 6) {
+                          setPasswordError("Noua parolă trebuie să aibă minimum 6 caractere.");
+                          return;
+                        }
+                        if (passwordForm.next !== passwordForm.confirm) {
+                          setPasswordError("Parolele nu coincid.");
+                          return;
+                        }
+                        setPasswordSaved(true);
+                        setPasswordForm({ current: "", next: "", confirm: "" });
+                        setTimeout(() => setPasswordSaved(false), 3000);
+                      }}
+                      className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2"
+                    >
+                      <Check className="h-4 w-4" /> Actualizează parola
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1188,27 +1207,6 @@ export default function AccountPage() {
               </div>
             </div>
 
-            <div className="mt-5">
-              <button
-                onClick={() => {
-                  setPasswordError("");
-                  if (!passwordForm.next || passwordForm.next.length < 6) {
-                    setPasswordError("Noua parolă trebuie să aibă minimum 6 caractere.");
-                    return;
-                  }
-                  if (passwordForm.next !== passwordForm.confirm) {
-                    setPasswordError("Parolele nu coincid.");
-                    return;
-                  }
-                  setPasswordSaved(true);
-                  setPasswordForm({ current: "", next: "", confirm: "" });
-                  setTimeout(() => setPasswordSaved(false), 3000);
-                }}
-                className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2"
-              >
-                <Check className="h-4 w-4" /> Actualizează parola
-              </button>
-            </div>
           </div>
         )}
       </div>
