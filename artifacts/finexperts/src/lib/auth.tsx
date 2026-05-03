@@ -103,6 +103,17 @@ export function resetPasswordForEmail(email: string, newPassword: string): boole
     setBrokerAccounts(accounts);
     return true;
   }
+  const savedUserRaw = localStorage.getItem("finexperts_user");
+  if (savedUserRaw) {
+    try {
+      const savedUser: AuthUser = JSON.parse(savedUserRaw);
+      if (savedUser.email.trim().toLowerCase() === emailNorm) {
+        const updatedUser = { ...savedUser, loginAt: Date.now() };
+        localStorage.setItem("finexperts_user", JSON.stringify(updatedUser));
+        return true;
+      }
+    } catch {}
+  }
   return false;
 }
 
