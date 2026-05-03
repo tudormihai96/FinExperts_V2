@@ -52,6 +52,7 @@ function Router() {
       <Route path="/confidentialitate" component={ConfidentialitatePage} />
       <Route path="/cookies" component={CookiesPage} />
       <Route path="/recuperare-parola" component={ForgotPasswordPage} />
+      <Route path="/recuperare-parola/:token" component={ForgotPasswordPage} />
       <Route component={NotFound} />
     </Switch>
   );

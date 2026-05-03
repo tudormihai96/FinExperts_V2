@@ -42,7 +42,7 @@ export default function ForgotPasswordPage() {
       setEmailError("Nu am putut genera linkul de reset.");
       return;
     }
-    setLocation(`/recuperare-parola/${resetToken}`);
+    setLocation(`recuperare-parola/${resetToken}`);
   };
 
   const handleResetSubmit = (e: React.FormEvent) => {
