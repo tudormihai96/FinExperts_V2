@@ -77,8 +77,7 @@ const ADMIN_OVERRIDE_KEY = "finexperts_admin_password";
 export function checkEmailExists(email: string): "broker" | "admin" | "client" | null {
   const emailNorm = email.trim().toLowerCase();
   if (emailNorm === "admin@finexperts.ro") return "admin";
-  const accounts = getBrokerAccounts();
-  if (accounts[emailNorm]) return "broker";
+  if (BROKER_ACCOUNTS[emailNorm] || getBrokerAccounts()[emailNorm]) return "broker";
   const savedUser = localStorage.getItem("finexperts_user");
   if (savedUser) {
     try {
