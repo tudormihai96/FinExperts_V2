@@ -323,53 +323,11 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   closed: { label: "Închis", color: "bg-gray-100 text-gray-600" },
 };
 
-function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) {
-  const byStatus = applications.reduce<Record<string, number>>((acc, app) => ((acc[app.status] = (acc[app.status] || 0) + 1), acc), {});
-  return (
-    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 space-y-4">
-      <h2 className="text-xl font-bold text-[#0B2E2E]">Statistici</h2>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <StatCard label="Total aplicări" value={applications.length} />
-        <StatCard label="În așteptare" value={byStatus.pending || 0} />
-        <StatCard label="Aprobate" value={byStatus.approved || 0} />
-        <StatCard label="Cereri asigurări" value={insuranceRequests.length} />
-      </div>
-    </div>
-  );
-}
-function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) {
-  return (
-    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 space-y-4">
-      <h2 className="text-xl font-bold text-[#0B2E2E]">Aplicări</h2>
-      {applications.slice(0, 6).map(app => (
-        <div key={app.id} className="border border-[#E2E8F0] rounded-lg p-4 flex items-center justify-between gap-3">
-          <div>
-            <div className="font-semibold text-[#0B2E2E]">{app.name}</div>
-            <div className="text-sm text-[#64748B]">{app.email} · {app.amount.toLocaleString("ro-RO")} RON</div>
-          </div>
-          <div className="flex gap-2">
-            <button onClick={() => updateApplication(app.id, { status: "approved" })} className="px-3 py-2 rounded-lg bg-green-50 text-green-700 text-sm font-semibold">Aprobă</button>
-            <button onClick={() => updateApplication(app.id, { status: "rejected" })} className="px-3 py-2 rounded-lg bg-red-50 text-red-700 text-sm font-semibold">Respinge</button>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Ghiduri: {guides.length}</div>;
-}
-function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Asigurări: {requests.length}</div>;
-}
-function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Bănci: {banks.length}</div>;
-}
-function BrokeriTab({ applications }: { applications: Application[] }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Brokeri: {applications.filter(a => a.brokerId).length}</div>;
-}
-function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) {
-  return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Conținut</div>;
-}
+function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Statistici</div>; }
+function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Aplicări</div>; }
+function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Ghiduri</div>; }
+function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Asigurări</div>; }
+function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Bănci</div>; }
+function BrokeriTab({ applications }: { applications: Application[] }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Brokeri</div>; }
+function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Conținut</div>; }
 function SecurityTab() { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Securitate</div>; }
-function StatCard({ label, value }: { label: string; value: number }) { return <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{value}</div><div className="text-xs text-[#64748B]">{label}</div></div>; }
