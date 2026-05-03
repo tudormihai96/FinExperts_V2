@@ -14,7 +14,7 @@ export default function Footer() {
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[112px] w-auto drop-shadow-sm mb-3"
+              className="h-[72px] w-auto grayscale brightness-0 mb-3"
             />
             <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
               Broker de credite autorizat, partener oficial KIWI Finance. Comparăm și negociem în locul tău — 100% gratuit.
