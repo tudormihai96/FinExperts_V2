@@ -242,20 +242,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return { success: true };
     }
 
-    if (emailNorm && password.length >= 6) {
-      const clientUser: AuthUser = {
-        email: emailNorm,
-        name: emailNorm.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, c => c.toUpperCase()),
-        role: "client",
-        loginAt: now,
-      };
-      setUser(clientUser);
-      localStorage.setItem("finexperts_user", JSON.stringify(clientUser));
-      resetFails(); setFailedAttempts(0); setLockUntil(0);
-      appendAudit({ ts: now, type: "login_success", email: emailNorm });
-      return { success: true };
-    }
-
     incFail(emailNorm);
     const newFails = getFails();
     setFailedAttempts(newFails);

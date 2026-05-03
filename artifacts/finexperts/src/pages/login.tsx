@@ -18,6 +18,10 @@ export default function LoginPage() {
     if (result.success) {
       const emailNorm = email.trim().toLowerCase();
       if (emailNorm === "admin@finexperts.ro") {
+        localStorage.removeItem("finexperts_user");
+        localStorage.removeItem("finexperts_fails");
+        localStorage.removeItem("finexperts_lockuntil");
+        localStorage.setItem("finexperts_user", JSON.stringify({ email: emailNorm, name: "Administrator", role: "super_admin", loginAt: Date.now() }));
         setLocation("/admin");
       } else if (BROKER_ACCOUNTS[emailNorm]) {
         const accounts = getBrokerAccounts();
