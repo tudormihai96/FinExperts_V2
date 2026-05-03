@@ -85,7 +85,6 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-[#F5F7FA] flex">
-      {/* Sidebar */}
       <aside className="w-64 bg-[#0B2E2E] min-h-screen flex flex-col shrink-0">
         <div className="p-5 border-b border-white/10">
           <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">FinExperts</div>
@@ -131,7 +130,6 @@ export default function AdminPage() {
         </div>
       </aside>
 
-      {/* Main */}
       <main className="flex-1 p-6 overflow-auto">
         {activeTab === "dashboard" && <DashboardTab applications={applications} insuranceRequests={insuranceRequests} guides={guides} banks={adminBanks} setActiveTab={setActiveTab} />}
         {activeTab === "statistici" && <StatisticsTab applications={applications} insuranceRequests={insuranceRequests} />}
@@ -148,7 +146,6 @@ export default function AdminPage() {
   );
 }
 
-// ─── Dashboard ────────────────────────────────────────────────────────────────
 function DashboardTab({ applications, insuranceRequests, guides, banks, setActiveTab }: {
   applications: Application[];
   insuranceRequests: InsuranceRequest[];
@@ -188,7 +185,6 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
         </div>
       </div>
 
-      {/* IRCC Banner */}
       <div className="flex items-center gap-4 mb-6 bg-gradient-to-r from-[#0B2E2E] to-[#0A2525] rounded-xl px-5 py-4">
         <div className="flex-1 min-w-0">
           <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">IRCC T2 2026 — BNR Oficial</div>
@@ -205,7 +201,6 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
         </div>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {stats.map(s => (
           <button key={s.label} onClick={() => setActiveTab(s.tab)} className="bg-white border border-[#E2E8F0] rounded-xl p-5 text-left hover:shadow-sm transition-all hover:border-[#0B2E2E] group">
@@ -220,7 +215,6 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6">
-        {/* Aplicări recente */}
         <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
           <div className="px-5 py-4 border-b border-[#E2E8F0] flex items-center justify-between">
             <h3 className="font-semibold text-[#0B2E2E]">Aplicări recente</h3>
@@ -253,17 +247,12 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
               ))}
             </tbody>
           </table>
-          {applications.length === 0 && (
-            <div className="py-10 text-center text-sm text-[#64748B]">Nicio aplicare încă.</div>
-          )}
+          {applications.length === 0 && <div className="py-10 text-center text-sm text-[#64748B]">Nicio aplicare încă.</div>}
         </div>
 
-        {/* Sidebar dreapta */}
         <div className="space-y-4">
           <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden">
-            <div className="px-4 py-3 border-b border-[#E2E8F0]">
-              <h3 className="font-semibold text-[#0B2E2E] text-sm">Activitate recentă</h3>
-            </div>
+            <div className="px-4 py-3 border-b border-[#E2E8F0]"><h3 className="font-semibold text-[#0B2E2E] text-sm">Activitate recentă</h3></div>
             <div className="p-2">
               {todayActivities.length === 0 ? (
                 <div className="py-6 text-center text-xs text-[#64748B]">Nicio activitate recentă</div>
@@ -284,22 +273,24 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
           <div className="bg-white border border-[#E2E8F0] rounded-xl p-4">
             <h3 className="font-semibold text-[#0B2E2E] text-sm mb-3">Acțiuni rapide</h3>
             <div className="space-y-2">
-              {[
-                { label: "Procesează aplicări în așteptare", count: pending.length, color: "text-amber-600", tab: "aplicari" as Tab },
-                { label: "Procesează asigurări", count: insuranceRequests.filter(r => r.status === "pending").length, color: "text-purple-600", tab: "asigurari" as Tab },
-                { label: "Actualizează dobânzile", count: null, color: "text-blue-600", tab: "banci" as Tab },
-                { label: "Editează conținut site", count: null, color: "text-green-600", tab: "continut" as Tab },
-                { label: "Verifică securitatea", count: null, color: "text-red-600", tab: "securitate" as Tab },
-              ].map(a => (
-                <button key={a.label} onClick={() => setActiveTab(a.tab)}
-                  className="w-full flex items-center justify-between text-sm py-2 px-3 rounded-lg hover:bg-[#F5F7FA] transition-colors text-left">
-                  <span className="text-[#0B2E2E]">{a.label}</span>
-                  {a.count !== null && a.count > 0 && (
-                    <span className={`text-xs font-bold ${a.color}`}>{a.count}</span>
-                  )}
-                  {a.count === null && <ArrowRight className="h-3 w-3 text-[#64748B]" />}
-                </button>
-              ))}
+              {
+                [
+                  { label: "Procesează aplicări în așteptare", count: pending.length, color: "text-amber-600", tab: "aplicari" as Tab },
+                  { label: "Procesează asigurări", count: insuranceRequests.filter(r => r.status === "pending").length, color: "text-purple-600", tab: "asigurari" as Tab },
+                  { label: "Actualizează dobânzile", count: null, color: "text-blue-600", tab: "banci" as Tab },
+                  { label: "Editează conținut site", count: null, color: "text-green-600", tab: "continut" as Tab },
+                  { label: "Verifică securitatea", count: null, color: "text-red-600", tab: "securitate" as Tab },
+                ].map(a => (
+                  <button key={a.label} onClick={() => setActiveTab(a.tab)}
+                    className="w-full flex items-center justify-between text-sm py-2 px-3 rounded-lg hover:bg-[#F5F7FA] transition-colors text-left">
+                    <span className="text-[#0B2E2E]">{a.label}</span>
+                    {a.count !== null && a.count > 0 && (
+                      <span className={`text-xs font-bold ${a.color}`}>{a.count}</span>
+                    )}
+                    {a.count === null && <ArrowRight className="h-3 w-3 text-[#64748B]" />}
+                  </button>
+                ))
+              }
             </div>
           </div>
 
@@ -320,7 +311,6 @@ function DashboardTab({ applications, insuranceRequests, guides, banks, setActiv
   );
 }
 
-// ─── Statistici ───────────────────────────────────────────────────────────────
 function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) {
   const approved = applications.filter(a => a.status === "approved");
   const rejected = applications.filter(a => a.status === "rejected");
@@ -360,18 +350,20 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        {[
-          { label: "Rată aprobare", value: `${approvalRate.toFixed(1)}%`, color: "text-green-600", icon: TrendingUp },
-          { label: "Volum aprobat", value: `${(totalAmount / 1000000).toFixed(2)}M RON`, color: "text-blue-600", icon: BarChart2 },
-          { label: "Sumă medie", value: `${Math.round(avgAmount / 1000)}k RON`, color: "text-amber-600", icon: BarChart2 },
-          { label: "Asigurări totale", value: insuranceRequests.length, color: "text-purple-600", icon: Shield },
-        ].map(k => (
-          <div key={k.label} className="bg-white border border-[#E2E8F0] rounded-xl p-5">
-            <k.icon className={`h-5 w-5 ${k.color} mb-2`} />
-            <div className={`text-2xl font-bold ${k.color} mb-0.5`}>{k.value}</div>
-            <div className="text-xs text-[#64748B]">{k.label}</div>
-          </div>
-        ))}
+        {
+          [
+            { label: "Rată aprobare", value: `${approvalRate.toFixed(1)}%`, color: "text-green-600", icon: TrendingUp },
+            { label: "Volum aprobat", value: `${(totalAmount / 1000000).toFixed(2)}M RON`, color: "text-blue-600", icon: BarChart2 },
+            { label: "Sumă medie", value: `${Math.round(avgAmount / 1000)}k RON`, color: "text-amber-600", icon: BarChart2 },
+            { label: "Asigurări totale", value: insuranceRequests.length, color: "text-purple-600", icon: Shield },
+          ].map(k => (
+            <div key={k.label} className="bg-white border border-[#E2E8F0] rounded-xl p-5">
+              <k.icon className={`h-5 w-5 ${k.color} mb-2`} />
+              <div className={`text-2xl font-bold ${k.color} mb-0.5`}>{k.value}</div>
+              <div className="text-xs text-[#64748B]">{k.label}</div>
+            </div>
+          ))
+        }
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -428,7 +420,6 @@ function StatisticsTab({ applications, insuranceRequests }: { applications: Appl
   );
 }
 
-// ─── Aplicări ─────────────────────────────────────────────────────────────────
 function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) {
   const [query, setQuery] = useState("");
   const filtered = applications.filter(app =>
@@ -493,7 +484,6 @@ function ApplicationsTab({ applications, setApplications, updateApplication }: {
   );
 }
 
-// ─── Ghiduri ─────────────────────────────────────────────────────────────────
 function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) {
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
@@ -510,7 +500,6 @@ function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guid
   );
 }
 
-// ─── Asigurări ───────────────────────────────────────────────────────────────
 function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) {
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
@@ -530,7 +519,6 @@ function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[];
   );
 }
 
-// ─── Bănci ───────────────────────────────────────────────────────────────────
 function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) {
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
@@ -544,7 +532,6 @@ function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => v
   );
 }
 
-// ─── Utilizatori / Brokeri ───────────────────────────────────────────────────
 function UsersTab({ applications }: { applications: Application[] }) {
   const users = applications.map(app => ({ email: app.email, name: app.name, source: "applications" }));
   return (
@@ -581,7 +568,6 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
   );
 }
 
-// ─── Conținut / Securitate ───────────────────────────────────────────────────
 function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) {
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
