@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Add accessibility widget Userway -->
+    <script src="https://cdn.userway.org/widget.js" data-account="9LJNFW8e9Z"></script>
+
+            <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(),event:'gtm.js'
+            });
+            var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PXMLW6Q');</script>
+        <!-- End Google Tag Manager -->
+
+
+    
+        
+
+            <title>Nexent Bank</title>
+    
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/build/css/app.a0fedaa6.css">
+        <link rel="stylesheet" href="/build/css/radios-to-slider.93b6ade9.css">
+        <link rel="stylesheet" href="/build/css/jquery.mCustomScrollbar.min.2f8a1779.css">
+    <style>
+        .mobilebanner{
+            display: none;
+        }
+     </style>
+    
+        
+                <meta property="og:site_name" content="Nexent Bank">
+        <meta property="og:title" content="Nexent Bank">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/images/logo_small.png" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_small.png"/>
+        <link rel="apple-touch-icon" sizes="32x32" href="/images/logo_small.png"/>
+        <link rel="apple-touch-icon" sizes="16x16" href="/images/logo_small.png"/>
+        <link rel="icon" type="image/png" href="/images/logo_small.png">
+
+        <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onGoogleReCaptchaApiLoad&render=explicit&hl=ro" async defer></script>
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://www.nexentbank.ro/#organization",
+                        "name": "Nexent Bank",
+                        "legalName": "Nexent Bank Romania",
+                        "url": "https://www.nexentbank.ro",
+                        "logo": "https://www.nexentbank.ro/images/logo_small.png",
+                        "sameAs": [
+                            "https://www.linkedin.com/company/nexentbank/"
+                        ]
+                    },
+                    {
+                        "@type": "WebSite",
+                        "url": "https://www.nexentbank.ro",
+                        "name": "Nexent Bank",
+                        "alternateName": "Nexent Bank Romania"
+                    }
+                ]
+            }
+        </script>
+
+</head>
+    <body class="    error-page error-404
+">
+        <!-- Google Tag Manager (noscript) -->
+            <noscript>
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXMLW6Q" height="0" width="0"
+                        style="display:none;visibility:hidden"></iframe>
+            </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+    <div id="cookie-block-new" class="cookie-warning not-display" data-cookie-block="true">
+    <div class="cookie-container">
+        <div class="cookie-consent not-display">
+            <div class="info-icon col-md-4 col-lg-3">
+                <img src="/images/cookies.svg" width="125">
+            </div>
+            <div class="info-message col-md-8 col-lg-9">
+                Folosim tehnologii de tip cookies pentru a-ți asigura o experiență cât mai plăcută de utilizare a site-ului. Această tehnologie ne permite să analizăm performanța site-ului, să îi îmbunătățim permanent funcționalitățile și să afișăm un conținut și reclame personalizate, în funcție de preferințele tale. De asemenea, utilizăm fișierele de tip cookies pentru activitățile specifice publicității în mediul online, pentru promovarea produselor și serviciilor financiare oferite de Nexent Bank. Nu stocăm informații personale sensibile, cum ar fi adresa ta sau parole, în cookie-urile pe care le folosim.
+                <div class="actions">
+                    <a class="link link-custom-settings"
+                       href="javascript:void(0)">Personalizează setările</a>
+                    <a class="btn btn-accept-all" href="javascript:void(0)">Permite toate și închide</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cookie-preferences not-display ">
+            <div class="action-close">
+                <a class="btn-close" href="javascript:void(0)"></a>
+            </div>
+            <div class="cookie-preferences-content">
+                <ul class="nav nav-tabs col-sm-4" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link active" id="cookies-policy-tab" data-toggle="tab" href="#cookies-policy"
+                           role="tab" aria-controls="cookies-policy"
+                           aria-selected="true">Politica de Cookies</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " id="necessary-cookies-tab" data-toggle="tab" href="#necessary-cookies"
+                           role="tab" aria-controls="necessary-cookies"
+                           aria-selected="true">Cookie-urile strict necesare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tracking-cookies-tab" data-toggle="tab" href="#tracking-cookies"
+                           role="tab" aria-controls="tracking-cookies"
+                           aria-selected="false">Cookies de analiză a utilizatorilor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="marketing-cookies-tab" data-toggle="tab" href="#marketing-cookies"
+                           role="tab" aria-controls="marketing-cookies"
+                           aria-selected="false">Cookies pentru publicitate și 3rd party</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content col-sm-12">
+                    <div class="tab-pane active" id="cookies-policy" role="tabpanel"
+                         aria-labelledby="cookies-policy-tab">
+                        <div class="clearfix">
+                            <h3>Politica de Cookies</h3>
+                        </div>
+                        <p>
+                            Site-ul nostru utilizează cookies pentru a îmbunătăți permanent experiența de browsing, prin livrarea într-un mod eficient și sigur a unui conținut cât mai relevant pentru fiecare utilizator în parte. Consultă
+                            <a href="/Politica-de-Cookies">Politica de Cookies</a> pentru a înțelege ce sunt și modul în care aceste fișiere sunt folosite de către Nexent Bank pentru a aduce beneficii utilizatorilor în navigarea pe website-ul
+                            <a href="https://www.nexentbank.ro/"> www.nexentbank.ro</a>
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="necessary-cookies" role="tabpanel"
+                         aria-labelledby="necessary-cookies-tab">
+                        <div class="clearfix">
+                            <form action="">
+                                <div class="custom-radio" style="float: right; pointer-events: none;" disabled>
+                                    <span class="custom-radio-label js-active-necessary">Activ</span>
+                                    <span class="custom-radio-label js-inactive-necessary">Inactiv</span>
+                                    <div id="radios-necessary-cookies" class="radios-preferences"
+                                         style="width: 70px !important;">
+                                        <input id="cookie-consent-necessary-false" class="false-input"
+                                               name="cookie-consent-necessary" type="radio" value="0">
+                                        <label for="cookie-consent-necessary-false"
+                                               class="slider-label first">Nu</label>
+                                        <input id="cookie-consent-necessary-true" class="true-input"
+                                               name="cookie-consent-necessary" type="radio" value="1" checked>
+                                        <label for="cookie-consent-necessary-true"
+                                               class="slider-label last">Da</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3>Cookie-urile strict necesare</h3>
+                        </div>
+                        <p>Aceste cookies sunt necesare pentru ca site-ul să funcționeze corect. Fără încărcarea lor, conținutul nu va fi afișat corespunzător, îngreunând astfel navigarea și blocând anumite funcții. Acestea nu necesită acordul tău.</p>
+
+                        <div class="accordion-cookie accordion">
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecOne">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-one" type="button" data-toggle="collapse" data-target="#cookieNecOne" aria-expanded="true" aria-controls="cookieNecOne">
+                                        _SESS
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecOne" class="collapse" aria-labelledby="headingNecOne" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        <div>Acest cookie este utilizat pentru a urmări sesiunea unui utilizator pentru a menține o stare logată.</div>
+                                        <p>
+                                            <div><b>Durată</b> : Cookie de sesiune – Până la închiderea browserului</div>
+                                            <div><b>Operat de către</b> : Nexent Bank</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecTwo">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-two" type="button" data-toggle="collapse" data-target="#cookieNecTwo" aria-expanded="true" aria-controls="cookieNecTwo">
+                                        PHPSESSID
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecTwo" class="collapse" aria-labelledby="headingNecTwo" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este autogenerat de server, sub forma unui număr la întâmplare şi are rolul de a menţine utilizatorul conectat între vizitarea paginilor.
+                                        <p>
+                                        <div><b>Durată</b> : Cookie de sesiune – Până la închiderea browserului</div>
+                                        <div><b>Operat de către</b> : Nexent Bank</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecThree">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-three" type="button" data-toggle="collapse" data-target="#cookieNecThree" aria-expanded="true" aria-controls="cookieNecThree">
+                                        cookie-consent-settings
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecThree" class="collapse" aria-labelledby="headingNecThree" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Necesar acceptării politicii de cookie a băncii.
+                                        <p>
+                                        <div><b>Durată</b> : 30 de zile</div>
+                                        <div><b>Operat de către</b> : Nexent Bank</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecFour">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-four" type="button" data-toggle="collapse" data-target="#cookieNecFour" aria-expanded="true" aria-controls="cookieNecFour">
+                                        _GRECAPTCHA
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecFour" class="collapse" aria-labelledby="headingNecFour" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de reCAPTCHA pentru a identifica roboții și pentru a proteja site-ul împotriva atacurilor de tip spam.
+                                        <p>
+                                        <div><b>Durată</b> : Cookie de sesiune – Până la închiderea browserului</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecFive">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-five" type="button" data-toggle="collapse" data-target="#cookieNecFive" aria-expanded="true" aria-controls="cookieNecFive">
+                                        NID
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecFive" class="collapse" aria-labelledby="headingNecFive" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a păstra preferințele utilizatorului la noile accesări de site.
+                                        <p>
+                                        <div><b>Durată</b> : 6 luni</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecSix">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-six" type="button" data-toggle="collapse" data-target="#cookieNecSix" aria-expanded="true" aria-controls="cookieNecSix">
+                                        CONSENT
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecSix" class="collapse" aria-labelledby="headingNecSix" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a păstra opțiunile utilizatorului legate de cookies.
+                                        <p>
+                                            <div><b>Durată</b> : 2 ani</div>
+                                            <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecSeven">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-seven" type="button" data-toggle="collapse" data-target="#cookieNecSeven" aria-expanded="true" aria-controls="cookieNecSeven">
+                                        <b>rc::a</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecSeven" class="collapse" aria-labelledby="headingNecSeven" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de serviciul reCAPTCHA pentru a distinge între utilizatori umani și boți contribuind la securitatea website-ului și la prevenirea abuzurilor.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie persistent  </div>
+                                        <div><b>Operat de către</b>: Google (reCAPTCHA)</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecEight">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-eight" type="button" data-toggle="collapse" data-target="#cookieNecEight" aria-expanded="true" aria-controls="cookieNecEight">
+                                        <b>rc::b</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecEight" class="collapse" aria-labelledby="headingNecEight" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de serviciul reCAPTCHA în scopul detectării activităților frauduloase sau automate.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie de sesiune – Până la închiderea browserului  </div>
+                                        <div><b>Operat de către</b>: Google (reCAPTCHA)</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecNine">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-nine" type="button" data-toggle="collapse" data-target="#cookieNecNine" aria-expanded="true" aria-controls="cookieNecNine">
+                                        <b>rc::c</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecNine" class="collapse" aria-labelledby="headingNecNine" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de serviciul reCAPTCHA pentru a îmbunătăți mecanismele de securitate.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie de sesiune – Până la închiderea browserului  </div>
+                                        <div><b>Operat de către</b>: Google (reCAPTCHA)</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecTen">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-ten" type="button" data-toggle="collapse" data-target="#cookieNecTen" aria-expanded="true" aria-controls="cookieNecTen">
+                                        <b>rc::f</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecTen" class="collapse" aria-labelledby="headingNecTen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de serviciul reCAPTCHA pentru a furniza protecție  împotriva spamului și accesului neautorizat prin formularele online.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie persistent  </div>
+                                        <div><b>Operat de către</b>: Google (reCAPTCHA)</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecEleven">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-eleven" type="button" data-toggle="collapse" data-target="#cookieNecEleven" aria-expanded="true" aria-controls="cookieNecEleven">
+                                        <b>uw-icon-locales</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecEleven" class="collapse" aria-labelledby="headingNecEleven" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a reține preferințele de limbă și afișare ale pictogramei widgetului de accesibilitate, pentru a asigura o experiență coerentă utilizatorului.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie persistent  </div>
+                                        <div><b>Operat de către</b>: UserWay</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecTwelve">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-twelve" type="button" data-toggle="collapse" data-target="#cookieNecTwelve" aria-expanded="true" aria-controls="cookieNecTwelve">
+                                        <b>uw-tunings</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecTwelve" class="collapse" aria-labelledby="headingNecTwelve" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a salva setările personalizate de accesibilitate selectate de utilizator.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie persistent  </div>
+                                        <div><b>Operat de către</b>: UserWay</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecThirteen">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-thirteen" type="button" data-toggle="collapse" data-target="#cookieNecThirteen" aria-expanded="true" aria-controls="cookieNecThirteen">
+                                        <b>uw-tunings-checksum</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecThirteen" class="collapse" aria-labelledby="headingNecThirteen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru verificarea integrității și validității setărilor de accesibilitate salvate, prevenind modificările neautorizate.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie persistent  </div>
+                                        <div><b>Operat de către</b>: UserWay</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecFourteen">
+                                    <button class="btn-link collapsed" id="btn-cookie-nec-fourteen" type="button" data-toggle="collapse" data-target="#cookieNecFourteen" aria-expanded="true" aria-controls="cookieNecFourteen">
+                                        <b>uw-uid</b>
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecFourteen" class="collapse" aria-labelledby="headingNecFourteen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat, în scopul funcționării corecte a widgetului de accesibilitate și al menținerii preferințelor acestuia.
+                                        <p>
+                                        <div><b>Durată</b>: Cookie persistent  </div>
+                                        <div><b>Operat de către</b>: UserWay</div>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                    </div>
+                    <div class="tab-pane" id="tracking-cookies" role="tabpanel" aria-labelledby="tracking-cookies-tab">
+                        <div class="clearfix">
+                            <form action="">
+                                <div class="custom-radio" style="float: right">
+                                    <span class="custom-radio-label js-active-tracking">Activ</span>
+                                    <span class="custom-radio-label js-inactive-tracking">Inactiv</span>
+                                    <div id="radios-tracking-cookies" class="radios-preferences"
+                                         style="width: 70px !important;">
+                                        <input id="cookie-consent-tracking-false" class="false-input"
+                                               name="cookie-consent-tracking" type="radio" value="0">
+                                        <label for="cookie-consent-tracking-false"
+                                               class="slider-label first">Nu</label>
+                                        <input id="cookie-consent-tracking-true" class="true-input"
+                                               name="cookie-consent-tracking" type="radio" value="1">
+                                        <label for="cookie-consent-tracking-true"
+                                               class="slider-label last">Da</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3>Cookies de analiză a utilizatorilor</h3>
+                        </div>
+                        <p>
+                            Contorizează vizita ta ca vizită nouă sau ca vizită recurentă, în funcție de frecvența accesării site-ului. Scopurile sunt statistice. De asemenea, în funcție de tipul vizitei și al istoricului de navigare pe site-ul
+                            <a href="https://www.nexentbank.ro/">
+                                www.nexentbank.ro</a> conținutul web poate varia, pentru a fi relevant intereselor tale. Aceste cookies pot identifica țara și orașul din care este vizitat site-ul cu scopul de a afișa conținut relevant utilizatorilor dintr-o anumită zonă geografică. Dacă nu permiti plasarea/accesarea acestor fișiere, nu vom ști când ai vizitat site-ul nostru și nu vom putea să-i monitorizăm performanța. Selectarea opțiunii Activ (DA) pentru acest scop implică acordul tău pentru plasare/accesare de informații care să facă relevantă experiența ta de navigare pe site-ul nostru.
+                        </p>
+                        <div class="accordion-cookie accordion">
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingOne">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-one" type="button" data-toggle="collapse" data-target="#cookieOne" aria-expanded="true" aria-controls="cookieOne">
+                                        _ga
+                                    </button>
+                                </div>
+
+                                <div id="cookieOne" class="collapse" aria-labelledby="headingOne" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a distinge utilizatorii unici, prin alocarea unui număr generat la întâmplare ca identificator de client. Acesta este inclus în fiecare solicitare de pagină dintr-un site şi este utilizat pentru calcularea datelor utilizatorilor, sesiunii şi campaniilor, pentru rapoartele de analiză a site-urilor.
+                                        <p>
+                                        <div><b>Durată</b> : 2 ani</div>
+                                        <div><b>Operat de către</b> : Google Analytics</div>
+                                        <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=ro" target="_blank"><i><u>Detalii suplimentare</u></i> </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingTwo">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-two" type="button" data-toggle="collapse" data-target="#cookieTwo" aria-expanded="true" aria-controls="cookieTwo">
+                                        _ga_72RRRT63CE
+                                    </button>
+                                </div>
+
+                                <div id="cookieTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a identifica și urmări o sesiune individuală făcută cu un dispozitiv.
+                                        <p>
+                                        <div><b>Durată</b> : 1 minut</div>
+                                        <div><b>Operat de către</b> : Google Analytics</div>
+                                        <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=ro" target="_blank"><i><u>Detalii suplimentare</u></i> </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingThree">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-three" type="button" data-toggle="collapse" data-target="#cookieThree" aria-expanded="true" aria-controls="cookieThree">
+                                        _gat/ _dc_gtm_gat_UA_2819881-1
+                                    </button>
+                                </div>
+
+                                <div id="cookieThree" class="collapse" aria-labelledby="headingThree" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Cookie utilizat pentru a accelera rata solicitărilor către server, limitând colectarea datelor pe site-urile cu trafic ridicat.
+                                        <p>
+                                        <div><b>Durată</b> : 1 minut</div>
+                                        <div><b>Operat de către</b> : Google Analytics, Google Ads</div>
+                                        <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=ro" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <i class="fal fa-angle-down"></i>
+                                <div class="cookie-name" id="headingFour">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-four" type="button" data-toggle="collapse" data-target="#cookieFour" aria-expanded="true" aria-controls="cookieFour">
+                                        _gid
+                                    </button>
+                                </div>
+
+                                <div id="cookieFour" class="collapse" aria-labelledby="headingFour" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                       Cookie utilizat pentru distingerea utilizatorilor, folosit pentru a genera date statistice.
+                                        <p>
+                                        <div><b>Durată</b> : 24 ore</div>
+                                        <div><b>Operat de către</b> : Google Analytics, Google Ads</div>
+                                        <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=ro" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <i class="fal fa-angle-down"></i>
+                                <div class="cookie-name" id="headingFive">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-five" type="button" data-toggle="collapse" data-target="#cookieFive" aria-expanded="true" aria-controls="cookieFive">
+                                        _utma, _utmt, _utmb, _utmc, _utmz
+                                    </button>
+                                </div>
+
+                                <div id="cookieFive" class="collapse" aria-labelledby="headingFive" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        <div>Aceste module de cookie sunt asociate cu Google Analytics şi permit colectarea de informaţii despre modul în care utilizatorii interacţionează cu site-ul. Sunt utilizate pentru a determina sesiunile/ vizitele noi, timpul de navigare al site-ului, paginile vizitate, sursele de trafic ale site-ului. Cookie-urile colectează toate informaţiile într-o formă anonimă, fără a stoca vreo informaţie personală despre utilizator.</div>
+                                        <div>Acestea sunt utile pentru îmbunătăţirea conţinutului şi funcţionalităţii site-ului, astfel încât să servească cât mai bine utilizatorilor.</div>
+                                        <p>
+                                        <div><b>Durată</b>: utma – 2 ani, _utmt – 10 minute, _utmb – 30 minute, _utmc – Până la închiderea browserului, _utmz – 6 luni</div>
+                                        <div><b>Operat de către</b> : Google Analytics</div>
+                                        <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=ro" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <i class="fal fa-angle-down"></i>
+                                <div class="cookie-name" id="headingSix">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-five" type="button" data-toggle="collapse" data-target="#cookieSix" aria-expanded="true" aria-controls="cookieSix">
+                                        _hjIncludedInSample
+                                    </button>
+                                </div>
+
+                                <div id="cookieSix" class="collapse" aria-labelledby="headingSix" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Cookie de sesiune setat pentru a informa Hotjar dacă utilizatorul este inclus într-un eşantion de audienţă
+
+                                        <p>
+                                            <div><b>Durată</b>: 365 de zile</div>
+                                            <div><b>Operat de către</b> : Hotjar</div>
+                                            <a href="https://help.hotjar.com/hc/en-us/articles/115011789248-Hotjar-Cookies" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <i class="fal fa-angle-down"></i>
+                                <div class="cookie-name" id="headingSeven">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-seven" type="button" data-toggle="collapse" data-target="#cookieSeven" aria-expanded="true" aria-controls="cookieSeven">
+                                        _hjid
+                                    </button>
+                                </div>
+
+                                <div id="cookieSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este setat atunci când un utilizator ajunge pentru prima dată pe o pagină cu scriptul Hotjat. Este utilizat pentru menţinerea User ID-ului, unic pentru acel site, în browser. Acest lucru asigură că vizitele ulterioare, pe acelaşi site, vor fi atribuite aceluiaşi ID.
+                                        <p>
+                                            <div><b>Durată</b>: 365 de zile</div>
+                                            <div><b>Operat de către</b> : Hotjar</div>
+                                            <a href="https://help.hotjar.com/hc/en-us/articles/115011789248-Hotjar-Cookies" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <i class="fal fa-angle-down"></i>
+                                <div class="cookie-name" id="headingEight">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-eight" type="button" data-toggle="collapse" data-target="#cookieEight" aria-expanded="true" aria-controls="cookieEight">
+                                        _hjRecordingLastActivity
+                                    </button>
+                                </div>
+
+                                <div id="cookieEight" class="collapse" aria-labelledby="headingEight" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                       Regăsite în sessionStorage. Se actualizează atunci când începe o înregistrare a utilizatorului (utilizatorul efectuează o acţiune pe care Hotjar o înregistrează).
+                                        <p>
+                                        <div><b>Durată</b>: Cookie de sesiune – Până la închiderea browserului</div>
+                                        <div><b>Operat de către</b> : Hotjar</div>
+                                        <a href="https://help.hotjar.com/hc/en-us/articles/115011789248-Hotjar-Cookies" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <i class="fal fa-angle-down"></i>
+                                <div class="cookie-name" id="headingNine">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nine" type="button" data-toggle="collapse" data-target="#cookieNine" aria-expanded="true" aria-controls="cookieNine">
+                                        location
+                                    </button>
+                                </div>
+
+                                <div id="cookieNine" class="collapse" aria-labelledby="headingNine" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie salvează locația utilizatorului, pentru a putea oferi informații corespunzătoare în pagini (exemplu- cel mai apropiat ATM)
+                                        <p>
+                                            <div><b>Durată</b>: 2 ani</div>
+                                            <div><b>Operat de către</b> : Nexent Bank</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecTen">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-ten" type="button" data-toggle="collapse" data-target="#cookieNecTen" aria-expanded="true" aria-controls="cookieNecTen">
+                                        _GRECAPTCHA
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecTen" class="collapse" aria-labelledby="headingNecTen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de reCAPTCHA pentru a identifica roboții și pentru a proteja site-ul împotriva atacurilor de tip spam.
+                                        <p>
+                                        <div><b>Durată</b> : Cookie de sesiune – Până la închiderea browserului</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecEleven">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-eleven" type="button" data-toggle="collapse" data-target="#cookieNecEleven" aria-expanded="true" aria-controls="cookieNecEleven">
+                                        NID
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecEleven" class="collapse" aria-labelledby="headingNecEleven" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a păstra preferințele utilizatorului la noile accesări de site.
+                                        <p>
+                                        <div><b>Durată</b> : 6 luni</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecTwelve">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-twelve" type="button" data-toggle="collapse" data-target="#cookieNecTwelve" aria-expanded="true" aria-controls="cookieNecTwelve">
+                                        CONSENT
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecTwelve" class="collapse" aria-labelledby="headingNecTwelve" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a păstra opțiunile utilizatorului legate de cookies.
+                                        <p>
+                                        <div><b>Durată</b> : 2 ani</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingNecThirteen">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-nec-thirteen" type="button" data-toggle="collapse" data-target="#cookieNecThirteen" aria-expanded="true" aria-controls="cookieNecThirteen">
+                                        cookie-consent-settings
+                                    </button>
+                                </div>
+
+                                <div id="cookieNecThirteen" class="collapse" aria-labelledby="headingNecThirteen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Necesar acceptării politicii de cookie a băncii.
+                                        <p>
+                                        <div><b>Durată</b> : 30 de zile</div>
+                                        <div><b>Operat de către</b> : Nexent Bank</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="marketing-cookies" role="tabpanel"
+                         aria-labelledby="marketing-cookies-tab">
+                        <div class="clearfix">
+                            <form action="">
+                                <div class="custom-radio" style="float: right">
+                                    <span class="custom-radio-label js-active-marketing">Activ</span>
+                                    <span class="custom-radio-label js-inactive-marketing">Inactiv</span>
+                                    <div id="radios-marketing-cookies" class="radios-preferences"
+                                         style="width: 70px !important;">
+                                        <input id="cookie-consent-marketing-false" class="false-input"
+                                               name="cookie-consent-marketing" type="radio" value="0">
+                                        <label for="cookie-consent-marketing-false"
+                                               class="slider-label first">Nu</label>
+                                        <input id="cookie-consent-marketing-true" class="true-input"
+                                               name="cookie-consent-marketing" type="radio" value="1">
+                                        <label for="cookie-consent-marketing-true"
+                                               class="slider-label last">Da</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3>Cookies pentru publicitate și 3rd party</h3>
+                        </div>
+                        <p>Permit aflarea vizualizării de către un utilizator a unei reclame online, tipul acesteia și timpul alocat vizualizării respectivului mesaj publicitar. Astfel de cookies sunt folosite pentru targetarea publicității online. Aceste cookies stochează informații despre conținutul vizualizat, nu și despre utilizatori. Selectarea opțiunii Activ (DA) pentru acest scop implică acordul tău pentru plasare/accesare de informații care să permită plasarea de conținut publicitar în funcție de interesele tale.</p>
+                        <div class="accordion-cookie accordion">
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkOne">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-one" type="button" data-toggle="collapse" data-target="#cookieMrkOne" aria-expanded="true" aria-controls="cookieMrkOne">
+                                        IDE, ANID, DSID, FLC, AID, TAID, exchange_uid
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkOne" class="collapse" aria-labelledby="headingMrkOne" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Aceste modele cookie sunt asociate cu Doubleclick/ Google Marketing Platform, serviciu oferit de Google, şi sunt utilizate pentru publicitate. Acestea permit oferirea de anunţuri relevante utilizatorilor, prin coordonarea anunţurilor pe toate dispozitivele şi măsurarea evenimentelor de conversie.
+                                        <p>
+                                            <div><b>Durată</b>: 2 ani</div>
+                                            <div><b>Operat de către</b> : Google Marketing Platform - .doubleclick.net</div>
+                                            <div><b>Detalii suplimentare</b>:
+                                                <a href="https://policies.google.com/technologies/types" target="_blank"><i><u>[1]</u></i></a>
+                                                și
+                                                <a href="https://policies.google.com/technologies/cookies" target="_blank"><i><u>[2]</u></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkTwo">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-two" type="button" data-toggle="collapse" data-target="#cookieMrkTwo" aria-expanded="true" aria-controls="cookieMrkTwo">
+                                        _gads, _gac_UA_2819881-1
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkTwo" class="collapse" aria-labelledby="headingMrkTwo" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Aceste modele de cookie sunt asociate cu Google şi sunt utilizate pentru servirea anunţurilor publicitare. Ele servesc în măsurarea intercţiunilor cu anunţurile, prevenirea afişării anunţurilor de prea multe ori, urmărirea acţiunilor pe site a utilizatorilor care dau click pe anunţuri, măsurarea conversiilor.
+                                        <p>
+                                            <div><b>Durată</b>: 3 luni</div>
+                                            <div><b>Operat de către</b> : Google Ads</div>
+                                            <div><b>Detalii suplimentare</b>:
+                                                <a href="https://policies.google.com/technologies/types" target="_blank"><i><u>[1]</u></i></a>
+                                                și
+                                                <a href="https://policies.google.com/technologies/cookies" target="_blank"><i><u>[2]</u></i></a>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkThree">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-three" type="button" data-toggle="collapse" data-target="#cookieMrkThree" aria-expanded="true" aria-controls="cookieMrkThree">
+                                        _GRECAPTCHA
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkThree" class="collapse" aria-labelledby="headingMrkThree" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de reCAPTCHA pentru a identifica roboții și pentru a proteja site-ul împotriva atacurilor de tip spam.
+                                        <p>
+                                        <div><b>Durată</b> : Cookie de sesiune – Până la închiderea browserului</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkFour">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-four" type="button" data-toggle="collapse" data-target="#cookieMrkFour" aria-expanded="true" aria-controls="cookieMrkFour">
+                                        NID
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkFour" class="collapse" aria-labelledby="headingMrkFour" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a păstra preferințele utilizatorului la noile accesări de site.
+                                        <p>
+                                        <div><b>Durată</b> : 6 luni</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkFive">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-five" type="button" data-toggle="collapse" data-target="#cookieMrkFive" aria-expanded="true" aria-controls="cookieMrkFive">
+                                        cookie-consent-settings
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkFive" class="collapse" aria-labelledby="headingMrkFive" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Necesar acceptării politicii de cookie a băncii.
+                                        <p>
+                                        <div><b>Durată</b> : 30 de zile</div>
+                                        <div><b>Operat de către</b> : Nexent Bank</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkSix">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-six" type="button" data-toggle="collapse" data-target="#cookieMrkSix" aria-expanded="true" aria-controls="cookieMrkSix">
+                                        CONSENT
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkSix" class="collapse" aria-labelledby="headingMrkSix" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat pentru a păstra opțiunile utilizatorului legate de cookies.
+                                        <p>
+                                        <div><b>Durată</b> : 2 ani</div>
+                                        <div><b>Operat de către</b> : Google</div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkSeven">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-seven" type="button" data-toggle="collapse" data-target="#cookieMrkSeven" aria-expanded="true" aria-controls="cookieMrkSeven">
+                                        lidc
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkSeven" class="collapse" aria-labelledby="headingMrkSeven" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de LinkedIn pentru routing.
+                                        <p>
+                                        <div><b>Durată</b> : 1 zi</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkEight">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-eight" type="button" data-toggle="collapse" data-target="#cookieMrkEight" aria-expanded="true" aria-controls="cookieMrkEight">
+                                        li_gc
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkEight" class="collapse" aria-labelledby="headingMrkEight" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Cookie folosit pentru stocarea acordului invitaților cu privire la utilizarea modulelor cookie în scopuri neesențiale.
+                                        <p>
+                                        <div><b>Durată</b> : 6 luni</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkNine">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-nine" type="button" data-toggle="collapse" data-target="#cookieMrkNine" aria-expanded="true" aria-controls="cookieMrkNine">
+                                        lang
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkNine" class="collapse" aria-labelledby="headingMrkNine" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest cookie este utilizat de LinkedIn pentru memorarea setării de limbă a utilizatorului.
+                                        <p>
+                                        <div><b>Durată</b> : Cookie de sesiune – Până la închiderea browserului</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkTen">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-ten" type="button" data-toggle="collapse" data-target="#cookieMrkTen" aria-expanded="true" aria-controls="cookieMrkTen">
+                                        AnalyticsSyncHistory
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkTen" class="collapse" aria-labelledby="headingMrkTen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Cookie utilizat pentru stocarea informațiilor privind data unei sincronizări cu modulul cookie lms_analytics.
+                                        <p>
+                                        <div><b>Durată</b> : 30 zile</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkEleven">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-eleven" type="button" data-toggle="collapse" data-target="#cookieMrkEleven" aria-expanded="true" aria-controls="cookieMrkEleven">
+                                        UserMatchHistory
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkEleven" class="collapse" aria-labelledby="headingMrkEleven" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Cookie utilizat pentru sincronizarea ID-ului pe LinkedIn Ads.
+                                        <p>
+                                        <div><b>Durată</b> : 30 zile</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkTwelve">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-twelve" type="button" data-toggle="collapse" data-target="#cookieMrkTwelve" aria-expanded="true" aria-controls="cookieMrkTwelve">
+                                        bcookie
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkTwelve" class="collapse" aria-labelledby="headingMrkTwelve" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Acest modul cookie este utilizat pentru indentificarea ID-ului din browser.
+                                        <p>
+                                        <div><b>Durată</b> : 1 an</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cookie-item">
+                                <div class="cookie-name" id="headingMrkThirteen">
+                                    <button class="btn btn-link collapsed" id="btn-cookie-mrk-thirteen" type="button" data-toggle="collapse" data-target="#cookieMrkThirteen" aria-expanded="true" aria-controls="cookieMrkThirteen">
+                                        bscookie
+                                    </button>
+                                </div>
+
+                                <div id="cookieMrkThirteen" class="collapse" aria-labelledby="headingMrkThirteen" data-parent="#cookie-accordion">
+                                    <div class="cookie-description">
+                                        Cookie utilizat pentru a memora dacă un utilizator logat este verificat prin autentificarea cu doi factori.
+                                        <p>
+                                        <div><b>Durată</b> : 1 an</div>
+                                        <div><b>Operat de către</b> : LinkedIn</div>
+                                        <a href="https://ro.linkedin.com/legal/l/cookie-table" target="_blank"><i><u>Detalii suplimentare</u></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a class="link btn-save-settings" href="javascript:void(0)">Salvează setările</a>
+                <a class="btn btn-accept-all" href="javascript:void(0)">Permite toate și închide</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrapper">
+            <header>
+    <div class="topbar-gradient"></div>
+    <div class="container menu-container">
+        <div class="top-submenu clearfix">
+            <div class="col-12">
+                <ul class="submenu">
+                    <li><a href="/atm-si-sucursale">Rețea</a></li>
+                                        <li><a href="/Digital-Banking/Actualizeaza-ti-datele-personale-100-online" rel="nofollow">Actualizare date personale</a></li>
+                    <li><a href="/Contact">Contact</a></li>
+                    <li></li>
+                </ul>
+            </div>
+                                                                </div>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" title="Nexent Bank">
+                    <img src="/images/logo-nexent.svg" alt="Nexent Bank" width="133" height="56" />
+                </a>
+            </div>
+            <div class="pull-right hidden-lg hidden-md menu-mobile-responsive">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-main">
+                                        <li class="visible-mobile">
+                                            </li>
+                    
+                    
+                                        <li class="visible-mobile"><a href="/atm-si-sucursale">Rețea</a></li>
+                    <li class="visible-mobile"><a href="/Despre-noi">Despre noi</a></li>
+                    <li class="visible-mobile"><a href="/Contact">Contact</a></li>
+                                    </ul>
+
+            </div>
+
+    <div class="navbar-right-menu-cta navbar-nav">
+        <ul class="nav navbar navbar-right-menu">
+            <li class="account-profile">
+                <a class="icon-account-new" href="https://net1.nexentbank.ro/de/Identity/Login?language=ro-RO" target="_blank" rel="nofollow">Internet Banking</a>
+            </li>
+
+            <li class="dropdown dropdown-other">
+                <span class="arrow-mobile"></span>
+                <a href="#" class="icon-menu dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span>Mai mult</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="close-menu"><a href="#" class="icon-close"></a></li>
+                    <li><a href="/biroul-de-presa">Biroul de presă</a></li>
+                    <li><a href="/intrebari-frecvente">Intrebări frecvente</a></li>
+                    <li><a href="/Mentiuni-legale">Mențiuni legale</a></li>
+                    <li><a href="/Blog">Blog</a></li>
+                </ul>
+            </li>
+
+            <li class="visible-mobile internet-banking-lite">
+                <div class="internet-banking-box">
+    <div class="internet-banking-wrapper">
+                                           <img src="/images/nexent-internet-banking.svg" alt="Nexent Bank - Internet Banking" width="235" height="48" />
+        <a href="https://net1.nexentbank.ro/de/Identity/Login?language=ro-RO" target="_blank" rel="nofollow" class="btn">Intră în cont</a>
+    </div>
+</div>
+
+            </li>
+        </ul>
+    </div>
+        </nav>
+    </div>
+    <div class="mobilebanner">
+        <div class="section-phishing-banner banner-no-margin">
+            <div class="col-md-7 col-lg-10">
+                <h8 style="">Actualizează-ți datele personale <b>100% online</b>, simplu și în siguranță, fără niciun drum la bancă. Durează aproximativ 10 minute! Ai nevoie doar de: carte de identitate valabilă, telefon mobil sau orice alt dispozitiv (tableta, laptop sau desktop) cu cameră foto și acces la Internet și o adresă de email valabilă. Actualizarea datelor personale este un proces <b>legal</b> obligatoriu, iar neglijarea lui poate duce la restricționarea accesului la produsele și serviciile bancare pe care le deții la Nexent Bank.</h8>
+            </div>
+            <div class="col-md-5 col-lg-2 action-container">
+                <a href="https://actualizare-date-personale.crediteurope.ro/dataUpdateFlow" class="btn" style="border-color: #fff;color: #064b8d;background-color: #fff; ">Actualizează datele personale</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+        <div class="container">
+        <h1>Pagina nu a fost găsită</h1>
+        <p>Ne pare rău, pagina pe care o cauți nu poate fi găsită, încearcă o altă pagină sau contactează-ne pentru a semnala această problemă.</p>
+
+        <div class="section-card-icons section-spacing simple-section-card">
+    <div class="row row-eq-height section-spacing">
+        <div class="col-md-4 item single-item">
+            <a href="/" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-title">Înapoi pe Homepage</span>
+                </span>
+            </a>
+        </div>
+        <div class="col-md-4 item single-item">
+            <a href="/persoane-fizice" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-title">Persoane fizice</span>
+                </span>
+            </a>
+        </div>
+        <div class="col-md-4 item single-item">
+            <a href="/persoane-juridice" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-title">Persoane juridice</span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<h2>Poate te ajută informațiile de mai jos</h2>
+<div class="section-card-icons">
+    <div class="row row-eq-height">
+        <div class="col-md-3 item single-item">
+            <a href="/persoane-fizice/Carduri-de-credit/CardAvantaj" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-icon icon-menu-card"></span>
+                    <span class="item-title">Vreau Card Avantaj</span>
+                </span>
+            </a>
+        </div>
+
+        <div class="col-md-3 item single-item">
+            <a href="/persoane-fizice/Internet-Banking" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-icon icon-menu-internet-banking"></span>
+                    <span class="item-title">Vreau Internet Banking</span>
+                </span>
+            </a>
+        </div>
+        <div class="col-md-6 item">
+            <div class="item-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="item-main-content">
+                            <span class="item-icon icon-menu-credit"></span>
+                            <span class="item-title">Vreau credit</span>
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="aligned-links">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul>
+                                       <li>
+                                           <a href="/persoane-fizice/Carduri-de-credit/CardAvantaj"> CardAvantaj</a>
+                                       </li>
+                                        <li>
+                                            <a href="/persoane-fizice/Carduri-de-credit/Optimo-Card"> Optimo Card</a>
+                                        </li>
+                                        <li>
+                                            <a href="/persoane-fizice/Carduri-de-credit/Stickerul-contactless-Avantaj"> Sticker Avantaj</a>
+                                        </li>
+                                        <li>
+                                            <a href="/persoane-fizice/Credite"> Alt tip de credit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row row-eq-height section-spacing">
+        <div class="col-md-3 item single-item">
+            <a href="/persoane-fizice/Economii" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-icon icon-menu-savings"></span>
+                    <span class="item-title">Vreau economii</span>
+                </span>
+            </a>
+        </div>
+        <div class="col-md-3 item single-item">
+            <a href="/persoane-fizice/Asigurari" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-icon icon-menu-insurance"></span>
+                    <span class="item-title">Vreau asigurare</span>
+                </span>
+            </a>
+        </div>
+        <div class="col-md-3 item single-item">
+            <a href="https://net.nexentbank.ro/ibank-cln/do/login/prompt" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-icon icon-menu-account"></span>
+                    <span class="item-title">Vreau să mă autentific</span>
+                </span>
+            </a>
+        </div>
+        <div class="col-md-3 item single-item">
+            <a href="/persoane-fizice/Credite/Creditul-Acasa" class="item-content">
+                <span class="item-main-content">
+                    <span class="item-icon icon-home-credit"></span>
+                    <span class="item-title">Vreau Creditul ACASĂ</span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+            <div class="container">
+    <footer>
+        <div class="footer-top">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="no-margin">Nu ai găsit ce căutai? Alege de aici:</h3>
+                </div>
+                <div class="col-md-4">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown dropdown-other">
+                            <div class="dropdown-link">
+                                <a href="/persoane-fizice/Internet-Banking">
+                                    Internet Banking
+                                </a>
+
+                                <span class="icon-down dropdown-toggle" role="button" aria-haspopup="true"
+                                      aria-expanded="false"></span>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li class="close-menu"><a href="#" class="icon-close"></a></li>
+                                <li><a href="/biroul-de-presa">Biroul de presă</a></li>
+                                <li>
+                                    <a href="/intrebari-frecvente">Intrebări frecvente</a>
+                                </li>
+                                <li>
+                                    <a href="/Mentiuni-legale">Mențiuni legale</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-submenu">
+            <div class="row">
+                <div class="col-md-9">
+                    <ul class="submenu">
+                        <li><a href="/atm-si-sucursale">Rețea</a></li>
+                        <li><a href="/Despre-noi">Despre noi</a>
+                        </li>
+                        <li><a href="/Contact">Contact</a></li>
+                        <li><a href="/Blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 text-right ml-auto-lg">
+                                    </div>
+            </div>
+        </div>
+
+        <div class="footer-menu">
+            <div class="row row-eq-height row-big-margin">
+                <div class="col-md-9 col-sm-8">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6">
+                            <ul>
+                                <li>
+                                    <a href="/persoane-fizice">Persoane fizice</a>
+                                </li>
+                                <li>
+                                    <a href="/persoane-juridice">Persoane juridice</a>
+                                </li>
+                                <li>
+                                    <a href="/persoane-fizice/Internet-Banking">Internet
+                                        banking</a></li>
+                                <li>
+                                    <a href="/Blog">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="/Digital-Banking/Actualizeaza-ti-datele-personale-100-online">
+                                        Actualizare date personale
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <ul>
+                                <li>
+                                    <a href="/Mentiuni-legale">Mențiuni legale</a>
+                                </li>
+                                <li>
+                                    <a href="/Politica-de-Cookies">Politica de Cookies</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:openCookiePreferences()">Modifica setarile cookies</a>
+                                </li>
+                                <li>
+                                    <a href="/Reclamatii-consumatori">Reclamații consumatori</a>
+                                </li>
+                                <li><a href="http://www.anpc.gov.ro/">A.N.P.C.</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <ul>
+                                <li>
+                                    <a href="/Politica-de-confidentialitate">Politica de confidențialitate</a>
+                                </li>
+                                <li>
+                                    <a href="/colaborare-Nexent-DGEP">Colaborare cu DGEP</a>
+                                </li>
+                                <li>
+                                    <a href="/Securitatea-datelor">Securitatea Datelor</a>
+                                </li>
+                                <li>
+                                    <a href="/Ce-este-PSD2">PSD2</a>
+                                </li>
+                                <li><a href="/biroul-de-presa">Biroul de presă</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <ul>
+                                <li>
+                                    <a href="/dobanzi-cotatii-si-cursuri">Trezorerie</a>
+                                </li>
+                                <li><a href="/dobanzi-cotatii-si-cursuri/dobanzi">Dobânzi</a></li>
+                                <li><a href="/dobanzi-cotatii-si-cursuri/indici-ai-pietei-monetare">Indici ai pieței monetare</a></li>
+                                <li><a href="/dobanzi-cotatii-si-cursuri/cursuri">Cursuri</a></li>
+                                <li><a href="/Informatii-privind-garantarea-depozitelor">Informaţii privind garantarea depozitelor</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 more-links col-sm-4">
+                    <ul>
+                        <li><a href="https://www.cardavantaj.ro">www.cardavantaj.ro</a></li>
+                        <li><a href="https://www.optimocard.ro">www.optimocard.ro</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-end">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                    <a href="https://anpc.ro/ce-este-insolventa-persoanelor-fizice/" target="_blank">
+                        <img src="/images/ANPC-insolventa.jpg"/>
+                    </a>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                    <p>Copyright © Nexent Bank N.V. Amsterdam Sucursala București</p>
+
+                    <p>Toate informațiile prezentate pe acest site au caracter informativ. Pentru mai multe detalii vă rugăm să sunați la Call Center 0801.000.000 (valabil doar în rețeaua Telekom Romania), 0750.000.000 sau să vizitați sucursalele Nexent Bank N.V. Amsterdam Sucursala București</p>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 text-right">
+                    <a href="/">
+                        <img src="/images/logo-nexent.svg"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>    </div>
+    <script src="/build/manifest.d41d8cd9.js"></script>
+    <script src="/build/js/vendor.48249ea2.js"></script>
+    <script src="/build/js/jquery-deparam.e4cc319b.js"></script>
+    <script src="/build/js/jquery_cookie.a58d722b.js"></script>
+
+
+    <script src="/build/js/jcf.3f2541cb.js"></script>
+    <script src="/build/js/jcf.file.f66a49fa.js"></script>
+
+<script type="text/javascript">
+    var fileInputLabel = "Alege un fișier PDF...";
+    var fileInputBtn = "Adaugă";
+</script>
+
+    <script src="/build/js/common.5315a8ec.js"></script>
+    <script src="/build/js/services.7261eddb.js"></script>
+    <script src="/build/js/utils.775de291.js"></script>
+    <script src="/build/js/popstateEvent.bd4b761a.js"></script>
+    <script src="/build/js/ajaxTracking.09c2e634.js"></script>
+    <script src="/build/js/profile.9c78cf6e.js"></script>
+    <script src="/build/js/en_parsley_locale.01c97a7e.js"></script>
+    <script src="/build/js/ro_parsley_locale.99ea1fab.js"></script>
+    <script src="/build/js/jquery.radios-to-slider.6fe97e7d.js"></script>
+    <script src="/build/js/jquery-slider.46c6a95d.js"></script>
+    <script src="/build/js/jquery-ui-touch.min.14c76ee8.js"></script>
+    <script src="/build/js/jquery.mCustomScrollbar.concat.min.f68e4163.js"></script>
+    <script src="/build/js/preferences_widget.441ae054.js"></script>
+    <script src="/build/js/cookie_accordion.ebf3dca0.js"></script>
+    <script type="text/javascript">
+        CEB.Settings = [];
+
+        let locale = $('.language-switcher span:eq(0)').text().toLowerCase() || 'ro';
+        Parsley.setLocale(locale);
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener("cookie_preferences", function (event) {
+
+            if(window.navigator.userAgent.indexOf('MSIE ')> 0 || window.navigator.userAgent.indexOf('Trident/')> 0) {
+                var eventDetails= event.detail.cookiePreferences;
+            }else{
+                var eventDetails= event.detail;
+            }
+
+            if (eventDetails.trackingAllowed() === true) {
+                dataLayer.push({'event':'cookie_consent_tracking'});
+            }
+            if (eventDetails.marketingAllowed() === true) {
+                dataLayer.push({'event':'cookie_consent_marketing'});
+            }
+        });
+            /**
+            * The callback function executed
+            * once all the Google dependencies have loaded
+            */
+        function onGoogleReCaptchaApiLoad() {
+
+            var widgets = document.querySelectorAll('[data-toggle="recaptcha"]');
+
+            for (var i = 0; i < widgets.length; i++) {
+                renderReCaptcha(widgets[i]);
+            }
+        }
+
+        /**
+         * Render the given widget as a reCAPTCHA
+         * from the data-type attribute
+         */
+        function renderReCaptcha(widget) {
+
+            var form = widget.closest('form');
+            var widgetType = widget.getAttribute('data-type');
+            var widgetParameters = {
+                'sitekey': '6Lex1G0hAAAAACnNb3BLGtcx8Yj101NLb_Wm6E9i'
+            };
+
+            if (widgetType === 'invisible') {
+                widgetParameters['callback'] = function () {
+                    form.submit()
+                };
+                widgetParameters['size'] = "invisible";
+            }
+
+            var widgetId = grecaptcha.render(widget, widgetParameters);
+
+            if (widgetType === 'invisible') {
+                bindChallengeToSubmitButtons(form, widgetId);
+            }
+        }
+
+        /**
+         * Prevent the submit buttons from submitting a form
+         * and invoke the challenge for the given captcha id
+         */
+        function bindChallengeToSubmitButtons(form, reCaptchaId) {
+
+            getSubmitButtons(form).forEach(function (button) {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    grecaptcha.execute(reCaptchaId);
+                });
+            });
+        }
+
+        /**
+         * Get the submit buttons from the given form
+         */
+        function getSubmitButtons(form) {
+
+            var buttons = form.querySelectorAll('button, input');
+            var submitButtons = [];
+
+            for (var i= 0; i < buttons.length; i++) {
+                var button = buttons[i];
+                if (button.getAttribute('type') === 'submit') {
+                    submitButtons.push(button);
+                }
+            }
+
+            return submitButtons;
+        }
+
+    </script>
+</body>
+</html>

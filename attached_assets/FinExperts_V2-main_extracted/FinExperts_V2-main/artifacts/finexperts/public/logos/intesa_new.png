@@ -1,0 +1,2333 @@
+
+	
+	
+	
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+
+
+<html 	lang="ro"
+class="no-js
+"
+dir="ltr"
+data-bank="ISPROMANIA" >
+	
+	
+	
+	
+	
+
+<head>
+
+	
+
+	
+	<!-- BEGIN DATA LAYER -->
+		<script> dataLayer = []; </script>
+
+
+	
+	
+		
+		
+			
+			
+			
+		
+		
+	
+	<script>
+		window.dataLayer = [{
+			pageType: "404errorPage",
+			pageName:"ISPROMANIA:404",
+			intesaBank: "ISPROMANIA",
+			siteLanguage: "Ro",
+			siteCountry: "Romania",
+			portalSection: "public",
+			visitorType: "guest",
+			clientID: "",
+			customerSegment: "",
+			productFamily: "",
+			productName: ""
+		}];
+
+		/*
+		 *	"productName" was stored inside an object called pageLayer that it's currently replaced by dataLayer.
+		 *	To be still easily accessible by frontend functions now it's stored inside the global variable "globalProductName".
+		*/
+		window.globalProductName = "";
+	</script>
+
+	<!-- END DATA LAYER -->
+	
+	<!-- BEGIN ANTI-FLICKER -->
+	<!-- END ANTI-FLICKER -->
+	
+	<!-- BEGIN GOOGLE TAG MANAGER -->
+
+	
+	
+		<script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5Q6SPC5');</script>
+	
+
+	<!-- End GOOGLE TAG MANAGER -->
+	
+	
+	<!-- BEGIN CANONICAL -->
+
+	
+		
+			
+			
+			
+		
+		
+		
+			<link rel="canonical" href="https://www.intesasanpaolobank.ro/404.html"/>
+		
+	
+
+	<!-- End CANONICAL -->
+	
+	<!-- BEGIN SCHEMA.ORG WEBSITE -->
+
+	<script type="application/ld+json">
+	
+		{
+			"@context": "https://schema.org",
+			
+			"@type": "WebSite",
+			
+			"url": "https://www.intesasanpaolobank.ro",
+			
+			"name": "Intesa Sanpaolo Bank"
+		}
+	
+	</script>
+
+	<!-- End SCHEMA.ORG WEBSITE -->
+	
+	<!-- BEGIN SCHEMA.ORG BANK OR CREDIT UNION -->
+
+	
+		
+	    
+	
+	
+		<script type="application/ld+json">
+		
+			{
+				"@context": "https://schema.org",
+				
+				"@type": "BankOrCreditUnion",
+				
+				"name": "Intesa Sanpaolo Bank",
+				
+				"image": "https://res.cloudinary.com/ispro-bank/image/upload/prod/publicportal/ISP_logo.png",
+				
+				"url": "https://www.intesasanpaolobank.ro",
+				
+				"telephone": "",
+				
+				"priceRange": "0",
+				
+				"address": {
+				
+					"@type": "PostalAddress",
+					
+					"streetAddress": "Cladirea America House, Aripa Est si Aripa Vest, Soseaua Nicolae Titulescu 4-8, etaj 6, sector 1",
+					
+					"addressLocality": "Bucuresti",
+					
+					"postalCode": "011141",
+					
+					"addressCountry": "Romania"
+				
+				}
+			}
+		
+		</script>
+	
+
+	<!-- End SCHEMA.ORG BANK OR CREDIT UNION -->
+
+	
+	
+	
+	<title>404</title>
+	
+	<!-- BEGIN META -->
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/images/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="turbolinks-cache-control">
+		<meta name="turbolinks-visit-control" content="reload">
+
+			<meta name="description" content="">
+
+		<meta name="keywords" content="">
+		
+				 <meta name="facebook-domain-verification" content="i84hiine5wso5m8qiqdag18yceqmj7" />
+		
+			<meta name="robots" content="index, follow">
+	
+	<!-- END META -->
+	
+	<!-- BEGIN BEGIN SOCIAL MARKUP -->
+	
+
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- BEGIN SOCIAL MARKUP - TWITTER CARD-->
+
+	<meta name="twitter:card" content= "summary" />
+	<meta name="twitter:site" content="" />
+	<meta name="twitter:creator" content="" />
+	<meta name="twitter:url" content="https://www.intesasanpaolobank.ro/404.html" />
+	<meta name="twitter:title" content= "" />
+	<meta name="twitter:description" content= "" />
+	<meta name="twitter:image" content="" />
+
+		<!-- END SOCIAL MARKUP - TWITTER CARD -->
+		
+		<!-- BEGIN SOCIAL MARKUP - OPEN GRAPH  -->
+
+	
+	<meta property="og:type" content="">
+	<meta property="og:title" content="">
+	<meta property="og:url" content="https://www.intesasanpaolobank.ro/404.html">
+	<meta property="og:description" content="">
+	<meta property="og:locale" content="ro">
+	<meta property="og:site_name" content="Intesa Sanpaolo Bank">
+	<meta property="og:image" content="">
+
+		<!-- END SOCIAL MARKUP - OPEN GRAPH -->
+	
+
+	
+	<!-- END SOCIAL MARKUP -->
+	
+	<!-- BEGIN FAVICON -->
+	
+		<link rel="icon" type="image/png" sizes="32x32" href="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/images/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/images/favicon-16x16.png">
+	
+	<!-- END FAVICON -->
+	
+	<link rel="preconnect" href="https://res.cloudinary.com">
+    <link rel="dns-prefetch" href="https://res.cloudinary.com">
+    
+    <link rel="preconnect" href="https://static.cdn-apple.com">
+    <link rel="dns-prefetch" href="https://static.cdn-apple.com">
+        
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    
+    <link rel="preconnect" href="https://www.vivocha.com">
+    <link rel="dns-prefetch" href="https://www.vivocha.com">
+        
+    <link rel="preconnect" href="https://f2.vivocha.com">
+    <link rel="dns-prefetch" href="https://f2.vivocha.com">
+
+    <link rel="preconnect" href="https://cdn.vivocha.com">
+    <link rel="dns-prefetch" href="https://cdn.vivocha.com">
+    
+    
+	<link rel="manifest" href="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/manifest.json">
+	<meta name="turbolinks-visit-control" content="reload">
+	
+	<!-- BEGIN STYLES AND SCRIPTS -->
+
+	
+		
+			
+				
+			
+			
+				<link rel="preload stylesheet" as="font" href="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/styles/main-common~2026-04-20-08-19-50-000~cache.css" data-turbolinks-track="reload" crossorigin="anonymous"/>
+				
+			
+		
+			
+				
+			
+			
+
+
+		<link rel="preload stylesheet" as="style" href="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/customs/css/reply.css?ver=5" data-turbolinks-track="reload"/>
+		
+		
+			
+				
+			
+			
+				<script  data-turbolinks-eval="false" src="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/vendors/modernizr~2021-04-14-19-18-11-570~cache.js" data-turbolinks-track="reload"></script>
+				
+			
+		
+			
+				
+			
+			
+		
+
+		<script>
+		if(window.navigator.userAgent.indexOf("MSIE ") == -1  
+      		&& window.navigator.userAgent.indexOf("Trident") == -1 
+    		&& window.navigator.userAgent.indexOf("MSIE") == -1){
+            document.addEventListener('readystatechange', function(event) {
+              if (document.readyState === 'complete') {
+                var script = document.createElement("script");
+            			script.async = true;
+            			script.src = "https://static.cdn-apple.com/businesschat/start-chat-button/2/index.js";
+            			document.head.appendChild(script);
+              }
+            });
+
+    		
+    		}
+		</script>	<!-- END STYLES AND SCRIPTS -->
+	
+	<script>
+		window.__HEADER_DATA__ = {
+			"contextPath" : "",
+		}
+	</script>
+	<style>	
+	    @media(min-width: 768px) {
+    		.comCarouselHero {
+    		    min-height: 40vh;
+    		}
+    	}
+	</style>
+</head>
+
+ 	
+	
+	<body class="near-top fixed-top ispromania ">
+		<input type="hidden" id="sourceUrlPage" value="/ispromania/404" >
+		
+		<input type="hidden" id="templateNamePage" value="404errorPage" >
+		<input type="hidden" id="productIdPage" value="" >
+        <input type="hidden" id="productNamePage" value="" >
+        <input type="hidden" id="altTextPage" value="" >
+		
+		<!-- Google Tag Manager (noscript) -->
+		
+		
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5Q6SPC5"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		
+		<!-- End Google Tag Manager (noscript) -->
+		
+		<!--[if lt IE 9]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		
+		
+		
+			<input type="hidden" id="genericSettings" value='{"decimals": "0","decimal": "&#44;","separator": "&nbsp;", "decimals_number": "4","decimal_number": "&#44;","separator_number": "&nbsp;" }'>
+		
+		
+		
+		
+<nav class="skiplink" id="skiplink" role="navigation">
+		
+	<p class="isVisuallyHidden">Skiplinks</p>
+
+	
+	
+    <ul>
+        <li class="skiplink__item"><a class="skiplink__link" accesskey="0" href="#mainContainer" title="[ALT + 0]" target="_self" aria-label="Treci la conținutul principal al paginii">Treci la conținutul principal al paginii</a></li>
+        <li class="skiplink__item"><a class="skiplink__link" accesskey="1" href="#siteNavigation" title="[ALT + 1]" target="_self" aria-label="Salt la navigare">Salt la navigare</a></li>
+        <li class="skiplink__item"><a class="skiplink__link" accesskey="2" href="#main" title="[ALT + 2]" target="_self" aria-label="Salt la conținut">Salt la conținut</a></li>
+        <li class="skiplink__item"><a class="skiplink__link" accesskey="3" href="#sitemapNavigation" title="[ALT + 3]" target="_self" aria-label="Harta site-ului">Harta site-ului</a></li>
+        <li class="skiplink__item skiplink__footerContact"><a class="skiplink__link" accesskey="4" href="#footerContact" title="[ALT + 4]" target="_self" aria-label="Contact">Contact</a></li>
+    </ul>
+		
+
+</nav><header class="header " data-component="Header">
+		
+	<div class="header__wrapper">
+
+
+	
+<!-- topNavigation -->
+<nav class="navigation topNavigation" role="navigation">
+
+	<div class="container row">
+	
+		
+<div class="topNavigation__control">
+
+	<ul class="navigation__menu">
+	
+
+		<div style="display: none; visibility: hidden;" aria-hidden="true" class = "closeLabel">Închide</div>
+		<div style="display: none; visibility: hidden;" aria-hidden="true" class = "openLabel">Extinde</div>
+		<div style="display: none; visibility: hidden;" aria-hidden="true" class = "accordionMenu">Meniu de navigare</div>
+
+		<li
+				class="navigation__item"
+		>
+			<a
+					class="dropdownNavigation__btn navigation__link js-dropdownNavigation "
+					role="button"
+					aria-controls="ariaDropdownNavigation"
+					aria-expanded="false"
+					href="javascript:;"
+					title="Meniu de navigare"
+					tabindex="0"
+					aria-label="Extinde Meniu de navigare"
+				>
+					
+			</a>
+		</li>
+		
+	</ul>
+	
+</div>
+
+<div class="navigation__sideA dropdownNavigation" id="ariaDropdownNavigation" role="tabpanel" >
+
+	<!-- menu primary -->
+	<ul class="navigation__menu " role="navigation">
+	
+		
+
+	
+	<li class="navigation__item ">
+	
+		<a class="navigation__link " href="/persoane-fizice" title="Persoane Fizice" aria-label="Persoane Fizice" data-turbolinks="false" >Persoane Fizice</a>
+		
+	</li>
+	
+
+
+	
+	<li class="navigation__item ">
+	
+		<a class="navigation__link " href="/microintreprinderi-antreprenori" title="Microintreprinderi" aria-label="Microintreprinderi" data-turbolinks="false" >Microintreprinderi</a>
+		
+	</li>
+	
+
+
+	
+	<li class="navigation__item ">
+	
+		<a class="navigation__link " href="/imm" title="IMM" aria-label="IMM" data-turbolinks="false" >IMM</a>
+		
+	</li>
+	
+
+
+	
+	<li class="navigation__item ">
+	
+		<a class="navigation__link " href="/corporate" title="Corporate" aria-label="Corporate" data-turbolinks="false" >Corporate</a>
+		
+	</li>
+	
+
+
+	
+	<li class="navigation__item ">
+	
+		<a class="navigation__link " href="/persoane-fizice/intesa-sanpaolo-romania.html" title="Despre noi" aria-label="Despre noi" data-turbolinks="false" >Despre noi</a>
+		
+	</li>
+	
+
+		
+	</ul>
+	
+
+</div>
+
+
+<!-- float-inverse -->
+<div class="navigation__sideB">
+
+	<!-- menu corporate -->
+	<ul class="navigation__corporate ">
+	
+		
+
+	<li class="navigation__item hidden-xs">
+	
+		<a
+					aria-label="Contact"
+				class="navigation__link" href="/persoane-fizice/contact.html" title="Contact" data-turbolinks="false">
+		
+			<span class="icon icon-ic_mail"></span>
+			Contact
+			
+		</a>
+		
+	</li>
+
+			
+		
+
+	<li class="navigation__item">
+	
+		<a
+					aria-label="Agenții &amp; Bancomate"
+				class="navigation__link" href="/persoane-fizice/branch-locator.html" title="Agenții &amp; Bancomate" data-turbolinks="false">
+		
+			<span class="icon icon-ic_locator icon-locator-mobile-separator" aria-label="Agenții &amp; Bancomate"></span>
+			<span class="hidden-xs">Agenții &amp; Bancomate</span>
+			
+		</a>
+		
+	</li>
+			
+		
+	</ul>
+	
+	
+
+	
+	<!-- menu language -->
+	<ul class="navigation__language ">
+	
+		
+			
+			
+
+    			<li class="navigation__item active">
+    			
+    				<a aria-label="Schimbă limba în ro" class="navigation__link" href="/404" data-lang="ro" title="Schimbă limba în ro">ro</a>
+    				
+    			</li>
+		
+			
+			
+
+    			<li class="navigation__item ">
+    			
+    				<a aria-label="Schimbă limba în en" class="navigation__link" href="/en/404" data-lang="en" title="Schimbă limba în en">en</a>
+    				
+    			</li>
+		
+	</ul>
+	
+	
+	
+</div>
+		
+	</div>
+	
+</nav>
+<!-- //topNavigation -->
+
+		
+		
+	</div>
+	
+</header>
+<div id="mainContainer" class="mainContainer" >
+
+	<div class="wrapper">
+	
+		<main id="main" class="main">
+		
+			<div class="pageTemplate">
+			
+				
+
+
+	
+		<div class="error404__heroImage__image">
+		
+			<img src="https://res.cloudinary.com/ispba-bank/image/upload/fl_lossy/c_scale,w_auto/f_auto,q_auto/dpr_auto/test/publicportal/pages/error_page/img-404" data-src="https://res.cloudinary.com/ispba-bank/image/upload/fl_lossy/c_scale,w_auto/f_auto,q_auto/dpr_auto/test/publicportal/pages/error_page/img-404" class="largeImage lazyload" alt="404" />
+			
+		</div>
+		
+	
+	<section class="section error404 j-error404__redirect -js-activeRedirect" data-component="Error404" data-redirect="/persoane-fizice" data-timeout-duration="10">
+	
+		<div class="container row">
+		
+			<div class="row">
+			
+				<div class="col-24 col-sm-24 col-md-20 offset-md-2">
+				
+					<div class="error404__wrapper">
+					
+						
+							<h1 class="error404__title">
+								<strong>Pagina nu a fost gasită</strong>
+							</h1>
+							
+						
+						
+							<p class="error404__paragraph">
+							
+								Probabil pagina a fost mutată sau linkul este greșit.
+								
+							</p>
+							
+						
+						
+						<div class="error404__btnContainer">
+						
+
+
+	
+
+
+	
+	
+		
+			<a role="button"  class="btn btn-primary "  href="http://www.intesasanpaolobank.ro" title="Înapoi la pagina principală" 
+	
+	
+		
+	
+
+ target="_blank" aria-label="Se deschide într-o filă nouă | Înapoi la pagina principală" >
+				Înapoi la pagina principală
+			</a>
+	
+
+
+							
+						</div>
+					
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</section>
+
+				
+			
+			</div>
+			
+		</main>
+		
+	</div>
+	
+</div>
+
+		
+		<footer class="footer" data-component="Footer">
+		
+			
+
+
+<div class="footer-corporate footer-last">
+
+	<div class="navigation">
+	
+		<div class="container row">
+		
+			<div class="row">
+			
+				<div class="offset-md-1 col-lg-4 col-md-4 col-sm-5 col-24">
+				
+
+						<div class="content__footer bankLogo">
+					
+							<img alt="Intesa Sanpaolo Romania Bank logo" class="logo-bankname lazyload" src="https://res.cloudinary.com/ispro-bank/image/upload/fl_lossy/c_scale,w_auto/f_auto,q_auto/dpr_auto/test/publicportal/ISP_logo" data-src="https://res.cloudinary.com/ispro-bank/image/upload/fl_lossy/c_scale,w_auto/f_auto,q_auto/dpr_auto/test/publicportal/ISP_logo">
+						
+						</div>
+						
+					
+				</div>
+				
+				<div class="col-lg-14 col-md-13 col-sm-12 col-24">
+				
+					
+				</div>
+				
+				<div class="col-lg-4 col-md-4 col-sm-4 col-24">
+				
+					
+						<div class="content__footer corporateLogo">
+						
+							<img alt="Intesa Sanpaolo Romania Bank logo" class="logo-intesa lazyload" src="https://res.cloudinary.com/ispro-bank/image/upload/fl_lossy/c_scale,w_auto/f_auto,q_auto/dpr_auto/test/publicportal/commons/bankof-intesasanpaolo.svg" data-src="https://res.cloudinary.com/ispro-bank/image/upload/fl_lossy/c_scale,w_auto/f_auto,q_auto/dpr_auto/test/publicportal/commons/bankof-intesasanpaolo.svg">
+							
+						</div>
+						
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
+		
+		</footer>
+		
+		
+		
+		
+		
+
+
+	
+
+
+<script>
+	const e5e9131be955346e0bde6856d771c2d29 = document.getElementById("wrapMessage-5e9131be-9553-46e0-bde6-856d771c2d29");
+	if(e5e9131be955346e0bde6856d771c2d29) {
+		e5e9131be955346e0bde6856d771c2d29.classList.remove('visible');
+		e5e9131be955346e0bde6856d771c2d29.classList.add('visible');
+		document.body.insertBefore(e5e9131be955346e0bde6856d771c2d29, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eee65e592ceef4ff5a3a5f51a62327b79 = document.getElementById("wrapMessage-ee65e592-ceef-4ff5-a3a5-f51a62327b79");
+	if(eee65e592ceef4ff5a3a5f51a62327b79) {
+		eee65e592ceef4ff5a3a5f51a62327b79.classList.remove('visible');
+		eee65e592ceef4ff5a3a5f51a62327b79.classList.add('visible');
+		document.body.insertBefore(eee65e592ceef4ff5a3a5f51a62327b79, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e71cc664411de4001ae3070076c525c5d = document.getElementById("wrapMessage-71cc6644-11de-4001-ae30-70076c525c5d");
+	if(e71cc664411de4001ae3070076c525c5d) {
+		e71cc664411de4001ae3070076c525c5d.classList.remove('visible');
+		e71cc664411de4001ae3070076c525c5d.classList.add('visible');
+		document.body.insertBefore(e71cc664411de4001ae3070076c525c5d, document.body.firstChild);
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+<section class="cookie-bar section mod-com3  com3-1 js-com3 com3-1--bottom visible" data-component="Com3Cookie" 
+																data-cookie-gdpr-name="gdpr_cookie_consent"
+																data-cookie-bar-name="cookie_status_bar" 
+																data-expires-cookie-bar="1893452400000" 
+																data-expires-cookie-gdpr="1893452400000"
+																data-id-modal="modal"
+																id="cookieSectionPart">
+	<div class="com3__textWrapper">
+	
+		<div class="description_wrapper">
+			<div class="icon hidden-xs">
+				<img alt="" aria-hidden="true" src="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/images/service-icon-cookie.png">
+			</div>
+
+			<div class="com3__description">
+				<p>Utilizăm cookie-uri și alte tehnologii similare necesare funcționării site-ului, analizării performanței, pentru a-ți oferi conținut personalizat după interese și preferințe, precum și pentru activitatea noastră de publicitate online. (<a href="https://www.intesasanpaolobank.ro/persoane-fizice/politica-cookies.html">Politica de cookies)</a>&nbsp;</p>
+
+			</div>
+			
+			<div class="com3__buttons text-center">
+		
+				
+					
+						<a tabindex="0" href role="button"  class="btn js-com3-close btn-primary" data-value-to-accept=
+	
+		'"necessary,features,marketing"'
+	
+
+>
+						
+							Le accept pe toate
+						
+						</a>
+					
+				
+	
+					
+						<a href role="button"  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal">Setări personalizate</a>
+					
+				
+			
+			</div>
+			
+		</div>
+		
+
+			<a tabindex="0" role="button"  class="com3__close js-com3-close" href="javascript:;" title="Close" data-value-to-accept=
+
+	
+			
+			
+			
+	
+
+	'"necessary"'
+
+><span class="icon-ic_close"></span></a>
+		
+	
+	</div>
+		
+	
+	
+	<div class="modal fade" tabindex="-1" id="modal" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	
+		<div class="modal-dialog pop1__wrapper pop1__wrapper--cookie" role="document">
+		
+			<div class="modal-content pop1__wrapperInner">
+			
+				<div class="modal-header">
+				
+					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Închide"><span class="icon-ic_close"></span></button>
+					
+					
+						<div>
+							<p>
+								<p>&nbsp; &nbsp;&nbsp;</p>
+
+							</p>
+						</div>
+					
+				
+				</div>
+				
+
+
+	
+		<form class="js-formCookie">
+		
+			<div class="modal-body">
+			
+				<div class="pop1__table">
+				
+					
+						
+						
+							<div class="pop1__table__item">
+							
+
+								<div style="display:flex;"
+									 class="customCheckbox customCheckbox--slider accessible-checkbox"
+								>
+									<input aria-label="Cookie-uri strict necesare" id="necessary" name="necessary" value="necessary" type="checkbox"  disabled checked 
+										   data-cookies-list=
+	
+		
+		
+			"_gid,product,bmuid,cookie_status_bar,cdContextId,highcontrast,gdpr_cookie_consent,browserData,cdSNum,JSESSIONID"
+		
+	
+
+>
+
+									<label tabindex="-1" aria-hidden="true" for="necessary">Cookie-uri strict necesare</label>
+									
+								</div>
+								
+								<div class="pop1__table__collapse">
+								
+									
+										<div class="pop1__table__desc" id="cookieAbstractCookie-uristrictnecesare" aria-live="polite"">
+											<p>Cookie-urile necesare ajută la a face un site utilizabil prin activarea funcţiilor de bază, precum navigarea &icirc;n pagină şi accesul la zonele securizate de pe site. Site-ul nu poate funcţiona corespunzător fără aceste cookie-uri.</p>
+
+										</div>
+										
+										<a tabindex="0" aria-controls="cookieAbstractCookie-uristrictnecesare" aria-expanded="false" role="button" href="javascript:;" class="btn btn-sm js-collapse-text" data-close-text="Inchide" data-aria-label-close="Inchide Cookie-uri strict necesare"  aria-label="Află mai multe Cookie-uri strict necesare">Află mai multe</a>
+									
+								
+								</div>
+							
+							</div>
+						
+					
+					
+						
+						
+							<div class="pop1__table__item">
+							
+
+								<div style="display:flex;"
+									 class="customCheckbox customCheckbox--slider accessible-checkbox"
+								>
+									<input aria-label="Cookie-uri de analiză și performanță" id="features" name="features" value="features" type="checkbox" 
+										   data-cookies-list=
+	
+		
+	
+
+>
+
+									<label tabindex="-1" aria-hidden="true" for="features">Cookie-uri de analiză și performanță</label>
+									
+								</div>
+								
+								<div class="pop1__table__collapse">
+								
+									
+										<div class="pop1__table__desc" id="cookieAbstractCookie-urideanalizășiperformanță" aria-live="polite"">
+											<p>Cookie-urile de statistică ne ajută&nbsp;să &icirc;nţelegem modul &icirc;n care vizitatorii interacţionează cu site-ul.&nbsp;Măsurăm numărul de vizite, numărul paginilor vizitate și activitatea vizitatorilor (spre exemplu, paginile cele mai accesate) pe site-ul nostru și c&acirc;t de des utilizatorii revin pe site.&nbsp;Refuzul utilizării acestor cookie-uri nu are impact asupra funcționării site-ului nostru.</p>
+
+										</div>
+										
+										<a tabindex="0" aria-controls="cookieAbstractCookie-urideanalizășiperformanță" aria-expanded="false" role="button" href="javascript:;" class="btn btn-sm js-collapse-text" data-close-text="Inchide" data-aria-label-close="Inchide Cookie-uri de analiză și performanță"  aria-label="Află mai multe Cookie-uri de analiză și performanță">Află mai multe</a>
+									
+								
+								</div>
+							
+							</div>
+						
+					
+					
+						
+						
+							<div class="pop1__table__item">
+							
+
+								<div style="display:flex;"
+									 class="customCheckbox customCheckbox--slider accessible-checkbox"
+								>
+									<input aria-label="Cookie-uri de publicitate" id="marketing" name="marketing" value="marketing" type="checkbox" 
+										   data-cookies-list=
+	
+		
+		
+			"__CT_Data,_CT_RS_,content_adaptive*"
+		
+	
+
+>
+
+									<label tabindex="-1" aria-hidden="true" for="marketing">Cookie-uri de publicitate</label>
+									
+								</div>
+								
+								<div class="pop1__table__collapse">
+								
+									
+										<div class="pop1__table__desc" id="cookieAbstractCookie-uridepublicitate" aria-live="polite"">
+											<p>Cookie-urile de publicitate sunt utilizate pentru a &icirc;nțelege mai bine care sunt interesele vizitatorilor (&icirc;n primul r&acirc;nd prin &icirc;nțelegerea utilizării site-ului nostru) și a arăta anunțuri relevante pe site-urile partenerilor.&nbsp;Refuzul utilizării acestor cookie-uri nu are impact asupra funcționării site-ului nostru.</p>
+
+										</div>
+										
+										<a tabindex="0" aria-controls="cookieAbstractCookie-uridepublicitate" aria-expanded="false" role="button" href="javascript:;" class="btn btn-sm js-collapse-text" data-close-text="Inchide" data-aria-label-close="Inchide Cookie-uri de publicitate"  aria-label="Află mai multe Cookie-uri de publicitate">Află mai multe</a>
+									
+								
+								</div>
+							
+							</div>
+						
+					
+				
+				</div>
+			
+			</div>
+			
+			<div class="modal-footer pop1__btnContainer pop1__btnContainer--cookie">
+			
+				
+					
+						<button type="submit"  class="btn btn-secondary btn-md js-com3-close" data-bs-dismiss="modal">SALVEAZĂ PREFERINȚELE</button>
+					
+					
+					
+						<button type="button"  class="btn btn-primary btn-md js-com3-close" data-bs-dismiss="modal"
+																							data-value-to-accept=
+	
+		'"necessary,features,marketing"'
+	
+
+>
+							ACCEPTĂ TOATE
+						
+						</button>
+					
+				
+			
+			</div>
+		
+		</form>
+	
+
+				
+
+					<input name="all-categories-cookie-list" type="hidden" value=necessary,features,marketing />
+				
+			
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	
+	<script>
+	const e = document.getElementById("cookieSectionPart");
+	if(e) {
+		e.classList.remove('visible');
+	    e.classList.add('visible');
+		document.body.insertBefore(e, document.body.firstChild);
+		var foundCookie = false;
+		var name = "gdpr_cookie_consent" + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				foundCookie = true;
+			}
+		}
+		if(foundCookie) {
+			e.classList.remove('visible');
+		} else {
+			e.focus();
+		}
+	}
+	</script>
+
+</section>
+
+
+
+
+
+	
+
+
+<script>
+	const ed17455a8cd544282b6775df090a5ade8 = document.getElementById("wrapMessage-d17455a8-cd54-4282-b677-5df090a5ade8");
+	if(ed17455a8cd544282b6775df090a5ade8) {
+		ed17455a8cd544282b6775df090a5ade8.classList.remove('visible');
+		ed17455a8cd544282b6775df090a5ade8.classList.add('visible');
+		document.body.insertBefore(ed17455a8cd544282b6775df090a5ade8, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ebec550fab25b49c3b458887bdb699db5 = document.getElementById("wrapMessage-bec550fa-b25b-49c3-b458-887bdb699db5");
+	if(ebec550fab25b49c3b458887bdb699db5) {
+		ebec550fab25b49c3b458887bdb699db5.classList.remove('visible');
+		ebec550fab25b49c3b458887bdb699db5.classList.add('visible');
+		document.body.insertBefore(ebec550fab25b49c3b458887bdb699db5, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e742e59577ab14bb995cbdc8c8b0e68f9 = document.getElementById("wrapMessage-742e5957-7ab1-4bb9-95cb-dc8c8b0e68f9");
+	if(e742e59577ab14bb995cbdc8c8b0e68f9) {
+		e742e59577ab14bb995cbdc8c8b0e68f9.classList.remove('visible');
+		e742e59577ab14bb995cbdc8c8b0e68f9.classList.add('visible');
+		document.body.insertBefore(e742e59577ab14bb995cbdc8c8b0e68f9, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e9dd01c33fef0490082bfcc0a3bfd0c39 = document.getElementById("wrapMessage-9dd01c33-fef0-4900-82bf-cc0a3bfd0c39");
+	if(e9dd01c33fef0490082bfcc0a3bfd0c39) {
+		e9dd01c33fef0490082bfcc0a3bfd0c39.classList.remove('visible');
+		e9dd01c33fef0490082bfcc0a3bfd0c39.classList.add('visible');
+		document.body.insertBefore(e9dd01c33fef0490082bfcc0a3bfd0c39, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e9626cb7eb76c4da9b038ea581eff2b38 = document.getElementById("wrapMessage-9626cb7e-b76c-4da9-b038-ea581eff2b38");
+	if(e9626cb7eb76c4da9b038ea581eff2b38) {
+		e9626cb7eb76c4da9b038ea581eff2b38.classList.remove('visible');
+		e9626cb7eb76c4da9b038ea581eff2b38.classList.add('visible');
+		document.body.insertBefore(e9626cb7eb76c4da9b038ea581eff2b38, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ed1c503f571f04470b1ec48cfaef36a2a = document.getElementById("wrapMessage-d1c503f5-71f0-4470-b1ec-48cfaef36a2a");
+	if(ed1c503f571f04470b1ec48cfaef36a2a) {
+		ed1c503f571f04470b1ec48cfaef36a2a.classList.remove('visible');
+		ed1c503f571f04470b1ec48cfaef36a2a.classList.add('visible');
+		document.body.insertBefore(ed1c503f571f04470b1ec48cfaef36a2a, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e570ddc4eb8314f1786335ad9165eb04b = document.getElementById("wrapMessage-570ddc4e-b831-4f17-8633-5ad9165eb04b");
+	if(e570ddc4eb8314f1786335ad9165eb04b) {
+		e570ddc4eb8314f1786335ad9165eb04b.classList.remove('visible');
+		e570ddc4eb8314f1786335ad9165eb04b.classList.add('visible');
+		document.body.insertBefore(e570ddc4eb8314f1786335ad9165eb04b, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e092279b311cd4d359071fa779e0dcf50 = document.getElementById("wrapMessage-092279b3-11cd-4d35-9071-fa779e0dcf50");
+	if(e092279b311cd4d359071fa779e0dcf50) {
+		e092279b311cd4d359071fa779e0dcf50.classList.remove('visible');
+		e092279b311cd4d359071fa779e0dcf50.classList.add('visible');
+		document.body.insertBefore(e092279b311cd4d359071fa779e0dcf50, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e23d40c9ca48241dc81765dc358a41f78 = document.getElementById("wrapMessage-23d40c9c-a482-41dc-8176-5dc358a41f78");
+	if(e23d40c9ca48241dc81765dc358a41f78) {
+		e23d40c9ca48241dc81765dc358a41f78.classList.remove('visible');
+		e23d40c9ca48241dc81765dc358a41f78.classList.add('visible');
+		document.body.insertBefore(e23d40c9ca48241dc81765dc358a41f78, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eadacb184d1134d3d8e753d0ebe333115 = document.getElementById("wrapMessage-adacb184-d113-4d3d-8e75-3d0ebe333115");
+	if(eadacb184d1134d3d8e753d0ebe333115) {
+		eadacb184d1134d3d8e753d0ebe333115.classList.remove('visible');
+		eadacb184d1134d3d8e753d0ebe333115.classList.add('visible');
+		document.body.insertBefore(eadacb184d1134d3d8e753d0ebe333115, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e012cfc68ec2d4acb8877289e01ceb1e3 = document.getElementById("wrapMessage-012cfc68-ec2d-4acb-8877-289e01ceb1e3");
+	if(e012cfc68ec2d4acb8877289e01ceb1e3) {
+		e012cfc68ec2d4acb8877289e01ceb1e3.classList.remove('visible');
+		e012cfc68ec2d4acb8877289e01ceb1e3.classList.add('visible');
+		document.body.insertBefore(e012cfc68ec2d4acb8877289e01ceb1e3, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e39dc030dec544773ba48b3fcbd1df405 = document.getElementById("wrapMessage-39dc030d-ec54-4773-ba48-b3fcbd1df405");
+	if(e39dc030dec544773ba48b3fcbd1df405) {
+		e39dc030dec544773ba48b3fcbd1df405.classList.remove('visible');
+		e39dc030dec544773ba48b3fcbd1df405.classList.add('visible');
+		document.body.insertBefore(e39dc030dec544773ba48b3fcbd1df405, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e8a70a279411d472fbc93bc57edfddd16 = document.getElementById("wrapMessage-8a70a279-411d-472f-bc93-bc57edfddd16");
+	if(e8a70a279411d472fbc93bc57edfddd16) {
+		e8a70a279411d472fbc93bc57edfddd16.classList.remove('visible');
+		e8a70a279411d472fbc93bc57edfddd16.classList.add('visible');
+		document.body.insertBefore(e8a70a279411d472fbc93bc57edfddd16, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ef1af08a0a2de430f82b4c56b93217c5e = document.getElementById("wrapMessage-f1af08a0-a2de-430f-82b4-c56b93217c5e");
+	if(ef1af08a0a2de430f82b4c56b93217c5e) {
+		ef1af08a0a2de430f82b4c56b93217c5e.classList.remove('visible');
+		ef1af08a0a2de430f82b4c56b93217c5e.classList.add('visible');
+		document.body.insertBefore(ef1af08a0a2de430f82b4c56b93217c5e, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eba8f7963921d4fabb5f61d619f35bc69 = document.getElementById("wrapMessage-ba8f7963-921d-4fab-b5f6-1d619f35bc69");
+	if(eba8f7963921d4fabb5f61d619f35bc69) {
+		eba8f7963921d4fabb5f61d619f35bc69.classList.remove('visible');
+		eba8f7963921d4fabb5f61d619f35bc69.classList.add('visible');
+		document.body.insertBefore(eba8f7963921d4fabb5f61d619f35bc69, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eaf19c5d760a54e1480f93a572e3c7e2e = document.getElementById("wrapMessage-af19c5d7-60a5-4e14-80f9-3a572e3c7e2e");
+	if(eaf19c5d760a54e1480f93a572e3c7e2e) {
+		eaf19c5d760a54e1480f93a572e3c7e2e.classList.remove('visible');
+		eaf19c5d760a54e1480f93a572e3c7e2e.classList.add('visible');
+		document.body.insertBefore(eaf19c5d760a54e1480f93a572e3c7e2e, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ebb6e6bf2b7804c7bbecc6cc20d224245 = document.getElementById("wrapMessage-bb6e6bf2-b780-4c7b-becc-6cc20d224245");
+	if(ebb6e6bf2b7804c7bbecc6cc20d224245) {
+		ebb6e6bf2b7804c7bbecc6cc20d224245.classList.remove('visible');
+		ebb6e6bf2b7804c7bbecc6cc20d224245.classList.add('visible');
+		document.body.insertBefore(ebb6e6bf2b7804c7bbecc6cc20d224245, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eba6602282ae4412fb71d441325c74376 = document.getElementById("wrapMessage-ba660228-2ae4-412f-b71d-441325c74376");
+	if(eba6602282ae4412fb71d441325c74376) {
+		eba6602282ae4412fb71d441325c74376.classList.remove('visible');
+		eba6602282ae4412fb71d441325c74376.classList.add('visible');
+		document.body.insertBefore(eba6602282ae4412fb71d441325c74376, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ee8dc2ffec22f46d791af7281df10447c = document.getElementById("wrapMessage-e8dc2ffe-c22f-46d7-91af-7281df10447c");
+	if(ee8dc2ffec22f46d791af7281df10447c) {
+		ee8dc2ffec22f46d791af7281df10447c.classList.remove('visible');
+		ee8dc2ffec22f46d791af7281df10447c.classList.add('visible');
+		document.body.insertBefore(ee8dc2ffec22f46d791af7281df10447c, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ec9aef79b5e0a4106b76fd9e58748216f = document.getElementById("wrapMessage-c9aef79b-5e0a-4106-b76f-d9e58748216f");
+	if(ec9aef79b5e0a4106b76fd9e58748216f) {
+		ec9aef79b5e0a4106b76fd9e58748216f.classList.remove('visible');
+		ec9aef79b5e0a4106b76fd9e58748216f.classList.add('visible');
+		document.body.insertBefore(ec9aef79b5e0a4106b76fd9e58748216f, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eb1ee7b93451a4516a8ac200b3f586b75 = document.getElementById("wrapMessage-b1ee7b93-451a-4516-a8ac-200b3f586b75");
+	if(eb1ee7b93451a4516a8ac200b3f586b75) {
+		eb1ee7b93451a4516a8ac200b3f586b75.classList.remove('visible');
+		eb1ee7b93451a4516a8ac200b3f586b75.classList.add('visible');
+		document.body.insertBefore(eb1ee7b93451a4516a8ac200b3f586b75, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e5afb279441b44744a9c22ba4f940ef8b = document.getElementById("wrapMessage-5afb2794-41b4-4744-a9c2-2ba4f940ef8b");
+	if(e5afb279441b44744a9c22ba4f940ef8b) {
+		e5afb279441b44744a9c22ba4f940ef8b.classList.remove('visible');
+		e5afb279441b44744a9c22ba4f940ef8b.classList.add('visible');
+		document.body.insertBefore(e5afb279441b44744a9c22ba4f940ef8b, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e8908f520405d44adb91799d7626de2b3 = document.getElementById("wrapMessage-8908f520-405d-44ad-b917-99d7626de2b3");
+	if(e8908f520405d44adb91799d7626de2b3) {
+		e8908f520405d44adb91799d7626de2b3.classList.remove('visible');
+		e8908f520405d44adb91799d7626de2b3.classList.add('visible');
+		document.body.insertBefore(e8908f520405d44adb91799d7626de2b3, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const ef3d6fe12a1e248f4ae2ca349f89d9db0 = document.getElementById("wrapMessage-f3d6fe12-a1e2-48f4-ae2c-a349f89d9db0");
+	if(ef3d6fe12a1e248f4ae2ca349f89d9db0) {
+		ef3d6fe12a1e248f4ae2ca349f89d9db0.classList.remove('visible');
+		ef3d6fe12a1e248f4ae2ca349f89d9db0.classList.add('visible');
+		document.body.insertBefore(ef3d6fe12a1e248f4ae2ca349f89d9db0, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e19d174a3b43741d09eb2f70a507bc083 = document.getElementById("wrapMessage-19d174a3-b437-41d0-9eb2-f70a507bc083");
+	if(e19d174a3b43741d09eb2f70a507bc083) {
+		e19d174a3b43741d09eb2f70a507bc083.classList.remove('visible');
+		e19d174a3b43741d09eb2f70a507bc083.classList.add('visible');
+		document.body.insertBefore(e19d174a3b43741d09eb2f70a507bc083, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e055f3cb6f0c2484caf027b812cce9be8 = document.getElementById("wrapMessage-055f3cb6-f0c2-484c-af02-7b812cce9be8");
+	if(e055f3cb6f0c2484caf027b812cce9be8) {
+		e055f3cb6f0c2484caf027b812cce9be8.classList.remove('visible');
+		e055f3cb6f0c2484caf027b812cce9be8.classList.add('visible');
+		document.body.insertBefore(e055f3cb6f0c2484caf027b812cce9be8, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const eaf0f95a59e3c42928db34a125e9d2476 = document.getElementById("wrapMessage-af0f95a5-9e3c-4292-8db3-4a125e9d2476");
+	if(eaf0f95a59e3c42928db34a125e9d2476) {
+		eaf0f95a59e3c42928db34a125e9d2476.classList.remove('visible');
+		eaf0f95a59e3c42928db34a125e9d2476.classList.add('visible');
+		document.body.insertBefore(eaf0f95a59e3c42928db34a125e9d2476, document.body.firstChild);
+	}
+</script>
+
+
+
+	
+
+
+<script>
+	const e79c1eaec34664638bf4b4b63069e4aeb = document.getElementById("wrapMessage-79c1eaec-3466-4638-bf4b-4b63069e4aeb");
+	if(e79c1eaec34664638bf4b4b63069e4aeb) {
+		e79c1eaec34664638bf4b4b63069e4aeb.classList.remove('visible');
+		e79c1eaec34664638bf4b4b63069e4aeb.classList.add('visible');
+		document.body.insertBefore(e79c1eaec34664638bf4b4b63069e4aeb, document.body.firstChild);
+	}
+</script>
+
+		
+		
+		
+		<div id="preloader" data-turbolinks-permanent></div>
+		
+		<script>// window.__DISABLE_TURBOLINKS__ = false;</script>
+		
+		
+		<input type="hidden" id="isH1Indexed" value="false">
+		
+		<script src="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/vendors/datepickerLocales/ro.min.js"></script>
+		
+		
+			
+				
+					
+				
+				
+			
+				
+					
+				
+				
+					<script data-turbolinks-eval="false" data-turbolinks-track="reload" src="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/scripts/main.build~2026-04-20-08-19-50-000~cache.js"></script>
+					
+				
+			
+		
+        <!-- times 1777743485915 -->
+		<script src="/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/customs/build/retail.min.js?t=1777743485915" ></script>		
+		
+		
+		
+				
+		
+		
+		
+			
+			
+			
+		
+		
+		
+			<div class="container row">
+			
+				<div class="row">
+				
+					<div class="widgetChatContainer">
+					
+						<div id="widgetChatWrapper"></div> 
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		
+		<div id="consent_blackbar"></div>
+		
+  
+							  
+  
+		<style>
+		@media (max-width: 768px){
+	        @supports (-webkit-overflow-scrolling: touch) {
+		        [dir=rtl] .comCarouselHero.customHeroCarousel .list-slideshow-image img {
+			        margin-top: -13px;
+		        }
+		        [dir=rtl].incrText1 .comCarouselHero.customHeroCarousel .list-slideshow-image img {
+			        margin-top: -15px;
+		        }
+		        [dir=rtl].incrText2 .comCarouselHero.customHeroCarousel .list-slideshow-image img {
+			        margin-top: -17px;
+		        }
+	        }
+        }
+		[data-message=wrapMessage] .section{
+		padding:32px;
+		}
+		</style>
+		<script>
+			$(document).ready(function() {
+		    	var customSelectDD = $(".customSelectDD");
+		
+				customSelectDD.each(function(){
+					var selectDD = $(this).find('[data-id="item_dynamicDependentDropdown"]');
+					var selectDDD = $(this).find('[data-id="item_dynamicDependentDropdown_DD"]');
+					var valueDD = $(this).find('[data-id="dynamicDropdownDD"]');
+				
+					selectDD.on("change",function(){
+						var thisSelect = $(this);
+						selectDDD.removeAttr("disabled");
+						selectDDD.val("");
+						valueDD.val("");
+						selectDDD.find("option").hide();
+						selectDDD.find("option[value='"+thisSelect.val()+"']").show();
+					});
+					
+					selectDDD.on("change",function(){
+						valueDD.val(selectDD.val()+" |"+$(this).find("option:selected").text());
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			$(document).ready(function() {
+		    	var customSelectD = $(".customSelectD");
+  
+				customSelectD.each(function(){
+					var selectD = $(this).find('[data-id="item_dynamicDropdown"]');
+					var valueD = $(this).find('[data-id="dynamicDropdown"]');
+					
+					
+					selectD.on("change",function(){
+						valueD.val($(this).val().split("|")[0]);					});
+				});
+			});
+		
+		
+		
+			$(document).ready(function() {
+		    	var customSelectD = $(".customSelectD");
+		
+				customSelectD.each(function(){
+					var selectD = $(this).find('[data-id="item_cardType"]');
+					var valueD = $(this).find('[data-id="cardType"]');
+					
+					selectD.on("change",function(){
+						valueD.val($(this).find("option:selected").text());
+					});
+	   
+	  
+		   
+  
+																			  
+  
+		  
+ 
+								  
+															  
+																					 
+																					  
+									  
+																 
+																		 
+					
+													
+					
+									  
+									   
+					
+																 
+					
+															  
+																												   
+					
+											   
+					
+											
+													
+												 
+									
+							
+						 
+					
+					 
+					
+																   
+									   
+															 
+								   
+						 
+				});
+					
+																   
+					
+																  
+						
+																			 
+																															
+						
+												
+						
+																			   
+																				 
+												
+														
+													 
+										
+								
+							 
+						 
+			});
+				
+				 
+  
+		</script>
+		
+		<script>
+			$(document).ready(function() {
+				var removeHtml = $('[data-href]').get(0);
+				
+				if (removeHtml) {
+					var list = $('.com8__cmsTextWrpper a[href]');
+
+					list.each(function (index, value) {
+                        var href = value.getAttribute("href");
+                        var res = href.replace(".html/", "/");
+                        list.get(index).href = res;
+                    });
+				}
+				
+			});
+		</script>
+		<script>
+		
+		   $(document).ready(function() {
+           	});
+		
+		</script>
+		<script>
+		setTimeout(function() {
+    		$( document ).ready(function() {
+                if($(window).width() > 768){
+            		$('.mobile-video-ourworld').remove();
+            	}else{
+            		$('.desktop-video-ourworld').remove();
+            	}
+            });
+		
+				document.cookie = "highcontrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		        document.cookie = "fontsizesite=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				$('html').removeClass("incrText1");
+		        $('html').removeClass("incrText2");
+		        $('html').removeClass("highContrast");
+			$(document).ready(function(){
+				document.cookie = "highcontrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		        document.cookie = "fontsizesite=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				$('html').removeClass("incrText1");
+		        $('html').removeClass("incrText2");
+		        $('html').removeClass("highContrast");
+				function getCookie(cname) {
+				  var name = cname + "=";
+				  var ca = document.cookie.split(';');
+				  for(var i = 0; i < ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+					  c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+					  return c.substring(name.length, c.length);
+					}
+				  }
+				  return "";
+		        }
+		        console.log("check cookie");
+		        var highcontr = getCookie("highcontrast");
+		        var font1 = getCookie("fontsizesite");
+		        if(highcontr == "" || highcontr == null || highcontr == undefined){
+					$('html').removeClass("highContrast");
+		            document.cookie = "highcontrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		        } else {
+		            $('html').addClass("highContrast");
+		        }
+		        if(font1 == "" || font1 == null){
+		            $('html').removeClass("incrText1");
+		            $('html').removeClass("incrText2");
+		             document.cookie = "fontsizesite=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		        } else {
+		            $('html').addClass("incrText2");
+		        }
+	   $(document).find("img").each(function(index, element){
+    		if($(element)[0].src.indexOf("res.cloudinary") > -1){
+    		    
+    			
+    			$(element)[0].src = $(element)[0].src.replace("/upload/", "/upload/w_auto,c_scale/");
+    		}
+    		
+    		if($(element)[0].getAttribute("data-src") != null && $(element)[0].getAttribute("data-src").indexOf("res.cloudinary") > -1 ){
+    		
+    			if($(element)[0].getAttribute("data-src") != null){
+    				$(element)[0].setAttribute("data-src",$(element)[0].getAttribute("data-src").replace("/upload/", "/upload/w_auto,c_scale/") );
+    			}
+    		}
+
+    	});
+        
+        $(document).find("source").each(function(index, element){
+    		if($(element)[0].srcset.indexOf("res.cloudinary") > -1){
+    		    
+    			
+    			$(element)[0].srcset = $(element)[0].srcset.replace("/upload/", "/upload/w_"+getWidthImage()+",c_scale/");
+    		}
+    		
+    		if($(element)[0].getAttribute("data-srcset") != null && $(element)[0].getAttribute("data-srcset").indexOf("res.cloudinary") > -1){
+    		
+    			if($(element)[0].getAttribute("data-srcset") != null){
+    				$(element)[0].setAttribute("data-srcset",$(element)[0].getAttribute("data-srcset").replace("/upload/", "/upload/w_"+getWidthImage()+",c_scale/") );
+    			}
+    		}
+
+    	});
+    	
+    	$(document).find("input").each(function(index, element){
+    	
+    	    if($(element)[0].src.indexOf("res.cloudinary") > -1){
+    		    
+    			
+    			$(element)[0].src = $(element)[0].src.replace("/upload/", "/upload/w_"+getWidthImage()+",c_scale/");
+    		}
+    		
+    		if($(element)[0].getAttribute("data-src") != null && $(element)[0].getAttribute("data-src").indexOf("res.cloudinary") > -1){
+    		
+    			if($(element)[0].getAttribute("data-src") != null){
+    				$(element)[0].setAttribute("data-src",$(element)[0].getAttribute("data-src").replace("/upload/", "/upload/w_"+getWidthImage()+",c_scale/") );
+    			}
+    		}
+
+			});
+		//disable turbolink on all site link
+        $("a").each(function(){
+        	$(this).attr("data-turbolinks","false");
+        });
+				
+			});
+		}, 1000);
+	    setTimeout(function() {
+			$(document).ready(function(){
+	        	var platform = iOS();
+				var isPbz = $("html").attr("data-bank") == "PBZ";
+					if(isPbz){
+						var isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
+						var isSupported = window.appleBusinessChat.isSupported();
+						var isRetail = $("#isRetail");
+						isRetail.length > 0 ? isRetail = $("#isRetail").val().toString() : isRetail = null;			 
+						console.log("isSupported:",isSupported);
+						console.log("isRetail:",isRetail);
+						if(isPbz && $('.abcw-component').length == 0 && (platform == true ) && isRetail == "true"){
+							$("#appleChatFloating").removeClass("hide");
+							$("#vvcbuttoncontainer").hide();
+						}else if (isPbz && $('.abcw-component').length > 0 && (platform == true) && isRetail == "true"){
+							if(isSupported){
+								$('a[title="Chat"]').parent()[0].style.display = "none";
+							}else{
+								console.log("not supported");
+							}
+						}
+						
+						if($('.abcw-component').length > 0){
+							if(isMac){
+								document.querySelector('.abcw-component').style.visibility = "hidden";
+								document.querySelector('.apple-business-chat-fallback-container').style.visibility = "visible";
+							}
+						}
+					}
+	        
+	            });
+            
+            
+            function iOS() {
+              return [
+                'iPad Simulator',
+                'iPhone Simulator',
+                'iPod Simulator',
+                'iPad',
+                'iPhone',
+                'iPod'
+              ].includes(navigator.platform)
+              // iPad on iOS 13 detection
+              || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+            }
+			
+          }, 3000);
+		  
+		  function getWidthImage(){
+			if( $(window).width() > 1024){
+				return  $(window).width();
+			}else{
+				return 'auto';
+			}
+			
+		  }
+		</script>
+		
+		<style>
+            @media screen and (min-width: 769px){
+                .newVideoPlayerComponent .video-icon-card {
+                    top: calc(50% - (100px/2));
+                }
+            }
+            @media screen and (max-width: 768px){
+                .newVideoPlayerComponent .video-icon-card {
+                    margin-top: -webkit-calc(2% + 15px);
+                    margin-top: calc(2% + 15px);
+                }
+            }
+			
+			@media (min-width: 768px) and (max-width: 1279px) {
+                html[data-bank='VUB'] .exchangeRateArchiveTable .text-right{
+                    text-align:center;
+                    width:100%;
+                }
+                html[data-bank='VUB'] .exchangeRateArchiveTable .text-left{
+                    text-align:center;
+                    width:100%;
+                    margin-top:40px;
+												
+                }
+            }
+    </style>
+    
+    <style>
+    @media screen and (min-width: 1280px){
+	.cib .navigation__language.newTopHeader.languageSelector.navigation__item:first-child a.navigation__link,
+	.ispalbania .navigation__language.newTopHeader.languageSelector.navigation__item:first-child a.navigation__link,
+ 	.pbz .navigation__language.newTopHeader.languageSelector.navigation__item:first-child a.navigation__link{
+	{
+		padding-left:16px;
+		padding-right:16px;
+	}
+
+	.cib .navigation__link.newTopHeader.contactUs,
+	.ispalbania .navigation__link.newTopHeader.contactUs
+	.pbz .navigation__link.newTopHeader.contactUs
+	{
+		padding: 12px 7px 8px 7px;
+	}
+	.cib .navigation__language.newTopHeader.languageSelector.navigation__item a.navigation__link,
+	.ispalbania .navigation__language.newTopHeader.languageSelector.navigation__item a.navigation__link,
+	.pbz .navigation__language.newTopHeader.languageSelector.navigation__item a.navigation__link
+	{
+		padding-left:10px;
+		padding-right:10px;
+	}
+}
+.cib .topNavigation .navigation__link,
+.ispalbania .topNavigation .navigation__link,
+.pbz .topNavigation .navigation__link
+ {
+	text-transform: uppercase;
+	font-size: 11px;
+}
+
+@media (min-width: 768px){
+	.cib .navigation__link,
+	.ispalbania .navigation__link,
+	.pbz .navigation__link 
+	{
+		padding: 12px 7px 8px 7px;
+	}
+}
+
+.cib .content__header img,
+.ispalbania .content__header img,
+.pbz .content__header img
+{
+	width: 168px;
+}
+</style>
+
+	
+	
+    <style>
+        
+        @media (min-width: 768px){
+            .list-slideshow-image .imageSlideShow:first-child {
+                visibility: visible;
+                opacity: 100%;
+            }
+
+        }
+        
+        @media( max-width: 767px) {
+            .list-slideshow-image .imageSlideShowMobile:first-child {
+                visibility: visible;
+                opacity: 100%;
+            }
+        }
+        
+        
+    </style>
+    
+	<style>
+	    @media (min-width: 768px) {
+            .cib .for__formItem__prefix {
+                top: 21px !important;
+            }
+        }
+        
+        .cib .for__leaveMessage__phoneNumber .trattinoNumber {
+            top: 21px !important;
+        }
+	</style>
+	
+	<style>
+	    @media print{
+	        .floatingIcon {
+	            display: none;
+	        }
+	    }
+	</style>
+	
+	<style>
+	    @media (max-width: 767px) {
+	        .comCarouselHero__content {
+	            left: 0;
+	            right: 0;
+	        }
+        }
+	    
+	</style>
+	
+	<style>
+        @media (min-width: 1024px) and (max-width: 1280px){	    
+            #iframe__video {
+                width: 843px !important;
+            }
+	    }
+	</style>
+	
+	<style>
+	    @media(max-width: 991px){
+	        .branchLocator__filterWrapper .customCheckbox{
+		        padding-left: 38px;
+	        }
+        }
+	</style>
+	
+	<style>
+        [lang="ar-EG"] .wikiTextImage .wikiTextImage__img{
+            left: 0 !important;
+            right: auto !important;
+        }
+    </style>
+	
+		
+	<script>
+
+        	var debounce = false;
+            var el_0 = document.getElementById("pricing");
+            var el = document.querySelectorAll('[data-calculator="desktop"]')[0];
+            var el_2 = document.querySelectorAll('[data-calculator="mobile"]')[0];
+            if(el_0 !== undefined 
+            	&& el !== undefined && el.offsetParent === null 
+                && el_2 !== undefined && el_2.offsetParent === null){
+                
+                var hash = window.location.hash;
+                
+                var topScroll = 0;
+                var leftScroll = 0;
+                
+                if( typeof hash === 'string' && hash.length){
+                
+                	var hash_without = hash.replace("#", "");
+                	var el_3 = document.getElementById("pricing").querySelectorAll('[name=' + hash_without + ']');
+                
+                    if(el_3 !== undefined && el_3.length != 0){
+                
+                        debounce = true;
+                        setTimeout(function () {
+                            debounce = false;
+                        }, 500);
+                
+                
+                        window.addEventListener("scroll", function () {
+                            if (debounce) {
+                		        window.scrollTo(leftScroll, topScroll);
+                                return;
+                            }
+                        });
+                        
+                    }
+                
+                }
+                
+                window.addEventListener("click", function (e) {
+                
+                    if(e.target && e.target.nodeName == "A") {
+                    
+                        var hash_without_2 = e.target.href.split("#")[1];
+                        var el_4 = document.getElementById("pricing").querySelectorAll('[name=' + hash_without_2 + ']');
+                    
+                        if(el_4.length > 0){
+                    
+                            topScroll = document.documentElement.scrollTop;
+                            leftScroll = document.documentElement.scrollLeft;
+                            debounce = true;
+                            setTimeout(function () {
+                                debounce = false;
+                            }, 500);
+                            
+                        }
+                    }
+                });
+            
+            }
+	
+	</script>
+	
+	<script>
+        setTimeout(function(){
+        	var $accordionHead = $('.faqs__accordionHead');
+        	var $accordion = $accordionHead.length > 0 ? $accordionHead.parent() : undefined;
+        
+        	if($accordion && $accordion.length > 0){
+        		$accordion.on('click', function() {
+        			$slicker = $accordion.find('.slick-slider');
+        
+        			if($slicker.length > 0){
+        				setTimeout(function() {
+        					$slicker.slick('setPosition');
+        				}, 100);
+        			}
+        
+        		})
+        	}
+        	
+        }, 300);
+    </script>
+    	
+	<style>
+	.com16-20 select.form-control {   
+	    background-image: url(https://www.vub.sk/.resources/intesaSanPaolo-templating-module/templates/webresources/CIB/images/ico_small/ic_arrow_down_2.svg)!important;
+    }
+	</style>
+	
+	
+	<style>
+        .cmsTextWrpper li>ul>li::before {
+            visibility: hidden;
+        }
+        
+        .cmsTextWrpper ol[style="list-style-type: lower-alpha;"], .cmsTextWrpper ol[style="list-style-type: upper-alpha;"], .cmsTextWrpper ol[style="list-style-type: lower-roman;"], .cmsTextWrpper ol[style="list-style-type: upper-roman;"] {
+            padding: 0 0 0 16px;
+        }
+        
+        .cmsTextWrpper ol[style="list-style-type: lower-alpha;"]>li::before, .cmsTextWrpper ol[style="list-style-type: upper-alpha;"]>li::before, .cmsTextWrpper ol[style="list-style-type: lower-roman;"]>li::before, .cmsTextWrpper ol[style="list-style-type: upper-roman;"]>li::before {
+            visibility: hidden;
+        }
+        
+        .cmsTextWrpper ol[style="list-style-type: lower-alpha;"]>li::marker, .cmsTextWrpper ol[style="list-style-type: upper-alpha;"]>li::marker, .cmsTextWrpper ol[style="list-style-type: lower-roman;"]>li::marker, .cmsTextWrpper ol[style="list-style-type: upper-roman;"]>li::marker {
+            color: #ea600e;
+        }
+        
+        .cmsTextWrpper ol[style="list-style-type: lower-alpha;"]>li, .cmsTextWrpper ol[style="list-style-type: upper-alpha;"]>li, .cmsTextWrpper ol[style="list-style-type: lower-roman;"]>li, .cmsTextWrpper ol[style="list-style-type: upper-roman;"]>li {
+            padding-left: 5px;
+        }
+    </style>
+	
+	
+	<style>
+	@media (min-width: 1280px) {
+      .header .topNavigation {
+        max-width: 1920px;
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .footer {
+            max-width: 1920px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .content-target:after{
+        right:unset;
+        }
+        .content-target{
+        position:fixed;
+        }
+        .content-target>.container.row>.row {
+        margin: 0;
+        max-width: 1920px;
+        margin-left: auto;
+        margin-right: auto;
+        }
+        body {
+        background-color: #fdfdfd;
+        }
+        html {
+        background-color: unset !important;
+        }
+        .mainContainer{
+         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+        }
+        .loginFlyoutActive + .loginFlyout{
+        max-width: 1920px;
+		left: 50%;
+		transform: translate(-50%, 0);
+        }
+        .new-menu.content-target>.container.row {
+        background-color: #fdfdfd;
+        }
+    }
+	
+	</style>
+	
+	<style>
+	@media (min-width: 1280px){
+    .hom5-2 .hom5__slider {
+    justify-content: center;
+    }
+    }
+    
+    .highContrast .publicPortalLoginForm .label-inside .form-control {
+    	background: black;
+    }
+    
+    .highContrast .mod-com1 {
+    	background-color: black;
+    }
+    
+    @media (min-width: 768px){
+    	.articles-container .article_component{
+        	width: 30%;
+    	}
+    	.articles-container{
+    	    flex-wrap:wrap;
+    	}
+    	.careers__items {
+    		display: flex;
+            justify-content: center;
+    	}
+    }
+    @media (min-width: 768px){
+         html[data-bank=VUB] [data-component=TableExchangeRate].tbl2-2 .tbl__highlist th.tbl__highlistItem{
+            white-space: normal;
+         }
+         html[data-bank=VUB] [data-component=TableExchangeRate].tbl2-2 .tbl__highlist th.tbl__highlistItem .tbl__highlistValue{
+            line-height: 1;
+         }
+    }
+    .heroImage__image:after {
+        background-image: none;
+    }
+    [dir=rtl] .comCarouselHero.customHeroCarousel .slick-next{
+    	left: 0;
+    	right: auto;
+    }
+    [dir=rtl] .comCarouselHero.customHeroCarousel .slick-prev {
+    	right: 0;
+    	left: auto;
+    }
+    @media (min-width: 768px){
+        .alex .comCarouselHero.customHeroCarousel .imageSlideShow {
+            height: auto;
+        }
+    }
+    [dir=rtl] .calculatorRow div:has(.input-group-addon)>input:not([type=checkbox]):not([type=radio]):not([type=date]):not([type=email]):not(.form-controlCalendar) {
+        border-left: none !important;
+        border-right: solid 1px var(--color-grey-91, #919191) !important;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    
+    [dir="rtl"] .icon-ic_close-red, 
+    [dir="rtl"] .icon-ic_check-green {
+        font-family: isbd-iconFont !important;
+    }
+    .omniaModal .omniaEnrollDataTitle{
+    	font-size:14px;
+    }
+    .omniaModal .omniaEnrollDataInstructions ul li{
+    	font-size:14px;
+    }
+    .com16-20__headerGradient{
+        background-image: linear-gradient(243deg, rgb(11 74 53 / 23%), rgba(0, 0, 0, .8));
+    }
+    @media (max-width: 389.89px) {
+        .vub .our-group-link-mobile,
+        .bib .our-group-link-mobile {
+            display:flex!important;
+            max-width: min-content;
+            text-align: center;
+        }
+        
+        .vub .our-group-link-narrow-mobile,
+        .bib .our-group-link-narrow-mobile {
+        	display:none!important;
+        }
+    }
+    @media only screen and (min-width: 1280px) and (max-width: 1345px) {
+    html[data-bank="VUB"] .new-menu__sideA .navigation__primary .navigation__primary__link {
+    		font-size:12px;
+    	}
+    }
+    .highContrast .branchInfo__detailPanel{
+        background-color: #000;
+    }
+    .highContrast .branchInfo__backBtn__title {
+     color:#000;
+    }
+    
+    .highContrast .branchInfo__backBtn:hover .branchInfo__backBtn__title{
+    	color: #fff000!important;
+    }
+    .highContrast .branchInfo__backBtnWrapper:hover .icon{
+        color:#000!important;
+    }
+    .highContrast .icon-parking::before {
+        color: #fff000;
+    }
+    .highContrast .wrapperLbsList__li:focus{
+         background-color: #fff000;
+         color: #000!important;
+    }
+    .highContrast .wrapperLbsList__li:focus *{
+         color: #000!important;
+    }
+    .highContrast .branchInfo__backBtn:focus .branchInfo__backBtn__title{
+         color: #fff000!important;
+    }
+    @media (max-width: 768px) {
+        .header:has(.newRegistration)~.mainContainer {
+            margin-top: 85px;
+        }
+        .header:has(.newRegistration)~.mainContainer #sticky-hero-banner.sticky {
+	        top: 85px;
+	    }
+    }
+	</style>
+	<script>
+        $( document ).ready( function() {
+        	var templateNamePage = $("#templateNamePage").lenght != 0 ? $("#templateNamePage").val() : "";
+                if (templateNamePage != "") {
+                    switch (templateNamePage) {
+                        case "webinarPage":
+                        case "mchContractualizationPage":
+                        case "newSegmentHomePage":
+                        case "productDetailPage":
+                            var productIdPage = $("#productIdPage").lenght != 0 ? $("#productIdPage").val() : "";
+                            var productNamePage = $("#productNamePage").lenght != 0 ? $("#productNamePage").val() : "";
+                            if (productIdPage != "") {
+                                localStorage.setItem("productIdPage", productIdPage);
+                                var isBib = $("html").attr("data-bank").lenght > 0 && $("html").attr("data-bank") == "BIB";
+        						$("[name='productId']").each(function (e) {
+        							if(isBib && productIdPage.lenght > 4){
+        								$(this).val(productIdPage.substring(0,2));
+        							}else{
+        								$(this).val(productIdPage);
+        							}
+        						});
+                            }
+                            if (productNamePage != "") {
+                                 localStorage.setItem("productNamePage", productNamePage);
+                                 $("[name='productName']").each(function (e) {
+        							$(this).val(productNamePage);
+        						});
+                            }
+                            break;
+                        case "formPage":
+                            var productIdSession = localStorage.getItem("productIdPage") != null ? localStorage.getItem("productIdPage") : "";
+                            var productNameSession = localStorage.getItem("productNamePage") != null ? localStorage.getItem("productNamePage") : "";
+                            if (productIdSession != "") {
+                                var isBib = $("html").attr("data-bank").lenght > 0 && $("html").attr("data-bank") == "BIB";
+        						$("[name='productId']").each(function (e) {
+        							if(isBib && productIdSession.lenght > 4){
+        								$(this).val(productIdSession.substring(0,2));
+        							}else{
+        								$(this).val(productIdSession);
+        							}
+        						});
+                            }
+                            if (productNameSession != "") {
+                                $("[name='productName']").each(function (e) {
+        							$(this).val(productNameSession);
+        						});
+                            }
+                            break;
+                        default:
+                            localStorage.setItem("productIdPage", "");
+                            localStorage.setItem("productNamePage", "");
+                            break;
+                    }
+                }
+        });
+    </script>
+<div id="faqPageScript">
+ </div><div id="qriousPageScript hide">
+	</div>	</body>
+	
+</html>

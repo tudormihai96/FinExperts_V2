@@ -1,0 +1,277 @@
+  
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="google-site-verification" content="5_lRHWsMvHcBrd1GEk3JlVpTXuIV_XecvKnk1ZrJCWc" />
+    <meta name="google-site-verification" content="NQ7RSQ_bXTsyGpFlNm7wsMcC2CFiBhTBqGh1Hb-Abv0">
+    <meta name="apple-itunes-app" content="app-id=458609168">
+    <title>Eroare</title>
+    <link rel="shortcut icon" href="/dam/ingro/favicons.png">
+    <script src="/.resources/site-templates/webresources/js/dist/jquery.min.js"></script>
+
+            <link rel="canonical" href=https://ing.ro/dam/ingro/images/header/logo-ing.svg />
+
+        <link href="/.resources/assets/css/modal.css" rel="stylesheet">
+        <link href="/.resources/site-templates/webresources/css/darkMode.min.css" rel="stylesheet">
+
+<!-- Google Tag Manager -->
+<script id="gtmContainer"></script>
+
+<script>
+  var parentURL = parent.window.location.host; 
+
+  var gtmCode = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':";
+      gtmCode += "new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],";
+      gtmCode += "j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=";
+      gtmCode += "'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);";
+      gtmCode += "})(window,document,'script','dataLayer','GTM-5H7H584K');";
+
+  if(parentURL == "ing.ro") {
+      document.getElementById("gtmContainer").innerHTML = gtmCode;
+  } else {
+      dataLayer = [];
+  }
+</script>
+<!-- END Google Tag Manager -->
+
+<!-- Set tealium glogal vars -->
+<script>
+  var tealiumFormSubmitJson;
+  var tealiumPageViewJson;
+</script>
+<!-- END Set tealium glogal vars -->
+
+
+
+
+
+
+
+
+
+
+
+<link href="/dam/ingro/404/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/dam/ingro/404/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/dam/ingro/404/css/tooltipster.css" rel="stylesheet" type="text/css" />
+<link href="/dam/ingro/404/css/ionicons.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.page-404 .text-container h1,
+.text-container p{
+	font-family: 'ing_me_regular';
+}
+.page-404 {
+  font-family: 'ing_me_regular';
+  font-weight: normal;
+  font-style: normal;
+}
+.page-404 > .container{
+	min-height: 100vh;
+}
+.page-404 .logo{
+  display: block;
+  padding: 20px 0
+}
+.page-404 .main-slide .icon-container{
+  padding-top:28px;
+}
+.page-404 .main-slide{
+  margin-bottom: 35px;
+}
+.page-404 .bottom-section .subtitle h2{
+  font-family: 'ing_me_regular';
+}
+.page-404 .list-container ul{
+  padding-left: 0;
+}
+.page-404 .list-container ul li{
+  padding: 5px 0
+}
+.page-404 .list-container ul li img{
+  margin-right: 15px;
+}
+.page-404 .list-container ul li:first-child{
+  font-weight: bold
+}
+</style>
+
+
+
+</head>
+
+<body 
+class="404 not-home  
+
+
+"
+>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H7H584K"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --> 
+
+
+
+
+
+
+
+
+
+    <div  class="custom-content-container  ">
+
+
+<div class="page-404">
+<div class="container">
+<div class="inner clearfix"><a class="logo" href="https://www.ing.ro"><img src="/dam/ingro/images/logo.svg" alt="ING Bank" style="height: 32px;"></a>
+<div class="mobile_cta_container"></div>
+</div>
+
+<div class="main-slide">
+<div class="row">
+<div class="col-md-8 col-sm-12 col-xs-12 text-container">
+	<div class="row">
+		<div class="col-md-5">
+			<h1>Ups...</h1>
+		</div>
+		<div class="col-md-7">
+			<p>Pagina pe care incerci s-o accesezi nu exista.<br />Gasesti mai jos informatii utile pentru tine.</p>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-4 visible-md visible-lg icon-container"><img class="img-404" src="https://www.ing.ro/dam/ingro/404/images/icon_map.png" /></div>
+</div>
+</div>
+
+<div class="bottom-section">
+<div class="subtitle">
+<h2>Pentru tine</h2>
+</div>
+
+<div class="list-container">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+<ul>
+	<!-- <li><img src="/dam/ingro/404/images/icon_carduri.png" /> Carduri si conturi</li> -->
+	<li><img src="/dam/ingro/images/icons-svg/avantaje-card-complet_porteaza.svg" /> Carduri si conturi</li>
+	<li><a href="/persoane-fizice/carduri-si-conturi/pachete-conturi-curente">Pachete conturi curente</a></li>
+	<li><a href="/persoane-fizice/carduri-si-conturi/conturi-in-valuta">ING Card Euro</a></li>
+</ul>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+<ul>
+	<!-- <li><img src="/dam/ingro/404/images/icon_economii.png" />Economii si Investitii</li> -->
+	<li><img src="/dam/ingro/images/icons-svg/depozitlatermen_avantaje_depozit-7-zile.svg"/>Economii si Investitii</li>
+	<li><a href="/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen">ING Economii și Depozite la termen</a></li>
+	<li><a href="/persoane-fizice/economii-si-investitii/fonduri-mutuale">Fonduri Mutuale</a></li>
+</ul>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+<ul>
+	<!-- <li><img src="/dam/ingro/404/images/icon_credite.png" />Credite</li> -->
+	<li><img src="/dam/ingro/imagini-retail/icons/wallet_outline_orange_RGB.png" style="margin-bottom: 8px;" />Credite</li>
+	<li><a href="/persoane-fizice/credite/ing-personal">ING Personal</a></li>
+	<li><a href="/persoane-fizice/credite/credit-card">ING Credit Card</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="subtitle">
+<h2>Pentru afacerea ta</h2>
+</div>
+
+<div class="list-container">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+<ul>
+	<li><img src="/dam/ingro/404/images/icon_micro.png" />Microintreprinderi</li>
+	<li><a href="/microcompanii/microintreprinderi/ing-profesional">Pachetul ING Profesional</a></li>
+	<li><a href="/microcompanii/microintreprinderi/linia-de-credit-ing-profesional-extra-rol">ING Profesional Extra&#39;ROL</a></li>
+</ul>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+<ul>
+	<li><img src="/dam/ingro/404/images/icon_pfa.png" />PFA</li>
+	<li><a href="/microcompanii/pfa/ing-profesional-pentru-pfa">Pachetul ING Profesional</a></li>
+	<li><a href="/microcompanii/pfa/depozite-la-termen">Depozite la termen</a></li>
+</ul>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+<ul>
+	<li><img src="/dam/ingro/404/images/icon_paper-airplane.png" />Profesii Liberale</li>
+	<li><a href="/microcompanii/profesii-liberale/ing-profesional-pentru-profesii-liberale">Pachetul ING Profesional</a></li>
+	<li><a href="/microcompanii/profesii-liberale/ing-fix-online">ING FIX Online</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+
+
+    <script src="/.resources/site-templates/webresources/js/libraries.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var qStrings = window.location.toString().toLowerCase();
+		var isEmbeddedInHb = qStrings.indexOf('aplication=homebank') > -1;
+		if (isEmbeddedInHb) {
+			$("a").each( function(index, link){
+				var href = $(link).attr("href");
+				if (href.indexOf('aplication=homebank') === -1) {
+					if (href.indexOf('?') === -1) {
+						$(link).attr("href", href + "?aplication=homebank");
+					} else {
+						$(link).attr("href", href + "&aplication=homebank");
+					}
+				}
+			})
+		}
+	});
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ro">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <title>Informatii financiare - Libra Internet Bank</title>
+    
+
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- FONTS end -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/v2/styles.css"/>    <meta property="og:image" content="https://www.librabank.ro/images/noutati-libra-fb.jpg" />
+    <meta property="og:image:type" content="image/jpg" />
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="https://www.librabank.ro/favicon.ico" />
+            <meta id="keywords" name="keywords" content="Libra Internet Bank: credite, depozite, medici, doctori, juristi, notari, avocati, servicii financiare, dobanzi preferentiale, internet banking, internetbanking.ro" />
+
+                <meta id="description" name="description" content="LIBRA INTERNET BANK - Scopul nostru este excelenta in business si de aceea ne straduim in mod constant sa le oferim clientilor nostri accesibilitate la servicii ireprosabile." />
+
+        <meta http-equiv="expires" content="0" />
+
+
+    <meta id="robots" name="robots" content="all" />
+
+    <meta id="resource-type" name="resource-type" content="DOCUMENT" />
+
+    <meta id="revisit-after" name="revisit-after" content="1 DAYS" />
+
+    <meta id="author" name="author" content="eBanking @ LIBRA BANK" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="facebook-domain-verification" content="y5w3fpj6hwv5e1gix1alss6snc8pxw" />
+
+	
+    <!--Cookies consent-->
+    <script src="https://www.librabank.ro/cookies/Librabank/consent-loader.min.js"
+        data-app-key="librabank"
+        data-scripts-url="https://www.librabank.ro/cookies/Librabank/assets/consents/third-party-scripts.txt"
+        data-log-url="https://contonline.librabank.ro/CookieBox/api/consent-log"
+        data-i18n-url="https://www.librabank.ro/cookies/Librabank/assets/i18n/"
+        data-ga-id="G-PR4KRH0J8L"
+        data-log-extended="true"
+        data-consent-version="1"
+        defer>
+    </script>
+    
+    <!--Corpowid-->
+    <script defer src="https://cdn.corpowid.com/3.0.1/corpowid.js" integrity="sha384-AE3q2gSONXJtAD1MKPbMGEz0VWkNwQAcfx8sElyJvhcraqtW8Gh2cy/eNJuEp5dy" crossorigin="anonymous" data-account="9bfcf9e7-7171-42c4-901d-c3da1168bee0"> </script>
+
+
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR4KRH0J8L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PR4KRH0J8L');
+</script>
+    <script src="https://assets.usestyle.ai/seonajsplugin" defer id="seona-js-plugin"></script>
+
+
+    
+
+
+    <script>
+        var isWindowHidden = false;
+
+        $(window).on('blur', function() {
+            isWindowHidden = true;
+        });
+
+        function callOpenApp(type, elem) {
+            var IS_IPAD = navigator.userAgent.match(/iPad/i) != null,
+                IS_IPHONE = !IS_IPAD && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null)),
+                IS_IOS = IS_IPAD || IS_IPHONE,
+                IS_ANDROID = !IS_IOS && navigator.userAgent.match(/android/i) != null,
+                IS_HUAWEI = !IS_IOS && navigator.userAgent.match(/huawei/i) != null,
+                IS_MOBILE = IS_IOS || IS_ANDROID;
+
+            isWindowHidden = false;
+
+            var mbkBaseUrl = "librabank://dispatcherForPN?";
+            var ibkBaseUrl = "https://secure.internetbanking.ro/IBK_SMS/";
+            var iosStore = "https://itunes.apple.com/app/id691914413?l=ro";
+            var androidStore = "https://play.google.com/store/apps/details?id=libra.mobile.banking";
+
+            var appAndroidPackage = "libra.mobile.banking";
+
+            var mbkUrl = '';
+            var ibkUrl = '';
+
+            switch (type) {
+                case "card":
+                    mbkUrl = mbkBaseUrl + "action=menulink&id=27";
+                    ibkUrl = ibkBaseUrl + "Carduri/EmitereCarduri.aspx";
+                    break;
+                case "depozit":
+                    mbkUrl = mbkBaseUrl + "action=menulink&id=9";
+                    ibkUrl = ibkBaseUrl + "Login/LoginFirstStep.aspx?ReturnUrl=%2fIBK_SMS%2fDepozite%2fConstituireDepozit.aspx";
+                    break;
+                case "cardCredit":
+                    mbkUrl = mbkBaseUrl + "action=menulink&id=28";
+                    ibkUrl = ibkBaseUrl + "Carduri/CreditCardStep1.aspx?status=new ";
+                    break;
+                case "creditOnline":
+                    mbkUrl = mbkBaseUrl + "action=menulink&id=10";
+                    ibkUrl = ibkBaseUrl + "Login/LoginFirstStep.aspx?ReturnUrl=%2fIBK_SMS%2fCredite%2fSumarCredite.aspx";
+                    break;
+                case "economii":
+                    mbkUrl = mbkBaseUrl + "action=menulink&id=46";
+                    ibkUrl = ibkBaseUrl + "Login/LoginFirstStep.aspx?ReturnUrl=%2fIBK_SMS%2fDepozite%2fConturiEconomiiActive.aspx";
+                    break;
+            }
+
+            function openApp(elem) {
+                setTimeout(function() {
+                    $(elem).closest(".btn").after(`
+            <div id="infoOpenApp" class="" style="font-size: 13px; text-align: center;">
+                Daca nu ai fost deja redirectionat catre aplicatia de mobile banking, poti <a href="` + ibkUrl + `" style="text-decoration: underline;">continua aici in browser</a>
+            </div>
+            `);
+                }, 5000);
+
+                if (IS_IOS) {
+                    window.location = mbkUrl;
+                    setTimeout(function() {
+                        if (isWindowHidden == false) {
+                            window.location = iosStore;
+                        }
+                    }, 3000);
+                } else {
+                    if (IS_HUAWEI) {
+                        setTimeout(function() {
+                            if (isWindowHidden == false) {
+                                window.location = "appmarket://details?id=libra.mobile.banking"
+                            }
+                        }, 2000);
+                    }
+                    window.location = "intent:/" + mbkUrl.split(":/")[1] + "#Intent;package=" + appAndroidPackage + ";scheme=" + mbkUrl.split(":/")[0] + ";launchFlags=268435456;end;";
+                }
+            }
+
+            if (IS_MOBILE) {
+                openApp(elem);
+            } else {
+                window.location = ibkUrl;
+            }
+        }
+        function mbkwidget(app = "ibk") {
+            var isWindowHidden = false;
+
+            $(window).on('blur', function() {
+                isWindowHidden = true;
+            });
+
+            var IS_IPAD = navigator.userAgent.match(/iPad/i) != null,
+                IS_IPHONE = !IS_IPAD && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null)),
+                IS_IOS = IS_IPAD || IS_IPHONE,
+                IS_ANDROID = !IS_IOS && navigator.userAgent.match(/android/i) != null,
+                IS_HUAWEI = !IS_IOS && navigator.userAgent.match(/huawei/i) != null,
+                IS_MOBILE = IS_IOS || IS_ANDROID;
+
+            isWindowHidden = false;
+            if (app == 'ibk') {
+                var mbkBaseUrl = "librabank://dispatcherForPN?";
+                var ibkBaseUrl = "https://secure.internetbanking.ro/IBK_SMS/";
+
+                var iosStore = "https://itunes.apple.com/app/id691914413?l=ro";
+                var androidStore = "https://play.google.com/store/apps/details?id=libra.mobile.banking";
+
+                var appAndroidPackage = "libra.mobile.banking";
+            }
+            if (app == 'lj') {
+                var mbkBaseUrl = "librawallet://dispatcherForPN?";
+                var ibkBaseUrl = "https://wallet.librapay.ro/";
+
+                var iosStore = "https://itunes.apple.com/app/id578226289?l=ro";
+                var androidStore = "https://play.google.com/store/apps/details?id=libra.bank";
+
+                var appAndroidPackage = "libra.bank";
+            }
+            if (app == 'mbk') {
+                var mbkBaseUrl = "librabank://dispatcherForPN?action=menulink";
+                var ibkBaseUrl = "/link-aplicatii-online";
+
+                var iosStore = "https://itunes.apple.com/app/id691914413?l=ro";
+                var androidStore = "https://play.google.com/store/apps/details?id=libra.mobile.banking";
+
+                var appAndroidPackage = "libra.mobile.banking";
+            }
+
+            if (app == 'mpos') {
+                var mbkBaseUrl = "https://play.google.com/store/apps/details?id=com.provisionpay.softpos.libra";
+                var ibkBaseUrl = "/link-aplicatii-mpos";
+                var androidStore = "https://play.google.com/store/apps/details?id=com.provisionpay.softpos.libra";
+
+                var appAndroidPackage = "com.provisionpay.softpos.libra";
+            }
+
+            if (IS_MOBILE) {
+                if (IS_IOS) {
+
+                    window.location = iosStore;
+
+                } else {
+                    if (IS_HUAWEI && app == 'mbk') {
+                        setTimeout(function() {
+                            if (isWindowHidden == false) {
+                                window.location = "appmarket://details?id=libra.mobile.banking"
+                            }
+                        }, 2000);
+                    }
+
+                    window.location = "intent:/" + mbkBaseUrl.split(":/")[1] + "#Intent;package=" + appAndroidPackage + ";scheme=" + mbkBaseUrl.split(":/")[0] + ";launchFlags=268435456;end;";
+                }
+
+            } else {
+                window.location = ibkBaseUrl;
+            }
+        }
+    </script>
+
+
+
+
+    <script>
+        var referrer = document.referrer;
+
+        function showOverlayer(ip) {
+            var overlayerCookie = isNaN($.cookie('overlayer' + ip)) ? 0 : $.cookie('overlayer' + ip);
+            var date = new Date();
+            var overlayer_ip = 'overlayer' + ip;
+
+            date.setTime(date.getTime() + 86400000 * 155);
+            $.cookie(overlayer_ip, "teste", {
+                expires: date
+            });
+
+            if (overlayerCookie < 3) {
+                $.cookie('overlayer' + ip, parseInt(overlayerCookie) + 1, {
+                    expires: date
+                });
+                return true;
+            }
+            return false;
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        function showMenu() {
+            var x = document.getElementById("dropmenu");
+            $('#dropmenu').toggle('fast');
+            $('#searchbox').hide('fast');
+        }
+
+        function showSearch() {
+            var x = document.getElementById("searchbox");
+            $('#searchbox').toggle('fast');
+            $('#dropmenu').hide('fast');
+        }
+
+        $(document).on('click', function(event) {
+            var $target = $(event.target);
+            if (!$target.closest('#header').length &&
+                $('#dropmenu').is(":visible")) {
+                $('#dropmenu').hide();
+            }
+        });
+    </script>
+
+
+    <!-- OVERLAYER -->
+    <script>
+        $(document).ready(function() {
+            $("#hide").on('click', function() {
+                $(".overlayPopup").hide();
+            });
+            $("#hide2").on('click', function() {
+                $(".overlayPopup").hide();
+            });
+            $("#show").on('click', function() {
+                $(".overlayPopup").show();
+            });
+
+            $('.carousel#cardNav').on('slid.bs.carousel', function(e) {
+                switch (e.to) {
+                    case 0:
+                        $("#ComandaCard").attr("href", "/client-card-online").attr("title", "Comanda card debit Avanpost Gold Black");
+
+                        break;
+                    case 1:
+                        $("#ComandaCard").attr("href", "/client-card-online").attr("title", "Comanda card debit Avanpost Gold Roz");
+
+                        break;
+                    case 2:
+                        $("#ComandaCard").attr("href", "/client-card-online").attr("title", "Comanda card debit Avanpost Gold Camuflaj");
+
+                        break;
+                    case 3:
+                        $("#ComandaCard").attr("href", "https://www.libraonline.ro/pf/productDetails/ACCOUNT").attr("title", "Comanda card debit Avanpost Gold Junior");
+
+                        break;
+                }
+            })
+
+            $('.carousel#cardNav2').on('slid.bs.carousel', function(e) {
+                switch (e.to) {
+                    case 0:
+                        $("#ComandaCard2").attr("href", "https://libraonline.ro/pf/productDetails/ONLINE_STANDARD_DEBIT_CARD").attr("title", "Comanda card debit Avanpost Free");
+
+                        break;
+                    case 1:
+                        $("#ComandaCard2").attr("href", "https://www.libraonline.ro/pf/productDetails/ACCOUNT").attr("title", "Comanda card debit Avanpost Free Junior");
+
+                        break;
+                }
+            })
+        });
+    </script>
+    <!-- OVERLAYER end -->
+
+    <!-- Page-specific scripts injected by views -->
+    
+</head>
+
+<body >
+
+    	<!-- MENIU MOBIL -->
+	<script src="/js/scripts_menu_mobile.js"></script>
+
+	<div class="mainMenu d-md-none" style="display:none" id="menu_mobile">
+		<div class="row">
+			<div class="col-md-12">
+
+				<nav class="navbar">
+					<div class="d-flex justify-content-start">
+						<a class="navbar-brand" href="/"><img src="/imagini/logo-libra.svg" alt="Libra Internet Bank" /></a>
+					</div>
+
+					<div class="d-flex d-md-none justify-content-end gap-3">
+						<div class="language d-flex">
+							<a href="/en">
+								<button class="lang-toggler" type="button"><img src="/imagini/flag-en-small-rounded.svg" alt="English version" /> EN</button>
+							</a>
+						</div>
+						<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" onclick="$('#menu_mobile').toggle()">
+							<span class="navbar-close-icon"></span>
+						</button>
+					</div>
+				</nav>
+
+				<div class="menu accordion " id="menuAccordion">
+				
+					<div id="searchboxm" class="form search w-100 m-0 bg-transparent"></div>
+					<div id="paginationm" class="d-none"></div>
+					<div class="searchContainer">
+						<div id="hitsm"></div>
+						<div id="statsm"></div>
+					</div>
+
+					<ul class="navbar-nav">
+					<div class="menu accordion " id="menuAccordion">
+				
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading1">
+															<a href="https://www.librabank.ro/cont-bancar-curent" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse1" aria-expanded="false" aria-controls="meniucollapse1">
+									<button type="button" class="p-0">
+										Conturi
+									</button>
+								</a>
+							</div>
+							
+							<div id="meniucollapse1" class="collapse" aria-labelledby="meniuheading1" data-parent="#menuAccordion">
+								<ul class="submenu">
+
+
+									<li class="subcategory">
+										<a class="p-0 fw-bold" title="Cont Persoane fizice" href="/cont-curent-persoane-fizice">Persoane fizice <img src="/imagini/cont-gratuit-label.png" alt="Cont gratuit" /></a>
+										<!--<ul>
+									
+                                        </ul>-->
+									</li>
+
+									<li class="subcategory">
+										<a class="p-0 fw-bold" title="Cont Persoane juridice" href="/cont-bancar-persoana-juridica">Persoane juridice</a>
+										<ul>
+											<li><a title="Cont Curent Profesii Liberale" href="/cont-bancar-profesii-liberale">Profesii liberale </a></li>
+											<li><a title="Cont Curent Notarial" href="/cont-curent-notarial">Cont Special Notarial</a></li>
+											<li><a title="Cont Curent IMM" href="/cont-curent-imm">Companii până la 5M lei </a></li>
+											<li><a title="Cont Curent Companii" href="/cont-bancar-firma">Companii peste 5M lei</a></li>
+											<li><a title="Conventii salariale" href="/conventie-salariala">Convenții salariale</a></li>
+										</ul>
+									</li>
+
+									<li class="subcategory">
+
+
+										<a class="p-0 fw-bold" title="Cont si card online" href="/deschidere-cont-card-bancar-online">Cont online</a>
+										<ul>
+											<li><a title="Cont online persoane fizice" href="/cont-online-persoane-fizice">Cont online personal </a></li>
+											<li><a title="Cont online business" href="/deschidere-cont-bancar-online-persoane-juridice">Cont online business </a></li>
+
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading2">
+															<a href="https://www.librabank.ro/card-bancar" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse2" aria-expanded="false" aria-controls="meniucollapse2">
+									<button type="button" class="p-0">
+										Carduri
+									</button>
+								</a>
+							</div>
+							<div id="meniucollapse2" class="collapse" aria-labelledby="meniuheading2" data-parent="#menuAccordion">
+							
+								<ul class="submenu">
+
+									<li class="subcategory">
+										<a class="p-0 fw-bold" title="Card persoane fizice" href="/card-persoane-fizice">Persoane fizice</a>
+										<ul>
+											<li><a title="Card Debit" href="/card-de-debit">Card de debit</a></li>
+											<li><a title="Card Credit" href="/card-de-credit-cumparaturi">Card de credit</a></li>
+											<li><a title="Card Debit Junior" href="/card-junior-copii">Card junior</a></li>
+										</ul>
+									</li>
+
+									<li class="subcategory">
+
+										<a class="p-0 fw-bold" title="Card persoane juridice" href="/card-persoane-juridice">Persoane juridice</a>
+										<ul>
+											<li><a title="Card Credit Profesii" href="/card-credit-profesii">Card de credit profesii </a></li>
+											<li><a title="Card Credit Companii" href="/card-credit-persoane-juridice-pentru-companii">Card de credit companii </a></li>
+											<li><a title="Card Business" href="/card-business">Card de debit business </a></li>
+
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading3">
+								
+								<a href="/economisire-dobanzi-depozite-banci" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse3" aria-expanded="false" aria-controls="meniucollapse3">
+									<button type="button" class="p-0">
+										Economisire
+									</button>
+								</a>
+
+							</div>
+							<div id="meniucollapse3" class="collapse" aria-labelledby="meniuheading3" data-parent="#menuAccordion">
+							
+								<ul class="submenu">
+
+									<li class="subcategory">
+										<a class="p-0 fw-bold" title="Depozite la termen" href="/dobanzi-depozite-la-termen">Depozite la termen</a>
+										<ul>
+											<li><a title="Dobanzi Depozite Persoane Fizice" href="/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice">Depozite persoane fizice</a></li>
+											<li><a title="Dobanzi Depozite Profesii" href="/dobanzi-depozite-profesii">Depozite profesii liberale</a></li>
+											<li><a title="Dobanzi Depozite Companii" href="/dobanzi-depozite-persoane-juridice">Depozite persoane juridice</a></li>
+
+
+										</ul>
+									</li>
+
+									<li class="subcategory">
+
+										<strong class="p-0 fw-bold" title="Conturi de economii">Conturi de economii</strong>
+										<ul>
+											<li><a title="Cont Economii" href="/dobanda-cont-de-economii">Conturi de economii</a></li>
+
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<div class="item-header" id="meniuHeading4">
+								
+								<a href="/credit-imprumut-bancar" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniuCollapse4" aria-expanded="false" aria-controls="meniuCollapse4">
+									<button type="button" class="p-0">
+										Credite
+									</button>
+								</a>
+							</div>
+							<div id="meniuCollapse4" class="collapse" aria-labelledby="meniuHeading4" data-parent="#menuAccordion">
+								
+								<ul class="submenu">
+
+									<li class="subcategory">
+										<a class="p-0 fw-bold" title="Credite persoane fizice" href="/credit-imprumut-persoane-fizice">Persoane fizice</a>
+
+										<ul>
+											<li><a title="Credit Ipotecar" href="/dobanda-simulare-imprumut-credit-ipotecar">Credit ipotecar</a></li>
+											<li><a title="Credit Ipotecar Diaspora" href="/credit-ipotecar-diaspora">Credit ipotecar Diaspora</a></li>
+											<!--<li><a title="Credit Ipotecar Noua Casa" href="/dobanda-imprumut-credit-ipotecar-noua-casa">Credit ipotecar Noua Casa</a></li>-->
+											<li><a title="Credit Nevoi Personale" href="/credit-nevoi-personale-cu-ipoteca">Credit de consum cu ipotecă</a></li>
+											<li><a title="Credit Nevoi Personale" href="/credit-nevoi-personale-fara-ipoteca">Credit de consum Libra Way</a></li>
+                                            <li><a title="Overdraft prin card de debit" href="/credit-overdraft">Credit Overdraft </a></li>
+
+											
+										</ul>
+									</li>
+
+									<li class="subcategory">
+
+										<a class="p-0 fw-bold" title="Credite persoane juridice" href="/credite-persoane-juridice-afaceri">Persoane juridice</a>
+										<ul>
+											<li><a title="Credit InvestEU" href="/credite-finantare-investeu">InvestEU <img src="https://www.librabank.ro/imagini/cont-online-label.png" alt="Online"></a></li>
+											<li><a title="Credite Agricultura" href="/credit-agricultura-fermieri">Agribusiness</a></li>
+											<li><a title="Credit Profesii Liberale" href="/credit-profesii-liberale">Profesii liberale</a></li>
+											<li><a title="Credite IT online" href="/credite-it-online">Companii Domeniul IT <img src="https://www.librabank.ro/imagini/cont-online-label.png" alt="Online"></a></li>
+											<li><a title="Credite Real Estate" href="/credit-investitii-imobiliare">Proiecte rezidențiale</a></li>
+											<li><a title="Credite Energie" href="/credite-energie">Energie verde</a></li>
+											<li><a title="Credite IMM" href="/imprumut-credit-imm">Companii până la 5M lei</a></li>
+											<li><a title="Credite Companii" href="/imprumut-credit-firma-companii">Companii peste 5M lei</a></li>
+											<li><a title="Credite Fonduri Europene" href="/credite-fonduri-europene">Programe cu fonduri europene</a></li>
+											<li><a title="Programe Garantare Credite" href="/programe-garantare-credite">Programe de garantare nationale</a></li>
+
+										</ul>
+									</li>
+																	</ul>
+							</div>
+						</li>
+
+
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading6">
+								
+							
+								<a href="/servicii-bancare" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse6" aria-expanded="false" aria-controls="meniucollapse6">
+									<button type="button" class="p-0">
+									Mai multe servicii
+									</button>
+								</a>
+							</div>
+							<div id="meniucollapse6" class="collapse" aria-labelledby="meniuheading6" data-parent="#menuAccordion">
+								<ul class="submenu">
+									<li><a title="Mobile Banking" href="/mobile-banking">Aplicații mobil</a></li>
+									<li><a title="AI Banking" href="/ai-banking-voice">AI Banking</a></li>
+									<li><a title="RoPay" href="/ropay">RoPay</a></li>
+									<li><a title="Click to pay" href="/click-to-pay">Click to Pay</a></li>
+									<li><a title="Program puncte Priceless" href="/libra-priceless">Program puncte Priceless</a></li>
+									<li><a title="Investitii bursa" href="/investitii-la-bursa">Investiții la bursă</a></li>
+									<li><a title="Schimburi valutare live" href="/schimb-valutar-live">Live FX Business</a></li>
+									<li><a title="Plati" href="/plati">Servicii de plată</a></li>
+									<li><a title="Instrumente De Debit" href="/bilete-la-ordin-cecuri">Bilete la ordin și cecuri</a></li>
+									<li><a title="Pos" href="/pos">POS / MPOS</a></li>
+									<li><a title="Librapay" href="/librapay">eCommerce prin LibraPay</a></li>
+									<li><a title="Fintech" href="/fintech">Fintech</a></li>
+									<li><a title="Open Banking" href="/Open-Banking">Open Banking</a></li>
+									<li><a title="Rezidential licitatii" href="/Anunturi/vanzari/rezidential">Anunțuri vânzări și licitații</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading11">
+								<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse11" aria-expanded="false" aria-controls="meniucollapse11">
+									Media
+								</button>
+							</div>
+							<div id="meniucollapse11" class="collapse" aria-labelledby="meniuheading11" data-parent="#menuAccordion">
+								<ul class="submenu">
+									<li><a title="Stiri Libra Internet Bank" href="/Stiri">Noutăți</a></li>
+									<li><a title="Blog" href="/blog">Sfaturi bancare</a></li>
+									<li><a title="Video" href="/Video">Video</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading9">
+								<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse9" aria-expanded="false" aria-controls="meniucollapse9">
+									Despre noi
+								</button>
+							</div>
+							<div id="meniucollapse9" class="collapse" aria-labelledby="meniuheading9" data-parent="#menuAccordion">
+								<ul class="submenu">
+									<li><a title="Istorie Banca" href="/istorie-banca">Istoric</a></li>
+									<li><a title="Conducere Libra Internet Bank" href="/conducere">Conducere</a></li>
+									<li><a title="Misiune Banca" href="/misiune">Misiune</a></li>
+									<li><a title="Cifre Cheie" href="/cifre-cheie">Cifre cheie</a></li>
+									<li><a title="Rapoarte Libra Internet Bank" href="/rapoarte-Libra-Internet-Bank">Rapoarte</a></li>
+									<li><a title="Obligatiuni" href="/obligatiuni">Obligațiuni</a></li>
+
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading7">
+								<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse7" aria-expanded="false" aria-controls="meniucollapse7">
+									Conformitate și securitate
+								</button>
+							</div>
+							<div id="meniucollapse7" class="collapse" aria-labelledby="meniuheading7" data-parent="#menuAccordion">
+								<ul class="submenu">
+									<li><a title="Protectia Consumatorului" href="/protectia-consumatorului">Protecția consumatorului</a></li>
+									<li><a title="Politica Prelucrare Date" href="/politica_prelucrare_date">Protecția datelor cu caracter personal</a></li>
+									<li><a title="Informatii Securitate Bancara" href="/informatii-securitate-bancara">Prevenirea fraudelor</a></li>
+									<li><a title="Securitate financiara" href="/blog/categorie/Securitate-Financiara/10">Sfaturi de securitate</a></li>
+									<li><a title="Informatii Tranzactii" href="/informatii-tranzactii">Verificarea tranzacțiilor</a></li>
+									<li><a title="Prevederi raportare fiscala" href="/prevederi-CRS">Transparența raportării fiscale</a></li>
+
+								
+								</ul>
+							</div>
+						</li>
+
+
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading10">
+								<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse10" aria-expanded="false" aria-controls="meniucollapse10">
+									Contact
+								</button>
+							</div>
+							<div id="meniucollapse10" class="collapse" aria-labelledby="meniuheading10" data-parent="#menuAccordion">
+								<ul class="submenu">
+
+									<li><a title="Contact" href="/contact">Sediul Central</a></li>
+									<li><a title="Sucursale" href="/sucursale">Sucursale</a></li>
+									<li><a title="Sucursale" href="/retea_ATM">ATM-uri</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<div class="item-header" id="meniuheading8">
+								<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapse8" aria-expanded="false" aria-controls="meniucollapse8">
+									Cariere
+								</button>
+							</div>
+							<div id="meniucollapse8" class="collapse" aria-labelledby="meniuheading8" data-parent="#menuAccordion">
+								<ul class="submenu">
+									<li><a title="Info Cariere Libra Internet Bank" href="/Cariere">Joburi</a></li>
+									<li><a title="Info Cariere" href="/info-cariere">Despre Libra ca angajator</a></li>
+								</ul>
+							</div>
+						</li>
+
+
+						
+					</ul>
+                    				</div>
+
+				<div class="bottomBar text-center">
+									<button class="btn btn-primary black" type="button" onclick="mbkwidget()">Mobile Banking</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- MENIU MOBIL -->
+    <!-- HEADER MOBILE -->
+
+    <header class="d-md-none">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <div class="d-flex justify-content-start">
+                    <a class="navbar-brand" href="/" title="Libra Internet Bank"><img src="/imagini/logo-libra.svg" alt="Libra Internet Bank" /></a>
+                </div>
+
+                <div class="d-flex d-md-none justify-content-end gap-4">
+                    <button class="navbar-search" type="button" onclick="$('#menu_mobile').toggle()"></button>
+
+                    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" onclick="$('#menu_mobile').toggle()">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- HEADER MOBILE end -->
+
+    <!-- HEADER DESKTOP -->
+    <header class="desktop d-none d-md-block">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <a class="navbar-brand" href="/"><img src="/imagini/logo-libra.svg" alt="Libra Internet Bank" /></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="m-auto col-12">
+                            <div id="searchbox" class="form search w-75"></div>
+                            <div id="pagination" class="d-none"></div>
+                            <div class="searchContainer">
+                                <div id="hits"></div>
+                                <div id="stats"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="language d-inline-block me-3">
+                        <a title="Libra Internet Bank - English version" href="/en">
+                            <button class="lang-toggler" type="button">
+                                <img src="/imagini/flag-en-small-rounded.svg" alt="English version"> EN
+                            </button></a>
+                    </div>
+                    <button class="btn btn-primary black" type="button" onclick="location.href='https://secure.internetbanking.ro/ibk_sms/';">Internet banking</button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- HEADER DESKTOP end -->
+    
+				
+
+				
+
+
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-3 sidebar d-none d-md-block">
+
+                <div class="card">
+                    <div class="card-body pt-1 pb-1">
+                        <div class="mainMenu">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="menu accordion" id="menuAccordion">
+
+	<ul class="navbar-nav">
+	
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd1">
+				<a href="https://www.librabank.ro/cont-bancar-curent" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed1" aria-expanded="false" aria-controls="meniucollapsed1">
+					<button type="button" class="p-0">
+						Conturi
+					</button>
+                 </a>
+			</div>
+			<div id="meniucollapsed1" class="collapse" aria-labelledby="meniuheadingd1" data-parent="#menuAccordion">
+				<ul class="submenu">
+
+
+					<li class="subcategory" >
+						<a class="p-0 fw-bold" title="Cont Persoane fizice" href="/cont-curent-persoane-fizice">Persoane fizice <img src="/imagini/cont-gratuit-label.png" alt="Cont gratuit" /></a>
+						<!--<ul>
+									
+                        </ul>-->
+					</li>
+
+					<li class="subcategory">
+						<a class="p-0 fw-bold" title="Cont Persoane juridice" href="/cont-bancar-persoana-juridica">Persoane juridice</a>
+						<ul>
+							<li><a title="Cont Curent Profesii Liberale" href="/cont-bancar-profesii-liberale">Profesii liberale </a></li>
+							<li><a title="Cont Curent Notarial" href="/cont-curent-notarial">Cont Special Notarial</a></li>
+							<li><a title="Cont Curent IMM" href="/cont-curent-imm">Companii până la 5M lei </a></li>
+							<li><a title="Cont Curent Companii" href="/cont-bancar-firma">Companii peste 5M lei</a></li>
+							<li><a title="Conventii salariale" href="/conventie-salariala">Convenții salariale</a></li>
+						</ul>
+					</li>
+
+					<li class="subcategory">
+
+
+						<a class="p-0 fw-bold" title="Cont si card online" href="/deschidere-cont-card-bancar-online">Cont online</a>
+						<ul>
+							<li><a title="Cont online persoane fizice" href="/cont-online-persoane-fizice">Cont online personal </a></li>
+							<li><a title="Cont online business" href="/deschidere-cont-bancar-online-persoane-juridice">Cont online business </a></li>
+
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd2">
+							<a href="https://www.librabank.ro/card-bancar" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed2" aria-expanded="false" aria-controls="meniucollapsed2">
+					<button type="button" class="p-0">
+					Carduri
+					</button>
+                 </a>
+			</div>
+			<div id="meniucollapsed2" class="collapse" aria-labelledby="meniuheadingd2" data-parent="#menuAccordion">
+			
+				<ul class="submenu">
+
+					<li class="subcategory">
+						<a class="p-0 fw-bold" title="Card persoane fizice" href="/card-persoane-fizice">Persoane fizice</a>
+						<ul>
+							<li><a title="Card Debit" href="/card-de-debit">Card de debit</a></li>
+							<li><a title="Card Credit" href="/card-de-credit-cumparaturi">Card de credit</a></li>
+							<li><a title="Card Debit Junior" href="/card-junior-copii">Card junior</a></li>
+						</ul>
+					</li>
+
+					<li class="subcategory">
+
+						<a class="p-0 fw-bold" title="Card persoane juridice" href="/card-persoane-juridice">Persoane juridice</a>
+						<ul>
+							<li><a title="Card Credit Profesii" href="/card-credit-profesii">Card de credit profesii </a></li>
+							<li><a title="Card Credit Companii" href="/card-credit-persoane-juridice-pentru-companii">Card de credit companii </a></li>
+							<li><a title="Card Business" href="/card-business">Card de debit business  </a></li>
+
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd3">
+			
+				<a href="/economisire-dobanzi-depozite-banci" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed3" aria-expanded="false" aria-controls="meniucollapsed3">
+					<button type="button" class="p-0">
+					Economisire
+					</button>
+                 </a>
+			</div>
+			<div id="meniucollapsed3" class="collapse" aria-labelledby="meniuheadingd3" data-parent="#menuAccordion">
+				
+				<ul class="submenu">
+
+					<li class="subcategory">
+						<a class="p-0 fw-bold" title="Depozite la termen" href="/dobanzi-depozite-la-termen">Depozite la termen</a>
+						<ul>
+							<li><a title="Dobanzi Depozite Persoane Fizice" href="/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice">Depozite persoane fizice</a></li>
+							<li><a title="Dobanzi Depozite Profesii" href="/dobanzi-depozite-profesii">Depozite profesii liberale</a></li>
+							<li><a title="Dobanzi Depozite Companii" href="/dobanzi-depozite-persoane-juridice">Depozite persoane juridice</a></li>
+						
+							
+						</ul>
+					</li>
+
+					<li class="subcategory">
+
+						<strong class="p-0 fw-bold" title="Conturi de economii">Conturi de economii</strong>
+						<ul>
+							<li><a title="Cont Economii" href="/dobanda-cont-de-economii">Conturi de economii</a></li>
+
+						</ul>
+					</li>
+				</ul>
+
+			</div>
+		</li>
+		<li class="nav-item">
+			<div class="item-header" id="meniuHeadingd4">
+			
+				<a href="/credit-imprumut-bancar" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniuCollapsed4" aria-expanded="false" aria-controls="meniuCollapsed4">
+					<button type="button" class="p-0">
+					Credite
+					</button>
+                 </a>
+			</div>
+			<div id="meniuCollapsed4" class="collapse" aria-labelledby="meniuHeadingd4" data-parent="#menuAccordion">
+			
+				<ul class="submenu">
+
+					<li class="subcategory">
+						<a class="p-0 fw-bold" title="Credite persoane fizice" href="/credit-imprumut-persoane-fizice">Persoane fizice</a>
+						
+						<ul>
+							<li><a title="Credit Ipotecar" href="/dobanda-simulare-imprumut-credit-ipotecar">Credit ipotecar</a></li>
+							<li><a title="Credit Ipotecar Diaspora" href="/credit-ipotecar-diaspora">Credit ipotecar Diaspora</a></li>
+							<!--<li><a title="Credit Ipotecar Noua Casa" href="/dobanda-imprumut-credit-ipotecar-noua-casa">Credit ipotecar Noua Casa</a></li>-->
+							<li><a title="Credit Nevoi Personale" href="/credit-nevoi-personale-cu-ipoteca">Credit de consum cu ipotecă</a></li>
+							<li><a title="Credit Nevoi Personale" href="/credit-nevoi-personale-fara-ipoteca">Credit de consum Libra Way</a></li>
+							<li><a title="Overdraft prin card de debit" href="/credit-overdraft">Credit Overdraft </a></li>
+												       
+						</ul>
+					</li>
+
+					<li class="subcategory">
+
+						<a class="p-0 fw-bold" title="Credite persoane juridice" href="/credite-persoane-juridice-afaceri">Persoane juridice</a>
+						<ul>
+							<li><a title="Credit InvestEU" href="/credite-finantare-investeu">InvestEU <img src="https://www.librabank.ro/imagini/cont-online-label.png" alt="Online"></a></li>
+							
+							<li><a title="Credite Agricultura" href="/credit-agricultura-fermieri">Agribusiness</a></li>
+							<li><a title="Credit Profesii Liberale" href="/credit-profesii-liberale">Profesii liberale</a></li>
+							<li><a title="Credite IT online" href="/credite-it-online">Companii Domeniul IT <img src="https://www.librabank.ro/imagini/cont-online-label.png" alt="Online"></a></li>
+							<li><a title="Credite Real Estate" href="/credit-investitii-imobiliare">Proiecte rezidențiale</a></li>
+							<li><a title="Credite Energie" href="/credite-energie">Energie verde</a></li>
+							<li><a title="Credite IMM" href="/imprumut-credit-imm">Companii până la 5M lei</a></li>
+							<li><a title="Credite Companii" href="/imprumut-credit-firma-companii">Companii peste 5M lei</a></li>
+							<li><a title="Credite Fonduri Europene" href="/credite-fonduri-europene">Programe cu fonduri europene</a></li>
+							<li><a title="Programe Garantare Credite" href="/programe-garantare-credite">Programe de garantare nationale</a></li>
+
+						</ul>
+					</li>
+									</ul>
+			</div>
+		</li>
+         
+		
+
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd6">
+			
+				<a href="/servicii-bancare" class="nav-link" role="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed6" aria-expanded="false" aria-controls="meniucollapsed6">
+					<button type="button" class="p-0">
+					Mai multe servicii
+					</button>
+                 </a>
+			</div>
+			<div id="meniucollapsed6" class="collapse" aria-labelledby="meniuheadingd6" data-parent="#menuAccordion">
+				<ul class="submenu">
+					<li><a title="Mobile Banking" href="/mobile-banking">Aplicații mobil</a></li>
+					<li><a title="AI Banking" href="/ai-banking-voice">AI Banking</a></li>
+					<li><a title="RoPay" href="/ropay">RoPay</a></li>
+					<li><a title="Click to pay" href="/click-to-pay">Click to Pay</a></li>
+					<li><a title="Program puncte Priceless" href="/libra-priceless">Program puncte Priceless</a></li>
+					<li><a title="Investitii bursa" href="/investitii-la-bursa">Investiții la bursă</a></li>
+					<li><a title="Schimburi valutare live" href="/schimb-valutar-live">Live FX Business</a></li>
+					<li><a title="Plati" href="/plati">Servicii de plată</a></li>
+					<li><a title="Instrumente De Debit" href="/bilete-la-ordin-cecuri">Bilete la ordin și cecuri</a></li>
+					<li><a title="Pos" href="/pos">POS / MPOS</a></li>
+					<li><a title="Librapay" href="/librapay">eCommerce prin LibraPay</a></li>
+					<li><a title="Fintech" href="/fintech">Fintech</a></li>
+					<li><a title="Open Banking" href="/Open-Banking">Open Banking</a></li>
+					<li><a title="Rezidential licitatii" href="/Anunturi/vanzari/rezidential">Anunțuri vânzări și licitații</a></li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd11">
+				<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed11" aria-expanded="false" aria-controls="meniucollapsed11">
+					Media
+				</button>
+			</div>
+			<div id="meniucollapsed11" class="collapse" aria-labelledby="meniuheadingd11" data-parent="#menuAccordion">
+				<ul class="submenu">
+
+					<li><a title="Stiri Libra Internet Bank" href="/Stiri">Noutăți</a></li>
+					<li><a title="Blog" href="/blog">Sfaturi bancare</a></li>
+					<li><a title="Video" href="/Video">Video</a></li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd9">
+				<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed9" aria-expanded="false" aria-controls="meniucollapsed9">
+					Despre noi
+				</button>
+			</div>
+			<div id="meniucollapsed9" class="collapse" aria-labelledby="meniuheadingd9" data-parent="#menuAccordion">
+				<ul class="submenu">
+					<li><a title="Istorie Banca" href="/istorie-banca">Istoric</a></li>
+					<li><a title="Conducere Libra Internet Bank" href="/conducere">Conducere</a></li>
+					<li><a title="Misiune Banca" href="/misiune">Misiune</a></li>
+					<li><a title="Cifre Cheie" href="/cifre-cheie">Cifre cheie</a></li>
+					<li><a title="Rapoarte Libra Internet Bank" href="/rapoarte-Libra-Internet-Bank">Rapoarte</a></li>
+					<li><a title="Obligatiuni" href="/obligatiuni">Obligațiuni</a></li>
+					
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd7">
+				<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed7" aria-expanded="false" aria-controls="meniucollapsed7">
+					Conformitate și securitate
+				</button>
+			</div>
+			<div id="meniucollapsed7" class="collapse" aria-labelledby="meniuheadingd7" data-parent="#menuAccordion">
+				<ul class="submenu">
+					<li><a title="Protectia Consumatorului" href="/protectia-consumatorului">Protecția consumatorului</a></li>
+					<li><a title="Politica Prelucrare Date" href="/politica_prelucrare_date">Protecția datelor cu caracter personal</a></li>
+					<li><a title="Informatii Securitate Bancara" href="/informatii-securitate-bancara">Prevenirea fraudelor</a></li>
+					<li><a title="Securitate financiara" href="/blog/categorie/Securitate-Financiara/10">Sfaturi de securitate</a></li>
+					<li><a title="Informatii Tranzactii" href="/informatii-tranzactii">Verificarea tranzacțiilor</a></li>
+					<li><a title="Prevederi raportare fiscala" href="/prevederi-CRS">Transparența raportării fiscale</a></li>
+
+				</ul>
+			</div>
+		</li>
+
+
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd10">
+				<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed10" aria-expanded="false" aria-controls="meniucollapsed10">
+					Contact
+				</button>
+			</div>
+			<div id="meniucollapsed10" class="collapse" aria-labelledby="meniuheadingd10" data-parent="#menuAccordion">
+				<ul class="submenu">
+					<li><a title="Contact" href="/contact">Sediul Central</a></li>
+					<li><a title="Sucursale" href="/sucursale">Sucursale</a></li>
+					<li><a title="Sucursale" href="/retea_ATM">ATM-uri</a></li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<div class="item-header" id="meniuheadingd8">
+				<button class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#meniucollapsed8" aria-expanded="false" aria-controls="meniucollapsed8">
+					Cariere
+				</button>
+			</div>
+			<div id="meniucollapsed8" class="collapse" aria-labelledby="meniuheadingd8" data-parent="#menuAccordion">
+				<ul class="submenu">
+					<li><a title="Info Cariere Libra Internet Bank" href="/Cariere">Joburi</a></li>
+					<li><a title="Info Cariere" href="/info-cariere">Despre Libra ca angajator</a></li>
+				</ul>
+			</div>
+		</li>
+
+
+	
+
+	</ul>
+
+
+
+
+</div>                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- CUM PROCEDEZ -->
+                <div class="card">
+                    <a href="/intrebari-frecvente-banca" class="d-block card-body ">
+
+                        <div class="row py-3 align-items-center d-flex">
+                            <div class="col-3 col-icon"> <img src="/imagini/icon-bicolor-how-to.svg" alt="Cum procedez"> </div>
+                            <div class="col-9 pl-2">
+                                <h3 class="card-title big-title mb-0 ">Întrebări frecvente<br></h3>
+                            </div>
+                        </div>
+
+                    </a>
+                </div>
+                <!-- END CUM PROCEDEZ -->
+            </div>
+
+            <div class="col-md-6">
+                                
+
+                <!-- MAIN -->
+                <h2>Not Found</h2>
+<p class="error">
+	<strong>Error: </strong>
+	The requested address <strong>'/wp-content/uploads/2022/03/libra-logo.png?url=wp-content%2Fuploads%2F2022%2F03%2Flibra-logo.png'</strong> was not found on this server.</p>
+                <!-- MAIN end -->
+            </div>
+            <div class="col-md-3 sidebar d-md-block">
+                                <div class="card bg-light">
+                    <div class="card-body">
+                        <h3 class="card-title big-title">
+                            Noutăți
+                        </h3>
+                        
+                        <div class="linksList">
+                            <ul>
+        <li>
+        <a href="/Stiri/Sucursalele-Libra-Internet-Bank-vor-fi-inchise-vineri-1-mai-2026/3388">Sucursalele Libra Internet Bank vor fi închise vineri, 1 mai 2026</a>
+    </li>
+        <li>
+        <a href="/Stiri/-Libra-Internet-Bank-premiata-la-Gala-Online-Banking-2026-pentru-performanta-aplicatiilor-digitale/3387"> Libra Internet Bank, premiată la Gala Online Banking 2026 pentru performanța aplicațiilor digitale</a>
+    </li>
+        <li>
+        <a href="/Stiri/Libra-Internet-Bank-accelereaza-deschiderea-conturilor-online-prin-validarea-identitatii-in-timp-real-pe-baza-informatiilor-DGEP-integrate-/3386">Libra Internet Bank accelerează deschiderea conturilor online prin validarea identității în timp real, pe baza informațiilor DGEP integrate </a>
+    </li>
+        <li>
+        <a href="/Stiri/Libra-este-prima-banca-din-Romania-care-foloseste-date-financiare-din-UE-si-Marea-Britanie-pentru-analiza-solicitarilor-de-credit-ale-romanilor-din-Diaspora/3384">Libra este prima bancă din România care folosește date financiare din UE și Marea Britanie pentru analiza solicitărilor de credit ale românilor din Diaspora</a>
+    </li>
+        <li>
+        <a href="/Stiri/Romanii-din-Diaspora-pot-accesa-credite-ipotecare-de-pana-la-2-milioane-de-lei-prin-Libra-Internet-Bank-pentru-achizitia-de-locuinte-in-tara/3379">Românii din Diaspora pot accesa credite ipotecare de până la 2 milioane de lei, prin Libra Internet Bank, pentru achiziția de locuințe în țară</a>
+    </li>
+                        </ul>
+                        </div>
+                        
+                        <div class="cta text-center">
+                            <a href="/Stiri">Vezi toate noutățile</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                                    <div class="card bg-light">
+                    <div class="card-body">
+                        <h3 class="card-title big-title d-flex align-items-center justify-content-between">
+                        Sfaturi bancare
+</h3>
+                        
+                        <div class="linksList">
+                            <ul>
+        <li>
+        <a href="/blog/Ce-beneficii-ai-cu-Cardul-Business-Visa-de-la-Libra-prin-platforma-Marile-Afaceri-Mici-/2300">Ce beneficii ai cu Cardul Business Visa de la Libra prin platforma Marile Afaceri Mici </a>
+    </li>
+        <li>
+        <a href="/blog/Asigurarea-pentru-cumparaturi-online-prin-cardul-Libra-Gold-ce-acopera-si-cum-o-activezi-/2299">Asigurarea pentru cumpărături online prin cardul Libra Gold: ce acoperă și cum o activezi </a>
+    </li>
+        <li>
+        <a href="/blog/Mesaj-urgent-Verifica-daca-nu-este-o-frauda/2298">Mesaj urgent? Verifică dacă nu este o fraudă</a>
+    </li>
+                        </ul>
+                        </div>
+                        
+                        <div class="cta text-center">
+                            <a href="/blog">Vezi toate articolele</a>
+                        </div>
+                        
+                    </div>
+                </div>
+    
+
+                
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h3 class="card-title big-title text-center">
+                                Vrei să fii client Libra?
+                            </h3>
+                            <p class="card-text text-center">
+                                Deschide cont online
+                            </p>
+                            <div class="row m-3">
+                                <button onclick="location.href='https://contonline.librabank.ro/pf/?utm_source=box-right-personal&utm_medium=online-box-right-personal&utm_term=lbk&utm_content=lbk&utm_campaign=lbk-box-pf';" class="btn btn-primary red flex-grow-1 w-25" type="button">Personal</button>
+                            </div>
+                            <div class="row m-3">
+                                <button onclick="location.href='https://contonline.librabank.ro/business/?utm_source=box-right-business&utm_medium=online-box-right-business&utm_term=lbk&utm_content=lbk&utm_campaign=lbk-box-business';" class="btn btn-primary black flex-grow-1 w-25" type="button">Business</button>
+                            </div>
+                        </div> 
+                                    </div>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 center">
+                        <div class="socialLinks">
+                            <a href="https://www.facebook.com/LibraInternetBank" target="_blank"><img src="/imagini/icon-social-facebook-red.svg" alt="Libra Internet Bank pe Facebook" /></a>
+                            <a href="https://www.linkedin.com/company/libra-bank/" target="_blank"><img src="/imagini/icon-social-linkedin-red.svg" alt="Libra Internet Bank pe LinkedIN" /></a>
+                            <a href="https://www.youtube.com/user/LibraInternetBank" target="_blank"><img src="/imagini/icon-social-youtube-red.svg" alt="Libra Internet Bank pe Youtube" /></a>
+                            <a href="https://www.instagram.com/accounts/login/?next=/libra_internet_bank/" target="_blank"><img src="/imagini/icon-social-instagram-red.svg" alt="Libra Internet Bank pe Instagram" /></a>
+                            <a href="https://twitter.com/LIBRABANK" target="_blank"><img src="/imagini/icon-social-twitter-red.svg" alt="Libra Internet Bank pe Twitter" /></a>
+                            <a href="https://www.tiktok.com/@librainternetbank" target="_blank"><img src="/imagini/icon-social-tiktok-red.svg" alt="Libra Internet Bank pe TikTok" /></a>
+                            <a href="/blog"><img src="/imagini/icon-social-blog-red.svg" alt="Blog Libra Internet Bank" /></a>
+                            
+                        </div>
+
+                        <ul class="menu">
+                            <li><a href="/intrebari-frecvente-banca">Întrebări frecvente</a></li>
+                            <li><a href="/campanii">Campanii</a></li>
+                            <li><a href="/documente/informatii_fond_garantare_depozite.pdf">Garantare depozite</a></li>
+                            <li><a title="Curs valutar" href="/Curs_valutar">Curs valutar</a></li>
+                            <li><a title="Credit ipotecar" href="/dobanda-simulare-imprumut-credit-ipotecar">Credit ipotecar</a></li>
+                        </ul>
+
+                        <div class="socialLinks">
+                            <a rel="nofollow" href="https://anpc.ro/ce-este-insolventa-persoanelor-fizice/" target="_blank"><img src="/imagini/anpc-insolventa.png" alt="ANPC" /></a>
+                        </div>
+
+                        <p>&copy; 2026 Libra Internet Bank. Toate drepturile rezervate. | <a href="/termeni">Termeni și condiții</a> |
+                            <a href="javascript:void(0)" onclick="window.Consent.open()">Setari cookies</a>
+                        </p>
+
+                        <button style="min-width: auto;" class="btn btn-light p-3 d-inline-flex align-items-center" id="goToTop" aria-label="Înapoi sus">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                                <path stroke="#6A6A6A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.667 7.333 8.333 2m0 0L3 7.333M8.333 2v12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER end -->
+        <script src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch@0.13.6/dist/instant-meilisearch.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+        <script>
+            const search = instantsearch({
+                indexName: "test",
+                searchClient: instantMeiliSearch("https://search.librabank.ro/", "e959d81486557d8d92b74247cc39b98afe34dc0b2a8d5aa456e77cfbbd10efee"),
+                finitePagination: true,
+                searchFunction(helper) {
+                    const container = document.querySelector("#hits");
+                    const pagination = document.querySelector("#pagination");
+                    const stats = document.querySelector("#stats");
+                    container.style.display = helper.state.query === "" ? "none" : "";
+                    pagination.style.display = helper.state.query === "" ? "none" : "";
+                    stats.style.display = helper.state.query === "" ? "none" : "";
+
+                    const containerm = document.querySelector("#hitsm");
+                    const paginationm = document.querySelector("#paginationm");
+                    const statsm = document.querySelector("#statsm");
+                    containerm.style.display = helper.state.query === "" ? "none" : "";
+                    paginationm.style.display = helper.state.query === "" ? "none" : "";
+                    statsm.style.display = helper.state.query === "" ? "none" : "";
+
+                    helper.search();
+                },
+            });
+
+            search.addWidgets([
+                instantsearch.widgets.searchBox({
+                    container: "#searchbox",
+                }),
+                instantsearch.widgets.configure({
+                    hitsPerPage: 5,
+                    matchingStrategy: "all",
+                    snippetEllipsisText: "...",
+                    attributesToSnippet: ["content:20"],
+                    finitePagination: false,
+                }),
+                instantsearch.widgets.hits({
+                    container: "#hits",
+                    templates: {
+                        item: `
+            <div>
+            <div class="hit-name">
+                  <a href="https://www.librabank.ro{{link}}">{{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}</a><br>
+                 <br><a class="snippet" href="https://www.librabank.ro{{link}}"><span class="text-wrap">{{#helpers.snippet}}{ "attribute": "content" }{{/helpers.snippet}}</span></a>
+            </div>
+            </div>
+          `,
+                        empty: "<div>Nu au fost gasite rezultate pentru {{ query }}.</div>",
+                    },
+                }),
+                instantsearch.widgets.pagination({
+                    container: "#pagination",
+                }),
+                instantsearch.widgets.stats({
+                    container: "#stats",
+                    templates: {
+                        text(hit) {
+                            return `<strong>${
+          hit.nbHits
+        }</strong> rezultate ${
+          hit.query !== "" ? `pentru <strong>"${hit.query}"</strong>` : ``
+        } in <strong>${hit.processingTimeMS} ms</strong><br><a href="javascript:void()"  onclick="redirectSearch()">Afiseaza toate rezultatele</a>`;
+                        }
+                    }
+                })
+            ]);
+
+            search.addWidgets([
+                instantsearch.widgets.searchBox({
+                    container: "#searchboxm",
+                }),
+                instantsearch.widgets.configure({
+                    hitsPerPage: 5,
+                    matchingStrategy: "all",
+                    snippetEllipsisText: "...",
+                    attributesToSnippet: ["content:20"],
+                    finitePagination: false,
+                }),
+                instantsearch.widgets.hits({
+                    container: "#hitsm",
+                    templates: {
+                        item: `
+            <div>
+            <div class="hit-name">
+                  <a href="https://www.librabank.ro{{link}}">{{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}</a><br>
+                 <br><a class="snippet" href="https://www.librabank.ro{{link}}"><span class="text-wrap">{{#helpers.snippet}}{ "attribute": "content" }{{/helpers.snippet}}</span></a>
+            </div>
+            </div>
+          `,
+                        empty: "<div>Nu au fost gasite rezultate pentru {{ query }}.</div>",
+                    },
+                }),
+                instantsearch.widgets.pagination({
+                    container: "#paginationm",
+                }),
+                instantsearch.widgets.stats({
+                    container: "#statsm",
+                    templates: {
+                        text(hit) {
+                            return `<center><strong>${
+                    hit.nbHits
+                    }</strong> rezultate ${
+                    hit.query !== "" ? `pentru <strong>"${hit.query}"</strong>` : ``
+                    } in <strong>${hit.processingTimeMS} ms</strong><br><a class="morerez" href="javascript:void()" onclick="redirectSearch()">Afiseaza toate rezultatele</a></center>`;
+                        }
+                    }
+                })
+            ]);
+
+            search.start();
+
+            let timer;
+
+            const waitTime = 1000;
+
+            const messageInput = document.getElementById("searchbox");
+
+            messageInput.addEventListener("keyup", (event) => {
+                clearTimeout(timer);
+
+                timer = setTimeout(() => {
+                    doneTyping(event.target.value);
+                }, waitTime);
+            });
+
+            const messageInputm = document.getElementById("searchboxm");
+
+            messageInputm.addEventListener("keyup", (event) => {
+                clearTimeout(timer);
+
+                timer = setTimeout(() => {
+                    doneTyping(event.target.value);
+                }, waitTime);
+            });
+
+            function doneTyping(value) {
+                if (value != "") {
+                    postAjax("/logsearch.php", "search=" + value, function(data) {
+                        console.log(data);
+                    });
+                    console.log(`The user is done typing: ${value}`);
+                }
+            }
+
+            function postAjax(url, data, success) {
+                var params =
+                    typeof data == "string" ?
+                    data :
+                    Object.keys(data)
+                    .map(function(k) {
+                        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+                    })
+                    .join("&");
+
+                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+                xhr.open("POST", url);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState > 3 && xhr.status == 200) {
+                        success(xhr.responseText);
+                    }
+                };
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send(params);
+                return xhr;
+            }
+
+
+            function redirectSearch() {
+
+                var form = document.createElement("form");
+                $(form).attr("id", "reg-form").attr("name", "reg-form").attr("action", "/Cautare").attr("method", "post").attr("enctype", "multipart/form-data");
+
+                const input = document.createElement('input')
+                input.name = "searchText"
+
+                val1 = document.getElementsByClassName("ais-SearchBox-input")[0].value
+                if (val1 == "") val = document.getElementsByClassName("ais-SearchBox-input")[1].value
+
+
+                input.value = val1;
+                form.appendChild(input)
+
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+
+                return false;
+            }
+
+            $(".ais-SearchBox-input").each(function() {
+                $(this).attr('placeholder', 'Cauta...');
+            });
+            
+            $(".ais-SearchBox-submit").on("click", function() {
+                redirectSearch()
+            });
+
+            //back to top
+            $(function() {
+                $('#goToTop').click(function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+
+            //IBAN fintech
+            jQuery(document).ready(function() {
+                jQuery('#IBANfintech').on('click', function(e) {
+                    e.preventDefault();
+                    const fintech = ["00055", "00056", "00059", "00060", "00061", "00062", "00063", "00068", "00069", "00070", "00071", "00072"];
+                    var iban = $('#IBAN').val().split(" ").join("").toUpperCase();
+                    var iban_result = $('#IBANresult');
+                    if (iban.length != 24)
+                        iban_result.html("IBAN-ul introdus nu este valid");
+                    else if (iban.substring(4, 8).toLowerCase() != "brel")
+                        iban_result.html("IBAN-ul introdus nu apartine Libra sau unui partener din categoria fintech");
+                    else if (!fintech.includes(iban.substring(8, 13)))
+                        iban_result.html("IBAN-ul introdus nu apartine unui partener din categoria fintech");
+                    else {
+                        iban_result.html("...se verifica...");
+                        $.ajax({
+                                method: "POST",
+                                url: '/ajax/fintech.php',
+                                data: {
+                                    Iban: iban
+                                }
+                            })
+                            .done(function(result) {
+                                result = JSON.parse(result);
+
+                                if (result.result == 1) {
+                                    if (result.data)
+                                        iban_result.html("IBAN-ul introdus este gestionat de " + result.data);
+                                    else
+                                        iban_result.html("IBAN-ul introdus nu este alocat in prezent");
+                                } else {
+                                    iban_result.html("Eroare validare - va rugam incercati mai tarziu...");
+                                }
+                            });
+                    }
+
+                    return false;
+
+                })
+            })
+        </script>
+        
+
+
+<link rel="stylesheet" type="text/css" href="/css/default/widget-right.css"/>
+    <div class="floating-button">
+        <button class="close-button" aria-label="Close">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path
+                    d="M17.4,16l5.3,5.3c0.4,0.4,0.4,1,0,1.4c-0.4,0.4-1,0.4-1.4,0L16,17.4l-5.3,5.3c-0.4,0.4-1,0.4-1.4,0 c-0.4-0.4-0.4-1,0-1.4l5.3-5.3l-5.3-5.3c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0l5.3,5.3l5.3-5.3c0.4-0.4,1-0.4,1.4,0 c0.4,0.4,0.4,1,0,1.4L17.4,16z">
+                </path>
+            </svg>
+        </button>
+
+        <div class="refer refer-bubble">
+            <img src="https://www.librabank.ro/imagini/card-credit-online-widget.png" alt="Card de credit online" />
+
+            <div>
+            <strong>Cea mai mică  <br />
+             dobândă din piață</strong>
+            </div>
+      </div>
+        <a class="refer refer-button" href="/card-de-credit?utm_source=widget-card-credit-online&utm_medium=online-card-credit&utm_term=ad1&utm_content=widget&utm_campaign=card-credit-Q2-2026" target="_blank" aria-label="Recommend to a friend">
+            <span>Cardul de credit Libra</span>
+        </a>
+    </div>
+
+
+   
+
+    <script>
+        $(document).ready(function () {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $(".close-button").css("opacity", "1");
+            }
+
+            $(".close-button").on('click',function () {
+                $(".floating-button").fadeOut(200);
+            });
+        });
+    </script>
+    </body>
+
+</html>
