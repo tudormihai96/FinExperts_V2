@@ -323,11 +323,134 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   closed: { label: "Închis", color: "bg-gray-100 text-gray-600" },
 };
 
-function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Statistici</div>; }
-function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Aplicări</div>; }
-function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Ghiduri</div>; }
-function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Asigurări</div>; }
-function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Bănci</div>; }
-function BrokeriTab({ applications }: { applications: Application[] }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Brokeri</div>; }
-function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Conținut</div>; }
-function SecurityTab() { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Securitate</div>; }
+function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) {
+  const pending = applications.filter(a => a.status === "pending");
+  const approved = applications.filter(a => a.status === "approved");
+  const inReview = applications.filter(a => a.status === "in_review");
+  const totalAmount = applications.reduce((s, a) => s + a.amount, 0);
+  const avgAmount = applications.length ? Math.round(totalAmount / applications.length) : 0;
+  const approvalRate = applications.length ? Math.round((approved.length / applications.length) * 100) : 0;
+
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Statistici</h2>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{applications.length}</div><div className="text-xs text-[#64748B]">Aplicări totale</div></div>
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{pending.length}</div><div className="text-xs text-[#64748B]">În așteptare</div></div>
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{approved.length}</div><div className="text-xs text-[#64748B]">Aprobate</div></div>
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{insuranceRequests.length}</div><div className="text-xs text-[#64748B]">Asigurări</div></div>
+      </div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{inReview.length}</div><div className="text-xs text-[#64748B]">În analiză</div></div>
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{approved.length ? approved.length : 0}</div><div className="text-xs text-[#64748B]">Respinse</div></div>
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{approvalRate}%</div><div className="text-xs text-[#64748B]">Rată aprobare</div></div>
+        <div className="rounded-lg border border-[#E2E8F0] p-4"><div className="text-2xl font-bold text-[#0B2E2E]">{Math.round(avgAmount / 1000)}k</div><div className="text-xs text-[#64748B]">Sumă medie</div></div>
+      </div>
+    </div>
+  );
+}
+function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Aplicări</h2>
+      <div className="space-y-3">
+        {applications.slice(0, 8).map(app => (
+          <div key={app.id} className="border border-[#E2E8F0] rounded-lg p-4 flex items-center justify-between gap-3">
+            <div>
+              <div className="font-semibold text-[#0B2E2E]">{app.name}</div>
+              <div className="text-sm text-[#64748B]">{app.email} · {app.amount.toLocaleString("ro-RO")} RON</div>
+              <div className="text-xs text-[#64748B]">{app.type} · {app.date}</div>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={() => updateApplication(app.id, { status: "approved" })} className="px-3 py-2 rounded-lg bg-green-50 text-green-700 text-sm font-semibold">Aprobă</button>
+              <button onClick={() => updateApplication(app.id, { status: "rejected" })} className="px-3 py-2 rounded-lg bg-red-50 text-red-700 text-sm font-semibold">Respinge</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Ghiduri</h2>
+      <div className="space-y-2">
+        {guides.slice(0, 6).map(guide => (
+          <div key={guide.slug} className="border border-[#E2E8F0] rounded-lg p-3">
+            <div className="font-semibold text-[#0B2E2E] text-sm">{guide.title}</div>
+            <div className="text-xs text-[#64748B]">{guide.category} · {guide.readTime}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Asigurări</h2>
+      <div className="space-y-2">
+        {requests.slice(0, 6).map(req => (
+          <div key={req.id} className="border border-[#E2E8F0] rounded-lg p-3 flex items-center justify-between">
+            <div>
+              <div className="font-semibold text-[#0B2E2E] text-sm">{req.name}</div>
+              <div className="text-xs text-[#64748B]">{req.type}</div>
+            </div>
+            <div className="text-xs text-[#64748B]">{req.status}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Bănci</h2>
+      <div className="grid grid-cols-2 gap-2">
+        {banks.slice(0, 8).map((bank: any) => (
+          <div key={bank.name} className="border border-[#E2E8F0] rounded-lg p-3 text-sm text-[#0B2E2E]">{bank.name}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function BrokeriTab({ applications }: { applications: Application[] }) {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Brokeri</h2>
+      <div className="space-y-2">
+        {applications.filter(a => a.brokerId).slice(0, 6).map(app => (
+          <div key={app.id} className="border border-[#E2E8F0] rounded-lg p-3">
+            <div className="font-semibold text-[#0B2E2E] text-sm">{app.name}</div>
+            <div className="text-xs text-[#64748B]">{app.brokerId}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Conținut</h2>
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between border border-[#E2E8F0] rounded-lg p-3"><span>IRCC</span><span className="font-semibold">{settings.irccValue}</span></div>
+        <div className="flex justify-between border border-[#E2E8F0] rounded-lg p-3"><span>Anunț activ</span><span className="font-semibold">{settings.announcementActive ? "Da" : "Nu"}</span></div>
+        <div className="flex justify-between border border-[#E2E8F0] rounded-lg p-3"><span>Înregistrări noi</span><span className="font-semibold">{settings.allowNewRegistrations ? "Permise" : "Oprite"}</span></div>
+      </div>
+    </div>
+  );
+}
+function SecurityTab() {
+  return (
+    <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+      <h2 className="text-xl font-bold text-[#0B2E2E] mb-4">Securitate</h2>
+      <div className="space-y-2 text-sm">
+        <div className="border border-[#E2E8F0] rounded-lg p-3">Autentificare admin activă</div>
+        <div className="border border-[#E2E8F0] rounded-lg p-3">Protecție cont super-admin</div>
+      </div>
+    </div>
+  );
+}
