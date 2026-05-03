@@ -133,9 +133,9 @@ export default function Navbar() {
                 {userMenuOpen && (
                   <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-[#E2E8F0] rounded-2xl shadow-xl py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                     {isAdmin && (
-                      <Link href="/admin" onClick={() => setUserMenuOpen(false)}>
+                      <Link href="/broker" onClick={() => setUserMenuOpen(false)}>
                         <div className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#0B2E2E] hover:bg-[#F4F6FB] cursor-pointer rounded-lg mx-1 transition-colors">
-                          <Settings className="h-4 w-4 text-[#C49A20]" /> Panou Admin Dashboard
+                          <Settings className="h-4 w-4 text-[#C49A20]" /> Dashboard
                         </div>
                       </Link>
                     )}
@@ -203,8 +203,8 @@ export default function Navbar() {
               {isLoggedIn ? (
                 <>
                   {isAdmin && (
-                    <Link href="/admin" className="flex items-center justify-center gap-2 text-sm font-semibold text-[#C49A20] border-2 border-[#C49A20]/30 bg-[#C49A20]/5 px-4 py-3 rounded-xl" onClick={() => setMobileOpen(false)}>
-                      <Settings className="h-4 w-4" /> Panou Admin Dashboard
+                    <Link href="/broker" className="flex items-center justify-center gap-2 text-sm font-semibold text-[#C49A20] border-2 border-[#C49A20]/30 bg-[#C49A20]/5 px-4 py-3 rounded-xl" onClick={() => setMobileOpen(false)}>
+                      <Settings className="h-4 w-4" /> Dashboard
                     </Link>
                   )}
                   <Link href="/cont" className="flex items-center justify-center gap-2 text-sm font-medium text-[#0B2E2E] border border-[#E2E8F0] px-4 py-3 rounded-xl bg-[#F4F6FB]" onClick={() => setMobileOpen(false)}>
