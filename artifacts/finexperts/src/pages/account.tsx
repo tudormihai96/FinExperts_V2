@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { useAuth } from "@/lib/auth";
+import { useAuth, checkEmailExists } from "@/lib/auth";
 import { useStore } from "@/lib/store";
 import { BROKERS, getBroker, getStoredBrokerId, setStoredBrokerId, CC_EMAIL, buildBrokerMailto } from "@/lib/brokers";
 import {
@@ -390,9 +390,34 @@ export default function AccountPage() {
   const [selectedBrokerId, setSelectedBrokerId] = useState(() => getStoredBrokerId());
   const selectedBroker = getBroker(selectedBrokerId);
 
+  useEffect(() => {
+    setProfileForm({ name: user?.name || "", phone: "", email: user?.email || "" });
+  }, [user?.email, user?.name]);
+
   const handleBrokerChange = (id: string) => {
     setSelectedBrokerId(id);
     setStoredBrokerId(id);
+  };
+
+  const saveProfile = () => {
+    const name = profileForm.name.trim();
+    const email = profileForm.email.trim().toLowerCase();
+    if (!name || !email) return;
+    const accounts = JSON.parse(localStorage.getItem("finexperts_client_accounts") || "{}") as Record<string, { name: string; password: string }>;
+    const currentEmail = user?.email || "";
+    const current = currentEmail ? accounts[currentEmail] : undefined;
+    const exists = checkEmailExists(email);
+    if (email !== currentEmail && exists && exists !== "client") return;
+    const password = current?.password || accounts[email]?.password || "";
+    if (!password) return;
+    if (currentEmail && currentEmail !== email) delete accounts[currentEmail];
+    accounts[email] = { name, password };
+    localStorage.setItem("finexperts_client_accounts", JSON.stringify(accounts));
+    if (user) {
+      localStorage.setItem("finexperts_user", JSON.stringify({ ...user, name, email }));
+    }
+    setProfileSaved(true);
+    setTimeout(() => setProfileSaved(false), 3000);
   };
 
   const toggleSection = (title: string) => {
@@ -1090,7 +1115,7 @@ export default function AccountPage() {
                           className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]" />
                       </div>
                     ))}
-                    <button onClick={() => { setProfileSaved(true); setTimeout(() => setProfileSaved(false), 3000); }}
+                    <button onClick={saveProfile}
                       className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">
                       <Check className="h-4 w-4" /> Salvează modificările
                     </button>
