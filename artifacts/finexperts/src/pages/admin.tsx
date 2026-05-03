@@ -323,11 +323,11 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   closed: { label: "Închis", color: "bg-gray-100 text-gray-600" },
 };
 
-function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) { return <div />; }
-function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) { return <div />; }
-function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) { return <div />; }
-function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) { return <div />; }
-function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) { return <div />; }
-function BrokeriTab({ applications }: { applications: Application[] }) { return <div />; }
-function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) { return <div />; }
-function SecurityTab() { return <div />; }
+function StatisticsTab({ applications, insuranceRequests }: { applications: Application[]; insuranceRequests: InsuranceRequest[] }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Statistici</div>; }
+function ApplicationsTab({ applications, setApplications, updateApplication }: { applications: Application[]; setApplications: (a: Application[]) => void; updateApplication: (id: string, updates: Partial<Application>) => void; }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Aplicări</div>; }
+function GuidesTab({ guides, setGuides }: { guides: Guide[]; setGuides: (g: Guide[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Ghiduri</div>; }
+function InsuranceTab({ requests, setRequests }: { requests: InsuranceRequest[]; setRequests: (r: InsuranceRequest[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Asigurări</div>; }
+function BanksTab({ banks, setBanks }: { banks: any[]; setBanks: (b: any[]) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Bănci</div>; }
+function BrokeriTab({ applications }: { applications: Application[] }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Brokeri</div>; }
+function ContentTab({ settings, setSettings }: { settings: SiteSettings; setSettings: (s: SiteSettings) => void }) { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Conținut</div>; }
+function SecurityTab() { return <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">Securitate</div>; }
