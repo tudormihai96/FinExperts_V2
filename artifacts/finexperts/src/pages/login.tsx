@@ -122,28 +122,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Demo credentials */}
-        <div className="mt-4 bg-white border border-[#E2E8F0] rounded-xl p-4 space-y-3">
-          <div className="flex items-center gap-2 mb-1">
-            <Shield className="h-3.5 w-3.5 text-[#0B2E2E]" />
-            <span className="text-xs font-bold text-[#0B2E2E] uppercase tracking-wider">Credențiale demo</span>
-          </div>
-          <div className="space-y-2">
-            <div className="bg-[#0B2E2E]/5 rounded-lg p-2.5">
-              <div className="text-[10px] font-bold text-[#0B2E2E] uppercase tracking-wider mb-1">Super Admin</div>
-              <div className="text-xs text-[#64748B] font-mono">admin@finexperts.ro / Admin#2026!</div>
-            </div>
-            <div className="bg-[#C49A20]/8 rounded-lg p-2.5">
-              <div className="text-[10px] font-bold text-[#C49A20] uppercase tracking-wider mb-1">Conturi Broker (oricare)</div>
-              <div className="text-xs text-[#64748B] font-mono">alexandra.achim@kiwifinance.ro</div>
-              <div className="text-xs text-[#64748B] font-mono">cristina.coman@kiwifinance.ro</div>
-              <div className="text-xs text-[#64748B] font-mono">mihai.tudor@kiwifinance.ro</div>
-              <div className="text-xs text-[#64748B] font-mono">ana-maria.gheorghe@kiwifinance.ro</div>
-              <div className="text-xs text-[#94A3B8] mt-1">Parolă: <span className="font-semibold text-[#64748B]">Kiwi#2026!</span></div>
-            </div>
-          </div>
-        </div>
-
         <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-[#94A3B8]">
           <Lock className="h-3 w-3" />
           Sesiune securizată · Blocare după 5 încercări eșuate
