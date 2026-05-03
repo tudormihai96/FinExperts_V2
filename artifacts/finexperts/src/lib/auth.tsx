@@ -110,6 +110,14 @@ export function resetPasswordForEmail(email: string, newPassword: string): boole
       if (savedUser.email.trim().toLowerCase() === emailNorm) {
         const updatedUser = { ...savedUser, loginAt: Date.now() };
         localStorage.setItem("finexperts_user", JSON.stringify(updatedUser));
+        setBrokerAccounts({
+          ...getBrokerAccounts(),
+          [emailNorm]: {
+            name: savedUser.name,
+            brokerId: savedUser.brokerId || emailNorm.split("@")[0].replace(/[^a-z0-9]+/g, "-"),
+            password: newPassword,
+          },
+        });
         return true;
       }
     } catch {}
