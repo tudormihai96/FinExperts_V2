@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useRoute } from "wouter";
-import { checkEmailExists, consumePasswordResetToken, createPasswordResetRequest, getPasswordResetEmail } from "@/lib/auth";
-import { AlertCircle, ArrowLeft, CheckCircle, Eye, EyeOff, KeyRound, Lock, Mail } from "lucide-react";
+import { consumePasswordResetToken, createPasswordResetRequest, getPasswordResetEmail } from "@/lib/auth";
+import {
+  AlertCircle, ArrowLeft, CheckCircle, Copy, Eye, EyeOff,
+  Info, KeyRound, Lock, Mail, Send
+} from "lucide-react";
+
+type Step = "email" | "sent" | "reset" | "done";
 
 export default function ForgotPasswordPage() {
   const [, setLocation] = useLocation();
   const [match, params] = useRoute("/recuperare-parola/:token");
-  const token = match ? params?.token ?? "" : "";
-  const [step, setStep] = useState<"email" | "reset" | "done">(token ? "reset" : "email");
+  const token = match ? (params?.token ?? "") : "";
+
+  const [step, setStep] = useState<Step>(token ? "reset" : "email");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [resetLink, setResetLink] = useState("");
+  const [copied, setCopied] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showNew, setShowNew] = useState(false);
@@ -20,7 +28,7 @@ export default function ForgotPasswordPage() {
     if (!token) return;
     const requestEmail = getPasswordResetEmail(token);
     if (!requestEmail) {
-      setResetError("Linkul de reset este invalid sau a expirat.");
+      setResetError("Linkul de reset este invalid sau a expirat. Solicită unul nou.");
       setStep("email");
       return;
     }
@@ -32,17 +40,20 @@ export default function ForgotPasswordPage() {
     e.preventDefault();
     setEmailError("");
     const emailNorm = email.trim().toLowerCase();
-    const exists = checkEmailExists(emailNorm);
-    if (!exists) {
-      setEmailError("Nu am găsit niciun cont asociat acestui email.");
-      return;
-    }
+
     const resetToken = createPasswordResetRequest(emailNorm);
-    if (!resetToken) {
-      setEmailError("Nu am putut genera linkul de reset.");
-      return;
+    if (resetToken) {
+      const base = window.location.origin + window.location.pathname.replace(/\/recuperare-parola.*$/, "");
+      setResetLink(`${base}/recuperare-parola/${resetToken}`);
     }
-    setLocation(`recuperare-parola/${resetToken}`);
+    setStep("sent");
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(resetLink).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   const handleResetSubmit = (e: React.FormEvent) => {
@@ -57,15 +68,22 @@ export default function ForgotPasswordPage() {
       return;
     }
     if (!token) {
-      setResetError("Lipsește linkul de reset.");
+      setResetError("Lipsește tokenul de reset. Accesează linkul din email.");
       return;
     }
     const ok = consumePasswordResetToken(token, newPassword);
     if (!ok) {
-      setResetError("A apărut o eroare. Reîncearcă.");
+      setResetError("Linkul a expirat sau a fost deja folosit. Solicită unul nou.");
       return;
     }
     setStep("done");
+  };
+
+  const subtitle: Record<Step, string> = {
+    email: "Introdu emailul contului tău",
+    sent: "Verifică-ți inbox-ul",
+    reset: "Setează noua parolă",
+    done: "Parolă actualizată cu succes",
   };
 
   return (
@@ -80,16 +98,12 @@ export default function ForgotPasswordPage() {
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
           <h1 className="text-2xl font-bold text-[#0B2E2E]">Recuperare parolă</h1>
-          <p className="text-sm text-[#64748B] mt-1">
-            {step === "email" && "Introdu emailul contului tău"}
-            {step === "reset" && "Setează noua parolă"}
-            {step === "done" && "Parola a fost actualizată"}
-          </p>
+          <p className="text-sm text-[#64748B] mt-1">{subtitle[step]}</p>
         </div>
 
         <div className="bg-white border border-[#E2E8F0] rounded-xl p-7">
 
-          {/* Step 1 — Email */}
+          {/* ── Step 1: Email ── */}
           {step === "email" && (
             <form onSubmit={handleEmailSubmit} className="space-y-4">
               <div>
@@ -118,17 +132,75 @@ export default function ForgotPasswordPage() {
 
               <button
                 type="submit"
-                className="w-full bg-[#0B2E2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors"
+                className="w-full bg-[#0B2E2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
               >
-                Continuă
+                <Send className="h-4 w-4" /> Trimite link de resetare
               </button>
             </form>
           )}
 
-          {/* Step 2 — Noua parolă */}
+          {/* ── Step 2: Sent (demo — în producție linkul se trimite pe email) ── */}
+          {step === "sent" && (
+            <div className="space-y-4">
+              <div className="flex flex-col items-center text-center py-2">
+                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                  <Mail className="h-7 w-7 text-blue-600" />
+                </div>
+                <p className="text-sm text-[#0B2E2E] font-medium">
+                  Dacă există un cont asociat adresei <strong>{email}</strong>, vei primi un email cu linkul de resetare.
+                </p>
+              </div>
+
+              {/* Linkul de reset — afișat doar în mediu demo, când emailul a fost găsit */}
+              {resetLink ? (
+                <>
+                  <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+                    <div className="flex items-start gap-2">
+                      <Info className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+                      <div className="text-xs text-amber-700">
+                        <strong>Mediu demo:</strong> În producție, linkul se trimite automat pe email. Copiați linkul de mai jos pentru a testa.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">
+                      Link resetare (expiră în 15 min)
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 border border-[#E2E8F0] rounded-lg px-3 py-2 text-xs text-[#64748B] bg-[#F5F7FA] break-all select-all">
+                        {resetLink}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleCopy}
+                        className="shrink-0 border border-[#E2E8F0] rounded-lg p-2 hover:border-[#0B2E2E] hover:text-[#0B2E2E] transition-colors"
+                        title="Copiază link"
+                      >
+                        {copied ? <CheckCircle className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4 text-[#64748B]" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <a
+                    href={resetLink}
+                    className="block w-full bg-[#0B2E2E] hover:bg-[#132846] text-white font-semibold py-3 rounded-xl transition-colors text-center text-sm"
+                  >
+                    Deschide link de resetare →
+                  </a>
+                </>
+              ) : (
+                <p className="text-xs text-center text-[#94A3B8]">
+                  Verifică inbox-ul și folderul Spam. Linkul expiră în 15 minute.
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* ── Step 3: Reset (accesibil DOAR prin URL cu token) ── */}
           {step === "reset" && (
             <form onSubmit={handleResetSubmit} className="space-y-4">
-              <div className="flex items-center gap-2 bg-[#0B2E2E]/5 border border-[#0B2E2E]/15 rounded-lg px-3 py-2.5 mb-2">
+              <div className="flex items-center gap-2 bg-[#0B2E2E]/5 border border-[#0B2E2E]/15 rounded-lg px-3 py-2.5">
                 <KeyRound className="h-4 w-4 text-[#0B2E2E] shrink-0" />
                 <span className="text-xs text-[#0B2E2E] font-medium truncate">{email}</span>
               </div>
@@ -189,7 +261,7 @@ export default function ForgotPasswordPage() {
             </form>
           )}
 
-          {/* Step 3 — Succes */}
+          {/* ── Step 4: Done ── */}
           {step === "done" && (
             <div className="text-center py-2">
               <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
@@ -197,7 +269,7 @@ export default function ForgotPasswordPage() {
               </div>
               <h3 className="font-bold text-[#0B2E2E] text-lg mb-2">Parolă actualizată!</h3>
               <p className="text-sm text-[#64748B] mb-6">
-                Parola contului <strong>{email}</strong> a fost resetată cu succes. Te poți conecta acum cu noua parolă.
+                Contul <strong>{email}</strong> are acum o parolă nouă. Te poți conecta.
               </p>
               <button
                 onClick={() => setLocation("/login")}
