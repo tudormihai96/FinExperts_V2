@@ -89,7 +89,7 @@ export default function AdminPage() {
       <aside className="w-64 bg-[#0B2E2E] min-h-screen flex flex-col shrink-0">
         <div className="p-5 border-b border-white/10">
           <div className="text-xs font-bold text-[#C49A20] uppercase tracking-wider mb-0.5">FinExperts</div>
-          <div className="text-sm text-white font-semibold">Panou Super Admin</div>
+          <div className="text-sm text-white font-semibold">Panou Dashboard</div>
           <div className="mt-1.5 inline-flex items-center gap-1 bg-[#C49A20]/20 text-[#C49A20] text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
             <Key className="h-2.5 w-2.5" /> Acces total
           </div>
@@ -937,11 +937,11 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
     const pending = myApps.filter(a => a.status === "pending");
     const inReview = myApps.filter(a => a.status === "in_review" || a.status === "contacted");
     const totalApproved = approved.reduce((s, a) => s + a.amount, 0);
-    return { broker, myApps, approved, pending, inReview, totalApproved };
+    return { broker, myApps, approved, pending, inReview, totalApproved, accountEmail: broker.email };
   });
   const filteredRows = brokerRows.filter(row =>
     (selected === "all" || row.broker.id === selected) &&
-    [row.broker.name, row.broker.specialization].join(" ").toLowerCase().includes(search.toLowerCase())
+    [row.broker.name, row.accountEmail, row.broker.role].join(" ").toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -975,13 +975,12 @@ function BrokeriTab({ applications }: { applications: Application[] }) {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h3 className="text-lg font-bold text-[#0B2E2E]">{broker.name}</h3>
-                    <span className="text-xs text-[#64748B] bg-[#F5F7FA] px-2 py-0.5 rounded">{broker.specialization}</span>
+                    <span className="text-xs text-[#64748B] bg-[#F5F7FA] px-2 py-0.5 rounded">{broker.role}</span>
                     <div className="flex items-center gap-0.5 ml-auto">
-                      {[1,2,3,4,5].map(s => <Star key={s} className={`h-3.5 w-3.5 ${s <= broker.rating ? "text-[#C49A20] fill-[#C49A20]" : "text-[#E2E8F0]"}`} />)}
                     </div>
                   </div>
                   <div className="text-xs text-[#64748B] mt-0.5">{accountEmail} · {broker.phone}</div>
-                  <div className="text-xs text-[#64748B]">{broker.experience}</div>
+                  <div className="text-xs text-[#64748B]">{broker.role}</div>
                 </div>
               </div>
 
