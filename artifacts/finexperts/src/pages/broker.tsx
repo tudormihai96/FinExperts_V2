@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/lib/auth";
 import { useStore, Application, ApplicationNote } from "@/lib/store";
-import { BROKERS } from "@/lib/brokers";
+import { BROKERS, getBroker } from "@/lib/brokers";
 import {
   LayoutDashboard, FileText, Users, LogOut, Check, X, ChevronDown, ChevronUp,
   Phone, Mail, MessageSquare, TrendingUp, Clock, CheckCircle, AlertCircle,
@@ -34,7 +34,7 @@ export default function BrokerPage() {
   const [noteText, setNoteText] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [search, setSearch] = useState("");
-  const brokerInfo = useMemo(() => BROKERS.find(b => b.id === user?.brokerId) || BROKERS[0], [user?.brokerId]);
+  const brokerInfo = useMemo(() => getBroker(user?.brokerId || "tudor-mihai"), [user?.brokerId]);
 
   if (!isBroker) {
     return (

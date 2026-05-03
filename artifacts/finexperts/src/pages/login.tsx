@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { useAuth, BROKER_ACCOUNTS } from "@/lib/auth";
+import { useAuth, BROKER_ACCOUNTS, setBrokerAccounts, getBrokerAccounts } from "@/lib/auth";
 import { AlertCircle, Eye, EyeOff, Lock, Shield } from "lucide-react";
 
 export default function LoginPage() {
@@ -20,6 +20,9 @@ export default function LoginPage() {
       if (emailNorm === "admin@finexperts.ro") {
         setLocation("/admin");
       } else if (BROKER_ACCOUNTS[emailNorm]) {
+        const accounts = getBrokerAccounts();
+        const account = accounts[emailNorm] || BROKER_ACCOUNTS[emailNorm];
+        setBrokerAccounts({ ...accounts, [emailNorm]: account });
         setLocation("/broker");
       } else {
         setLocation("/cont");

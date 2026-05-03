@@ -55,6 +55,7 @@ export const BROKER_ACCOUNTS: Record<string, BrokerAccount> = {
 export function setBrokerAccounts(accounts: Record<string, BrokerAccount>) {
   try {
     localStorage.setItem("finexperts_broker_accounts", JSON.stringify(accounts));
+    localStorage.removeItem("finexperts_broker");
   } catch {}
 }
 
