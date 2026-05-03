@@ -7,14 +7,14 @@ export default function Footer() {
 
       {/* ── Main footer ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1fr] gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] gap-10 lg:gap-16 items-start">
 
           {/* Col 1: Brand + contact + ANPC */}
           <div>
             <img
               src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
               alt="FinExperts"
-              className="h-[72px] w-auto grayscale brightness-0 mb-3"
+              className="h-[72px] w-auto brightness-0 invert mb-3"
             />
             <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
               Broker de credite autorizat, partener oficial KIWI Finance. Comparăm și negociem în locul tău — 100% gratuit.
@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
 
           {/* Col 2: Produse */}
-          <div>
+          <div className="pt-1">
             <h4 className="text-xs font-bold text-[#C49A20] uppercase tracking-widest mb-5">Produse</h4>
             <ul className="space-y-3">
               {[
@@ -70,7 +70,7 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Companie */}
-          <div>
+          <div className="pt-1">
             <h4 className="text-xs font-bold text-[#C49A20] uppercase tracking-widest mb-5">Companie</h4>
             <ul className="space-y-3">
               {[
