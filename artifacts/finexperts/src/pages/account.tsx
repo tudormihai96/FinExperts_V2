@@ -1069,61 +1069,63 @@ export default function AccountPage() {
               <p className="text-sm text-[#64748B]">Actualizează informațiile de contact</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-5">
-              <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
-                <h3 className="font-semibold text-[#0B2E2E] mb-5">Informații personale</h3>
-                {profileSaved && (
-                  <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-green-700">
-                    <CheckCircle className="h-4 w-4" /> Profil actualizat cu succes!
-                  </div>
-                )}
-                <div className="space-y-4">
-                  {[
-                    { label: "Nume complet", key: "name" as const, type: "text", placeholder: "Ion Popescu" },
-                    { label: "Email", key: "email" as const, type: "email", placeholder: "ion@email.ro" },
-                    { label: "Telefon", key: "phone" as const, type: "tel", placeholder: "07xx xxx xxx" },
-                  ].map(f => (
-                    <div key={f.key}>
-                      <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">{f.label}</label>
-                      <input type={f.type} value={profileForm[f.key]} placeholder={f.placeholder}
-                        onChange={e => setProfileForm(p => ({ ...p, [f.key]: e.target.value }))}
-                        className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]" />
+              <div className="space-y-4">
+                <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+                  <h3 className="font-semibold text-[#0B2E2E] mb-5">Informații personale</h3>
+                  {profileSaved && (
+                    <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-green-700">
+                      <CheckCircle className="h-4 w-4" /> Profil actualizat cu succes!
                     </div>
-                  ))}
-                  <button onClick={() => { setProfileSaved(true); setTimeout(() => setProfileSaved(false), 3000); }}
-                    className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">
-                    <Check className="h-4 w-4" /> Salvează modificările
-                  </button>
+                  )}
+                  <div className="space-y-4">
+                    {[
+                      { label: "Nume complet", key: "name" as const, type: "text", placeholder: "Ion Popescu" },
+                      { label: "Email", key: "email" as const, type: "email", placeholder: "ion@email.ro" },
+                      { label: "Telefon", key: "phone" as const, type: "tel", placeholder: "07xx xxx xxx" },
+                    ].map(f => (
+                      <div key={f.key}>
+                        <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">{f.label}</label>
+                        <input type={f.type} value={profileForm[f.key]} placeholder={f.placeholder}
+                          onChange={e => setProfileForm(p => ({ ...p, [f.key]: e.target.value }))}
+                          className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]" />
+                      </div>
+                    ))}
+                    <button onClick={() => { setProfileSaved(true); setTimeout(() => setProfileSaved(false), 3000); }}
+                      className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">
+                      <Check className="h-4 w-4" /> Salvează modificările
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
-                <h3 className="font-semibold text-[#0B2E2E] mb-5">Schimbă parola</h3>
-                {passwordError && (
-                  <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-red-700">
-                    <Info className="h-4 w-4" /> {passwordError}
-                  </div>
-                )}
-                {passwordSaved && (
-                  <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-green-700">
-                    <CheckCircle className="h-4 w-4" /> Parola a fost actualizată local.
-                  </div>
-                )}
-                <div className="space-y-4">
-                  {[
-                    { label: "Parola curentă", key: "current" as const },
-                    { label: "Parola nouă", key: "next" as const },
-                    { label: "Confirmă parola", key: "confirm" as const },
-                  ].map(f => (
-                    <div key={f.key}>
-                      <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">{f.label}</label>
-                      <input
-                        type="password"
-                        value={passwordForm[f.key]}
-                        onChange={e => setPasswordForm(p => ({ ...p, [f.key]: e.target.value }))}
-                        className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]"
-                      />
+                <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+                  <h3 className="font-semibold text-[#0B2E2E] mb-5">Schimbă parola</h3>
+                  {passwordError && (
+                    <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-red-700">
+                      <Info className="h-4 w-4" /> {passwordError}
                     </div>
-                  ))}
+                  )}
+                  {passwordSaved && (
+                    <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-green-700">
+                      <CheckCircle className="h-4 w-4" /> Parola a fost actualizată local.
+                    </div>
+                  )}
+                  <div className="space-y-4">
+                    {[
+                      { label: "Parola curentă", key: "current" as const },
+                      { label: "Parola nouă", key: "next" as const },
+                      { label: "Confirmă parola", key: "confirm" as const },
+                    ].map(f => (
+                      <div key={f.key}>
+                        <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">{f.label}</label>
+                        <input
+                          type="password"
+                          value={passwordForm[f.key]}
+                          onChange={e => setPasswordForm(p => ({ ...p, [f.key]: e.target.value }))}
+                          className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
