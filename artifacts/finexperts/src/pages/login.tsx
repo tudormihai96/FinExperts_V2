@@ -39,7 +39,7 @@ export default function LoginPage() {
           <img
             src="https://customer-assets.emergentagent.com/job_kiwi-credit-calc/artifacts/79s0uoxb_logo2_corectr.png"
             alt="FinExperts"
-            className="h-40 mx-auto mb-5"
+            className="h-48 mx-auto mb-5"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
           <h1 className="text-2xl font-bold text-[#0B2E2E]">Intră în contul tău</h1>
