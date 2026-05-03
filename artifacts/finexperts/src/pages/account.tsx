@@ -383,7 +383,10 @@ export default function AccountPage() {
   const [docIncomeType, setDocIncomeType] = useState("salariat-ro");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["Identitate", "Dovada venitului", "Dovada pensiei"]));
   const [profileForm, setProfileForm] = useState({ name: user?.name || "", phone: "", email: user?.email || "" });
+  const [passwordForm, setPasswordForm] = useState({ current: "", next: "", confirm: "" });
   const [profileSaved, setProfileSaved] = useState(false);
+  const [passwordSaved, setPasswordSaved] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
   const [selectedBrokerId, setSelectedBrokerId] = useState(() => getStoredBrokerId());
   const selectedBroker = getBroker(selectedBrokerId);
 
@@ -1089,6 +1092,56 @@ export default function AccountPage() {
                   <button onClick={() => { setProfileSaved(true); setTimeout(() => setProfileSaved(false), 3000); }}
                     className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">
                     <Check className="h-4 w-4" /> Salvează modificările
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-white border border-[#E2E8F0] rounded-xl p-6">
+                <h3 className="font-semibold text-[#0B2E2E] mb-5">Schimbă parola</h3>
+                {passwordError && (
+                  <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-red-700">
+                    <Info className="h-4 w-4" /> {passwordError}
+                  </div>
+                )}
+                {passwordSaved && (
+                  <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4 text-sm text-green-700">
+                    <CheckCircle className="h-4 w-4" /> Parola a fost actualizată local.
+                  </div>
+                )}
+                <div className="space-y-4">
+                  {[
+                    { label: "Parola curentă", key: "current" as const },
+                    { label: "Parola nouă", key: "next" as const },
+                    { label: "Confirmă parola", key: "confirm" as const },
+                  ].map(f => (
+                    <div key={f.key}>
+                      <label className="block text-xs font-semibold text-[#0B2E2E] uppercase tracking-wider mb-1.5">{f.label}</label>
+                      <input
+                        type="password"
+                        value={passwordForm[f.key]}
+                        onChange={e => setPasswordForm(p => ({ ...p, [f.key]: e.target.value }))}
+                        className="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#0B2E2E]"
+                      />
+                    </div>
+                  ))}
+                  <button
+                    onClick={() => {
+                      setPasswordError("");
+                      if (!passwordForm.next || passwordForm.next.length < 6) {
+                        setPasswordError("Noua parolă trebuie să aibă minimum 6 caractere.");
+                        return;
+                      }
+                      if (passwordForm.next !== passwordForm.confirm) {
+                        setPasswordError("Parolele nu coincid.");
+                        return;
+                      }
+                      setPasswordSaved(true);
+                      setPasswordForm({ current: "", next: "", confirm: "" });
+                      setTimeout(() => setPasswordSaved(false), 3000);
+                    }}
+                    className="bg-[#0B2E2E] text-white font-semibold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2"
+                  >
+                    <Check className="h-4 w-4" /> Actualizează parola
                   </button>
                 </div>
               </div>
